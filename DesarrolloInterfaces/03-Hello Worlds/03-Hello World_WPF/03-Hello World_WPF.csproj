@@ -8,4 +8,8 @@
     <UseWPF>true</UseWPF>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\03-Hello World-Entidades Estrandar\03-Hello World-Entidades Estrandar.csproj" />
+  </ItemGroup>
+
 </Project>

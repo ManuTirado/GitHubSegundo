@@ -1,0 +1,8 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <RootNamespace>_03_Hello_World_Entidades_Estrandar</RootNamespace>
+  </PropertyGroup>
+
+</Project>
