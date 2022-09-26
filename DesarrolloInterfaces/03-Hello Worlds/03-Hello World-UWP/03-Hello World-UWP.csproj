@@ -154,6 +154,12 @@
       <Version>6.2.14</Version>
     </PackageReference>
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\03-Hello World-Entidades Estrandar\03-Hello World-Entidades Estrandar.csproj">
+      <Project>{49612c6d-71fb-4243-b62c-f06bef646361}</Project>
+      <Name>03-Hello World-Entidades Estrandar</Name>
+    </ProjectReference>
+  </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
     <VisualStudioVersion>14.0</VisualStudioVersion>
   </PropertyGroup>
