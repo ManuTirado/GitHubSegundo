@@ -1,11 +1,15 @@
 ﻿Imports _03_Hello_World_Entidades_Estrandar
 
 Public Class Form1
+    ''' <summary>
+    ''' comentarios: Evento asociado al click del bótón saludar. Mostrara por pantalla un saludo más el nombre del textBox
+    ''' </summary>
+    ''' <param name="sender"></param>
+    ''' <param name="e"></param>
     Private Async Sub Button1_Click(sender As Object, e As EventArgs) Handles btnSaludar.Click
-        Dim persona As New clsPersona
-        With persona
-            .Nombre = txtNombre.Text
-        End With
-        MessageBox.Show("Hola " + persona.Nombre)
+        If txtNombre.Text.Length <> 0 Then
+            Dim persona As clsPersona = New clsPersona(txtNombre.Text)
+            MessageBox.Show("Hola " + persona.Nombre)
+        End If
     End Sub
 End Class

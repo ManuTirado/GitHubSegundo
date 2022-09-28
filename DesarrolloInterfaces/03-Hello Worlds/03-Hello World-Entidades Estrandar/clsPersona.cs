@@ -7,6 +7,7 @@ namespace _03_Hello_World_Entidades_Estrandar
         #region Atributos
         private string nombre;
         #endregion
+
         #region Propiedades
         public string Nombre 
         {
@@ -15,6 +16,17 @@ namespace _03_Hello_World_Entidades_Estrandar
         }
         #endregion
 
+        #region Constructores
+        public clsPersona()
+        {
+            this.nombre = "";
+        }
+        public clsPersona(string nombre)
+        {
+            this.nombre = nombre;
+        }
+
+        #endregion
         /*
         private string Nombre { get; set; }
         */

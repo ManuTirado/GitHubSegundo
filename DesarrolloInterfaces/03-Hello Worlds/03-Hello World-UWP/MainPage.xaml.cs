@@ -1,10 +1,12 @@
-﻿using System;
+﻿using _03_Hello_World_Entidades_Estrandar;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
+using Windows.UI.Popups;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Primitives;
@@ -25,6 +27,29 @@ namespace _03_Hello_World_UWP
         public MainPage()
         {
             this.InitializeComponent();
+        }
+
+        /// <summary>
+        /// Evento asociado al click del btnSaludar que mostrará un saludo al nombre que se introduzca en el textBox
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void btnSaludar_Click(object sender, RoutedEventArgs e)
+        {
+            MessageDialog msg;
+            clsPersona persona;
+
+            if (txtNombre.Text.Length != 0)
+            {
+                persona = new clsPersona(txtNombre.Text);
+                msg = new MessageDialog("Hola " + persona.Nombre);
+                msg.ShowAsync();
+            }
+        }
+
+        private void txtNombre_TextChanged(object sender, TextChangedEventArgs e)
+        {
+
         }
     }
 }
