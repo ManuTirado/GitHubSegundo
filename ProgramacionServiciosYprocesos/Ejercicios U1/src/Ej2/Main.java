@@ -5,7 +5,7 @@ import java.util.Map;
 
 public class Main {
     public static void main(String[] args) {
-        ProcessBuilder processBuilder = new ProcessBuilder(args);
+        ProcessBuilder processBuilder = new ProcessBuilder("java","src\\Ej2\\ProcesoLento.java");
         processBuilder.inheritIO();
         try {
             Process process = processBuilder.start();

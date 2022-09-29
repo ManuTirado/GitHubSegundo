@@ -17,7 +17,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     override fun onRestart() {
-            super.onRestart()
+        super.onRestart()
         Log.d(TAG,"Ciclo de vida - onRestart")
     }
 
