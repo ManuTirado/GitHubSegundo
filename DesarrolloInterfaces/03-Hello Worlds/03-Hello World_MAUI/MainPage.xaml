@@ -16,23 +16,18 @@
                 HorizontalOptions="Center" />
 
             <Label
-                Text="Hello, World!"
+                Text="Ingrese su nombre:"
                 SemanticProperties.HeadingLevel="Level1"
                 FontSize="32"
                 HorizontalOptions="Center" />
 
-            <Label
-                Text="Welcome to .NET Multi-platform App UI"
-                SemanticProperties.HeadingLevel="Level2"
-                SemanticProperties.Description="Welcome to dot net Multi platform App U I"
-                FontSize="18"
-                HorizontalOptions="Center" />
-
+            <Entry
+                x:Name="txtNombre"/>
             <Button
-                x:Name="CounterBtn"
-                Text="Click me"
+                x:Name="BtnSaludar"
+                Text="Saludar"
                 SemanticProperties.Hint="Counts the number of times you click"
-                Clicked="OnCounterClicked"
+                Clicked="OnBtnSaludar"
                 HorizontalOptions="Center" />
 
         </VerticalStackLayout>
