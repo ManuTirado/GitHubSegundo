@@ -1,0 +1,46 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.3.32825.248
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "05-HolaMundoASP_NET_Vacio", "05-HolaMundoASP_NET_Vacio\", "{62A12DB3-71BC-4975-9F80-2FE18B0D51BF}"
+	ProjectSection(WebsiteProperties) = preProject
+		TargetFrameworkMoniker = ".NETFramework,Version%3Dv4.8"
+		ProjectReferences = ""
+		Debug.AspNetCompiler.VirtualPath = "/localhost_63157"
+		Debug.AspNetCompiler.PhysicalPath = "05-HolaMundoASP_NET_Vacio\"
+		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_63157\"
+		Debug.AspNetCompiler.Updateable = "true"
+		Debug.AspNetCompiler.ForceOverwrite = "true"
+		Debug.AspNetCompiler.FixedNames = "false"
+		Debug.AspNetCompiler.Debug = "True"
+		Release.AspNetCompiler.VirtualPath = "/localhost_63157"
+		Release.AspNetCompiler.PhysicalPath = "05-HolaMundoASP_NET_Vacio\"
+		Release.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_63157\"
+		Release.AspNetCompiler.Updateable = "true"
+		Release.AspNetCompiler.ForceOverwrite = "true"
+		Release.AspNetCompiler.FixedNames = "false"
+		Release.AspNetCompiler.Debug = "False"
+		VWDPort = "63157"
+		SlnRelativePath = "05-HolaMundoASP_NET_Vacio\"
+		DefaultWebSiteLanguage = "Visual C#"
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{62A12DB3-71BC-4975-9F80-2FE18B0D51BF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{62A12DB3-71BC-4975-9F80-2FE18B0D51BF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{62A12DB3-71BC-4975-9F80-2FE18B0D51BF}.Release|Any CPU.ActiveCfg = Debug|Any CPU
+		{62A12DB3-71BC-4975-9F80-2FE18B0D51BF}.Release|Any CPU.Build.0 = Debug|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {15BB4CDA-F166-41A1-9BAB-D1506E6C9482}
+	EndGlobalSection
+EndGlobal
