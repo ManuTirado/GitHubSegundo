@@ -23,12 +23,13 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        setContentView(R.layout.layout_create)
         Log.d(TAG,"Ciclo de vida - onCreate")
     }
 
     override fun onRestart() {
         super.onRestart()
+        setContentView(R.layout.layout_restart)
         Log.d(TAG,"Ciclo de vida - onRestart")
     }
 
@@ -65,6 +66,7 @@ class MainActivity : AppCompatActivity() {
 
     override fun onResume() {
         super.onResume()
+        setContentView(R.layout.layout_resume)
         val sonido: MediaPlayer = MediaPlayer.create(this,R.raw.sonido_mario)
         sonido.start()
         Log.d(TAG,"Ciclo de vida - onResume")
@@ -72,10 +74,16 @@ class MainActivity : AppCompatActivity() {
 
     override fun onPause() {
         super.onPause()
-        setContentView(R.layout.activity_display_message)
+        setContentView(R.layout.layout_pause)
+        Log.d(TAG,"Ciclo de vida - onPause")
+    }
+
+    override fun onStop() {
+        super.onStop()
+        setContentView(R.layout.layout_stop)
         var builder = NotificationCompat.Builder(this, "idCanal2")
             .setSmallIcon(android.R.drawable.ic_delete)
-            .setContentTitle("Vuelve a la app ლ(ಠ益ಠლ")
+            .setContentTitle("Vuelve a la app ლ(ಠ益ಠლ (onStop)")
             .setContentText("Por su bien vuelva a la app 💖")
             .setColor(Color.BLUE)
             .setPriority(NotificationCompat.PRIORITY_HIGH)
@@ -98,11 +106,6 @@ class MainActivity : AppCompatActivity() {
                 getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
             notificationManager.createNotificationChannel(channel)
         }
-        Log.d(TAG,"Ciclo de vida - onPause")
-    }
-
-    override fun onStop() {
-        super.onStop()
         val sonido: MediaPlayer = MediaPlayer.create(this,R.raw.fade)
         sonido.start()
         Log.d(TAG,"Ciclo de vida - onStop")
@@ -110,6 +113,32 @@ class MainActivity : AppCompatActivity() {
 
     override fun onDestroy() {
         super.onDestroy()
+        setContentView(R.layout.layout_destroy)
+        var builder = NotificationCompat.Builder(this, "idCanal3")
+            .setSmallIcon(android.R.drawable.ic_delete)
+            .setContentTitle("Se acabó ;( (onDestroy)")
+            .setContentText("*Gritos de agonía*")
+            .setColor(Color.BLUE)
+            .setPriority(NotificationCompat.PRIORITY_HIGH)
+            .setLights(Color.MAGENTA, 1000, 1000)
+            .setVibrate(longArrayOf(1000, 1000, 1000, 1000, 1000))
+            .setDefaults(Notification.DEFAULT_SOUND)
+        with(NotificationManagerCompat.from(this)) {
+            // notificationId is a unique int for each notification that you must define
+            notify(0, builder.build())
+        }
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            val name = "Canal3"
+            val descriptionText = "Descripcion canal"
+            val importance = NotificationManager.IMPORTANCE_DEFAULT
+            val channel = NotificationChannel("idCanal3", name, importance).apply {
+                description = descriptionText
+            }
+            // Register the channel with the system
+            val notificationManager: NotificationManager =
+                getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
+            notificationManager.createNotificationChannel(channel)
+        }
         Log.d(TAG,"Ciclo de vida - onDestroy")
     }
 

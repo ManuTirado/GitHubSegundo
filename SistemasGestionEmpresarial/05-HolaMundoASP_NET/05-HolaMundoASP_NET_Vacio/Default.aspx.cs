@@ -4,7 +4,6 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using Entidad_Persona;
 
 public partial class _Default : System.Web.UI.Page
 {
@@ -15,15 +14,20 @@ public partial class _Default : System.Web.UI.Page
 
     protected void btnSaludar_Click(object sender, EventArgs e)
     {
-        if (txtNombre.Text != null)
+        //clsPersona persona;
+
+        if (!string.IsNullOrEmpty(txtNombre.Text))
         {
-            clsPersona persona = new clsPersona();
-            persona.Nombre = txtNombre.Text;
+            //persona = new clsPersona();
+            lblError.Visible = false;
+            lblSaludo.Text = "¡Hola " + txtNombre.Text + "!";
+            lblSaludo.Visible = true;
             
         }
         else
         {
-
+            lblSaludo.Visible = false;
+            lblError.Visible = true;
         }
     }
 }

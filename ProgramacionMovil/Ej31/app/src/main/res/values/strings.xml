@@ -1,0 +1,18 @@
+<resources>
+    <string name="app_name">Ej3.1</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">Ej 3.1 - Manuel Tirado García</string>
+    <string name="nav_header_subtitle">manuel.tirado@iesnervion.es</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="action_settings">Settings</string>
+
+    <string name="menu_home">Home</string>
+    <string name="menu_suma">Suma</string>
+    <string name="menu_color_texto">Color Texto</string>
+    <string name="menu_alinear_texto">Alinear Texto</string>
+    <string name="menu_galeria">Galería</string>
+    <string name="menu_tamano_texto">Tamaño Texto</string>
+    <string name="menu_cambio_imagen">Cambio Imagen</string>
+    <string name="menu_editar_texto">Editar Texto</string>
+</resources>

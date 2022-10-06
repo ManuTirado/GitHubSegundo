@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_home"
+            android:icon="@drawable/hogar"
+            android:title="@string/menu_home" />
+        <item
+            android:id="@+id/nav_suma"
+            android:icon="@drawable/suma"
+            android:title="@string/menu_suma" />
+        <item
+            android:id="@+id/nav_color_texto"
+            android:icon="@drawable/llenar"
+            android:title="@string/menu_color_texto" />
+        <item
+            android:id="@+id/nav_alinear_texto"
+            android:icon="@drawable/alinear"
+            android:title="@string/menu_alinear_texto" />
+        <item
+            android:id="@+id/nav_galeria"
+            android:icon="@drawable/ic_menu_gallery"
+            android:title="@string/menu_galeria" />
+        <item
+            android:id="@+id/nav_tamano_texto"
+            android:icon="@drawable/redimensionar"
+            android:title="@string/menu_tamano_texto" />
+        <item
+            android:id="@+id/nav_cambio_imagen"
+            android:icon="@drawable/cambio_imagen"
+            android:title="@string/menu_cambio_imagen" />
+        <item
+            android:id="@+id/nav_editar_texto"
+            android:icon="@drawable/texto"
+            android:title="@string/menu_editar_texto" />
+    </group>
+</menu>
