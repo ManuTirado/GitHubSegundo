@@ -4,7 +4,7 @@
 	<Compras>
 		<compra>
 			<fecha>16-08-2022</fecha>
-						<ticket>
+			<ticket>
 				<producto>
 					<descripcion>Tomates</descripcion>
 					<precio_unidad>1,99</precio_unidad>
@@ -13,7 +13,7 @@
 					<descripcion>Taboulé</descripcion>
 					<precio_unidad>1,95</precio_unidad>
 				</producto>
-								<producto>
+				<producto>
 					<descripcion>Tortilla</descripcion>
 					<precio_unidad>2,69</precio_unidad>
 				</producto>
@@ -32,7 +32,7 @@
 					<unidades>2</unidades>
 					<descuento>0,35</descuento>
 				</producto>
-								<producto>
+				<producto>
 					<descripcion>Taboulé</descripcion>
 					<precio_unidad>1,95</precio_unidad>
 				</producto>
@@ -54,7 +54,7 @@
 					<precio_unidad>1,49</precio_unidad>
 					<unidades>2</unidades>
 				</producto>
-								<producto>
+				<producto>
 					<descripcion>Ciruelas</descripcion>
 					<precio_unidad>2,99</precio_unidad>
 					<unidades>0,464</unidades>
@@ -63,7 +63,7 @@
 		</compra>
 		<compra>
 			<fecha>12-09-2022</fecha>
-						<ticket>
+			<ticket>
 				<producto>
 					<descripcion>Mozzarella</descripcion>
 					<precio_unidad>0,95</precio_unidad>
@@ -74,7 +74,7 @@
 					<precio_unidad>1,49</precio_unidad>
 					<descuento>0,45</descuento>
 				</producto>
-								<producto>
+				<producto>
 					<descripcion>Uva</descripcion>
 					<precio_unidad>1,79</precio_unidad>
 				</producto>
