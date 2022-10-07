@@ -33,7 +33,7 @@
 
             <Switch
                 x:Name="switch"
-                IsToggled="{Binding isVisi, Mode=OneWay}"
+                IsToggled="{Binding  ConverterParameter.l, Mode=OneWay}"
                 HorizontalOptions="Center"
                 
                 />
