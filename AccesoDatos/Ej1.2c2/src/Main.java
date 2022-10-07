@@ -40,8 +40,8 @@ public class Main {
         try {
             raf.seek(pos);
             if (raf.readLine() != null) {
-                for (int i = (int) raf.length(); i >= 2; i -= 2) {
-                    raf.seek(i - 2);
+                for (int i = (int) raf.length(); i >= 3; i -= 3) {
+                    raf.seek(i - 3);
                     letraParaMover = raf.readLine();
                     raf.seek(i);
                     raf.write(letraParaMover.getBytes());

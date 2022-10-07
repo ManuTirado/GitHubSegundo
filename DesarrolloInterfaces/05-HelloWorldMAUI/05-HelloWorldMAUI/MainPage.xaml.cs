@@ -16,12 +16,16 @@ public partial class MainPage : ContentPage
     /// <param name="e"></param>
     private async void OnBtnSaludar(object sender, EventArgs e)
     {
-        if (txtNombre.Text.Length != 0)
+        if (!string.IsNullOrEmpty(txtNombre.Text))
         {
             clsPersona persona = new clsPersona();
             persona.Nombre = txtNombre.Text;
             persona.Apellidos = await DisplayPromptAsync("Ingrese sus apellidos:","");
             await DisplayAlert("", $"Hola {persona.Nombre} {persona.Apellidos}", "OK");
+        }
+        else
+        {
+            await DisplayAlert("ERROR", "Debe ingresar su nombre", "OK");
         }
     }
 }

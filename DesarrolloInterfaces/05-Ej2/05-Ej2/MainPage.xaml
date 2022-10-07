@@ -1,0 +1,47 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="_05_Ej2.MainPage">
+
+    <ScrollView>
+        <VerticalStackLayout
+            Spacing="25"
+            Padding="30,0"
+            VerticalOptions="Center">
+
+            <Image
+                Source="dotnet_bot.png"
+                SemanticProperties.Description="Cute dot net bot waving hi to you!"
+                HeightRequest="200"
+                HorizontalOptions="Center" />
+
+            <Label
+                Text="Unidad 5"
+                SemanticProperties.HeadingLevel="Level1"
+                FontSize="32"
+                HorizontalOptions="Center" />
+
+            <Label
+                Text="Ejercicio 2 Controles (Views)"
+                SemanticProperties.HeadingLevel="Level2"
+                SemanticProperties.Description="Welcome to dot net Multi platform App U I"
+                FontSize="18"
+                HorizontalOptions="Center" />
+
+            <Slider
+                x:Name="slider"
+                MinimumTrackColor="Red"
+                MaximumTrackColor="Green"
+                Value="{Binding Progress , Mode=OneWay}"
+                BindingContext="{x:Reference barra}"
+                />
+            <ProgressBar
+                x:Name="barra"
+                BindingContext="{x:Reference slider}"
+                Progress="{Binding Value}"
+                />
+
+        </VerticalStackLayout>
+    </ScrollView>
+
+</ContentPage>
