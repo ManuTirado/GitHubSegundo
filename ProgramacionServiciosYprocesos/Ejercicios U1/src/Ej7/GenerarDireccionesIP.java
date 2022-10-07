@@ -2,7 +2,7 @@ package Ej7;
 
 public class GenerarDireccionesIP {
 
-    static final int NUM_DIRECCIONES_IP = 10;
+    private static final int NUM_DIRECCIONES_IP = 10;
 
     public static void main(String[] args) {
         for (int i = 0; i < NUM_DIRECCIONES_IP; i++) {

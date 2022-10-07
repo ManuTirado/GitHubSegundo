@@ -16,7 +16,7 @@
                 HeightRequest="200"
                 HorizontalOptions="Center"
                 BindingContext="{x:Reference switch}"
-                IsVisible="{Binding Value}"/>
+                IsVisible="{Binding IsToggled}"/>
 
             <Label
                 Text="Unidad 5"
@@ -33,7 +33,7 @@
 
             <Switch
                 x:Name="switch"
-                IsToggled="{Binding  ConverterParameter.l, Mode=OneWay}"
+                IsToggled="{Binding  ConverterParameter.l}"
                 HorizontalOptions="Center"
                 
                 />

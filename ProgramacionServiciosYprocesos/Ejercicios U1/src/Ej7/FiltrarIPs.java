@@ -5,7 +5,7 @@ import java.util.Scanner;
 public class FiltrarIPs {
     public static void main(String[] args) {
         String ip;
-        for (int i = 0; i < GenerarDireccionesIP.NUM_DIRECCIONES_IP; i++) {
+        for (int i = 0; i < 10; i++) {
             ip = leerIP();
             String[] ipSeparada = ip.split("\\.");
             if (Integer.parseInt(ipSeparada[0])  >= 0 && Integer.parseInt(ipSeparada[0]) <= 223) {
