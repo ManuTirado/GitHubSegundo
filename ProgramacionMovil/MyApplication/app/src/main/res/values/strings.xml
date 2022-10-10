@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Aplicación Piola</string>
+    <string name="open">Open Navigation Drawer</string>
+    <string name="close">Close Navigation Drawer</string>
+    <string name="textViewNum1">Número 1:</string>
+    <string name="textViewNum2">Número 2:</string>
+</resources>

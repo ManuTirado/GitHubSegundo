@@ -33,9 +33,7 @@
 
             <Switch
                 x:Name="switch"
-                IsToggled="{Binding  ConverterParameter.l}"
                 HorizontalOptions="Center"
-                
                 />
            
 

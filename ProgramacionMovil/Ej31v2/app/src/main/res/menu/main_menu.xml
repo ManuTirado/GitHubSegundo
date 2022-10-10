@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/home"
+            android:icon="@drawable/ic_baseline_home_24"
+            android:title="Home" />
+    </group>
+    <item android:title="Funciones">
+        <menu>
+            <group android:checkableBehavior="single">
+                <item
+                    android:id="@+id/calculadora"
+                    android:icon="@drawable/ic_baseline_calculate_24"
+                    android:title="Suma" />
+                <item
+                    android:id="@+id/color_texto"
+                    android:icon="@drawable/ic_baseline_format_color_text_24"
+                    android:title="Color Texto" />
+                <item
+                    android:id="@+id/alinear_texto"
+                    android:icon="@drawable/ic_baseline_format_align_left_24"
+                    android:title="Alinear" />
+                <item
+                    android:id="@+id/galeria"
+                    android:icon="@drawable/ic_baseline_photo_library_24"
+                    android:title="Galería" />
+                <item
+                    android:id="@+id/tamano_texto"
+                    android:icon="@drawable/ic_baseline_text_fields_24"
+                    android:title="Tamaño Texto" />
+                <item
+                    android:id="@+id/altavoz"
+                    android:icon="@drawable/ic_baseline_volume_mute_24"
+                    android:title="Altavoz" />
+                <item
+                    android:id="@+id/formatear_texto"
+                    android:icon="@drawable/ic_baseline_text_format_24"
+                    android:title="Formato Texto" />
+            </group>
+        </menu>
+    </item>
+</menu>
