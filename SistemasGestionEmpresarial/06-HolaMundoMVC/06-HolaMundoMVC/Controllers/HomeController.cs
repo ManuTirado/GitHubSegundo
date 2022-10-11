@@ -6,11 +6,11 @@ namespace _06_HolaMundoMVC.Controllers
     {
         public String Index()
         {
-            return "Hola Mundo desde el controlador";
+            return "Hola Mundo desde el action index del controlador home";
         }
         public String Salva()
         {
-            return "Hola Salva 🥵🔥🔥, desde el controlador";
+            return "Hola Salva, ¿Caramelo? 🥵🔥🔥, desde el action salva del controlador home";
         }
         public ViewResult Kiko()
         {

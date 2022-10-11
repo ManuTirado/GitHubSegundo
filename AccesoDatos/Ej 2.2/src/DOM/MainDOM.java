@@ -32,6 +32,12 @@ public class MainDOM {
         System.out.println(obtenerResumenTotal(comprasLeidas));
     }
 
+    /**
+     * Función que devuelve un arraylist con instanciaciones de la clase Compra realizadas en el documento xml.
+     * Utiliza la librería DOM para la lectura del xml.
+     * @param entrada
+     * @return
+     */
     private static ArrayList<Compra> leerCompras(File entrada) {
         ArrayList<Compra> comprasLeidas = new ArrayList<>();
         try {
@@ -52,6 +58,13 @@ public class MainDOM {
         return comprasLeidas;
     }
 
+    /**
+     * Devuelve una instanciación de la clase Compra, resultado de leer el índice del NodeList que las contiene.
+     * @param compras
+     * @param i índice
+     * @return compra
+     * @throws ParseException
+     */
     private static Compra leerCompra(NodeList compras, int i) throws ParseException {
         Compra compraLeida;
         Node nNode = compras.item(i);
@@ -75,6 +88,13 @@ public class MainDOM {
         return compraLeida;
     }
 
+    /**
+     * Devuelve una instanciación de la clase Producto, resultado de leer el índice del NodeList que los contiene.
+     * @param productos
+     * @param i
+     * @return producto
+     * @throws ParseException
+     */
     private static Producto leerProducto(NodeList productos, int i) throws ParseException {
         Producto productoLeido;
         Node node = productos.item(i);
@@ -100,6 +120,11 @@ public class MainDOM {
         return productoLeido;
     }
 
+    /**
+     * Función que devuelve un String con un resumen de una compra formateado como un ticket
+     * @param compra
+     * @return
+     */
     private static String obtenerResumenCompra(Compra compra) {
         StringBuilder sb = new StringBuilder();
 
@@ -127,6 +152,11 @@ public class MainDOM {
         return sb.toString();
     }
 
+    /**
+     * Función que devuelve un String con un resumen de la suma de todas las compras
+     * @param compras
+     * @return
+     */
     private static String obtenerResumenTotal(ArrayList<Compra> compras) {
         StringBuilder sb = new StringBuilder();
 
@@ -139,6 +169,11 @@ public class MainDOM {
         return sb.toString();
     }
 
+    /**
+     * Función que suma los productos comprados en todas las compras y lo devuelve como entero.
+     * @param compras
+     * @return Total productos comprados
+     */
     private static int obtenerTotalProductosComprados(ArrayList<Compra> compras) {
         int totalProductos = 0;
         for (Compra c:
@@ -148,6 +183,11 @@ public class MainDOM {
         return totalProductos;
     }
 
+    /**
+     * Función que suma los precios de todas las compras y la devuelve como double.
+     * @param compras
+     * @return Precio de todas las compras juntas
+     */
     private static double obtenerPrecioTotal(ArrayList<Compra> compras) {
         double precioTotal = 0;
         for (Compra c :
@@ -157,6 +197,11 @@ public class MainDOM {
         return precioTotal;
     }
 
+    /**
+     * Función que suma los descuentos de todas las compras y lo devuelve como double.
+     * @param compras
+     * @return Descuento total
+     */
     private static double obtenerDescuentoTotal(ArrayList<Compra> compras) {
         double descuentoTotal = 0;
         for (Compra c:
@@ -166,6 +211,11 @@ public class MainDOM {
         return descuentoTotal;
     }
 
+    /**
+     * Función que suma los precios finales (restado el descuento) de todas lascomprasy lo devuelve como double.
+     * @param compras
+     * @return Precio final total
+     */
     private static double obtenerPrecioFinalTotal(ArrayList<Compra> compras) {
         double precioFinal = 0;
         for (Compra c :
@@ -175,6 +225,11 @@ public class MainDOM {
         return precioFinal;
     }
 
+    /**
+     * Función que devuelve un String con el número pasado por parámetro formateado para tener 2 decimales
+     * @param numero
+     * @return Número con 2 decimales
+     */
     private static String obt2Decimales(double numero) {
         return String.format("%.2f", numero);
     }
