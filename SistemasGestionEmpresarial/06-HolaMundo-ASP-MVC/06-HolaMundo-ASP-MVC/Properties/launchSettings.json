@@ -3,16 +3,16 @@
     "windowsAuthentication": false,
     "anonymousAuthentication": true,
     "iisExpress": {
-      "applicationUrl": "http://localhost:5787",
+      "applicationUrl": "http://localhost:19564",
       "sslPort": 0
     }
   },
   "profiles": {
-    "_06_HolaMundoMVC": {
+    "_06_HolaMundo_ASP_MVC": {
       "commandName": "Project",
       "dotnetRunMessages": true,
       "launchBrowser": true,
-      "applicationUrl": "http://localhost:5022",
+      "applicationUrl": "http://localhost:5086",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       }
