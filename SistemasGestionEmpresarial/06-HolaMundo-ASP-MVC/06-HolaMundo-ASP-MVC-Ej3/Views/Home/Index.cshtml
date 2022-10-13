@@ -1,0 +1,33 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width" />
+        <title>¿Qué hora es?</title>
+    </head>
+    <body>
+        @{
+            DateTime hora = DateTime.Now;
+            <h1>Hola, son las @hora.ToString("HH:mm")</h1>
+    }
+
+        <!-- Comprobamos si la hora es am o pm -->
+        @{
+            int limiteMedioDia = 12;
+            string resultado;
+            if (hora.Hour > limiteMedioDia)
+            {
+                resultado = "Hemos pasado las 12 del mediodía";
+            }
+            else
+            {
+                resultado = "No hemos pasado las 12 del mediodía";
+            }
+        }
+        <h3>@resultado</h3>
+    </body>
+</html>

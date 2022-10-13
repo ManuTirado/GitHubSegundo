@@ -3,7 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.3.32825.248
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "06-HolaMundo-ASP-MVC", "06-HolaMundo-ASP-MVC\06-HolaMundo-ASP-MVC.csproj", "{149D78ED-0235-4039-83A5-D69D5CCDB2FA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "06-HolaMundo-ASP-MVC", "06-HolaMundo-ASP-MVC\06-HolaMundo-ASP-MVC.csproj", "{149D78ED-0235-4039-83A5-D69D5CCDB2FA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "06-HolaMundo-ASP-MVC-Ej3", "06-HolaMundo-ASP-MVC-Ej3\06-HolaMundo-ASP-MVC-Ej3.csproj", "{32EE107B-8694-45DC-893D-ACD2A151067B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "06-HolaMundo-ASP-MVC-Ej4", "06-HolaMundo-ASP-MVC-Ej4\06-HolaMundo-ASP-MVC-Ej4.csproj", "{74F5343A-5315-4EEA-847B-85DFA8A72825}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +19,14 @@ Global
 		{149D78ED-0235-4039-83A5-D69D5CCDB2FA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{149D78ED-0235-4039-83A5-D69D5CCDB2FA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{149D78ED-0235-4039-83A5-D69D5CCDB2FA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{32EE107B-8694-45DC-893D-ACD2A151067B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{32EE107B-8694-45DC-893D-ACD2A151067B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{32EE107B-8694-45DC-893D-ACD2A151067B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{32EE107B-8694-45DC-893D-ACD2A151067B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{74F5343A-5315-4EEA-847B-85DFA8A72825}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{74F5343A-5315-4EEA-847B-85DFA8A72825}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{74F5343A-5315-4EEA-847B-85DFA8A72825}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{74F5343A-5315-4EEA-847B-85DFA8A72825}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

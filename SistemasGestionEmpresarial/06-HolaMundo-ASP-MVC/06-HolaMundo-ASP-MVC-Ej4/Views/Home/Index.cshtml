@@ -1,0 +1,56 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Tabla Multiplicaciones</title>
+</head>
+<!--
+    Creo una tabla y la recorro, rellenándola con las multiplicaciones pertinentes
+-->
+<body>
+    <table border="1">
+        <thead>
+            <tr><th colspan="12">Tablas de multiplicar</th></tr>
+        </thead>
+        <tbody>
+            @{
+                int limiteFilas = 12;
+                int limiteColumnas= 10;
+
+                // Creo una fila con un signo de multiplicación y los números del 1 a limiteColumnas
+                <tr>    
+                    <td>*</td>
+                    @{
+                        for (int i = 1; i <= limiteColumnas; i++)
+                        {
+                            <td>@i</td>
+                        }
+                    }
+                </tr>
+
+                // Creo filas hasta llegar al limiteFilas y a cada una le creo columnas hasta llegar al limiteColumnas y en estas
+                // Escribo la multiplicación correspondiente con su resultado
+                for (int i = 1; i <= limiteFilas; i++)
+                {
+                    <tr>
+                        @{
+                            <td>@i</td>
+                            for (int j = 1; j <= limiteColumnas; j++)
+                            {
+                                <td>
+                                    @i * @j = @(i * j)
+                                </td>
+                            }
+                        }
+                    </tr>
+                }
+            }
+        </tbody>
+    </table>
+</body>
+</html>
