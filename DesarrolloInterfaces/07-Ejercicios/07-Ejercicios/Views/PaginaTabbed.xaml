@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<TabbedPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:_07_Ejercicios.Views"
+             x:Class="_07_Ejercicios.Views.PaginaTabbed"           
+                
+             Title="PaginaTabbed">
+
+    <local:Pagina1 Title="Ayuwoki" IconImageSource="zombi.png"></local:Pagina1>
+    <local:Pagina2 Title="Cuchillo" IconImageSource="cuchillo.png"></local:Pagina2>
+    <local:Pagina3 Title="Bolita" IconImageSource="bolamagica.png"></local:Pagina3>
+</TabbedPage>

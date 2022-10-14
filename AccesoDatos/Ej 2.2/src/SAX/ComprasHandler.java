@@ -3,35 +3,49 @@ package SAX;
 import Entidades.Compra;
 import Entidades.Producto;
 import org.xml.sax.Attributes;
-import org.xml.sax.SAXException;
 import org.xml.sax.helpers.DefaultHandler;
 
 import java.util.ArrayList;
 
 public class ComprasHandler extends DefaultHandler {
+    private ArrayList<Compra> compras;
+    private Compra compra;
+    private ArrayList<Producto> productos;
+    private Producto producto;
 
+    public void startElement (String uri, String localName, String qName, Attributes attributes) {
+        switch (qName) {
+            case "Compras":
+                compras = new ArrayList<>();
+                break;
+            case "compra":
 
+                break;
+            case "fecha":
 
-    private ArrayList<Compra> compras = new ArrayList<>();
-    private ArrayList<Producto> productosActuales = new ArrayList<>();
-    //private Producto productoActual = new Producto();
+                break;
+            case "ticket":
 
-    @Override
-    public void startElement(String uri, String localName, String qName,
-                             Attributes attributes) throws SAXException {
+                break;
+            case "producto":
+
+                break;
+            case "descripcion":
+
+                break;
+            case "precio_unidad":
+
+                break;
+        }
+    }
+    public void characters(char ch[], int start, int length) {
+
+    }
+    public void endElement(String uri, String localName, String qName) {
 
     }
 
-    @Override
-    public void characters(char[] arg0, int start, int length) throws SAXException {
-        //nos pasa el contenido de un elemento
+    public  ArrayList<Compra> obtenerCompras () {
+        return compras;
     }
-
-    @Override
-    public void endElement(String uri, String localName, String qName)
-            throws SAXException {
-        //avisa cuando acaba un elemento y nos pasa la info
-    }
-
-
 }

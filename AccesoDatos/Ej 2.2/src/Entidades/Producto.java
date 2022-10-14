@@ -1,5 +1,4 @@
 package Entidades;
-
 public class Producto {
     private String descripcion;
     private double precio_unidad, unidades, descuento;
@@ -9,6 +8,11 @@ public class Producto {
         this.precio_unidad = precio_unidad;
         this.unidades = unidades;
         this.descuento = descuento;
+    }
+
+    public Producto() {
+        this.unidades = 1;
+        this.descuento = 0;
     }
 
     public String getDescripcion() {

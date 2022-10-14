@@ -17,6 +17,10 @@ public class Compra {
         setPrecioCompraFinal();
     }
 
+    public Compra() {
+
+    }
+
     public String getFecha() {
         return fecha;
     }

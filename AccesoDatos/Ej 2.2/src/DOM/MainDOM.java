@@ -20,7 +20,7 @@ public class MainDOM {
 
     public static void main(String[] args) {
         File entrada = new File(RUTA_FICHERO_ENTRADA);
-        ArrayList<Compra> comprasLeidas = new ArrayList<>();
+        ArrayList<Compra> comprasLeidas;
 
         comprasLeidas = leerCompras(entrada);
 
