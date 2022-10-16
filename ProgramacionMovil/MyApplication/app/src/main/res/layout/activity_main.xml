@@ -8,6 +8,18 @@
     android:background="@drawable/el_bicho"
     tools:context=".MainActivity">
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="bottom|center">
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="SIUUUU"
+            android:layout_marginBottom="20dp"
+            android:onClick="Siu"/>
+    </LinearLayout>
     <com.google.android.material.navigation.NavigationView
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
@@ -16,5 +28,6 @@
         android:id="@+id/nav_view"
         android:layout_gravity="start"
         />
+
 
 </androidx.drawerlayout.widget.DrawerLayout>

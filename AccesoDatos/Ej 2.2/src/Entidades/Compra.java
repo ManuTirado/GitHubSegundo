@@ -11,10 +11,6 @@ public class Compra {
     public Compra(String fecha, ArrayList<Producto> ticket) {
         setFecha(fecha);
         setTicket(ticket);
-        setProductosVendidos();
-        setPrecioCompra();
-        setDescuentoCompra();
-        setPrecioCompraFinal();
     }
 
     public Compra() {
@@ -33,6 +29,10 @@ public class Compra {
     }
     public void setTicket(ArrayList<Producto> ticket) {
         this.ticket = ticket;
+        setProductosVendidos();
+        setPrecioCompra();
+        setDescuentoCompra();
+        setPrecioCompraFinal();
     }
 
     public int getProductosVendidos() {

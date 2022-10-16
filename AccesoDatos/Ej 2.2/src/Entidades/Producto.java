@@ -18,16 +18,28 @@ public class Producto {
     public String getDescripcion() {
         return descripcion;
     }
+    public void setDescripcion(String descripcion) {
+        this.descripcion = descripcion;
+    }
 
     public double getPrecio_unidad() {
         return precio_unidad;
+    }
+    public void setPrecio_unidad(double precio_unidad) {
+        this.precio_unidad = precio_unidad;
     }
 
     public double getUnidades() {
         return unidades;
     }
+    public void setUnidades(double unidades) {
+        this.unidades = unidades;
+    }
 
     public double getDescuento() {
         return descuento;
+    }
+    public void setDescuento(double descuento) {
+        this.descuento = descuento;
     }
 }
