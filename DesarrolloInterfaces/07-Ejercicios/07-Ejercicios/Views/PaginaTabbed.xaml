@@ -4,7 +4,15 @@
              xmlns:local="clr-namespace:_07_Ejercicios.Views"
              x:Class="_07_Ejercicios.Views.PaginaTabbed"           
                 
-             Title="PaginaTabbed">
+             Title="PaginaTabbed"
+            
+            BarBackgroundColor="Red"
+            BarTextColor="BlueViolet"
+            SelectedTabColor="OrangeRed"
+            UnselectedTabColor="LightYellow"
+            
+            >
+
 
     <local:Pagina1 Title="Ayuwoki" IconImageSource="zombi.png"></local:Pagina1>
     <local:Pagina2 Title="Cuchillo" IconImageSource="cuchillo.png"></local:Pagina2>

@@ -3,5 +3,12 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="_07_Ejercicios.Views.Pagina3"
              >
+    <VerticalStackLayout>
     <Label>Hola soy la página 3</Label>
+    <Button 
+        x:Name="btnPagina3"
+        Text="Navegar a la Main Page"
+        Clicked="OnBotonPagina3"
+        />
+    </VerticalStackLayout>
 </ContentPage>

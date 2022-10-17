@@ -3,5 +3,5 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="_07_Ejercicios.Views.Pagina1"
              >
-    <Label>Hola soy la página 1</Label>
+    <Label x:Name="txtPagina1">Hola </Label>
 </ContentPage>
