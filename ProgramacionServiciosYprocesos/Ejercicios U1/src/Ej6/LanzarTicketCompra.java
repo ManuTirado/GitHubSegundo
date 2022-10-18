@@ -7,7 +7,7 @@ public class LanzarTicketCompra {
     private static final String RUTA_OUTPUT = "src\\Ej6\\salida.txt";
 
     public static void main(String[] args) {
-        String[] comando = {"java","src\\ej6\\TicketCompra.java"};
+        String[] comando = {"java","src\\Ej6\\TicketCompra.java"};
 
         File output = new File(RUTA_OUTPUT);
         ProcessBuilder pb = new ProcessBuilder(comando);

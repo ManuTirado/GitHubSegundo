@@ -28,7 +28,7 @@ public class ComprasHandler extends DefaultHandler {
             case "descuento" -> descuento = true;
         }
     }
-    public void characters(char ch[], int start, int length) {
+    public void characters(char[] ch, int start, int length) {
         if (fecha) {
             compra.setFecha(new String(ch, start, length));
             fecha = false;

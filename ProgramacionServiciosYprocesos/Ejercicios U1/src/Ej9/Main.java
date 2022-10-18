@@ -10,23 +10,29 @@ public class Main {
         String[] comando = {"java","src\\Ej5\\PreguntaNombre.java"};
 
         try {
-            BufferedReader ReaderSalidaProceso;
-            BufferedReader ReaderEntradaProceso;
-
             Process p = Runtime.getRuntime().exec(comando);
+            BufferedReader br = new BufferedReader(new FileReader(input));
 
-            ReaderEntradaProceso = new BufferedReader(new FileReader(input));
-            String entrada = ReaderEntradaProceso.readLine();
-            p.getOutputStream().write((entrada + "\n").getBytes());
+            OutputStream os = p.getOutputStream();
+            BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(os));
 
-            ReaderSalidaProceso = new BufferedReader(new InputStreamReader(p.getInputStream()));
-            String line;
-            while ((line = ReaderSalidaProceso.readLine()) != null) {
-                System.out.println(line);
+            // Escribo en la entrada del proceso lo escrito en el fichero input.txt
+            String line = br.readLine();
+            while (line != null) {
+                bw.write(line);
+                bw.newLine();
+                line = br.readLine();
             }
 
-            ReaderSalidaProceso.close();
-            ReaderEntradaProceso.close();
+            bw.close();
+            p.waitFor();
+            InputStream is = p.getInputStream();
+            BufferedReader br2 = new BufferedReader(new InputStreamReader(is));
+            String line2 = br2.readLine();
+            while (line2 != null) {
+                System.out.println(line2);
+                line2 = br2.readLine();
+            }
         } catch (Exception e) {
             System.err.println("Error: " + e.getMessage());
         }
