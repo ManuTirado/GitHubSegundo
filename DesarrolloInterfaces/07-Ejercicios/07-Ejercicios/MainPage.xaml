@@ -4,11 +4,30 @@
              x:Class="_07_Ejercicios.MainPage"
              Title="MainPage">
     <VerticalStackLayout>
-        <Entry
-            />
+        <HorizontalStackLayout>
+            <Label
+                Text="Nombre: "/>
+            <Entry
+            x:Name="entry1"/>
+        </HorizontalStackLayout>
+        <HorizontalStackLayout>
+            <Label
+                Text="Apellidos: "/>
+            <Entry
+            x:Name="entry2"/>
+        </HorizontalStackLayout>
+
         <Button 
             x:Name="btnMainPage"
             Text="Navegar a Pagina Tabbed"
             Clicked="OnBotonMainPage"/>
+        <Button
+                x:Name="btnPagina4"
+                Text="Página 4"
+                Clicked="onBotonPagina4"/>
+        <Button
+                x:Name="btnPagina5"
+                Text="Página 5"
+                Clicked="onBotonPagina5"/>
     </VerticalStackLayout>
 </ContentPage>
