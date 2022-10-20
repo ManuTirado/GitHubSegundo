@@ -1,0 +1,26 @@
+﻿@model List<_07_ASP.NET_MVC.Models.clsPersona>
+
+@{
+    Layout = null;
+}
+    <div>
+        <h2>Listado Personas</h2>
+    <table border="1">
+            <thead>
+            <tr>
+                <td>Nombre</td>
+                <td>Apellido</td>
+            </tr>
+            </thead>
+            <tbody>
+                @for (var i = 0; i < Model.Count; i++)
+                {
+                    <tr>
+                        <td>@Model[i].Nombre</td>
+                        <td>@Model[i].Apellido</td>
+                    </tr>
+                }
+           
+            </tbody>
+        </table>
+    </div>

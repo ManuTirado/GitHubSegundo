@@ -6,4 +6,8 @@
 <div>
     <h1>@ViewData["Saludo"], @Model.Nombre @Model.Apellido</h1>
     <h2>Fecha actual: @ViewBag.fecha</h2>
+    <br/>
+    @Html.ActionLink("Acceder al listado de personas", "ListadoPersonas", "Home")
+    <br/>
+    @Html.ActionLink("Editar persona", "EditarPersona", "Home")
 </div>

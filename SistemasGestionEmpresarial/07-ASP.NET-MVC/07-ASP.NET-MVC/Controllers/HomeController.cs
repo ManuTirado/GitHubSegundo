@@ -1,21 +1,19 @@
 ﻿using _07_ASP.NET_MVC.Models;
+using _07_ASP.NET_MVC.Models.DAL;
 using Microsoft.AspNetCore.Mvc;
-using System.Diagnostics;
 
 namespace _07_ASP.NET_MVC.Controllers
 {
     public class HomeController : Controller
     {
-        
-        
+
+
         public ActionResult Index()
         {
-            clsPersona persona = new clsPersona();
-            persona.Nombre = "Manuel";
-            persona.Apellido = "Tirado";
+            clsPersona persona = new clsPersona("Manuel", "Tirado");
 
             int hora = DateTime.Now.Hour;
-            String saludo;
+            string saludo;
             if (hora >= 6 && hora < 12)
             {
                 saludo = "Buenos días";
@@ -28,11 +26,22 @@ namespace _07_ASP.NET_MVC.Controllers
             {
                 saludo = "Buenas noches";
             }
+
             ViewData["Saludo"] = saludo;
 
             ViewBag.fecha = DateTime.Now.ToLongDateString();
 
             return View(persona);
+        }
+
+        public ActionResult ListadoPersonas()
+        {
+            return View(clsListadoPersonasDAL.obtenerListadoCompletoPersonas());
+        }
+
+        public ActionResult EditarPersona()
+        {
+            return View();
         }
 
     }
