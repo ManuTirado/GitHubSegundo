@@ -9,9 +9,11 @@
     <androidx.fragment.app.FragmentContainerView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:id="@+id/FramentoAzul"
+        android:id="@+id/FragmentoAzul"
         tools:layout="@layout/fragment_fragmento_azul"
         android:layout_weight="1"
+        android:name="com.example.ej34.FragmentoAzul"
+
         />
 
     <LinearLayout
@@ -23,16 +25,18 @@
         <androidx.fragment.app.FragmentContainerView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:id="@+id/FramentoRojo"
+            android:id="@+id/FragmentoRojo"
             tools:layout="@layout/fragment_fragmento_rojo"
+            android:name="com.example.ej34.FragmentoRojo"
             android:layout_weight="1"
             />
         <androidx.fragment.app.FragmentContainerView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:id="@+id/FramentoVerde"
+            android:id="@+id/FragmentoVerde"
             tools:layout="@layout/fragment_fragmento_verde"
             android:layout_weight="1"
+            android:name="com.example.ej34.FragmentoVerde"
             />
     </LinearLayout>
 
