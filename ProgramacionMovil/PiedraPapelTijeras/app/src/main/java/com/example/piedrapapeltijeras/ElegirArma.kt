@@ -6,7 +6,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
+import android.widget.ImageButton
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -50,15 +50,18 @@ class ElegirArma : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val buttonPiedra = view.findViewById<Button>(R.id.imgBtnPiedra)
-        val buttonPapel = view.findViewById<Button>(R.id.imgBtnPapel)
-        val buttonTijeras = view.findViewById<Button>(R.id.imgBtnTijeras)
+        val buttonPiedra = view.findViewById<ImageButton>(R.id.imgBtnPiedra)
+        val buttonPapel = view.findViewById<ImageButton>(R.id.imgBtnPapel)
+        val buttonTijeras = view.findViewById<ImageButton>(R.id.imgBtnTijeras)
         buttonPiedra.setOnClickListener{
-            listener?.onClickImgBtnPiedra()}
+            listener?.onClickImgBtnPiedra()
+        }
         buttonPapel.setOnClickListener{
-            listener?.onClickImgBtnPapel()}
+            listener?.onClickImgBtnPapel()
+        }
         buttonTijeras.setOnClickListener{
-            listener?.onClickImgBtnTijeras()}
+            listener?.onClickImgBtnTijeras()
+        }
     }
 
     companion object {

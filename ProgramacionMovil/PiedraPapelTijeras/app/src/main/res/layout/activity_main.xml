@@ -6,20 +6,62 @@
     android:orientation="vertical"
     tools:context=".MainActivity">
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:text="Jugador" />
+
+        <TextView
+            android:id="@+id/txtContJugador"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+
+            android:textAlignment="viewEnd" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:text=":"
+            android:textAlignment="center" />
+
+        <TextView
+            android:id="@+id/txtContMaquina"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:text="Máquina"
+            android:textAlignment="viewEnd" />
+
+    </LinearLayout>
+
     <androidx.fragment.app.FragmentContainerView
         android:id="@+id/FragmentoMaquina"
+        android:name="com.example.piedrapapeltijeras.ArmaMaquina"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_weight="1"
-        tools:layout="@layout/fragment_arma_maquina"
-        android:name="com.example.piedrapapeltijeras.ArmaMaquina"/>
+        tools:layout="@layout/fragment_arma_maquina" />
 
     <androidx.fragment.app.FragmentContainerView
         android:id="@+id/FragmentoJugador"
+        android:name="com.example.piedrapapeltijeras.ElegirArma"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_weight="1"
-        tools:layout="@layout/fragment_elegir_arma"
-        android:name="com.example.piedrapapeltijeras.ElegirArma"/>
+        tools:layout="@layout/fragment_elegir_arma" />
 
 </LinearLayout>

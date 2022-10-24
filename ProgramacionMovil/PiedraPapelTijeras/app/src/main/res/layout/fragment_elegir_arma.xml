@@ -3,12 +3,24 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="horizontal"
-    tools:context=".ElegirArma">
+    android:orientation="vertical"
+    tools:context=".ElegirArma"
+    android:layout_gravity="center">
 
     <!-- TODO: Update blank fragment layout -->
 
+    <ImageView
+        android:id="@+id/imgArmaEscogida"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:src="@drawable/ic_baseline_question_mark_24"/>
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal"
+        android:layout_weight="1">
     <ImageButton
         android:id="@+id/imgBtnPiedra"
         android:layout_width="match_parent"
@@ -38,5 +50,5 @@
         android:scaleType="centerInside"
         android:src="@drawable/tijeras"
         tools:ignore="SpeakableTextPresentCheck" />
-
+    </LinearLayout>
 </LinearLayout>

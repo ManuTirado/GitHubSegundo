@@ -1,5 +1,6 @@
-﻿
-namespace _07_Ejercicios;
+﻿using _08_Layouts.Pages;
+
+namespace _08_Layouts;
 
 public partial class App : Application
 {

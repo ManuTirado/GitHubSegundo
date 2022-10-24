@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ArmaMaquina">
+    tools:context=".ArmaMaquina"
+    android:orientation="vertical">
 
     <!-- TODO: Update blank fragment layout -->
 
 
     <ImageView
-        android:id="@+id/imageView"
+        android:id="@+id/ArmaMaquina"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_gravity="center"
-         />
-</FrameLayout>
+        android:src="@drawable/ic_baseline_question_mark_24"/>
+</LinearLayout>
