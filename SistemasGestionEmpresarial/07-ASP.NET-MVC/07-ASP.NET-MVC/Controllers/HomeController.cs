@@ -1,5 +1,6 @@
 ﻿using _07_ASP.NET_MVC.Models;
 using _07_ASP.NET_MVC.Models.DAL;
+using _07_ASP.NET_MVC.Models.ViewModel;
 using Microsoft.AspNetCore.Mvc;
 
 namespace _07_ASP.NET_MVC.Controllers
@@ -41,7 +42,7 @@ namespace _07_ASP.NET_MVC.Controllers
 
         public ActionResult EditarPersona()
         {
-            return View();
+            return View(new editarPersonaVM(1));
         }
 
     }

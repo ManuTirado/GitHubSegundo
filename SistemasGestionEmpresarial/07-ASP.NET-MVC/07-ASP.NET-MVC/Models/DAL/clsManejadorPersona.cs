@@ -2,9 +2,9 @@
 {
     public static class clsManejadorPersona
     {
-        public static clsPersona obtenerPersonaPorId (int id)
+        public static clsPersona obtenerPersonaPorId(int id)
         {
-            clsPersona persona = new clsPersona(1, "Manuel", "Tirado", 1);
+            clsPersona persona = clsListadoPersonasDAL.obtenerListadoCompletoPersonas().Find(persona => persona.Id == id);
             return persona;
         }
 

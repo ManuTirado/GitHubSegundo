@@ -1,7 +1,25 @@
-﻿@{
+﻿@model _07_ASP.NET_MVC.Models.ViewModel.editarPersonaVM
+
+@{
     Layout = null;
 }
 <div>
     <h1>Editar Persona</h1>
-    <b>Name: </b> @Html.TextBoxFor("Nombre:", "Ingrese Nombre", new {style="color:red"})
+    <form method="post">
+        <label>Id:</label>
+        <input type="text" name="Id" value=" @Model.Persona.Id" /> <br /><br />
+        <label>Nombre:</label>
+        <input type="text" name="Nombre" value="@Model.Persona.Nombre" /> <br /><br />
+        <label>Apellido:</label>
+        <input type="text" name="Apellido" value="@Model.Persona.Apellido" /> <br /><br />
+        <label for="lang">Departamento:</label> 
+        <select name="Departamento">
+            @foreach (var item in Model.ListadoDepartamentos)
+            {
+                <option value="@item.IdDepartamento">@item.NombreDepartamento</option>
+            }
+        </select> <br /><br />
+        <input type="submit" value="Enviar" />
+
+    </form>
 </div>

@@ -6,6 +6,10 @@ namespace _07_ASP.NET_MVC.Models
         private string nombre;
         private string apellido;
         private int departamento;
+
+        public clsPersona()
+        {
+        }
         public clsPersona(string Nombre, string Apellido)
         {
             nombre = Nombre;

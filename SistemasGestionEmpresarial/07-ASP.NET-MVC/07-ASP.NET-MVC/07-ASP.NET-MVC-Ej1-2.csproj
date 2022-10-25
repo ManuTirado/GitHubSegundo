@@ -7,4 +7,8 @@
     <RootNamespace>_07_ASP.NET_MVC</RootNamespace>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Compile Remove="Models\DAL\clsListadosPersonas.cs" />
+  </ItemGroup>
+
 </Project>

@@ -12,6 +12,9 @@ DAL:
 	clsListadosDepartamentos:
 		- List<clsDepartamento> ListadoCompletoDepartamentos()
 
+	clsListadosPersonas:
+		- List<clsPersona> ListadoCompletoPersonas()
+
 	clsManejadoraPersona:
 		- clsPersona obtenerPersonaPorId(int id)
 		- int guardarPersona(clsPersona)
