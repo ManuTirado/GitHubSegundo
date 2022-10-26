@@ -12,15 +12,15 @@
             />
         <BoxView
             Color="Blue"
-            AbsoluteLayout.LayoutBounds="0.25,0,0.50,0.25"
+            AbsoluteLayout.LayoutBounds="0.5,0,0.50,0.25"
             AbsoluteLayout.LayoutFlags="All"/>
         <BoxView
             Color="Green"
-            AbsoluteLayout.LayoutBounds="0,0.25,0.75,0.25"
+            AbsoluteLayout.LayoutBounds="0,0.333333,0.75,0.25"
             AbsoluteLayout.LayoutFlags="All"/>
         <BoxView
             Color="Yellow"
-            AbsoluteLayout.LayoutBounds="0.25,0.50,0.75,0.50"
+            AbsoluteLayout.LayoutBounds="1,1,0.75,0.50"
             AbsoluteLayout.LayoutFlags="All"
             />
     </AbsoluteLayout>

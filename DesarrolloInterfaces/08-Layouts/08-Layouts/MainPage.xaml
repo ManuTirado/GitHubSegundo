@@ -26,6 +26,18 @@
             Clicked="onAbsoluteLayout"
             HorizontalOptions="Center"
         />
+        <Button
+            x:Name="BotonVariosLayouts"
+            Text="Ir a VariosLayouts"
+            Clicked="onVariosLayouts"
+            HorizontalOptions="Center"
+        />
+        <Button
+            x:Name="BotonListadoPersonas"
+            Text="Ir a ListadoPersonas"
+            Clicked="onListadoPersonas"
+            HorizontalOptions="Center"
+        />
     </VerticalStackLayout>
 
 </ContentPage>

@@ -3,6 +3,9 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/mtirado/Desktop/GitHubSegundo/ProgramacionMovil/PiedraPapelTijeras/app/src/main/res/drawable-v24/animacion_papel.xml" value="0.3415" />
+        <entry key="..\:/Users/mtirado/Desktop/GitHubSegundo/ProgramacionMovil/PiedraPapelTijeras/app/src/main/res/drawable-v24/animacion_tijeras.xml" value="0.3415" />
+        <entry key="..\:/Users/mtirado/Desktop/GitHubSegundo/ProgramacionMovil/PiedraPapelTijeras/app/src/main/res/drawable/animacion_piedra.xml" value="0.3415" />
         <entry key="..\:/Users/mtirado/Desktop/GitHubSegundo/ProgramacionMovil/PiedraPapelTijeras/app/src/main/res/layout/activity_main.xml" value="0.33" />
         <entry key="..\:/Users/mtirado/Desktop/GitHubSegundo/ProgramacionMovil/PiedraPapelTijeras/app/src/main/res/layout/fragment_arma_maquina.xml" value="0.26721014492753625" />
         <entry key="..\:/Users/mtirado/Desktop/GitHubSegundo/ProgramacionMovil/PiedraPapelTijeras/app/src/main/res/layout/fragment_elegir_arma.xml" value="0.2506393861892583" />

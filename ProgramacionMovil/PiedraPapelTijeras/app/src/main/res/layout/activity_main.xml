@@ -9,34 +9,46 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:background="@color/azulClarito"
+        >
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:text="Jugador" />
+            android:text="Jugador"
+            android:textStyle="bold"
+            android:textSize="20dp"
+            />
 
         <TextView
             android:id="@+id/txtContJugador"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="1"
-
-            android:textAlignment="viewEnd" />
+            android:textAlignment="viewEnd"
+            android:textStyle="bold"
+            android:textSize="20dp"
+            />
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:text=":"
-            android:textAlignment="center" />
+            android:textAlignment="center"
+            android:textStyle="bold"
+            android:textSize="20dp"
+            />
 
         <TextView
             android:id="@+id/txtContMaquina"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="1"
+            android:textStyle="bold"
+            android:textSize="20dp"
             />
 
         <TextView
@@ -44,7 +56,10 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:text="Máquina"
-            android:textAlignment="viewEnd" />
+            android:textAlignment="viewEnd"
+            android:textStyle="bold"
+            android:textSize="20dp"
+            />
 
     </LinearLayout>
 
@@ -54,7 +69,8 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_weight="1"
-        tools:layout="@layout/fragment_arma_maquina" />
+        tools:layout="@layout/fragment_arma_maquina"
+        />
 
     <androidx.fragment.app.FragmentContainerView
         android:id="@+id/FragmentoJugador"

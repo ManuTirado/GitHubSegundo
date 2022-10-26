@@ -24,5 +24,14 @@ public partial class MainPage : ContentPage
     {
         await Navigation.PushAsync(new paginaAbsoluteLayout());
     }
+
+    private async void onVariosLayouts(object sender, EventArgs e)
+    {
+        await Navigation.PushAsync(new paginaVariosLayouts());
+    }
+    private async void onListadoPersonas(object sender, EventArgs e)
+    {
+        await Navigation.PushAsync(new paginaListadoPersonas());
+    }
 }
 

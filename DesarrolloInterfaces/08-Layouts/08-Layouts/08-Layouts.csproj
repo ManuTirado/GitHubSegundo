@@ -49,13 +49,39 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <None Remove="Resources\Images\Alvaro.jpeg" />
+	  <None Remove="Resources\Images\David.jpeg" />
+	  <None Remove="Resources\Images\Diego.jpeg" />
+	  <None Remove="Resources\Images\DiegoBien.jpeg" />
+	  <None Remove="Resources\Images\Manuel.jpeg" />
+	  <None Remove="Resources\Images\Pablo.jpeg" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <ProjectReference Include="..\DAL\DAL.csproj" />
+	  <ProjectReference Include="..\Entidades\Entidades.csproj" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Compile Update="Pages\PaginaVariosLayouts.xaml.cs">
+	    <DependentUpon>PaginaVariosLayouts.xaml</DependentUpon>
+	  </Compile>
+	</ItemGroup>
+
+	<ItemGroup>
 	  <MauiXaml Update="Pages\paginaAbsoluteLayout.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Pages\paginaFlexLayout.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
+	  <MauiXaml Update="Pages\paginaListadoPersonas.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
 	  <MauiXaml Update="Pages\paginaStackLayout.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Pages\PaginaVariosLayouts.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	</ItemGroup>
