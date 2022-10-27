@@ -4,24 +4,29 @@
              x:Class="_08_Layouts.Pages.paginaListadoPersonas"
              Title="paginaListadoPersonas">
 
-    <StackLayout Orientation="Vertical">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        
         <HorizontalStackLayout HorizontalOptions="Center"
+                               Grid.Row="0"
            >
             <ImageButton
             Source="editar.png"
             HorizontalOptions="Center"
             VerticalOptions="Center"
-            Aspect="AspectFit"
-            HeightRequest="80"/>
+            HeightRequest="70"/>
             <ImageButton
             Source="papelera.png"
             HorizontalOptions="Center"
             VerticalOptions="Center"
-            Aspect="AspectFill"
-            HeightRequest="80"/>
+            HeightRequest="70"/>
         </HorizontalStackLayout>
 
-        <ListView x:Name="ListViewPersonas">
+        <ListView x:Name="ListViewPersonas"
+                  Grid.Row="1">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <ViewCell>
@@ -53,6 +58,13 @@
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
-    </StackLayout>
+
+        <ImageButton Source="mas.png" HeightRequest="70"
+                Grid.Row="1"
+                HorizontalOptions="End"
+                VerticalOptions="End"
+                Margin="0,0,10,15"
+                CornerRadius="50"/>
+    </Grid>
 
 </ContentPage>
