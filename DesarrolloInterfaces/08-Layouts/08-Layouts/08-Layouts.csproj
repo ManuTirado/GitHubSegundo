@@ -52,9 +52,18 @@
 	  <None Remove="Resources\Images\Alvaro.jpeg" />
 	  <None Remove="Resources\Images\David.jpeg" />
 	  <None Remove="Resources\Images\Diego.jpeg" />
-	  <None Remove="Resources\Images\DiegoBien.jpeg" />
+	  <None Remove="Resources\Images\diego_bien.jpeg" />
+	  <None Remove="Resources\Images\editar.png" />
+	  <None Remove="Resources\Images\gaspar.jpg" />
+	  <None Remove="Resources\Images\josh.jpg" />
+	  <None Remove="Resources\Images\julia.jpg" />
 	  <None Remove="Resources\Images\Manuel.jpeg" />
+	  <None Remove="Resources\Images\mas.png" />
 	  <None Remove="Resources\Images\Pablo.jpeg" />
+	  <None Remove="Resources\Images\papelera.png" />
+	  <None Remove="Resources\Images\roberto.jpg" />
+	  <None Remove="Resources\Images\rosa.jpg" />
+	  <None Remove="Resources\Images\xianxen.jpg" />
 	</ItemGroup>
 
 	<ItemGroup>

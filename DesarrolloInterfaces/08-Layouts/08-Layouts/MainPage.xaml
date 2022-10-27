@@ -7,36 +7,37 @@
         Margin="30"
         Spacing="20"
         VerticalOptions="Center"
+        HorizontalOptions="Center"
         >
         <Button
             x:Name="BotonStackLayout"
-            Text="Ir a StackLayout"
+            Text="1. Ir a StackLayout"
             Clicked="onBotonStackLayout"
-            HorizontalOptions="Center"
+            HorizontalOptions="Start"
         />
         <Button
             x:Name="BotonFlexLayout"
-            Text="Ir a FlexLayout"
+            Text="2. Ir a FlexLayout"
             Clicked="onFlexLayout"
-            HorizontalOptions="Center"
+            HorizontalOptions="Start"
            />
         <Button
             x:Name="BotonAbsoluteLayout"
-            Text="Ir a AbsoluteLayout"
+            Text="3. Ir a AbsoluteLayout"
             Clicked="onAbsoluteLayout"
-            HorizontalOptions="Center"
+            HorizontalOptions="Start"
         />
         <Button
             x:Name="BotonVariosLayouts"
-            Text="Ir a VariosLayouts"
+            Text="4. Ir a VariosLayouts"
             Clicked="onVariosLayouts"
-            HorizontalOptions="Center"
+            HorizontalOptions="Start"
         />
         <Button
             x:Name="BotonListadoPersonas"
-            Text="Ir a ListadoPersonas"
+            Text="5. Ir a ListadoPersonas"
             Clicked="onListadoPersonas"
-            HorizontalOptions="Center"
+            HorizontalOptions="Start"
         />
     </VerticalStackLayout>
 

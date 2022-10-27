@@ -3,7 +3,23 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="_08_Layouts.Pages.paginaListadoPersonas"
              Title="paginaListadoPersonas">
-    <VerticalStackLayout>
+
+    <StackLayout Orientation="Vertical">
+        <HorizontalStackLayout HorizontalOptions="Center"
+           >
+            <ImageButton
+            Source="editar.png"
+            HorizontalOptions="Center"
+            VerticalOptions="Center"
+            Aspect="AspectFit"
+            HeightRequest="80"/>
+            <ImageButton
+            Source="papelera.png"
+            HorizontalOptions="Center"
+            VerticalOptions="Center"
+            Aspect="AspectFill"
+            HeightRequest="80"/>
+        </HorizontalStackLayout>
 
         <ListView x:Name="ListViewPersonas">
             <ListView.ItemTemplate>
@@ -21,23 +37,22 @@
                                 <ColumnDefinition Width="Auto" />
                             </Grid.ColumnDefinitions>
 
-                            <Image Grid.RowSpan="2"
+                            <Image Grid.RowSpan="2" 
+                                   Margin="0,0,15,0"
                            Source="{Binding Imagen}"
-                           Aspect="AspectFill"
+                           Aspect="AspectFit"
                            HeightRequest="60"
                            WidthRequest="60" />
-                            
-                            <Label Grid.RowSpan="2" Text="{Binding Id}" FontAttributes="Bold" VerticalOptions="Center" Margin="0,0,20,0"/>
 
-                            <Label Grid.Column="1" Text="{Binding Nombre}" FontAttributes="Bold" />
+                            <Label Grid.Column="2" Text="{Binding Nombre}" FontAttributes="Bold" VerticalOptions="Center" />
 
-                            <Label Grid.Row="1" Grid.Column="1" Text="{Binding Apellido}" FontAttributes="Italic" VerticalOptions="End" />
+                            <Label Grid.Row="1" Grid.Column="2" Text="{Binding Apellido}" VerticalOptions="Center" />
 
                         </Grid>
                     </ViewCell>
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
-        
-    </VerticalStackLayout>
+    </StackLayout>
+
 </ContentPage>
