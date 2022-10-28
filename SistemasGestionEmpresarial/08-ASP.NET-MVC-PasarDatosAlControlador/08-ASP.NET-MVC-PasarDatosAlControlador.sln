@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.3.32825.248
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "08-ASP.NET-MVC-PasarDatosAlControlador-1-2", "07-ASP.NET-MVC-PasarDatosAlControlador\08-ASP.NET-MVC-PasarDatosAlControlador-1-2.csproj", "{433737B1-9E1F-4AA2-A9D0-CD0B2F17AA54}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{433737B1-9E1F-4AA2-A9D0-CD0B2F17AA54}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{433737B1-9E1F-4AA2-A9D0-CD0B2F17AA54}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{433737B1-9E1F-4AA2-A9D0-CD0B2F17AA54}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{433737B1-9E1F-4AA2-A9D0-CD0B2F17AA54}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {27BDD6F5-F5DB-4B17-AF2B-C650ED0ECDEB}
+	EndGlobalSection
+EndGlobal

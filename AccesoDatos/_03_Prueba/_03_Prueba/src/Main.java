@@ -26,7 +26,7 @@ public class Main {
                 //mostrarMayoresde30(st);
                 //ordenarPorEdad(st);
                 //hacerInserccion(st);
-                //crearTabla(st, "mtirado", new String[]{"Id int PRIMARY KEY AUTO_INCREMENT", "nombre varchar(255)", "apellidos varchar(255)", "edad int"});
+                crearTabla(st, "mtirado", new String[]{"Id int PRIMARY KEY AUTO_INCREMENT", "nombre varchar(255)", "apellidos varchar(255)", "edad int"});
                 //System.out.println(st.toString());
                 //borrarTabla(st,"mtirado");
                 st.close();
@@ -132,7 +132,6 @@ public class Main {
     }
 
     public static void crearTabla(Statement st, String tabla, String[] campos) {
-        boolean salidaCorrecta;
         String sql = "CREATE TABLE ad2223." + tabla + "(";
         sql += campos[0];
         for (int i = 1; i < campos.length; i++) {
@@ -140,11 +139,7 @@ public class Main {
         }
         sql = sql + " )";
         System.out.println(sql);
-        try {
-            st.executeUpdate(sql);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+
     }
 
     public static void borrarTabla(Statement st, String tabla) {

@@ -12,7 +12,6 @@ namespace Entidades
         private int id;
         private string nombre;
         private string apellido;
-        private string imagen;
         #endregion
 
         #region Constructores
@@ -20,14 +19,12 @@ namespace Entidades
         {
             nombre = "";
             apellido = "";
-            imagen = "";
         }
-        public clsPersona(int Id, string Nombre, string Apellido, string Imagen)
+        public clsPersona(int Id, string Nombre, string Apellido)
         {
             id = Id;
             nombre = Nombre;
             apellido = Apellido;
-            imagen = Imagen;
         }
         #endregion
 
@@ -35,7 +32,6 @@ namespace Entidades
         public string Nombre { get { return nombre; } set { nombre = value; } }
         public string Apellido { get { return apellido; } set { apellido = value; } }
         public int Id { get { return id; } set { id = value; } }
-        public string Imagen { get { return imagen; } set { imagen = value; } }
         #endregion
     }
 }

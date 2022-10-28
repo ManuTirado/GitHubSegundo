@@ -4,25 +4,27 @@
              x:Class="_08_Layouts.Pages.paginaListadoPersonas"
              Title="paginaListadoPersonas">
 
-    <Grid>
+    <Grid Margin="10,5,10,0">
         <Grid.RowDefinitions>
             <RowDefinition Height="auto"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-        
+
         <HorizontalStackLayout HorizontalOptions="Center"
                                Grid.Row="0"
            >
             <ImageButton
             Source="editar.png"
-            HorizontalOptions="Center"
-            VerticalOptions="Center"
-            HeightRequest="70"/>
+            HeightRequest="50"
+                WidthRequest="50"
+                BackgroundColor="White"
+                Margin="10,10,10,10"/>
             <ImageButton
             Source="papelera.png"
-            HorizontalOptions="Center"
-            VerticalOptions="Center"
-            HeightRequest="70"/>
+            HeightRequest="50"
+                WidthRequest="50"
+                BackgroundColor="White"
+                Margin="10,10,10,10"/>
         </HorizontalStackLayout>
 
         <ListView x:Name="ListViewPersonas"
@@ -30,11 +32,11 @@
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <ViewCell>
-                        <Grid Padding="10">
+                        <Grid>
 
                             <Grid.RowDefinitions>
-                                <RowDefinition Height="Auto" />
-                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="*" />
+                                <RowDefinition Height="*" />
                             </Grid.RowDefinitions>
 
                             <Grid.ColumnDefinitions>
@@ -45,8 +47,8 @@
                             <Image Grid.RowSpan="2" 
                                    Margin="0,0,15,0"
                            Source="{Binding Imagen}"
-                           Aspect="AspectFit"
-                           HeightRequest="60"
+                           Aspect="Fill"
+                           HeightRequest="70"
                            WidthRequest="60" />
 
                             <Label Grid.Column="2" Text="{Binding Nombre}" FontAttributes="Bold" VerticalOptions="Center" />
@@ -59,12 +61,12 @@
             </ListView.ItemTemplate>
         </ListView>
 
-        <ImageButton Source="mas.png" HeightRequest="70"
+        <ImageButton Source="mas.png" HeightRequest="50"
                 Grid.Row="1"
                 HorizontalOptions="End"
                 VerticalOptions="End"
                 Margin="0,0,10,15"
-                CornerRadius="50"/>
+                     BackgroundColor="White"/>
     </Grid>
 
 </ContentPage>
