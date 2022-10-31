@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="U8_Layouts_Placas_Solares.MainPage"
+             BackgroundColor="MidnightBlue">
+    <VerticalStackLayout Margin="20" >
+
+        <Border Stroke="gray">
+            <Image Source="logo.png" Margin="20" HorizontalOptions="Center" HeightRequest="100" BackgroundColor="MediumSlateBlue"/>
+        </Border>
+
+        <Border Stroke="gray">
+            <Label FontSize="32" Text="Login" TextColor="White"/>
+        </Border>
+
+        <Border Stroke="gray">
+            <VerticalStackLayout>
+                <Label FontSize="16" Text="Usuario" TextColor="White" />
+                <Grid>
+                    <Frame Opacity="0.3" BackgroundColor="White" CornerRadius="5" />
+                    <Entry BackgroundColor="Transparent" TextColor="White" Margin="5,0" PlaceholderColor="LightGray" />
+                </Grid>
+            </VerticalStackLayout>
+        </Border>
+
+    </VerticalStackLayout>
+</ContentPage>

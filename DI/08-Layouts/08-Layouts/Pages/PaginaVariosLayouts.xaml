@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="_08_Layouts.Pages.paginaVariosLayouts"
+             Title="VariosLayouts">
+    <VerticalStackLayout>
+        <Border
+            StrokeShape="Rectangle"
+            Stroke="Black">
+            <Label>T10MinimalApp2 Project | Main Page</Label>
+        </Border>
+        <Border
+            StrokeShape="Rectangle"
+            Stroke="Black">
+            <Label>Building a responsive UI is actually not that hard when you use XAML in Visual Studio. Using static content can gelp to ensura the UI responds appropriately to changing window sizes</Label>
+        </Border>
+    </VerticalStackLayout>
+</ContentPage>

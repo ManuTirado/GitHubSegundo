@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Solares.Pages.Citas"
+             Title="Citas">
+    <VerticalStackLayout>
+        <Label 
+            Text="Citas"
+            VerticalOptions="Center" 
+            HorizontalOptions="Center" />
+        <ListView x:Name="ListViewCitas">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <TextCell Text="{Binding Distancia}" Detail="{Binding Direccion}"/>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </VerticalStackLayout>
+</ContentPage>
