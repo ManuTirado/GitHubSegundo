@@ -16,7 +16,7 @@ namespace _08_ASP.NET_MVC_Ej3.Controllers
         }
 
         [HttpPost]
-        public IActionResult Editar(clsPersona persona)
+        public IActionResult Editar()
         {
             return View("PersonaModificada");
         }

@@ -1,0 +1,16 @@
+﻿@model List<Entidades.clsMision>
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<h1>Index</h1>
+<form method="get">
+    <label>Misión: </label>
+    <select name="misiones">
+        @for (var i = 0; i < Model.Count; i++)
+        {
+            <option value="@Model[i].Id">@Model[i].Nombre</option>
+        }
+    </select>
+    <input type="submit" value="Enviar" />
+</form>

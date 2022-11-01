@@ -1,0 +1,10 @@
+Entidades:
+	clsMision:
+		int id
+		string nombre
+		string descripcion
+		float recompensa
+
+DAL:
+	clsListadosMisiones:
+		- obtenerListadoCompleto()

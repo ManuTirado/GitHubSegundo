@@ -1,0 +1,37 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.3.32901.215
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mandaloriano", "Mandaloriano\Mandaloriano.csproj", "{49513D0A-88CC-44CF-88B4-13833CA4BBF1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Entidades", "Entidades\Entidades.csproj", "{8364A1A6-2B40-4602-ABD0-AE51570ABDAC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DAL", "DAL\DAL.csproj", "{A65FEB98-4D14-409A-B57C-0090F25AA76D}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{49513D0A-88CC-44CF-88B4-13833CA4BBF1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{49513D0A-88CC-44CF-88B4-13833CA4BBF1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{49513D0A-88CC-44CF-88B4-13833CA4BBF1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{49513D0A-88CC-44CF-88B4-13833CA4BBF1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8364A1A6-2B40-4602-ABD0-AE51570ABDAC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8364A1A6-2B40-4602-ABD0-AE51570ABDAC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8364A1A6-2B40-4602-ABD0-AE51570ABDAC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8364A1A6-2B40-4602-ABD0-AE51570ABDAC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A65FEB98-4D14-409A-B57C-0090F25AA76D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A65FEB98-4D14-409A-B57C-0090F25AA76D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A65FEB98-4D14-409A-B57C-0090F25AA76D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A65FEB98-4D14-409A-B57C-0090F25AA76D}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {156F795E-EC5A-451F-8B51-390DE27FF0D2}
+	EndGlobalSection
+EndGlobal
