@@ -5,20 +5,26 @@ namespace _08_ASP.NET_MVC_Ej3.Controllers
 {
     public class HomeController : Controller
     {
+
+        public static clsPersona personaEditar = new clsPersona(1, "Manuel", "Tirado");
+
+
         public IActionResult Index()
         {
             return View();
         }
 
-        public IActionResult Editar(clsPersona persona)
+        public IActionResult Editar()
         {
-            return View();
+            return View(personaEditar);
         }
 
         [HttpPost]
-        public IActionResult Editar()
+        public IActionResult Editar(clsPersona personaEditada)
         {
-            return View("PersonaModificada");
+            personaEditar = personaEditada;
+
+            return View("PersonaModificada", personaEditar);
         }
     }
 }

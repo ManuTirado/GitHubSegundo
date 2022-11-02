@@ -4,6 +4,12 @@ namespace DAL
 {
     public static class clsListadosMisiones
     {
+        /// <summary>
+        /// Devuelve un listado de misiones (en un caso real lo obtendríamos de una BBDD, por ejemplo)
+        /// Precondiciones: nada
+        /// Postcondiciones: nada
+        /// </summary>
+        /// <returns>Listado de misiones</returns>
         public static List<clsMision> obtenerListadoCompleto() {
             List<clsMision> misiones = new List<clsMision>();
             misiones.Add(new clsMision(1, "Rescate de Baby Yoda", "Debes hacerte con Grogu y llevárselo a Luke SkyWalker para su entrenamiento.", 5000));

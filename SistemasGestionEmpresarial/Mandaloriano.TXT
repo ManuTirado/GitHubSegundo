@@ -7,4 +7,11 @@ Entidades:
 
 DAL:
 	clsListadosMisiones:
-		- obtenerListadoCompleto()
+		- List<clsMision> obtenerListadoCompleto()
+	clsManejadoraMision:
+		- clsMision obtenerMisionPorId(List<clsMision>, int id)
+
+VM:
+	clsMisionConListadoVM:
+		clsMision mision
+		List<clsMision> listadoMisiones
