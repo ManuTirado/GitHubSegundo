@@ -8,9 +8,12 @@ public partial class MainPage : ContentPage
 		InitializeComponent();
 	}
 
-	private void OnCounterClicked(object sender, EventArgs e)
+	private void onTxtChanged(object sender, TextChangedEventArgs e)
 	{
-		
-	}
+		if (!int.TryParse(e.NewTextValue, out int numericValue))
+		{
+			entry.Text = e.OldTextValue;
+		}
+    }
 }
 

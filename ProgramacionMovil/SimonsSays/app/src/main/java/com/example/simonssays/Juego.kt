@@ -70,12 +70,9 @@ class Juego : AppCompatActivity() {
     }
 
 
-
     private suspend fun iluminarBoton(btn: Int) {
-        var mediaPlayer: MediaPlayer? = MediaPlayer.create(this, R.raw.seleccion)
-        mediaPlayer?.setVolume(100F, 100F)
         delay(pausa)
-        mediaPlayer?.start()
+        reproducirSonido(R.raw.seleccion)
         when (btn) {
             1 -> {
                 val btn: Button = findViewById(R.id.btnVerde)
@@ -116,43 +113,54 @@ class Juego : AppCompatActivity() {
     }
 
     private fun comprobarPulsacion(seleccion: Int) {
-        if (contPulsaciones < patron.size) {
-            if (seleccion == patron[contPulsaciones]) {
-                var mediaPlayer: MediaPlayer? = MediaPlayer.create(this, R.raw.correcto)
-                mediaPlayer?.setVolume(30F, 30F)
-                mediaPlayer?.start()
-                if (contPulsaciones == patron.size - 1) {
-                    puntuacion++
-                    actualizarPuntuacion()
-                    mirar()
-                } else {
-                    contPulsaciones++
-                }
-            } else {
-                var mediaPlayer: MediaPlayer? = MediaPlayer.create(this, R.raw.incorrecto)
-                mediaPlayer?.start()
-                val builder = AlertDialog.Builder(this)
-                builder.setCancelable(false)
-                builder.setTitle("Perdiste")
-                builder.setMessage("Pulse OK para volver a jugar")
-                    .setPositiveButton("OK",
-                        DialogInterface.OnClickListener { _, _ ->
-                            // START THE GAME!
-                            patron = mutableListOf(1)
-                            mirar()
-                        })
-                // Create the AlertDialog object and return it
-                builder.create().show()
-                if (puntuacion > record) {
-                    record = puntuacion
-                }
-                puntuacion = 0
+        if (seleccion == patron[contPulsaciones]) {
+            reproducirSonido(R.raw.correcto)
+
+            if (contPulsaciones == patron.size - 1) {
+                puntuacion++
                 actualizarPuntuacion()
-                actualizarRecord()
+                mirar()
+            } else {
+                contPulsaciones++
             }
         } else {
-            Toast.makeText(this, "Error en el rango de la lista", Toast.LENGTH_SHORT).show()
+            reproducirSonido(R.raw.incorrecto)
+
+            mostrarMensjaPerdedor()
+
+            if (puntuacion > record) {
+                record = puntuacion
+            }
+            puntuacion = 0
+            actualizarPuntuacion()
+            actualizarRecord()
         }
+    }
+
+    private fun mostrarMensjaPerdedor() {
+        val builder = AlertDialog.Builder(this)
+        builder.setCancelable(false)
+        builder.setTitle("Perdiste")
+        builder.setMessage("Pulse OK para volver a jugar")
+            .setPositiveButton("OK",
+                DialogInterface.OnClickListener { _, _ ->
+                    // START THE GAME!
+                    patron = mutableListOf(1)
+                    mirar()
+                })
+        // Create the AlertDialog object and return it
+        builder.create().show()
+    }
+
+    private fun reproducirSonido(sonido: Int) {
+        var mediaPlayer: MediaPlayer? = MediaPlayer.create(this, sonido)
+        if (mediaPlayer != null) {
+            if (mediaPlayer.isPlaying) {
+                mediaPlayer.stop()
+            }
+            mediaPlayer.start()
+        }
+
     }
 
     private fun desactivarBotones() {

@@ -9,14 +9,26 @@
             Padding="30,0"
             VerticalOptions="Center">
 
-            
+            <Slider
+                x:Name="slider"
+                Minimum="0"
+                Maximum="100"
+                />
 
-            <Button
-                x:Name="CounterBtn"
-                Text="Click me"
-                SemanticProperties.Hint="Counts the number of times you click"
-                Clicked="OnCounterClicked"
-                HorizontalOptions="Center" />
+            <Label Text="Texto Label"
+                   FontSize="{Binding Source={x:Reference slider},
+                                            Path=Value,
+                                            Mode=OneWay}" 
+                   />
+
+            <Entry
+                x:Name="entry"
+                TextChanged="onTxtChanged"
+                Text="{Binding Source={x:Reference slider},
+                                    Path=Value,
+                                    Mode=TwoWay,
+                                    StringFormat='{0:F0}'}"
+                />
 
         </VerticalStackLayout>
     </ScrollView>
