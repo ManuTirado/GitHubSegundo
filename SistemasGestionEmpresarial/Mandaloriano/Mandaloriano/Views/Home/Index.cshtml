@@ -4,11 +4,18 @@
 @* Formulario de tipo dropdown que mostrará los nombres de todas las misiones y devolverá el Id de la seleccionada al hacer click en el botón *@
 <form method="post">
     <label>Misión: </label>
-    <select name="mision">
+    <select name="misionSeleccionada">
         <option value="NOSELECTEDVALUE">-- Por favor, escoja una misión --</option>
         @for (var i = 0; i < Model.listadoMisiones.Count; i++)
         {
-            <option value="@Model.listadoMisiones[i].Id">@Model.listadoMisiones[i].Nombre</option>
+            if (Model.clsMision.Id == Model.listadoMisiones[i].Id)
+            {
+                <option selected value="@Model.listadoMisiones[i].Id">@Model.listadoMisiones[i].Nombre</option>
+            }
+            else
+            {
+                <option value="@Model.listadoMisiones[i].Id">@Model.listadoMisiones[i].Nombre</option>
+            }
         }
     </select>
     <input type="submit" value="Ver detalles" />
@@ -18,7 +25,7 @@
 </form>
 
 @* Compruebo que se haya seleccionado alguna misión, y en caso afirmativo, muestro sus detalles *@
-@if (Model.clsMision.Id != null)
+@if (Model.clsMision.Id > 0)
 {
     <h3>@Model.clsMision.Nombre</h3>
     <br />

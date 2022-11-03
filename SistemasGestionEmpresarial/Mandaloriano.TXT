@@ -11,7 +11,12 @@ DAL:
 	clsManejadoraMision:
 		- clsMision obtenerMisionPorId(List<clsMision>, int id)
 
-VM:
-	clsMisionConListadoVM:
-		clsMision mision
-		List<clsMision> listadoMisiones
+UI:
+	VM:
+		clsMisionConListadoVM:
+			clsMision mision
+			List<clsMision> listadoMisiones
+	Controllers:
+		HomeController:
+			[HttpPost]
+        		- public IActionResult Index(int mision)

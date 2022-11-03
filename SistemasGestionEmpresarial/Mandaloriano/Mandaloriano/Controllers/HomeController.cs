@@ -8,18 +8,17 @@ namespace Mandaloriano.Controllers
 {
     public class HomeController : Controller
     {
-        public static List<clsMision> listadoMisiones = clsListadosMisiones.obtenerListadoCompleto();
-
-
         public IActionResult Index()
         {
+            List<clsMision> listadoMisiones = clsListadosMisiones.obtenerListadoCompleto();
             return View(new clsListadoMisionesVM(listadoMisiones, new clsMision()));
         }
 
         [HttpPost]
-        public IActionResult Index(int mision)
+        public IActionResult Index(int misionSeleccionada)
         {
-            clsMision misionAmostrar = clsManejadoraMision.obtenerMisionPorId(listadoMisiones, mision); //Obtengo la misión correspondiente al Id seleccionado en la vista
+            List<clsMision> listadoMisiones = clsListadosMisiones.obtenerListadoCompleto();
+            clsMision misionAmostrar = clsManejadoraMision.obtenerMisionPorId(listadoMisiones, misionSeleccionada); //Obtengo la misión correspondiente al Id seleccionado en la vista
             return View(new clsListadoMisionesVM(listadoMisiones, misionAmostrar));
         }
     }

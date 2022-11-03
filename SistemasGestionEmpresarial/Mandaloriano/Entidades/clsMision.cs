@@ -20,7 +20,7 @@
 
         public clsMision ()
         {
-            Id = null;
+            
         }
         #endregion
     }
