@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="U9_Ejrs.MainPage">
+             x:Class="U9_Ejrs_2.MainPage">
 
     <ScrollView>
         <VerticalStackLayout
@@ -10,24 +10,24 @@
             VerticalOptions="Center">
 
             <Slider
-                x:Name="slider"
+                x:Name="sldTamano"
                 Minimum="0"
                 Maximum="100"
                 />
 
             <Label Text="Texto Label"
-                   FontSize="{Binding Source={x:Reference slider},
+                   x:Name="lblMensaje"
+                   FontSize="{Binding Source={x:Reference sldTamano},
                                             Path=Value,
                                             Mode=OneWay}" 
                    />
 
             <Entry
-                x:Name="entry"
+                x:Name="txtTamano"
                 TextChanged="onTxtChanged"
-                Text="{Binding Source={x:Reference slider},
+                Text="{Binding Source={x:Reference sldTamano},
                                     Path=Value,
-                                    Mode=TwoWay,
-                                    StringFormat='{0:F0}'}"
+                                    Mode=TwoWay}"
                 />
 
         </VerticalStackLayout>

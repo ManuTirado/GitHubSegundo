@@ -5,9 +5,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Entidades
+namespace U9_Ejrs_2.Models
 {
-    public class clsPersona
+    public class clsPersona : INotifyPropertyChanged
     {
         #region Propiedades privadas
         private int id;
@@ -20,7 +20,7 @@ namespace Entidades
         {
             id = 1;
             nombre = "Manuel";
-            apellido = "Triado";
+            apellido = "Tirado";
         }
         public clsPersona(int Id, string Nombre, string Apellido)
         {
@@ -31,9 +31,27 @@ namespace Entidades
         #endregion
 
         #region Getters y Setters
-        public string Nombre { get { return nombre; } set { nombre = value; } }
+        public string Nombre 
+        { 
+            get { return nombre; }
+            set 
+            {
+                nombre = value;
+                onPropertyChanged("Nombre");
+            } 
+        }
+
         public string Apellido { get { return apellido; } set { apellido = value; } }
         public int Id { get { return id; } set { id = value; } }
         #endregion
+
+        public event PropertyChangedEventHandler PropertyChanged;
+        private void onPropertyChanged (string property)
+        {
+            if (PropertyChanged != null)
+            {
+                PropertyChanged(this, new PropertyChangedEventArgs(property));
+            }
+        }
     }
 }

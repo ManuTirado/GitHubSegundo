@@ -1,9 +1,8 @@
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.FileReader;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
+import java.util.Scanner;
 
 public class Main {
 
@@ -25,7 +24,11 @@ public class Main {
                 //borrarTodasTablas(st);
                 //crearTodasTablas(st);
 
+                //insertarTodo(st);
 
+                //listarTodo(st);
+
+                modificar(st);
 
                 st.close();
             }
@@ -110,11 +113,11 @@ public class Main {
     /***
      * Procedimiento que inserta los valores de un archivo de texto
      * @param st Statement
-     * @param rutaArchivo Ruta dentro del proyecto del archivo de texto con los comandos de inserción
+     * @param file Archivo de texto con los comandos de inserción
      */
-    private static void insertar(Statement st, String rutaArchivo) {
+    private static void insertar(Statement st, File file) {
         try {
-            BufferedReader br = new BufferedReader(new FileReader(rutaArchivo));
+            BufferedReader br = new BufferedReader(new FileReader(file));
             String line;
             line = br.readLine();
             while (line != null) {
@@ -127,7 +130,254 @@ public class Main {
     }
 
     private static void insertarTodo(Statement st) {
-        insertar(st, "");
+        insertar(st, new File("input\\inputMesa.txt"));
+        insertar(st, new File("input\\inputProductos.txt"));
+        insertar(st, new File("input\\inputFactura.txt"));
+        insertar(st, new File("input\\inputPedido.txt"));
+    }
+
+    private static void listarMesa(Statement st) {
+        System.out.println("Registros de Mesa:");
+        String sql = "SELECT * FROM ad2223_mtirado.Mesa";
+        try {
+            ResultSet rs = st.executeQuery(sql);
+            while (rs.next())
+                System.out.println("IdMesa:" + rs.getInt("idMesa") + ", numComensales:" + rs.getInt("numComensales") + ", reserva:" + rs.getInt("reserva"));
+        } catch (SQLException e) {
+            System.out.println("Error en el Select de Mesa");
+        }
+    }
+
+    private static void listarFactura(Statement st) {
+        System.out.println("Registros de Factura:");
+        String sql = "SELECT * FROM ad2223_mtirado.Factura";
+        try {
+            ResultSet rs = st.executeQuery(sql);
+            while (rs.next())
+                System.out.println("idFactura:" + rs.getInt("idFactura") + ", idMesa:" + rs.getInt("idMesa") + ", tipoPago:" + rs.getString("tipoPago") + ", importe:" + rs.getFloat("importe"));
+        } catch (SQLException e) {
+            System.out.println("Error en el Select de Factura");
+        }
+    }
+
+    private static void listarPedido(Statement st) {
+        System.out.println("Registros de Pedido:");
+        String sql = "SELECT * FROM ad2223_mtirado.Pedido";
+        try {
+            ResultSet rs = st.executeQuery(sql);
+            while (rs.next())
+                System.out.println("idPedido:" + rs.getInt("idPedido") + ", idFactura:" + rs.getInt("idFactura") + ", idProducto:" + rs.getInt("idProducto") + ", cantidad:" + rs.getInt("cantidad"));
+        } catch (SQLException e) {
+            System.out.println("Error en el Select de Factura");
+        }
+    }
+
+    private static void listarProductos(Statement st) {
+        System.out.println("Registros de Productos:");
+        String sql = "SELECT * FROM ad2223_mtirado.Productos";
+        try {
+            ResultSet rs = st.executeQuery(sql);
+            while (rs.next())
+                System.out.println(rs.getInt("idProducto") + " " + rs.getString("denominacion") + " " + rs.getFloat("precio"));
+        } catch (SQLException e) {
+            System.out.println("Error en el Select de Factura");
+        }
+    }
+
+    private static void listarTodo(Statement st) {
+        listarMesa(st);
+        listarFactura(st);
+        listarPedido(st);
+        listarProductos(st);
+    }
+
+
+    private static void modificar(Statement st) {
+        int opc;
+
+        System.out.println("-- -- -- -- -- -- -- -- -- --");
+        System.out.println("¿Qué tabla desea modificar?");
+        System.out.println("1 - Mesa");
+        System.out.println("2 - Factura");
+        System.out.println("3 - Pedido");
+        System.out.println("4 - Productos");
+        opc = validarEntero(1, 4);
+        switch (opc) {
+            case 1:
+                modificarMesa(st);
+                break;
+            case 2:
+                modificarFactura(st);
+                break;
+            case 3:
+
+                break;
+            case 4:
+
+                break;
+        }
+    }
+
+    private static void modificarMesa(Statement st) {
+        int mesaSeleccionada, numComensales, reserva;
+        String sql;
+
+        try {
+            sql = "SELECT * FROM ad2223_mtirado.Mesa ORDER BY idMesa ASC LIMIT 1";
+            imprimirMesa(st, sql);
+
+            System.out.println("...");
+
+            sql = "SELECT * FROM ad2223_mtirado.Mesa ORDER BY idMesa DESC LIMIT 1";
+            imprimirMesa(st, sql);
+
+
+            System.out.println();
+            System.out.println("Seleccione el id de la Mesa que desea modificar:");
+            mesaSeleccionada = validarEntero();
+
+            sql = "SELECT * FROM ad2223_mtirado.Mesa WHERE idMesa="+mesaSeleccionada;
+            imprimirMesa(st, sql);
+
+            System.out.println("Modificación:");
+            System.out.print("NumComensales ");
+            numComensales = validarEntero();
+            System.out.print("Reserva ");
+            reserva = validarEntero();
+
+            sql = "UPDATE ad2223_mtirado.Mesa SET numComensales ="+numComensales+", reserva="+reserva+" WHERE idMesa ="+mesaSeleccionada+";";
+            st.executeUpdate(sql);
+
+            sql = "SELECT * FROM ad2223_mtirado.Mesa WHERE idMesa="+mesaSeleccionada;
+            imprimirMesa(st, sql);
+
+        } catch (SQLException e) {
+            System.out.println("Error en el SQL");
+        }
+
+    }
+
+    private static void imprimirMesa(Statement st, String sql) {
+        try {
+            ResultSet rs = st.executeQuery(sql);
+            if (rs.next()) {
+                System.out.println("IdMesa:" + rs.getInt("idMesa") + ", numComensales:" + rs.getInt("numComensales") + ", reserva:" + rs.getInt("reserva"));
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    private static void modificarFactura(Statement st) {
+        int facturaSeleccionada, idMesa, tipoPago;
+        float importe;
+        String tipoPagoStr;
+        String sql;
+
+        try {
+            sql = "SELECT * FROM ad2223_mtirado.Factura ORDER BY idFactura ASC LIMIT 1";
+            imprimirFactura(st, sql);
+
+            System.out.println("...");
+
+            sql = "SELECT * FROM ad2223_mtirado.Factura ORDER BY idFactura DESC LIMIT 1";
+            imprimirFactura(st, sql);
+
+
+            System.out.println();
+            System.out.println("Seleccione el id de la Mesa que desea modificar:");
+            facturaSeleccionada = validarEntero();
+
+            sql = "SELECT * FROM ad2223_mtirado.Factura WHERE idFactura="+facturaSeleccionada;
+            imprimirFactura(st, sql);
+
+            System.out.println("Modificación:");
+            System.out.print("IdMesa ");
+            idMesa = validarEntero();
+            System.out.print("TipoPago (1.Efectivo - 2.Tarjeta) ");
+            tipoPago = validarEntero(1,2);
+            if (tipoPago==1) {
+                tipoPagoStr = "efectivo";
+            } else {
+                tipoPagoStr = "tarjeta";
+            }
+            System.out.print("Importe ");
+            importe = validarFloat();
+
+            sql = "UPDATE ad2223_mtirado.Factura SET idMesa ="+idMesa+", tipoPago="+ tipoPagoStr +", importe="+ importe +" WHERE idFactura ="+facturaSeleccionada+";";
+            st.executeUpdate(sql);
+
+            sql = "SELECT * FROM ad2223_mtirado.Factura WHERE idFactura="+facturaSeleccionada;
+            imprimirFactura(st, sql);
+
+        } catch (SQLException e) {
+            System.out.println("Error en el SQL");
+        }
+
+    }
+
+    private static void imprimirFactura(Statement st, String sql) {
+        try {
+            ResultSet rs = st.executeQuery(sql);
+            if (rs.next()) {
+                System.out.println("idFactura:" + rs.getInt("idFactura") + ", idMesa:" + rs.getInt("idMesa") + ", tipoPago:" + rs.getString("tipoPago") + ", importe:" + rs.getFloat("importe"));
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    private static int validarEntero(int min, int max) {
+        Scanner sc = new Scanner(System.in);
+        int numero;
+        do {
+            try {
+                System.out.print("==> ");
+                numero = sc.nextInt();
+                if (numero < min || numero > max) {
+                    System.out.println("Número fuera del rango, introduzca un entero entre " + min + " y " + max);
+                }
+            } catch (Exception e) {
+                System.out.println("Valor no válido");
+                // Le asigno al número un valor fuera del rango para que no salga del bucles
+                numero = min - 1;
+                sc.nextLine();
+            }
+        } while (numero < min || numero > max);
+        return numero;
+    }
+    private static int validarEntero() {
+        Scanner sc = new Scanner(System.in);
+        int numero=0;
+        boolean correcto=false;
+        do {
+            try {
+                System.out.print("==> ");
+                numero = sc.nextInt();
+                correcto=true;
+            } catch (Exception e) {
+                System.out.println("Valor no válido");
+                sc.nextLine();
+            }
+        } while (!correcto);
+        return numero;
+    }
+
+    private static float validarFloat() {
+        Scanner sc = new Scanner(System.in);
+        float numero=0;
+        boolean correcto=false;
+        do {
+            try {
+                System.out.print("==> ");
+                numero = sc.nextFloat();
+                correcto=true;
+            } catch (Exception e) {
+                System.out.println("Valor no válido");
+                sc.nextLine();
+            }
+        } while (!correcto);
+        return numero;
     }
 
     /***

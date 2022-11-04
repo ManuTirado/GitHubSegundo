@@ -1,4 +1,4 @@
-﻿namespace U9_Ejrs;
+﻿namespace U9_Ejrs_2;
 
 public partial class MainPage : ContentPage
 {
@@ -12,7 +12,7 @@ public partial class MainPage : ContentPage
 	{
 		if (!int.TryParse(e.NewTextValue, out int numericValue))
 		{
-			entry.Text = e.OldTextValue;
+			txtTamano.Text = e.OldTextValue;
 		}
     }
 }

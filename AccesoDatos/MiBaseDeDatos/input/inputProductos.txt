@@ -1,0 +1,16 @@
+insert into ad2223_mtirado.Productos (idProducto, denominacion, precio) values (1, 'Agua', 1);
+insert into ad2223_mtirado.Productos (idProducto, denominacion, precio) values (2, 'Cerveza', 1.2);
+insert into ad2223_mtirado.Productos (idProducto, denominacion, precio) values (3, 'Refresco', 1.99);
+insert into ad2223_mtirado.Productos (idProducto, denominacion, precio) values (4, 'Montadito', 2.99);
+insert into ad2223_mtirado.Productos (idProducto, denominacion, precio) values (5, 'Serranito', 4.99);
+insert into ad2223_mtirado.Productos (idProducto, denominacion, precio) values (6, 'Croquetas', 7.5);
+insert into ad2223_mtirado.Productos (idProducto, denominacion, precio) values (7, 'Flamenquín', 7.90);
+insert into ad2223_mtirado.Productos (idProducto, denominacion, precio) values (8, 'Ensalada', 6.95);
+insert into ad2223_mtirado.Productos (idProducto, denominacion, precio) values (9, 'Hamburguesa', 6.53);
+insert into ad2223_mtirado.Productos (idProducto, denominacion, precio) values (10, 'Chipirones', 9.50);
+insert into ad2223_mtirado.Productos (idProducto, denominacion, precio) values (11, 'Adobo', 8.70);
+insert into ad2223_mtirado.Productos (idProducto, denominacion, precio) values (12, 'Gambas', 11.70);
+insert into ad2223_mtirado.Productos (idProducto, denominacion, precio) values (13, 'Solomillo', 6.30);
+insert into ad2223_mtirado.Productos (idProducto, denominacion, precio) values (14, 'VinoBotella', 28.40);
+insert into ad2223_mtirado.Productos (idProducto, denominacion, precio) values (15, 'VinoCopa', 3.5);
+insert into ad2223_mtirado.Productos (idProducto, denominacion, precio) values (16, 'Cachopo', 15);

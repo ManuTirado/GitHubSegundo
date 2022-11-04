@@ -2,17 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="3189e024-8681-466f-80c7-1400a48859f7" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/../../SistemasGestionEmpresarial/07-ASP.NET-MVC/07-ASP.NET-MVC/07-ASP.NET-MVC-Ej1-2.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/../../SistemasGestionEmpresarial/07-ASP.NET-MVC/07-ASP.NET-MVC/07-ASP.NET-MVC-Ej1-2.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../SistemasGestionEmpresarial/07-ASP.NET-MVC/07-ASP.NET-MVC/Controllers/HomeController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../../SistemasGestionEmpresarial/07-ASP.NET-MVC/07-ASP.NET-MVC/Controllers/HomeController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../SistemasGestionEmpresarial/07-ASP.NET-MVC/07-ASP.NET-MVC/Models/DAL/clsListadoPersonasDAL.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../../SistemasGestionEmpresarial/07-ASP.NET-MVC/07-ASP.NET-MVC/Models/DAL/clsListadoPersonasDAL.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../SistemasGestionEmpresarial/07-ASP.NET-MVC/07-ASP.NET-MVC/Models/DAL/clsListadosDepartamentos.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../../SistemasGestionEmpresarial/07-ASP.NET-MVC/07-ASP.NET-MVC/Models/DAL/clsListadosDepartamentos.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../SistemasGestionEmpresarial/07-ASP.NET-MVC/07-ASP.NET-MVC/Models/DAL/clsManejadorPersona.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../../SistemasGestionEmpresarial/07-ASP.NET-MVC/07-ASP.NET-MVC/Models/DAL/clsManejadorPersona.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../SistemasGestionEmpresarial/07-ASP.NET-MVC/07-ASP.NET-MVC/Models/ViewModel/editarPersonaVM.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../../SistemasGestionEmpresarial/07-ASP.NET-MVC/07-ASP.NET-MVC/Models/ViewModel/editarPersonaVM.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../SistemasGestionEmpresarial/07-ASP.NET-MVC/07-ASP.NET-MVC/Models/clsDepartamento.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../../SistemasGestionEmpresarial/07-ASP.NET-MVC/07-ASP.NET-MVC/Models/clsDepartamento.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../SistemasGestionEmpresarial/07-ASP.NET-MVC/07-ASP.NET-MVC/Models/clsPersona.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../../SistemasGestionEmpresarial/07-ASP.NET-MVC/07-ASP.NET-MVC/Models/clsPersona.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../SistemasGestionEmpresarial/07-ASP.NET-MVC/07-ASP.NET-MVC/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../../SistemasGestionEmpresarial/07-ASP.NET-MVC/07-ASP.NET-MVC/Program.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../SistemasGestionEmpresarial/07-ASP.NET-MVC/07-ASP.NET-MVC/Views/Home/EditarPersona.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/../../SistemasGestionEmpresarial/07-ASP.NET-MVC/07-ASP.NET-MVC/Views/Home/EditarPersona.cshtml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../SistemasGestionEmpresarial/Que necesita mi vista.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../../SistemasGestionEmpresarial/Que necesita mi vista.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../AccesoDatos/MiBaseDeDatos/MiBaseDeDatos/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../AccesoDatos/MiBaseDeDatos/MiBaseDeDatos/src/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -36,24 +27,10 @@
     "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false"
+    "WebServerToolWindowFactoryState": "false",
+    "last_opened_file_path": "C:/Users/mtirado/Desktop/GitHubSegundo/ProgramacionServiciosYprocesos/U1-EjerEntregables"
   }
 }]]></component>
-  <component name="RunManager">
-    <configuration default="true" type="JetRunConfigurationType">
-      <module name="Tema1-ManuelTirado" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType">
-      <module name="Tema1-ManuelTirado" />
-      <option name="filePath" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -63,6 +40,8 @@
       <option name="presentableId" value="Default" />
       <updated>1666698023558</updated>
       <workItem from="1666698026406" duration="3686000" />
+      <workItem from="1667551753832" duration="26000" />
+      <workItem from="1667551811009" duration="2000" />
     </task>
     <servers />
   </component>
