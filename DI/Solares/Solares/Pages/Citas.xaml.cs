@@ -9,7 +9,13 @@ public partial class Citas : ContentPage
 	{
 		InitializeComponent();
 		List<clsCita> listadoCitas = clsListadoCitas.obtenerListadoCompletoCitas();
-		listadoCitas.Sort((x, y) => x.Distancia.CompareTo(y.Distancia));
+		listadoCitas.Sort((x, y) => x.Hora.CompareTo(y.Hora));
 		ListViewCitas.ItemsSource = listadoCitas;
 	}
+
+    async void OnItemSelected(object sender, SelectedItemChangedEventArgs args)
+    {
+        clsCita cita = args.SelectedItem as clsCita;
+        await Navigation.PushAsync(new Pages.DetelleCita(cita));
+    }
 }

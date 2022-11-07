@@ -5,6 +5,7 @@
              Title="DetelleCita">
     <VerticalStackLayout>
         <Label 
+            x:Name="lblDetalleCita"
             Text="Detalle Citas"
             VerticalOptions="Center" 
             HorizontalOptions="Center" />

@@ -5,7 +5,6 @@ import android.media.MediaPlayer
 import android.os.Bundle
 import android.widget.Button
 import android.widget.TextView
-import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import kotlinx.coroutines.GlobalScope
@@ -159,8 +158,10 @@ class Juego : AppCompatActivity() {
                 mediaPlayer.stop()
             }
             mediaPlayer.start()
+            mediaPlayer.setOnCompletionListener {
+                MediaPlayer.OnCompletionListener { mediaPlayer -> mediaPlayer.release() }
+            }
         }
-
     }
 
     private fun desactivarBotones() {

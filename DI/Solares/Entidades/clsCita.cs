@@ -1,10 +1,13 @@
-﻿namespace Entidades
+﻿using System;
+
+namespace Entidades
 {
     public class clsCita
     {
         #region Propiedades privadas
         private string nombreCliente;
         private string direccion;
+        private TimeOnly hora;
         private float distancia;
         private string telefono;
         private string observaciones;
@@ -15,8 +18,7 @@
         #region Contructores
         public clsCita ()
         {
-            Random random = new Random();
-            distancia = (float) (random.NextDouble() * (10 - (101)) + (101));
+            distancia = (float) (new Random().NextDouble() * 100);
             nombreCliente = "";
             direccion = "";
             telefono = "";
@@ -25,14 +27,16 @@
             apta = false;
         }
 
-        public clsCita(string NombreCliente, string Direccion, string Telefono)
+        public clsCita(string NombreCliente, TimeOnly Hora , string Direccion, string Telefono)
         {
             nombreCliente = NombreCliente;
+            hora = Hora;
             direccion = Direccion;
             telefono = Telefono;
             observaciones = "";
             fotos = new List<string>();
             apta = false;
+            distancia = (float)(new Random().NextDouble() * 100);
         }
         #endregion
 
@@ -44,6 +48,8 @@
         public List<string> Fotos { get { return fotos; } set { fotos = value; } }
         public bool isApta { get { return apta;} set { apta = value; } }
         public float Distancia { get { return distancia; } set { distancia = value; } }
+        public TimeOnly Hora { get { return hora; } set { hora = value; } }
+        public string getHora { get { return hora.ToString("HH:ss"); } }
         #endregion
     }
 }

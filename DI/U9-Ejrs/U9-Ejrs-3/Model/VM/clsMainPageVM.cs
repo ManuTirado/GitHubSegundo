@@ -15,7 +15,16 @@ namespace U9_Ejrs_3.Model.VM
             
         }
         
-        public new string Nombre { get { return base.Nombre; } set {base.Nombre = value; onPropertyChanged("Nombre"); } }
+        public new string Nombre { 
+            get 
+            { 
+                return base.Nombre; 
+            } 
+            set 
+            {
+                base.Nombre = value; onPropertyChanged("Nombre"); 
+            }
+        }
 
 
         public event PropertyChangedEventHandler PropertyChanged;

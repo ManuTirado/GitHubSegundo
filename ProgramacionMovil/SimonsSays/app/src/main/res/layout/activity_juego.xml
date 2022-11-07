@@ -26,6 +26,7 @@
                 android:gravity="center"
                 android:text="Score:"
                 android:textSize="30sp"
+                android:paddingStart="20dp"
                 android:textStyle="bold" />
 
             <TextView

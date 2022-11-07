@@ -2,23 +2,38 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Solares.Pages.Login"
-             Title="Login">
-    <VerticalStackLayout>
+             Title="Login"
+             BackgroundColor="AliceBlue"
+             NavigationPage.HasNavigationBar="False">
+    <ScrollView HorizontalOptions="Center">
+        <VerticalStackLayout HorizontalOptions="Center" Spacing="10">
 
-        <Image Source="logo.png" HeightRequest="150"/>
+            <Image Source="logo.png" HeightRequest="150"/>
 
-        <VerticalStackLayout HorizontalOptions="Center">
-            <Label FontSize="32" Text="Login" HorizontalOptions="Center"/>
+            <Label FontSize="32" Text="Login" HorizontalOptions="Center" FontAttributes="Bold" Margin="0,0,0,40"/>
 
-            <HorizontalStackLayout>
-                <Label FontSize="16" Text="Usuario"/>
-                <Entry FontSize="16" Placeholder="Usuario"/>
+            <HorizontalStackLayout Spacing="10" HorizontalOptions="Center">
+                <Label FontSize="16" Text="Usuario" VerticalOptions="Center"/>
+                <Border
+                    StrokeThickness="2"
+                    StrokeShape="RoundRectangle 10,10,10,10"
+                    BackgroundColor="AntiqueWhite">
+                    <Entry x:Name="txtUsuario" FontSize="16" Placeholder="Usuario" WidthRequest="100" Margin="5,0,5,0"/>
+                </Border>
             </HorizontalStackLayout>
-            <HorizontalStackLayout>
-                <Label FontSize="16" Text="Contraseña"/>
-                <Entry IsPassword="True" FontSize="16" Placeholder="Contraseña"/>
+
+            <HorizontalStackLayout Spacing="10" HorizontalOptions="Center">
+                <Label FontSize="16" Text="Contraseña" VerticalOptions="Center"/>
+                <Border
+                    StrokeThickness="2"
+                    StrokeShape="RoundRectangle 10,10,10,10"
+                    BackgroundColor="AntiqueWhite">
+                    <Entry x:Name="txtContrasena" IsPassword="True" FontSize="16" Placeholder="Contraseña" WidthRequest="100" Margin="5,0,5,0"/>
+                </Border>
             </HorizontalStackLayout>
-            <Button Text="Login" Clicked="onLoginClicked"/>
+
+            <Button Text="Entrar" Clicked="onLoginClicked" HorizontalOptions="CenterAndExpand" Margin="0,40,0,0" Padding="25,10" FontAttributes="Bold" BackgroundColor="CornflowerBlue"/>
+
         </VerticalStackLayout>
-    </VerticalStackLayout>
+    </ScrollView>
 </ContentPage>
