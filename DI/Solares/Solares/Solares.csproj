@@ -49,8 +49,11 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <None Remove="Resources\Images\checked.png" />
+	  <None Remove="Resources\Images\galeria.png" />
 	  <None Remove="Resources\Images\go_to.png" />
 	  <None Remove="Resources\Images\logo.png" />
+	  <None Remove="Resources\Images\send.png" />
 	  <None Remove="Resources\Images\user.png" />
 	</ItemGroup>
 
