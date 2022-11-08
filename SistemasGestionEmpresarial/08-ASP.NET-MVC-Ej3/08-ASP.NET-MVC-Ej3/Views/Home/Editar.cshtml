@@ -8,7 +8,9 @@
     @Html.TextBox("Id")  <br />
 
     <label>Nombre: </label>
-    @Html.TextBoxFor(m => Model.Nombre)  <br />
+    @Html.TextBoxFor(m => Model.Nombre)
+    @Html.ValidationMessageFor(m => m.Nombre)
+    <br />
 
     <label>Apellido: </label>
     <input type="text" name="Apellido" value="@Model.Apellido" /><br />

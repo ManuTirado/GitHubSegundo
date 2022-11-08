@@ -210,10 +210,10 @@ public class Main {
                 modificarFactura(st);
                 break;
             case 3:
-
+                modificarPedido(st);
                 break;
             case 4:
-
+                modificarProducto(st);
                 break;
         }
     }
@@ -247,7 +247,6 @@ public class Main {
 
             sql = "UPDATE ad2223_mtirado.Mesa SET numComensales ="+numComensales+", reserva="+reserva+" WHERE idMesa ="+mesaSeleccionada+";";
             st.executeUpdate(sql);
-
             sql = "SELECT * FROM ad2223_mtirado.Mesa WHERE idMesa="+mesaSeleccionada;
             imprimirMesa(st, sql);
 
@@ -304,12 +303,10 @@ public class Main {
             System.out.print("Importe ");
             importe = validarFloat();
 
-            sql = "UPDATE ad2223_mtirado.Factura SET idMesa ="+idMesa+", tipoPago="+ tipoPagoStr +", importe="+ importe +" WHERE idFactura ="+facturaSeleccionada+";";
+            sql = "UPDATE ad2223_mtirado.Factura SET idMesa ="+idMesa+", tipoPago='"+ tipoPagoStr +"', importe="+ importe +" WHERE idFactura ="+facturaSeleccionada+";";
             st.executeUpdate(sql);
-
             sql = "SELECT * FROM ad2223_mtirado.Factura WHERE idFactura="+facturaSeleccionada;
             imprimirFactura(st, sql);
-
         } catch (SQLException e) {
             System.out.println("Error en el SQL");
         }
@@ -321,6 +318,108 @@ public class Main {
             ResultSet rs = st.executeQuery(sql);
             if (rs.next()) {
                 System.out.println("idFactura:" + rs.getInt("idFactura") + ", idMesa:" + rs.getInt("idMesa") + ", tipoPago:" + rs.getString("tipoPago") + ", importe:" + rs.getFloat("importe"));
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    private static void modificarPedido(Statement st) {
+        int idPedido, idFactura, idProducto, cantidad;
+        String sql;
+
+        try {
+            sql = "SELECT * FROM ad2223_mtirado.Pedido ORDER BY idPedido ASC LIMIT 1";
+            imprimirPedido(st, sql);
+
+            System.out.println("...");
+
+            sql = "SELECT * FROM ad2223_mtirado.Pedido ORDER BY idPedido DESC LIMIT 1";
+            imprimirPedido(st, sql);
+
+
+            System.out.println();
+            System.out.println("Seleccione el id del pedido que desea modificar:");
+            idPedido = validarEntero();
+
+            sql = "SELECT * FROM ad2223_mtirado.Pedido WHERE idPedido="+idPedido;
+            imprimirPedido(st, sql);
+
+            System.out.println("Modificación:");
+            System.out.print("idFactura ");
+            idFactura = validarEntero();
+            System.out.print("idProducto ");
+            idProducto = validarEntero();
+            System.out.print("Cantidad ");
+            cantidad = validarEntero();
+
+            sql = "UPDATE ad2223_mtirado.Pedido SET idFactura ="+idFactura+", idProducto="+idProducto+", cantidad="+cantidad+" WHERE idPedido ="+idPedido+";";
+            st.executeUpdate(sql);
+            sql = "SELECT * FROM ad2223_mtirado.Pedido WHERE idPedido="+idPedido;
+            imprimirPedido(st, sql);
+
+        } catch (SQLException e) {
+            System.out.println("Error en el SQL");
+        }
+
+    }
+
+    private static void imprimirPedido(Statement st, String sql) {
+        try {
+            ResultSet rs = st.executeQuery(sql);
+            if (rs.next()) {
+                System.out.println("IdPedido:" + rs.getInt("idPedido") + ", idFactura:" + rs.getInt("idFactura") + ", idProducto:" + rs.getInt("idProducto") + ", cantidad:" + rs.getInt("cantidad"));
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    private static void modificarProducto(Statement st) {
+        int idProducto;
+        String denominacion;
+        float precio;
+        String sql;
+
+        try {
+            sql = "SELECT * FROM ad2223_mtirado.Productos ORDER BY idProducto ASC LIMIT 1";
+            imprimirProducto(st, sql);
+
+            System.out.println("...");
+
+            sql = "SELECT * FROM ad2223_mtirado.Productos ORDER BY idProducto DESC LIMIT 1";
+            imprimirProducto(st, sql);
+
+
+            System.out.println();
+            System.out.println("Seleccione el id del producto que desea modificar:");
+            idProducto = validarEntero();
+
+            sql = "SELECT * FROM ad2223_mtirado.Productos WHERE idProducto="+idProducto;
+            imprimirProducto(st, sql);
+
+            System.out.println("Modificación:");
+            System.out.print("denominación ");
+            denominacion = new Scanner(System.in).nextLine();
+            System.out.print("Precio ");
+            precio = validarFloat();
+
+            sql = "UPDATE ad2223_mtirado.Productos SET denominacion ='"+denominacion+"', precio="+precio+" WHERE idProducto ="+idProducto+";";
+            st.executeUpdate(sql);
+            sql = "SELECT * FROM ad2223_mtirado.Productos WHERE idProducto="+idProducto;
+            imprimirProducto(st, sql);
+
+        } catch (SQLException e) {
+            System.out.println("Error en el SQL");
+        }
+
+    }
+
+    private static void imprimirProducto(Statement st, String sql) {
+        try {
+            ResultSet rs = st.executeQuery(sql);
+            if (rs.next()) {
+                System.out.println("IdProducto:" + rs.getInt("idProducto") + ", denominación:" + rs.getString("denominacion") + ", precio:" + rs.getFloat("precio"));
             }
         } catch (SQLException e) {
             throw new RuntimeException(e);
@@ -392,5 +491,9 @@ public class Main {
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+
+    private static String obtener2decimales (float num) {
+        return String.format("%.2f", num);
     }
 }
