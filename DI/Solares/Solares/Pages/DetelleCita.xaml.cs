@@ -9,30 +9,36 @@ public partial class DetelleCita : ContentPage
 	{
 		InitializeComponent();
         detalleCita = cita;
+
         lblTitleView.Text = detalleCita.NombreCliente;
+        lblHora.Text = detalleCita.getHora;
+
+        lblDireccion.Text = detalleCita.Direccion;
+        lblTelefono.Text = detalleCita.Telefono;
+        lblDistancia.Text = detalleCita.Direccion;
+        txtObservaciones.Text = detalleCita.Observaciones;
+        actualizarColorApta();
     }
 
-	public void onImgBtnGaleria (object sender, EventArgs e)
+	public async void onImgBtnGaleria (object sender, EventArgs e)
 	{
-
+        await Navigation.PushAsync(new Pages.Galeria());
 	}
 
     public void onImgBtnApta(object sender, EventArgs e)
     {
-        if (detalleCita.isApta)
-        {
-            detalleCita.isApta = false;
-            ImgBtnApta.BackgroundColor = Colors.IndianRed;
-        }
-        else
-        {
-            detalleCita.isApta = true;
-            ImgBtnApta.BackgroundColor = Colors.ForestGreen;
-        }
+        detalleCita.isApta = (detalleCita.isApta ? false : true);
+        actualizarColorApta();
     }
 
-    public void onImgBtnGuardar(object sender, EventArgs e)
+    private void actualizarColorApta()
     {
+        ImgBtnApta.BackgroundColor = (detalleCita.isApta ? Colors.ForestGreen : Colors.IndianRed);
+    }
 
+    public async void onImgBtnGuardar(object sender, EventArgs e)
+    {
+        detalleCita.Observaciones = txtObservaciones.Text;
+        await Navigation.PopAsync();
     }
 }

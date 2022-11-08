@@ -6,15 +6,30 @@
              BackgroundColor="AliceBlue"
              NavigationPage.IconColor="Black">
     <NavigationPage.TitleView>
-        <Label x:Name="lblTitleView" Grid.Row="0" Grid.Column="0" FontAttributes="Bold" FontSize="30"
-                   Text="Citas" VerticalOptions="Center"/>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="auto"/>
+            </Grid.ColumnDefinitions>
+            <Label 
+                x:Name="lblTitleView" FontAttributes="Bold" FontSize="25"
+                   VerticalOptions="Center" HorizontalOptions="Start"/>
+
+            <Label Grid.Column="1"
+                x:Name="lblHora" FontAttributes="Bold" FontSize="30"
+               VerticalOptions="Center" HorizontalOptions="End"/>
+        </Grid>
     </NavigationPage.TitleView>
 
     <AbsoluteLayout>
         <VerticalStackLayout AbsoluteLayout.LayoutBounds="0,0,1,0.9" AbsoluteLayout.LayoutFlags="All">
-            <Label x:Name="lblDireccion" Text="{Binding Direccion}"/>
-            <Label x:Name="lblTelefono" Text="{Binding Telefono}"/>
-            
+            <Label x:Name="lblDireccion" />
+            <Label x:Name="lblTelefono" />
+            <Label x:Name="lblDistancia" />
+            <Entry x:Name="txtObservaciones" Placeholder="Ingrese aquí las observaciones"/>
         </VerticalStackLayout>
 
         <Border AbsoluteLayout.LayoutBounds="0.5,1.01,1.04,0.12" AbsoluteLayout.LayoutFlags="All" 
