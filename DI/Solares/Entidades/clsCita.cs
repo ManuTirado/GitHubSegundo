@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Drawing;
 
 namespace Entidades
 {
@@ -46,7 +47,7 @@ namespace Entidades
         public string Telefono { get { return telefono; } set { telefono = value; } }
         public string Observaciones { get { return observaciones; } set { observaciones = value; } }
         public List<string> Fotos { get { return fotos; } set { fotos = value; } }
-        public bool isApta { get { return apta;} set { apta = value; } }
+        public bool IsApta { get { return apta;} set { apta = value; } }
         public float Distancia { get { return distancia; } set { distancia = value; } }
         public TimeOnly Hora { get { return hora; } set { hora = value; } }
         public string getHora { get { return hora.ToString("HH:ss"); } }

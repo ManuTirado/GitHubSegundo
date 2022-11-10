@@ -2,16 +2,20 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Solares.Pages.Galeria"
-             Title="Galeria">
-    <ScrollView>
-        <FlexLayout Direction="Row" Wrap="Wrap">
-            <CollectionView x:Name="CollectionViewFotos">
-                <CollectionView.ItemTemplate>
-                    <DataTemplate>
-                        <Image Source="{Binding Fotos}"/>
-                    </DataTemplate>
-                </CollectionView.ItemTemplate>
-            </CollectionView>
-        </FlexLayout>
-    </ScrollView>
+             Title="Galeria"
+             BackgroundColor="AliceBlue">
+    <NavigationPage.TitleView>
+        <Label FontAttributes="Bold" FontSize="30"
+                   Text="Galería" VerticalOptions="Center"/>
+    </NavigationPage.TitleView>
+    <Grid>
+        <ScrollView>
+            <FlexLayout x:Name="flexLayoutGaleria"
+                        Wrap="Wrap"
+                        JustifyContent="SpaceEvenly"
+                        Direction="Row">
+                <ImageButton Source="camara.png" Clicked="onImgBtnCamara" HeightRequest="150" WidthRequest="150" BackgroundColor="AliceBlue"/>
+            </FlexLayout>
+        </ScrollView>
+    </Grid>
 </ContentPage>

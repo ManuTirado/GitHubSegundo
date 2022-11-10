@@ -18,21 +18,32 @@
                 x:Name="lblTitleView" FontAttributes="Bold" FontSize="25"
                    VerticalOptions="Center" HorizontalOptions="Start"/>
 
-            <Label Grid.Column="1"
+            <Label Grid.Column="1" Margin="0,0,10,0"
                 x:Name="lblHora" FontAttributes="Bold" FontSize="30"
                VerticalOptions="Center" HorizontalOptions="End"/>
         </Grid>
     </NavigationPage.TitleView>
 
     <AbsoluteLayout>
-        <VerticalStackLayout AbsoluteLayout.LayoutBounds="0,0,1,0.9" AbsoluteLayout.LayoutFlags="All">
-            <Label x:Name="lblDireccion" />
-            <Label x:Name="lblTelefono" />
-            <Label x:Name="lblDistancia" />
-            <Entry x:Name="txtObservaciones" Placeholder="Ingrese aquí las observaciones"/>
-        </VerticalStackLayout>
+        <ScrollView AbsoluteLayout.LayoutBounds="0,0,1,0.9" AbsoluteLayout.LayoutFlags="All">
+            <VerticalStackLayout Spacing="5"  Margin="10" VerticalOptions="Center">
 
-        <Border AbsoluteLayout.LayoutBounds="0.5,1.01,1.04,0.12" AbsoluteLayout.LayoutFlags="All" 
+                <Label Text="Dirección" FontSize="25" FontAttributes="Bold" HorizontalOptions="Center"/>
+                <Label x:Name="lblDireccion" FontSize="25" HorizontalOptions="Center"/>
+
+                <Label Text="Distancia" Margin="0,10,0,0" FontSize="25" FontAttributes="Bold" HorizontalOptions="Center"/>
+                <Label x:Name="lblDistancia" FontSize="25" HorizontalOptions="Center"/>
+
+                <Label Text="Teléfono" Margin="0,10,0,0" FontSize="25" FontAttributes="Bold" HorizontalOptions="Center"/>
+                <Label x:Name="lblTelefono" FontSize="25" HorizontalOptions="Center"/>
+
+                <AbsoluteLayout HeightRequest="300" Margin="0,20,0,0">
+                    <Image Source="notas.png"    Aspect="Fill" AbsoluteLayout.LayoutBounds="0,0,1,1" AbsoluteLayout.LayoutFlags="All"/>
+                    <Entry x:Name="txtObservaciones"  Placeholder="Ingrese aquí las observaciones" FontAttributes="Bold" AbsoluteLayout.LayoutBounds="0.5,1,0.8,0.85" AbsoluteLayout.LayoutFlags="All"/>
+                </AbsoluteLayout>
+            </VerticalStackLayout>
+        </ScrollView>
+        <Border AbsoluteLayout.LayoutBounds="0.5,1.01,1.04,0.17" AbsoluteLayout.LayoutFlags="All" 
             Stroke="black" 
             StrokeThickness="4"
             StrokeShape="RoundRectangle 10,10,0,0">

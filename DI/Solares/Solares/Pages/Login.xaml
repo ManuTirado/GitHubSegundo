@@ -5,7 +5,7 @@
              Title="Login"
              BackgroundColor="AliceBlue"
              NavigationPage.HasNavigationBar="False">
-    <ScrollView HorizontalOptions="Center">
+    <ScrollView HorizontalOptions="Center" HorizontalScrollBarVisibility="Never" >
         <VerticalStackLayout HorizontalOptions="Center" Spacing="10">
 
             <Image Source="logo.png" HeightRequest="150"/>

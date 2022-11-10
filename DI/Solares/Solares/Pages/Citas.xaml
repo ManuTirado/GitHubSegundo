@@ -21,14 +21,14 @@
         </Grid>
     </NavigationPage.TitleView>
 
-    <ListView x:Name="ListViewCitas" HasUnevenRows="True" ItemSelected="OnItemSelected">
+    <ListView x:Name="ListViewCitas" HasUnevenRows="True" ItemSelected="OnItemSelected" >
         <ListView.ItemTemplate>
             <DataTemplate>
                 <ViewCell>
                     <Border Stroke="Black"
                                 StrokeThickness="2"
                                  StrokeShape="RoundRectangle 10,10,10,10">
-                        <Grid RowSpacing="5" ColumnSpacing="10" Padding="10,10,10,10">
+                        <Grid RowSpacing="5" ColumnSpacing="10" Padding="10,10,10,10" BackgroundColor="AntiqueWhite">
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="auto"/>
                                 <RowDefinition Height="auto"/>

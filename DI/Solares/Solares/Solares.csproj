@@ -33,7 +33,6 @@
 	<ItemGroup>
 		<!-- App Icon -->
 		<MauiIcon Include="Resources\AppIcon\appicon.svg" ForegroundFile="Resources\AppIcon\appiconfg.svg" Color="#512BD4" />
-		<MauiSplashScreen Include="Resources\Images\splah.svg" />
 
 		<!-- Splash Screen -->
 		<MauiSplashScreen Include="Resources\Splash\splash.svg" Color="#512BD4" BaseSize="128,128" />
@@ -50,10 +49,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <MauiImage Remove="Resources\Images\splah.svg" />
-	</ItemGroup>
-
-	<ItemGroup>
+	  <None Remove="Resources\Images\camara.png" />
 	  <None Remove="Resources\Images\casa1.jpg" />
 	  <None Remove="Resources\Images\casa2.jpg" />
 	  <None Remove="Resources\Images\casa3.jpg" />
@@ -62,9 +58,10 @@
 	  <None Remove="Resources\Images\galeria.png" />
 	  <None Remove="Resources\Images\go_to.png" />
 	  <None Remove="Resources\Images\logo.png" />
+	  <None Remove="Resources\Images\notas.png" />
 	  <None Remove="Resources\Images\send.png" />
-	  <None Remove="Resources\Images\splah.svg" />
 	  <None Remove="Resources\Images\user.png" />
+	  <None Remove="Resources\Splash\.svg" />
 	</ItemGroup>
 
 	<ItemGroup>
@@ -78,12 +75,23 @@
 	  <MauiXaml Update="Pages\DetelleCita.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
+	  <MauiXaml Update="Pages\FotoAmpliada.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
 	  <MauiXaml Update="Pages\Galeria.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Pages\Login.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
+	</ItemGroup>
+
+	<ItemGroup>
+	  <MauiIcon Include="Resources\AppIcon\appicon.svg" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <None Update="Resources\AppIcon\appicon.svg" ForegroundFile="Resources\AppIcon\appiconfg.svg" Color="#512BD4" />
 	</ItemGroup>
 
 </Project>

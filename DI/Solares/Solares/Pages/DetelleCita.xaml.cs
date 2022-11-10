@@ -12,10 +12,10 @@ public partial class DetelleCita : ContentPage
 
         lblTitleView.Text = detalleCita.NombreCliente;
         lblHora.Text = detalleCita.getHora;
-
         lblDireccion.Text = detalleCita.Direccion;
         lblTelefono.Text = detalleCita.Telefono;
-        lblDistancia.Text = detalleCita.Direccion;
+        lblDistancia.Text = string.Format("{0:f2}Km", detalleCita.Distancia);
+
         txtObservaciones.Text = detalleCita.Observaciones;
         actualizarColorApta();
     }
@@ -27,18 +27,19 @@ public partial class DetelleCita : ContentPage
 
     public void onImgBtnApta(object sender, EventArgs e)
     {
-        detalleCita.isApta = (detalleCita.isApta ? false : true);
+        detalleCita.IsApta = (detalleCita.IsApta ? false : true);
         actualizarColorApta();
     }
 
     private void actualizarColorApta()
     {
-        ImgBtnApta.BackgroundColor = (detalleCita.isApta ? Colors.ForestGreen : Colors.IndianRed);
+        ImgBtnApta.BackgroundColor = (detalleCita.IsApta ? Colors.ForestGreen : Colors.IndianRed);
     }
 
     public async void onImgBtnGuardar(object sender, EventArgs e)
     {
         detalleCita.Observaciones = txtObservaciones.Text;
+        await DisplayAlert("Guardado", "Datos guardados correctamente", "OK");
         await Navigation.PopAsync();
     }
 }
