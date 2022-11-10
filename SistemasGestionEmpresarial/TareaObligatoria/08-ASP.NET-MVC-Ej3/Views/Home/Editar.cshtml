@@ -1,0 +1,42 @@
+﻿@model _08_ASP.NET_MVC_Ej3.Models.VM.clsEditarVM
+
+<title>Editar Persona</title>
+
+<h2>Editar Persona</h2>
+<form method="post">
+    <label>Id: </label>
+    @Html.TextBoxFor(m => Model.Persona.IdPersona)
+    @Html.ValidationMessageFor(m => Model.Persona.IdPersona)
+    <br />
+
+    <label>Nombre: </label>
+    @Html.TextBoxFor(m => Model.Persona.Nombre)
+    @Html.ValidationMessageFor(m => m.Persona.Nombre)
+    <br />
+
+    <label>Apellido: </label>
+    @Html.TextBoxFor(m => Model.Persona.Apellido)
+    @Html.ValidationMessageFor(m => Model.Persona.Apellido)
+    <br />
+
+    <label>Apellido: </label>
+    @Html.TextBoxFor(m => Model.Persona.Telefono)
+    @Html.ValidationMessageFor(m => Model.Persona.Telefono)
+    <br />
+
+    <label>Departamento: </label>
+    <select name="Persona.IdDepartamento">
+        @for (var i = 0; i < Model.ListadoDepartamento.Count; i++)
+        {
+            if (Model.Persona.IdDepartamento == Model.ListadoDepartamento[i].IdDepartamento)
+            {
+                <option selected value="@Model.ListadoDepartamento[i].IdDepartamento">@Model.ListadoDepartamento[i].NombreDepartamento</option>
+            }
+            else
+            {
+                <option value="@Model.ListadoDepartamento[i].IdDepartamento">@Model.ListadoDepartamento[i].NombreDepartamento</option>
+            }
+        }
+    </select>
+    <input type="submit" value="Enviar" />
+</form>

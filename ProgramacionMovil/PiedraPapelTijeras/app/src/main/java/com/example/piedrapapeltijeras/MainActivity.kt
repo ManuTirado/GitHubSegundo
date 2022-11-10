@@ -129,6 +129,7 @@ class MainActivity : AppCompatActivity(), Comunicador {
             setPositiveButton("Cerrar") { _: DialogInterface, _: Int ->
                 finish()
             }
+            setCancelable(false)
         }
         AlertDialog.Builder(this).apply {
             setTitle(titulo)
@@ -141,6 +142,8 @@ class MainActivity : AppCompatActivity(), Comunicador {
                     builder.show()
                 }
             }
+            setCancelable(false)
+
         }.show()
         jugando = false
     }

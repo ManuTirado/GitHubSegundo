@@ -1,0 +1,27 @@
+Entidades:
+	-clsPersona:
+		int idPersona
+		string Nombre
+		string Apellido
+		string Telefono
+		int idDepartamento
+	-clsDepartamento:
+		int idDepartamento
+		string nombreDepartamento
+
+DAL:
+	-clsListadosDepartamentos:
+		List<clsDepartamento> obtenerListadoCompleto()
+	-clsManejadoraDepartamento:
+		clsDepartamento obtenerDepartamentoPorId(int id)
+
+UI:
+	VM:
+		-clsEditarVM:
+			clsPersona persona
+			List<clsDepartamento> departamentos
+		-clsPersonaEditadaVM:
+			clsPersona persona
+			string nombreDepartamento
+
+
