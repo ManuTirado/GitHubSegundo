@@ -2,13 +2,12 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.sql.*;
-import java.util.Scanner;
 
 public class Main {
 
     private static final String SERVIDOR = "jdbc:mysql://dns11036.phdns11.es";
-    private static final String USER = "mtirado";
-    private static final String PASSWORD = "Remolacha";
+    private static final String USER = "ad2223_mtirado";
+    private static final String PASSWORD = "1234";
     private static final String BASE_DATOS = "ad2223_mtirado";
 
     public static void main(String[] args) {
@@ -18,18 +17,31 @@ public class Main {
 
             if (connection != null) {
                 st = connection.createStatement();
-
-                //cambiarContrasena(st, "Remolacha");
-
-                //borrarTodasTablas(st);
-                //crearTodasTablas(st);
-
-                //insertarTodo(st);
-
-                //listarTodo(st);
-
-                modificar(st);
-
+                int opc;
+                do {
+                    imprimirMenu();
+                    opc = Utilidades.validarEntero(0, 4);
+                    switch (opc) {
+                        case 0:
+                            System.out.println("Adios!");
+                            break;
+                        case 1:
+                            crearTodasTablas(st);
+                            break;
+                        case 2:
+                            insertarTodo(st);
+                            break;
+                        case 3:
+                            listar(st);
+                            break;
+                        case 4:
+                            modificar(st);
+                            break;
+                        case 5:
+                            borrarTodasTablas(st);
+                            break;
+                    }
+                } while (opc != 0);
                 st.close();
             }
 
@@ -83,6 +95,10 @@ public class Main {
         }
     }
 
+    /***
+     * Procedimiento que crea todas las tablas
+     * @param st Statement
+     */
     private static void crearTodasTablas(Statement st) {
         crearTabla(st, "Mesa", new String[]{"idMesa int AUTO_INCREMENT NOT NULL PRIMARY KEY", "numComensales int", "reserva tinyint"});
         crearTabla(st, "Productos", new String[]{"idProducto int NOT NULL PRIMARY KEY", "denominacion VARCHAR(45)", "precio DECIMAL(10,2)"});
@@ -93,6 +109,10 @@ public class Main {
                 "CONSTRAINT FK_Productos_Pedido FOREIGN KEY(idProducto) REFERENCES Productos(idProducto)"});
     }
 
+    /***
+     * Procedimiento que borra todas las tablas
+     * @param st Statement
+     */
     private static void borrarTodasTablas(Statement st) {
         borrarTabla(st, "Mesa");
         borrarTabla(st, "Productos");
@@ -100,6 +120,11 @@ public class Main {
         borrarTabla(st, "Pedido");
     }
 
+    /***
+     * Borra una tabla de la base de datos
+     * @param st Statement
+     * @param tabla Nombre de la tabla
+     */
     private static void borrarTabla(Statement st, String tabla) {
 
         String sql = "DROP TABLE " + BASE_DATOS + "." + tabla;
@@ -129,6 +154,10 @@ public class Main {
         }
     }
 
+    /***
+     * Procedimiento que inserta todos los datos en las tablas
+     * @param st Statement
+     */
     private static void insertarTodo(Statement st) {
         insertar(st, new File("input\\inputMesa.txt"));
         insertar(st, new File("input\\inputProductos.txt"));
@@ -136,62 +165,44 @@ public class Main {
         insertar(st, new File("input\\inputPedido.txt"));
     }
 
-    private static void listarMesa(Statement st) {
-        System.out.println("Registros de Mesa:");
-        String sql = "SELECT * FROM ad2223_mtirado.Mesa";
-        try {
-            ResultSet rs = st.executeQuery(sql);
-            while (rs.next())
-                System.out.println("IdMesa:" + rs.getInt("idMesa") + ", numComensales:" + rs.getInt("numComensales") + ", reserva:" + rs.getInt("reserva"));
-        } catch (SQLException e) {
-            System.out.println("Error en el Select de Mesa");
+    /***
+     * Procedimiento que muestra los registros de la tabla o tablas escogida por el usuario
+     * @param st Statement
+     */
+    private static void listar(Statement st) {
+        int opc;
+        System.out.println("-- -- -- -- -- -- -- -- -- --");
+        System.out.println("¿Qué tabla desea listar?");
+        System.out.println("1 - Mesa");
+        System.out.println("2 - Factura");
+        System.out.println("3 - Pedido");
+        System.out.println("4 - Productos");
+        System.out.println("5 - Todas");
+        System.out.println("0 - Salir");
+        opc = Utilidades.validarEntero(0, 5);
+        switch (opc) {
+            case 1:
+                Listados.listarMesa(st);
+                break;
+            case 2:
+                Listados.listarFactura(st);
+                break;
+            case 3:
+                Listados.listarPedido(st);
+                break;
+            case 4:
+                Listados.listarProductos(st);
+                break;
+            case 5:
+                Listados.listarTodo(st);
+                break;
         }
     }
 
-    private static void listarFactura(Statement st) {
-        System.out.println("Registros de Factura:");
-        String sql = "SELECT * FROM ad2223_mtirado.Factura";
-        try {
-            ResultSet rs = st.executeQuery(sql);
-            while (rs.next())
-                System.out.println("idFactura:" + rs.getInt("idFactura") + ", idMesa:" + rs.getInt("idMesa") + ", tipoPago:" + rs.getString("tipoPago") + ", importe:" + rs.getFloat("importe"));
-        } catch (SQLException e) {
-            System.out.println("Error en el Select de Factura");
-        }
-    }
-
-    private static void listarPedido(Statement st) {
-        System.out.println("Registros de Pedido:");
-        String sql = "SELECT * FROM ad2223_mtirado.Pedido";
-        try {
-            ResultSet rs = st.executeQuery(sql);
-            while (rs.next())
-                System.out.println("idPedido:" + rs.getInt("idPedido") + ", idFactura:" + rs.getInt("idFactura") + ", idProducto:" + rs.getInt("idProducto") + ", cantidad:" + rs.getInt("cantidad"));
-        } catch (SQLException e) {
-            System.out.println("Error en el Select de Factura");
-        }
-    }
-
-    private static void listarProductos(Statement st) {
-        System.out.println("Registros de Productos:");
-        String sql = "SELECT * FROM ad2223_mtirado.Productos";
-        try {
-            ResultSet rs = st.executeQuery(sql);
-            while (rs.next())
-                System.out.println(rs.getInt("idProducto") + " " + rs.getString("denominacion") + " " + rs.getFloat("precio"));
-        } catch (SQLException e) {
-            System.out.println("Error en el Select de Factura");
-        }
-    }
-
-    private static void listarTodo(Statement st) {
-        listarMesa(st);
-        listarFactura(st);
-        listarPedido(st);
-        listarProductos(st);
-    }
-
-
+    /***
+     * Procedimiento que permite al usuario modificar un registro de la tabla que selecciones
+     * @param st Statement
+     */
     private static void modificar(Statement st) {
         int opc;
 
@@ -201,282 +212,21 @@ public class Main {
         System.out.println("2 - Factura");
         System.out.println("3 - Pedido");
         System.out.println("4 - Productos");
-        opc = validarEntero(1, 4);
+        opc = Utilidades.validarEntero(1, 4);
         switch (opc) {
             case 1:
-                modificarMesa(st);
+                Modificacion.modificarMesa(st);
                 break;
             case 2:
-                modificarFactura(st);
+                Modificacion.modificarFactura(st);
                 break;
             case 3:
-                modificarPedido(st);
+                Modificacion.modificarPedido(st);
                 break;
             case 4:
-                modificarProducto(st);
+                Modificacion.modificarProducto(st);
                 break;
         }
-    }
-
-    private static void modificarMesa(Statement st) {
-        int mesaSeleccionada, numComensales, reserva;
-        String sql;
-
-        try {
-            sql = "SELECT * FROM ad2223_mtirado.Mesa ORDER BY idMesa ASC LIMIT 1";
-            imprimirMesa(st, sql);
-
-            System.out.println("...");
-
-            sql = "SELECT * FROM ad2223_mtirado.Mesa ORDER BY idMesa DESC LIMIT 1";
-            imprimirMesa(st, sql);
-
-
-            System.out.println();
-            System.out.println("Seleccione el id de la Mesa que desea modificar:");
-            mesaSeleccionada = validarEntero();
-
-            sql = "SELECT * FROM ad2223_mtirado.Mesa WHERE idMesa="+mesaSeleccionada;
-            imprimirMesa(st, sql);
-
-            System.out.println("Modificación:");
-            System.out.print("NumComensales ");
-            numComensales = validarEntero();
-            System.out.print("Reserva ");
-            reserva = validarEntero();
-
-            sql = "UPDATE ad2223_mtirado.Mesa SET numComensales ="+numComensales+", reserva="+reserva+" WHERE idMesa ="+mesaSeleccionada+";";
-            st.executeUpdate(sql);
-            sql = "SELECT * FROM ad2223_mtirado.Mesa WHERE idMesa="+mesaSeleccionada;
-            imprimirMesa(st, sql);
-
-        } catch (SQLException e) {
-            System.out.println("Error en el SQL");
-        }
-
-    }
-
-    private static void imprimirMesa(Statement st, String sql) {
-        try {
-            ResultSet rs = st.executeQuery(sql);
-            if (rs.next()) {
-                System.out.println("IdMesa:" + rs.getInt("idMesa") + ", numComensales:" + rs.getInt("numComensales") + ", reserva:" + rs.getInt("reserva"));
-            }
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
-    }
-
-    private static void modificarFactura(Statement st) {
-        int facturaSeleccionada, idMesa, tipoPago;
-        float importe;
-        String tipoPagoStr;
-        String sql;
-
-        try {
-            sql = "SELECT * FROM ad2223_mtirado.Factura ORDER BY idFactura ASC LIMIT 1";
-            imprimirFactura(st, sql);
-
-            System.out.println("...");
-
-            sql = "SELECT * FROM ad2223_mtirado.Factura ORDER BY idFactura DESC LIMIT 1";
-            imprimirFactura(st, sql);
-
-
-            System.out.println();
-            System.out.println("Seleccione el id de la Mesa que desea modificar:");
-            facturaSeleccionada = validarEntero();
-
-            sql = "SELECT * FROM ad2223_mtirado.Factura WHERE idFactura="+facturaSeleccionada;
-            imprimirFactura(st, sql);
-
-            System.out.println("Modificación:");
-            System.out.print("IdMesa ");
-            idMesa = validarEntero();
-            System.out.print("TipoPago (1.Efectivo - 2.Tarjeta) ");
-            tipoPago = validarEntero(1,2);
-            if (tipoPago==1) {
-                tipoPagoStr = "efectivo";
-            } else {
-                tipoPagoStr = "tarjeta";
-            }
-            System.out.print("Importe ");
-            importe = validarFloat();
-
-            sql = "UPDATE ad2223_mtirado.Factura SET idMesa ="+idMesa+", tipoPago='"+ tipoPagoStr +"', importe="+ importe +" WHERE idFactura ="+facturaSeleccionada+";";
-            st.executeUpdate(sql);
-            sql = "SELECT * FROM ad2223_mtirado.Factura WHERE idFactura="+facturaSeleccionada;
-            imprimirFactura(st, sql);
-        } catch (SQLException e) {
-            System.out.println("Error en el SQL");
-        }
-
-    }
-
-    private static void imprimirFactura(Statement st, String sql) {
-        try {
-            ResultSet rs = st.executeQuery(sql);
-            if (rs.next()) {
-                System.out.println("idFactura:" + rs.getInt("idFactura") + ", idMesa:" + rs.getInt("idMesa") + ", tipoPago:" + rs.getString("tipoPago") + ", importe:" + rs.getFloat("importe"));
-            }
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
-    }
-
-    private static void modificarPedido(Statement st) {
-        int idPedido, idFactura, idProducto, cantidad;
-        String sql;
-
-        try {
-            sql = "SELECT * FROM ad2223_mtirado.Pedido ORDER BY idPedido ASC LIMIT 1";
-            imprimirPedido(st, sql);
-
-            System.out.println("...");
-
-            sql = "SELECT * FROM ad2223_mtirado.Pedido ORDER BY idPedido DESC LIMIT 1";
-            imprimirPedido(st, sql);
-
-
-            System.out.println();
-            System.out.println("Seleccione el id del pedido que desea modificar:");
-            idPedido = validarEntero();
-
-            sql = "SELECT * FROM ad2223_mtirado.Pedido WHERE idPedido="+idPedido;
-            imprimirPedido(st, sql);
-
-            System.out.println("Modificación:");
-            System.out.print("idFactura ");
-            idFactura = validarEntero();
-            System.out.print("idProducto ");
-            idProducto = validarEntero();
-            System.out.print("Cantidad ");
-            cantidad = validarEntero();
-
-            sql = "UPDATE ad2223_mtirado.Pedido SET idFactura ="+idFactura+", idProducto="+idProducto+", cantidad="+cantidad+" WHERE idPedido ="+idPedido+";";
-            st.executeUpdate(sql);
-            sql = "SELECT * FROM ad2223_mtirado.Pedido WHERE idPedido="+idPedido;
-            imprimirPedido(st, sql);
-
-        } catch (SQLException e) {
-            System.out.println("Error en el SQL");
-        }
-
-    }
-
-    private static void imprimirPedido(Statement st, String sql) {
-        try {
-            ResultSet rs = st.executeQuery(sql);
-            if (rs.next()) {
-                System.out.println("IdPedido:" + rs.getInt("idPedido") + ", idFactura:" + rs.getInt("idFactura") + ", idProducto:" + rs.getInt("idProducto") + ", cantidad:" + rs.getInt("cantidad"));
-            }
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
-    }
-
-    private static void modificarProducto(Statement st) {
-        int idProducto;
-        String denominacion;
-        float precio;
-        String sql;
-
-        try {
-            sql = "SELECT * FROM ad2223_mtirado.Productos ORDER BY idProducto ASC LIMIT 1";
-            imprimirProducto(st, sql);
-
-            System.out.println("...");
-
-            sql = "SELECT * FROM ad2223_mtirado.Productos ORDER BY idProducto DESC LIMIT 1";
-            imprimirProducto(st, sql);
-
-
-            System.out.println();
-            System.out.println("Seleccione el id del producto que desea modificar:");
-            idProducto = validarEntero();
-
-            sql = "SELECT * FROM ad2223_mtirado.Productos WHERE idProducto="+idProducto;
-            imprimirProducto(st, sql);
-
-            System.out.println("Modificación:");
-            System.out.print("denominación ");
-            denominacion = new Scanner(System.in).nextLine();
-            System.out.print("Precio ");
-            precio = validarFloat();
-
-            sql = "UPDATE ad2223_mtirado.Productos SET denominacion ='"+denominacion+"', precio="+precio+" WHERE idProducto ="+idProducto+";";
-            st.executeUpdate(sql);
-            sql = "SELECT * FROM ad2223_mtirado.Productos WHERE idProducto="+idProducto;
-            imprimirProducto(st, sql);
-
-        } catch (SQLException e) {
-            System.out.println("Error en el SQL");
-        }
-
-    }
-
-    private static void imprimirProducto(Statement st, String sql) {
-        try {
-            ResultSet rs = st.executeQuery(sql);
-            if (rs.next()) {
-                System.out.println("IdProducto:" + rs.getInt("idProducto") + ", denominación:" + rs.getString("denominacion") + ", precio:" + rs.getFloat("precio"));
-            }
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
-    }
-
-    private static int validarEntero(int min, int max) {
-        Scanner sc = new Scanner(System.in);
-        int numero;
-        do {
-            try {
-                System.out.print("==> ");
-                numero = sc.nextInt();
-                if (numero < min || numero > max) {
-                    System.out.println("Número fuera del rango, introduzca un entero entre " + min + " y " + max);
-                }
-            } catch (Exception e) {
-                System.out.println("Valor no válido");
-                // Le asigno al número un valor fuera del rango para que no salga del bucles
-                numero = min - 1;
-                sc.nextLine();
-            }
-        } while (numero < min || numero > max);
-        return numero;
-    }
-    private static int validarEntero() {
-        Scanner sc = new Scanner(System.in);
-        int numero=0;
-        boolean correcto=false;
-        do {
-            try {
-                System.out.print("==> ");
-                numero = sc.nextInt();
-                correcto=true;
-            } catch (Exception e) {
-                System.out.println("Valor no válido");
-                sc.nextLine();
-            }
-        } while (!correcto);
-        return numero;
-    }
-
-    private static float validarFloat() {
-        Scanner sc = new Scanner(System.in);
-        float numero=0;
-        boolean correcto=false;
-        do {
-            try {
-                System.out.print("==> ");
-                numero = sc.nextFloat();
-                correcto=true;
-            } catch (Exception e) {
-                System.out.println("Valor no válido");
-                sc.nextLine();
-            }
-        } while (!correcto);
-        return numero;
     }
 
     /***
@@ -493,7 +243,16 @@ public class Main {
         }
     }
 
-    private static String obtener2decimales (float num) {
-        return String.format("%.2f", num);
+    /***
+     * Imprime el menú principal por consola
+     */
+    private static void imprimirMenu() {
+        System.out.println("-- -- -- -- -- -- -- -- --");
+        System.out.println("1 - Crear Tablas");
+        System.out.println("2 - Insertar Datos");
+        System.out.println("3 - Listar Datos");
+        System.out.println("4 - Modificar registro");
+        System.out.println("5 - Borrar Tablas");
+        System.out.println("0 - Salir");
     }
 }
