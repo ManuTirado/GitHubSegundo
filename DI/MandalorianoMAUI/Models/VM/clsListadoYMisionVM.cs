@@ -13,7 +13,7 @@ namespace MandalorianoMAUI.Models.VM
         #region Atributos
         private List<clsMision> listadoMisionesCompleto;
         private clsMision misionSeleccionada;
-        private DelegateCommand mostrarDetallesCommand;
+        private DelegateCommand mostrarDetallesCommand; //Comando
         private bool datosMisionEsVisible;
         #endregion
 
@@ -33,27 +33,30 @@ namespace MandalorianoMAUI.Models.VM
             }
             set
             {
-                misionSeleccionada = value;
+                if (misionSeleccionada != value)
+                {
+                    misionSeleccionada = value;
+                    mostrarDetallesCommand.RaiseCanExecuteChanged();
+                    datosMisionEsVisible = false;
+                    NotifyPropertyChanged(nameof(DatosMisionEsVisible));
+                }
             }
         }
         public DelegateCommand MostrarDetallesCommand
         {
             get
             {
-                mostrarDetallesCommand = new DelegateCommand(mostrarDetallesCommand_execute, mostrarDetallesCommand_canExecute);
+                mostrarDetallesCommand = new DelegateCommand(mostrarDetallesCommand_execute, MostrarDetallesCommand_canExecute);
                 return mostrarDetallesCommand;
             }
         }
-        public bool DatosMisionEsVisible 
-        {
-            get
-            {
-                return datosMisionEsVisible;
-            }
-        }
+        public bool DatosMisionEsVisible { get { return datosMisionEsVisible; } }
         #endregion
 
         #region Constructores
+        public clsListadoYMisionVM()
+        {
+        }
 
         #endregion
 
@@ -63,9 +66,15 @@ namespace MandalorianoMAUI.Models.VM
         /// </summary>
         /// <returns></returns>
         /// <exception cref="NotImplementedException"></exception>
-        private bool mostrarDetallesCommand_canExecute()
+        private bool MostrarDetallesCommand_canExecute()
         {
-            return true;
+            bool btnDetallesVisible = false;
+
+            if (misionSeleccionada != null)
+            {
+                btnDetallesVisible = true;
+            }
+            return btnDetallesVisible;
         }
 
         /// <summary>
@@ -76,6 +85,8 @@ namespace MandalorianoMAUI.Models.VM
         private void mostrarDetallesCommand_execute()
         {
             datosMisionEsVisible = true;
+            NotifyPropertyChanged(nameof(DatosMisionEsVisible));
+            NotifyPropertyChanged(nameof(MisionSeleccionada));
         }
         #endregion
     }

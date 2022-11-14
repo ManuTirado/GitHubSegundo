@@ -17,6 +17,8 @@ class MainActivity : AppCompatActivity() {
     fun onClickBtnJugar(view: View) {
         val intent = Intent(this, Juego::class.java)
 
+        // Muestro un mensaje con 4 opciones, y según la escogida inicio la actividad Juego pasándoles un long por Bundle
+        // Este long hace referencia al tiempo de pausa entre pulsaciones del juego, a menor sea, mayor será la dificultad
         val builder = AlertDialog.Builder(this)
         val dificultades = arrayOf("Fácil", "Normal", "Difícil", "Psicosis")
         builder.setTitle("Seleccione la dificultad")

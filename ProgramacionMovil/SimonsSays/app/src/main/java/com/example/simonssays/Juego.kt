@@ -26,9 +26,12 @@ class Juego : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_juego)
 
+        // Recojo el bundle con el long pasado desde el MainActivity
         val bundle = intent.extras
         pausa = bundle?.getLong("pausa") ?: 500
 
+        // Creo un listener para cada botón, este llamará a comprobar pulsacion pasándole un número por parámetro
+        // Este número referencia al botón
         val btnVerde: Button = findViewById(R.id.btnVerde)
         val btnRojo: Button = findViewById(R.id.btnRojo)
         val btnAmarillo: Button = findViewById(R.id.btnAmarillo)
@@ -53,9 +56,12 @@ class Juego : AppCompatActivity() {
         actualizarRecord()
 
         mirar()
-
     }
 
+    /***
+     * Desactiva los botones, añade un número aleatorio al patrón y lo muestra.
+     * Al acabar vuelve a activar los botones para que el jugador pueda jugar
+     */
     private fun mirar() {
         desactivarBotones()
         patron.add((1..4).random(Random(System.nanoTime())))
@@ -68,7 +74,10 @@ class Juego : AppCompatActivity() {
         }
     }
 
-
+    /***
+     * Cambia el color y reproduce un sonido de un botón.
+     * Espera un tiempo y vuelve a cambiarle el color por el original
+     */
     private suspend fun iluminarBoton(btn: Int) {
         delay(pausa)
         reproducirSonido(R.raw.seleccion)
@@ -101,16 +110,27 @@ class Juego : AppCompatActivity() {
         }
     }
 
+    /***
+     * Cambia el texto que muestra la puntuación por el valor actual de puntuación
+     */
     private fun actualizarPuntuacion() {
         val txtPuntuacion: TextView = findViewById(R.id.txtPuntuacion)
         txtPuntuacion.text = puntuacion.toString()
     }
 
+    /***
+     * Cambia el texto que muestra el record por el valor actual del record
+     */
     private fun actualizarRecord() {
         val txtRecord: TextView = findViewById(R.id.txtRecord)
         txtRecord.text = record.toString()
     }
 
+    /***
+     * Comprueba que el botón pulsado por el jugador sea el que corresponde en el patrón.
+     * En casa correcto reproduce un sonido de acierto y continúa.
+     * En caso negativo reproduce un sonido de error y muestra un mensaje que al aceptarlo comienza una nueva partida
+     */
     private fun comprobarPulsacion(seleccion: Int) {
         if (seleccion == patron[contPulsaciones]) {
             reproducirSonido(R.raw.correcto)
