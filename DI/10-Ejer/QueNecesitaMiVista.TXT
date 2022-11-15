@@ -1,0 +1,18 @@
+Entidades:
+	-clsPersona:
+		int id
+		string nombre
+		string apellido
+
+DAL:
+	-clsListadosPersonas:
+		List<clsPersona> obtenerListadoCompleto()
+
+	-clsManejadoraPersona:
+		void/boolean elminarPersonaPorId (int id)
+
+UI:
+	VM:
+		-clsListadoYpersonaVM:
+			clsPersona personaSeleccionada
+			List<clsPersona> listadoPersonas
