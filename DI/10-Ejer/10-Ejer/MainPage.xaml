@@ -2,38 +2,56 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:model="clr-namespace:_10_Ejer.Models.ViewModels"
-             x:Class="_10_Ejer.MainPage">
+             x:Class="_10_Ejer.MainPage"
+             BackgroundColor="AliceBlue">
 
     <ContentPage.BindingContext>
         <model:clsListadoYpersonaVM/>
     </ContentPage.BindingContext>
 
-    <VerticalStackLayout>
-        <HorizontalStackLayout>
-            <Entry x:Name="txtBuscarPersona"
+    <Grid HorizontalOptions="Center" RowSpacing="20">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="7*"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="auto"/>
+        </Grid.ColumnDefinitions>
+
+        <HorizontalStackLayout HorizontalOptions="Center">
+            <Entry x:Name="txtBuscarPersona"  FontSize="20" FontAttributes="Bold" MinimumWidthRequest="300" BackgroundColor="WhiteSmoke"
                    Text="{Binding EntryBuscarPersona}"/>
-            <ImageButton x:Name="imgBtnBuscarPersona" WidthRequest="50" HeightRequest="50"
+            <ImageButton x:Name="imgBtnBuscarPersona"
                          Source="search.png"
                          Command="{Binding BuscarPersonaCommand}"/>
         </HorizontalStackLayout>
-        <ListView x:Name="lstListadoPersonas" 
-                  ItemsSource="{Binding ListadoPersonas}"
+
+        <ListView x:Name="lstListadoPersonas" Grid.Row="1" 
+                  ItemsSource="{Binding ListadoPersonasMostrado}"
                   SelectedItem="{Binding PersonaSeleccionada}">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <ViewCell>
-                        <HorizontalStackLayout>
-                            <Label Text="{Binding Id}"/>
-                            <Label Text="{Binding Nombre}"/>
-                            <Label Text="{Binding Apellido}"/>
-                        </HorizontalStackLayout>
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="auto"/>
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+
+                            <Label Text="{Binding Nombre}" FontSize="20" FontAttributes="Bold" HorizontalTextAlignment="Center"/>
+                            <Label Grid.Column="1" Text="{Binding Apellido}" FontSize="20" FontAttributes="Bold" HorizontalTextAlignment="Center"/>
+                        </Grid>
                     </ViewCell>
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
-        <ImageButton x:Name="imgBtnEliminarPersona" WidthRequest="50" HeightRequest="50"
+        <ImageButton x:Name="imgBtnEliminarPersona" Grid.Row="2"
                      Source="delete.png"
                      Command="{Binding EliminarPersonaCommand}"/>
-    </VerticalStackLayout>
 
+    </Grid>
 </ContentPage>

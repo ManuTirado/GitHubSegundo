@@ -35,19 +35,19 @@ class MainActivity : AppCompatActivity() {
                     // of the selected item
                     when (which) {
                         0 -> {
-                            intent.putExtra("pausa", 600L)
+                            intent.putExtra("dificultad", 0)
                             startActivity(intent)
                         }
                         1 -> {
-                            intent.putExtra("pausa", 400L)
+                            intent.putExtra("dificultad", 1)
                             startActivity(intent)
                         }
                         2 -> {
-                            intent.putExtra("pausa", 200L)
+                            intent.putExtra("dificultad", 2)
                             startActivity(intent)
                         }
                         3 -> {
-                            intent.putExtra("pausa", 100L)
+                            intent.putExtra("dificultad", 3)
                             startActivity(intent)
                         }
                     }

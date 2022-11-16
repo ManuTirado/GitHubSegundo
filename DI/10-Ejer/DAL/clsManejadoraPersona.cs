@@ -10,7 +10,7 @@ namespace DAL
     {
         public static void elminarPersonaPorId (int id)
         {
-            //
+            // <3
         }
     }
 }

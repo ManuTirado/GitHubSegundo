@@ -15,4 +15,5 @@
     <color name="yellowSelected">#EDE6A5</color>
     <color name="blue">#2196F3</color>
     <color name="blueSelected">#A7CAE6</color>
+    <color name="gray">#D3D3D3</color>
 </resources>

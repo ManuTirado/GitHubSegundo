@@ -3,8 +3,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_margin="10dp"
-    android:orientation="horizontal">
+    android:layout_marginHorizontal="0dp"
+    android:layout_marginVertical="10dp"
+    android:padding="10dp"
+    android:orientation="horizontal"
+    android:background="@color/gray">
 
     <TextView
         android:layout_gravity="center"
@@ -35,6 +38,16 @@
         android:textSize="18sp"
         android:textStyle="bold"
         tools:text="Record" />
+
+    <TextView
+        android:layout_gravity="center"
+        android:id="@+id/tvFechaHora"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        tools:text="FechaHora" />
 
     <ImageButton
         android:layout_gravity="center"

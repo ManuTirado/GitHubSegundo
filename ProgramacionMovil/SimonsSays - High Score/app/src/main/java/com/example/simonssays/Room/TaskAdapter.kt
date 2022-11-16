@@ -3,7 +3,6 @@ package com.example.simonssays.Room
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.CheckBox
 import android.widget.ImageButton
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
@@ -32,16 +31,20 @@ class TaskAdapter(
         val tvNombre = view.findViewById<TextView>(R.id.tvNombre)
         val tvDificultad = view.findViewById<TextView>(R.id.tvDificultad)
         val tvRecord = view.findViewById<TextView>(R.id.tvRecord)
+        val tvFechaHora = view.findViewById<TextView>(R.id.tvFechaHora)
         val imgBtnBorrar = view.findViewById<ImageButton>(R.id.imgBtnBorrar)
 
-        fun bind(
-            task: TaskEntity,
-            checkTask: (TaskEntity) -> Unit,
-            deleteTask: (TaskEntity) -> Unit
-        ) {
+        fun bind(task: TaskEntity, checkTask: (TaskEntity) -> Unit, deleteTask: (TaskEntity) -> Unit) {
             tvNombre.text = task.nombre
-            tvDificultad.text = task.dificultad
+            when (task.dificultad) {
+                0 -> tvDificultad.text =  "Fácil"
+                1 -> tvDificultad.text =  "Normal"
+                2 -> tvDificultad.text =  "Difícil"
+                3 -> tvDificultad.text =  "Psicosis"
+                else -> tvDificultad.text = "N/A"
+            }
             tvRecord.text = task.puntuacion.toString()
+            tvFechaHora.text = task.fechaHora
             itemView.setOnClickListener { checkTask(task) }
             imgBtnBorrar.setOnClickListener { deleteTask(task) }
         }

@@ -3,13 +3,18 @@ package com.example.simonssays
 import android.content.DialogInterface
 import android.media.MediaPlayer
 import android.os.Bundle
+import android.text.InputType
 import android.widget.Button
+import android.widget.EditText
 import android.widget.TextView
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
+import com.example.simonssays.Room.TaskEntity
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
+import java.time.LocalDateTime
+import java.time.format.DateTimeFormatter
 import kotlin.random.Random
 
 class Juego : AppCompatActivity() {
@@ -18,9 +23,11 @@ class Juego : AppCompatActivity() {
     private var contPulsaciones: Int = 0
 
     private var pausa: Long = 500
+    private var dificultad: Int = 0
 
     private var puntuacion: Int = 0
     private var record: Int = 0
+    private var numPulsacionesTotales: Int = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -28,7 +35,22 @@ class Juego : AppCompatActivity() {
 
         // Recojo el bundle con el long pasado desde el MainActivity
         val bundle = intent.extras
-        pausa = bundle?.getLong("pausa") ?: 500
+        dificultad = bundle?.getInt("dificultad") ?: 0
+        when (dificultad) {
+            0 -> {
+                pausa = 600
+            }
+            1 -> {
+                pausa = 400
+            }
+            2 -> {
+                pausa = 200
+            }
+            3 -> {
+                pausa = 100
+            }
+            else -> pausa = 300
+        }
 
         // Creo un listener para cada botón, este llamará a comprobar pulsacion pasándole un número por parámetro
         // Este número referencia al botón
@@ -138,6 +160,7 @@ class Juego : AppCompatActivity() {
 
             if (contPulsaciones == patron.size - 1) {
                 puntuacion++
+                numPulsacionesTotales++
                 actualizarPuntuacion()
                 mirar()
             } else {
@@ -146,27 +169,71 @@ class Juego : AppCompatActivity() {
         } else {
             reproducirSonido(R.raw.incorrecto)
 
-            mostrarMensjaPerdedor()
-
             if (puntuacion > record) {
+                registrarPuntuacion()
                 record = puntuacion
+            } else {
+                mostrarMensjaPerdedor()
+                numPulsacionesTotales = 0
+                puntuacion = 0
+                actualizarPuntuacion()
+                actualizarRecord()
             }
-            puntuacion = 0
-            actualizarPuntuacion()
-            actualizarRecord()
         }
+    }
+
+    private fun registrarPuntuacion() {
+        var nombre: String
+
+        // Set up the input
+        var input = EditText(this);
+        // Specify the type of input expected; this, for example, sets the input as a password, and will mask the text
+        input.setInputType(InputType.TYPE_CLASS_TEXT)
+
+        val builder = AlertDialog.Builder(this)
+        builder.setCancelable(false)
+        builder.setTitle("Ingrese su nombre")
+        builder.setMessage("¿Quedará tu nombre inmortalizado?")
+            .setView(input)
+            .setPositiveButton("OK",
+                DialogInterface.OnClickListener { _, _ ->
+                    nombre = input.text.toString()
+                    Puntuaciones.addTask(
+                        TaskEntity(
+                            nombre = nombre,
+                            dificultad = dificultad,
+                            puntuacion = puntuacion,
+                            numeroPulsaciones = numPulsacionesTotales,
+                            //fechaHora = LocalDateTime.now().format(DateTimeFormatter.ofPattern("dd/MM/uu kk:mm"))
+                            fechaHora = LocalDateTime.now().format(DateTimeFormatter.ofPattern("dd/MM"))
+                        )
+                    )
+                    mostrarMensjaPerdedor()
+                    numPulsacionesTotales = 0
+                    puntuacion = 0
+                    actualizarPuntuacion()
+                    actualizarRecord()
+                })
+        // Create the AlertDialog object and return it
+        builder.create().show()
     }
 
     private fun mostrarMensjaPerdedor() {
         val builder = AlertDialog.Builder(this)
         builder.setCancelable(false)
         builder.setTitle("Perdiste")
-        builder.setMessage("Pulse OK para volver a jugar")
-            .setPositiveButton("OK",
+        builder.setMessage("¿Otra partidita? 🔥")
+            .setPositiveButton("Si",
                 DialogInterface.OnClickListener { _, _ ->
                     // START THE GAME!
                     patron = mutableListOf(1)
                     mirar()
+                })
+            .setNegativeButton("No",
+                DialogInterface.OnClickListener { _, _ ->
+                    // GO BACK TO MENU
+                    patron = mutableListOf(1)
+                    finish()
                 })
         // Create the AlertDialog object and return it
         builder.create().show()

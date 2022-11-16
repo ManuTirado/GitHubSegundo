@@ -1,18 +1,14 @@
 ﻿using _10_Ejer.Models.ViewModels.Utilidades;
 using Entidades;
-using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace _10_Ejer.Models.ViewModels
 {
     public class clsListadoYpersonaVM : clsVMBase
     {
         #region Atributos
-        private ObservableCollection<clsPersona> listadoPersonas;
+        private ObservableCollection<clsPersona> listadoPersonasCompleto;
+        private ObservableCollection<clsPersona> listadoPersonasMostrado;
         private clsPersona personaSeleccionada;
         private string entryBuscarPersona;
         private DelegateCommand eliminarPersonaCommand; //Comando Elminar Persona
@@ -20,7 +16,7 @@ namespace _10_Ejer.Models.ViewModels
         #endregion
 
         #region Propiedades
-        public ObservableCollection<clsPersona> ListadoPersonas { get { return listadoPersonas; } }
+        public ObservableCollection<clsPersona> ListadoPersonasMostrado { get { return listadoPersonasMostrado; } }
         public clsPersona PersonaSeleccionada
         {
             get { return personaSeleccionada; }
@@ -45,6 +41,7 @@ namespace _10_Ejer.Models.ViewModels
                     buscarPersonaCommand.RaiseCanExecuteChanged();
                     NotifyPropertyChanged(nameof(EntryBuscarPersona));
                 }
+
             }
         }
         public DelegateCommand EliminarPersonaCommand
@@ -60,7 +57,7 @@ namespace _10_Ejer.Models.ViewModels
         {
             get
             {
-                buscarPersonaCommand = new DelegateCommand(BuscarPersonaCommand_execute, BuscarPersonaCommand_canExecute);
+                buscarPersonaCommand = new DelegateCommand(BuscarPersonaCommand_execute);
                 return buscarPersonaCommand;
             }
         }
@@ -70,7 +67,8 @@ namespace _10_Ejer.Models.ViewModels
         #region Constructores
         public clsListadoYpersonaVM()
         {
-            listadoPersonas = new ObservableCollection<clsPersona>(DAL.clsListadosPersonas.obtenerListadoCompleto());
+            listadoPersonasCompleto = new ObservableCollection<clsPersona>(DAL.clsListadosPersonas.obtenerListadoCompleto());
+            listadoPersonasMostrado = new ObservableCollection<clsPersona>(listadoPersonasCompleto);
         }
         #endregion
 
@@ -100,10 +98,12 @@ namespace _10_Ejer.Models.ViewModels
             bool answer = await Application.Current.MainPage.DisplayAlert("¿Eliminar persona?", "Una vez eliminada no podrá ser recuperada", "Si", "No");
             if (answer)
             {
-                listadoPersonas.Remove(PersonaSeleccionada);
+                listadoPersonasCompleto.Remove(PersonaSeleccionada);
+                listadoPersonasMostrado.Remove(PersonaSeleccionada);
                 personaSeleccionada = null;
-                NotifyPropertyChanged(nameof(ListadoPersonas));
+                NotifyPropertyChanged(nameof(ListadoPersonasMostrado));
                 NotifyPropertyChanged(nameof(PersonaSeleccionada));
+                eliminarPersonaCommand.RaiseCanExecuteChanged();
             }
         }
 
@@ -129,8 +129,23 @@ namespace _10_Ejer.Models.ViewModels
         /// <exception cref="NotImplementedException"></exception>
         private void BuscarPersonaCommand_execute()
         {
-            listadoPersonas = new ObservableCollection<clsPersona>(listadoPersonas.OrderBy(m => m.Nombre));
-            NotifyPropertyChanged(nameof(ListadoPersonas));
+            if (string.IsNullOrEmpty(entryBuscarPersona))
+            {
+                listadoPersonasMostrado = listadoPersonasCompleto;
+            }
+            else
+            {
+                listadoPersonasMostrado.Clear();
+                foreach (clsPersona persona in listadoPersonasCompleto)
+                {
+                    if (persona.Nombre.ToLowerInvariant().StartsWith(entryBuscarPersona.ToLowerInvariant()) || persona.Apellido.ToLowerInvariant().StartsWith(entryBuscarPersona.ToLowerInvariant()))
+                    {
+                        listadoPersonasMostrado.Add(persona);
+                    }
+                }
+            }
+            NotifyPropertyChanged(nameof(ListadoPersonasMostrado));
+            NotifyPropertyChanged(nameof(PersonaSeleccionada));
         }
         #endregion  
     }

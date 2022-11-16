@@ -9,7 +9,7 @@ import java.util.Date
 data class TaskEntity (
     @PrimaryKey(autoGenerate = true) var id:Int = 0,
     var nombre:String = "",
-    var dificultad:String = "",
+    var dificultad:Int,
     var puntuacion:Int,
     var numeroPulsaciones:Int,
     var fechaHora:String
