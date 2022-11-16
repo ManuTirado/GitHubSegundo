@@ -16,3 +16,4 @@ UI:
 		-clsListadoYpersonaVM:
 			clsPersona personaSeleccionada
 			List<clsPersona> listadoPersonas
+			string entryBuscarPersona

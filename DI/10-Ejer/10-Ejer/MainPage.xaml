@@ -9,6 +9,13 @@
     </ContentPage.BindingContext>
 
     <VerticalStackLayout>
+        <HorizontalStackLayout>
+            <Entry x:Name="txtBuscarPersona"
+                   Text="{Binding EntryBuscarPersona}"/>
+            <ImageButton x:Name="imgBtnBuscarPersona" WidthRequest="50" HeightRequest="50"
+                         Source="search.png"
+                         Command="{Binding BuscarPersonaCommand}"/>
+        </HorizontalStackLayout>
         <ListView x:Name="lstListadoPersonas" 
                   ItemsSource="{Binding ListadoPersonas}"
                   SelectedItem="{Binding PersonaSeleccionada}">
