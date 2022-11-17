@@ -32,6 +32,7 @@ class Juego : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_juego)
+        supportActionBar?.hide()
 
         // Recojo el bundle con el long pasado desde el MainActivity
         val bundle = intent.extras

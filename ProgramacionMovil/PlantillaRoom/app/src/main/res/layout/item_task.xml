@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginHorizontal="0dp"
+    android:layout_marginVertical="10dp"
+    android:padding="10dp"
+    android:orientation="horizontal"
+    android:background="@color/teal_200">
+
+    <TextView
+        android:layout_gravity="center"
+        android:id="@+id/tvNombre"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        tools:text="Nombre" />
+
+    <TextView
+        android:layout_gravity="center"
+        android:id="@+id/tvDificultad"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        tools:text="Dificultad" />
+
+    <TextView
+        android:layout_gravity="center"
+        android:id="@+id/tvRecord"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        tools:text="Record" />
+
+    <TextView
+        android:layout_gravity="center"
+        android:id="@+id/tvFechaHora"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        tools:text="FechaHora" />
+
+    <ImageButton
+        android:id="@+id/imgBtnBorrar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:src="@drawable/ic_baseline_delete_outline_24"
+        tools:ignore="TouchTargetSizeCheck,SpeakableTextPresentCheck" />
+</LinearLayout>

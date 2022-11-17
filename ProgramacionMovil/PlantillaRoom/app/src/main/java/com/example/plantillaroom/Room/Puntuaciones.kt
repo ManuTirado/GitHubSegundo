@@ -1,13 +1,13 @@
-package com.example.simonssays
+package com.example.plantillaroom.Room
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.simonssays.Room.PuntuacionesApp
-import com.example.simonssays.Room.TaskAdapter
-import com.example.simonssays.Room.TaskEntity
+import com.example.plantillaroom.MainActivity
+import com.example.plantillaroom.R
+import com.example.plantillaroom.Room.Puntuaciones.Companion.tasks
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
 
@@ -19,23 +19,35 @@ class Puntuaciones : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_puntuaciones)
 
-        val actionBar = supportActionBar
-        actionBar!!.title ="Puntuaciones"
-        actionBar.setDisplayHomeAsUpEnabled(true)
-
+        // Meto los registros
         tasks = ArrayList()
         getTasks()
-        tasks.sortWith(compareByDescending<TaskEntity>({it.dificultad}).thenByDescending { it.puntuacion }.thenByDescending { it.numeroPulsaciones })
-
+        addTask(
+            TaskEntity(
+                nombre = "nombre",
+                dificultad = 1,
+                puntuacion = 1,
+                numeroPulsaciones = 3,
+                //fechaHora = LocalDateTime.now().format(DateTimeFormatter.ofPattern("dd/MM/uu kk:mm"))
+                fechaHora = "dd/MM"
+            )
+        )
     }
 
+    /**
+     * Introduce todos los registros de la BD en la lista tasks.
+     * Para ello accedemos a la DAO y obtenemos todos los registros
+     */
     fun getTasks() = runBlocking {
         launch {
             tasks = PuntuacionesApp.database.taskDao().getAllTasks()
-            setUpRecyclerView(tasks)
+            setUpRecyclerView(tasks)    // Seteo la ReciclerView con los elementos de tasks
         }
     }
 
+    /**
+     * Seteo la ReciclerView con los elementos de tasks
+     */
     fun setUpRecyclerView(tasks: List<TaskEntity>) {
         adapter = TaskAdapter(tasks, { updateTask(it) }, { deleteTask(it) })
         recyclerView = findViewById(R.id.rvTask)
@@ -68,7 +80,7 @@ class Puntuaciones : AppCompatActivity() {
         }
     }
 
-    companion object {
+    companion object {  // Hago la lista, el adaptador y addTask "estáticos para que se puedan llamar desde otros sitios, pero si solo lo uso aquí habría que quitar companion object
         lateinit var tasks: MutableList<TaskEntity>
         lateinit var adapter: TaskAdapter
 
@@ -82,5 +94,4 @@ class Puntuaciones : AppCompatActivity() {
             }
         }
     }
-
 }
