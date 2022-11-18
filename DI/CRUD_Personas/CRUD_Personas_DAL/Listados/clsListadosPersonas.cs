@@ -1,10 +1,6 @@
 ﻿using _07_CRUD_Personas_DAL.Conexion;
 using Microsoft.Data.SqlClient;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using CRUD_Personas_Entidades;
 
 namespace CRUD_Personas_DAL.Listados
 {
@@ -17,11 +13,8 @@ namespace CRUD_Personas_DAL.Listados
             SqlCommand miComando = new SqlCommand();
             SqlDataReader miLector;
             clsPersona oPersona;
-            miConexion.ConnectionString = "server=dhurtado.database.windows.net;database=diegoDB;uid=fernando;pwd=Mandaloriano69;";
             try
             {
-                miConexion.Open();
-
                 miComando.CommandText = "SELECT * FROM Personas";
                 miComando.Connection = miConexion;
 
@@ -70,4 +63,4 @@ namespace CRUD_Personas_DAL.Listados
         }
     }
 }
-}
+
