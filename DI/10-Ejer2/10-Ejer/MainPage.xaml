@@ -1,0 +1,68 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:model="clr-namespace:_10_Ejer.Models.ViewModels"
+             x:Class="_10_Ejer.MainPage"
+             BackgroundColor="AliceBlue"
+             Title=""
+             x:Name="pagina">
+
+    <ContentPage.BindingContext>
+        <model:clsListadoYpersonaVM/>
+    </ContentPage.BindingContext>
+
+    <ContentPage.MenuBarItems>
+        <MenuBarItem Text="Persona"
+                     BindingContext="{Binding Path=BindingContext,
+                                          Source={x:Reference pagina}}">
+            <MenuFlyoutItem Text="Eliminar"
+                            Command="{Binding EliminarPersonaCommand}"/>
+        </MenuBarItem>
+    </ContentPage.MenuBarItems>
+    
+    <Grid HorizontalOptions="Center" RowSpacing="20">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="7*"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="auto"/>
+        </Grid.ColumnDefinitions>
+
+        <HorizontalStackLayout HorizontalOptions="Center">
+            <Entry x:Name="txtBuscarPersona"  FontSize="20" FontAttributes="Bold" MinimumWidthRequest="300" BackgroundColor="WhiteSmoke"
+                   Text="{Binding EntryBuscarPersona}"/>
+            <ImageButton x:Name="imgBtnBuscarPersona"
+                         Source="search.png"
+                         Command="{Binding BuscarPersonaCommand}"/>
+        </HorizontalStackLayout>
+
+        <ListView x:Name="lstListadoPersonas" Grid.Row="1" 
+                  ItemsSource="{Binding ListadoPersonasMostrado}"
+                  SelectedItem="{Binding PersonaSeleccionada}">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="auto"/>
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+
+                            <Label Text="{Binding Nombre}" FontSize="20" FontAttributes="Bold" HorizontalTextAlignment="Center"/>
+                            <Label Grid.Column="1" Text="{Binding Apellido}" FontSize="20" FontAttributes="Bold" HorizontalTextAlignment="Center"/>
+                        </Grid>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+        <ImageButton x:Name="imgBtnEliminarPersona" Grid.Row="2" HorizontalOptions="Center"
+                     Source="delete.png"
+                     Command="{Binding EliminarPersonaCommand}"/>
+
+    </Grid>
+</ContentPage>

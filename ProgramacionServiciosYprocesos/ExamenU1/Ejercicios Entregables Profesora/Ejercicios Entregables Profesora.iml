@@ -3,10 +3,11 @@
   <component name="NewModuleRootManager" inherit-compiler-output="true">
     <exclude-output />
     <content url="file://$MODULE_DIR$">
-      <sourceFolder url="file://$MODULE_DIR$/src" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Ej1" isTestSource="false" packagePrefix="ejercicio1" />
+      <sourceFolder url="file://$MODULE_DIR$/Ej2" isTestSource="false" packagePrefix="ejercicio2" />
+      <sourceFolder url="file://$MODULE_DIR$/Ej3" isTestSource="false" packagePrefix="ejercicio3" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
-    <orderEntry type="library" name="mysql-connector-j-8.0.31" level="project" />
   </component>
 </module>

@@ -3,10 +3,11 @@
   <component name="NewModuleRootManager" inherit-compiler-output="true">
     <exclude-output />
     <content url="file://$MODULE_DIR$">
-      <sourceFolder url="file://$MODULE_DIR$/src" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Ejemplos" isTestSource="false" packagePrefix="ejecutacomandotimeout" />
+      <sourceFolder url="file://$MODULE_DIR$/Ejercicios Clase" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Ejercicios Entregables" isTestSource="false" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
-    <orderEntry type="library" name="mysql-connector-j-8.0.31" level="project" />
   </component>
 </module>

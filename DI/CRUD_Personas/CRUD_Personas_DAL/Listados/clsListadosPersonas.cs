@@ -1,13 +1,18 @@
-﻿using Microsoft.Data.SqlClient;
-using U10_Ej2.Models.Entidades;
+﻿using _07_CRUD_Personas_DAL.Conexion;
+using Microsoft.Data.SqlClient;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
-namespace U10_Ej2.Models.DAL
+namespace CRUD_Personas_DAL.Listados
 {
     public static class clsListadosPersonas
     {
         public static List<clsPersona> obtenerListadoCompleto()
         {
-            SqlConnection miConexion = new SqlConnection();
+            SqlConnection miConexion = clsMyConnection.getConnection();
             List<clsPersona> personas = new List<clsPersona>();
             SqlCommand miComando = new SqlCommand();
             SqlDataReader miLector;
@@ -64,4 +69,5 @@ namespace U10_Ej2.Models.DAL
             return personas;
         }
     }
+}
 }
