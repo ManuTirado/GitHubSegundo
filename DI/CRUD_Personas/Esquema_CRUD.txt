@@ -1,0 +1,246 @@
+ASP.NET
+	CONTROLLERS
+	HomeController
+		Index
+
+	PersonaController
+		ListadoPersona
+			return View(vmListadoPersonas)
+		[HttPost]
+		ListadoPersona(string busquedaUsuario)
+			return View(vmListadoPersonas)
+
+			EditarPersona(clsPersona)
+				return View(vmEditarPersona)
+			[HttPost]
+			EditarPersona(vmEditarPersona)
+				return View(vmEditarPersonas)
+		
+			InsertarPersona()
+				return View(vmEditarInsertarPersona)
+			[HttPost]
+			InsertarPersona(vmEditarInsertarPersona)
+				return View()
+		
+			BorrarPersona(clsPersona)
+				return View()
+
+	DepartamentoController
+		ListadoDepartamento
+			return View(vmListadoDepartamentos)
+		[HttPost]
+		ListadoDepartamento(string busquedaUsuario) 
+			return View(vmListadoDepartamentos)
+
+			EditarDepartamento(clsDepartamento)
+				return View(clsDepartamento)
+			[HttPost]
+			EditarDepartamento(clsDepartamento)
+				return View(clsDepartamento)
+
+			InsertarDepartamento()
+				return View()
+			[HttPost]
+			InsertarDepartamento()
+				return View()
+
+			BorrarDepartamento(clsDepartamento)
+				return View()
+
+
+	VISTAS
+	Bienvenido
+		ListaPersonas
+			EditarPersona
+			InsertarPersona
+			BorrarPersona
+
+		ListaDepartamentos
+			EditarDepartamento
+			InsertarDepartamento
+			BorrarDepartamento
+	MODEL
+	clsPersonaNombreDepartmento extends clsPersona
+	{
+		String nombreDepartamento
+	}
+
+	VIEWMODELS
+	vmListadoPersonas
+	{
+		private List<clsDepartamento> listaDepartamentos;
+		List<clsPersonaNombreDepartmento> listaPersonas;
+	}
+
+	vmEditarInsertarPersona
+	{
+		clsPersona persona;
+		List<clsDepartamentos> listaDepartmentos;
+	}
+
+	vmDepartamentos
+	{
+		List<clsDepartamento> listaDepartamentos;
+		clsDepartamento departamentoSeleccionado
+	}
+
+MAUI
+	VISTAS
+	ListadoPersonas
+		EditarPersona
+		InsertarPersona
+	ListadoDepartamentos
+		EditarDepartamento
+		InsertarDepartamento
+
+	MODEL
+	clsPersonaNombreDepartmento extends clsPersona
+	{
+		String nombre
+	}
+
+	VIEWMODELS
+	vmListadoPersonas
+	{
+		private List<clsDepartamento> listaDepartamentos;
+		List<clsPersonaNombreDepartmento> listaPersonas;
+		private List<clsPersona> listaPersonasBackup;
+		clsPersona personaSeleccionado;
+		String busquedaUsuario;
+		Delegatecommand eliminarPersona;
+		Delegatecommand buscarPersona;
+		Delegatecommand editarPersona;
+	}
+
+	vmEditarPersona
+	{
+		clsPersona personaSeleccionada;
+		clsPersona personaEditada;
+		List<clsDepartamento> listaDepartmentos;
+		Delegatecommand editarPersona;
+		¿?comando para insertar imagen
+	}
+
+	vmInsertarPersona
+	{
+		clsPersona personaInsertada;
+		List<clsDepartamento> listaDepartmentos;
+		Delegatecommand insertarPersona;
+		¿?comando para insertar imagen
+	}
+
+	vmDepartamentos
+	{
+		List<clsDepartamento> listaDepartamentos;
+		List<clsDepartamento> listaDepartamentosBackup;
+		clsDepartamento departamentoSeleccionado
+		Delegatecommand eliminarDepartamento;
+		Delegatecommand buscarDepartamento;
+		Delegatecommand editarDepartamento;
+	}
+
+	vmEditarDepartamento
+	{
+		clsDepartamentoSeleccionado;
+		clsDepartamentoEditado;
+		DelegateCommand editarDepartamento;
+	}
+
+	vmInsertarDepartamento
+	{
+		clsDepartamentoSeleccionado;
+		clsDepartamentoEditado;
+		DelegateCommand editarDepartamento;
+	}
+
+
+DAL
+Nuestar DAL constará de dos carpetas, manejadores y listados:
+
+Manejadores
+Tendremos una clase por cada entidad, dentro de la cual habrá métodos de inserción, borrado y edición:
+	
+	clsManejadoraPersonasDAL
+		public int ClsPersonaEditarPersonasDAL(int idPersona,clsPersona personaEditada){}
+
+		public int InsertarPersonasDAL(clsPersona personaInsertar){}
+
+		public int BorrarPersonasDAL(int id){}
+
+	clsManejadoraDepartamentosDAL
+		public int ClsPersonaEditarDepartamentoDAL(int idDepartamento,clsDepartamento departamentoEditado){}
+
+		public int InsertarDepartamentosDAL(clsDepartamento departamentoInsertar){}
+
+		public int BorrarDepartamentosDAL(int id){}
+
+Listados
+Aquí tendremos la clsListados, donde tendremos dos métodos, uno para obtener una lista de personas y otro para obtener una lista de departamentos:
+	public List<clsPersona> ListadoPersonasDAL(){}
+
+	Método ASP
+	public List<clsPersona> ListadoPersonasFiltradasDAL(String busquedaUsuario){}
+
+	public List<clsDepartamento> ListadoDepartamentosDAL(){}
+
+	Método ASP
+	public List<clsDepartamento> ListadoDepartamentosFiltradasDAL(String busquedaUsuario){}
+
+
+
+BL
+Nuestar BL constará de dos carpetas, manejadores y listados:
+
+
+
+Manejadores
+Tendremos una clase por cada entidad, dentro de la cual habrá métodos de inserción, borrado y edición:
+	
+	clsManejadoraPersonasBL
+		public clsPersona EditarPersonasBL(int idPersona,clsPersona personaEditada){}
+
+		public int InsertarPersonasBL(clsPersona personaInsertar){}
+
+		public int BorrarPersonasBL(int id){}
+
+	clsManejadoraDepartamentosBL
+		public int EditarDepartamentoBL(int idPersona,clsPersona personaEditada){}
+
+		public int InsertarDepartamentosBL(clsPersona personaInsertar){}
+
+		public int BorrarDepartamentosBL(int id){}
+
+Listados
+Aquí tendremos la clsListados, donde tendremos dos métodos, uno para obtener una lista de personas y otro para obtener una lista de departamentos:
+	public List<clsPersona> ListadoPersonasBL(){}
+
+	Método ASP
+	public List<clsPersona> ListadoPersonasFiltradasBL(String busquedaUsuario){}
+
+	public List<clsDepartamento> ListadoDepartamentosBL(){}
+
+	Método ASP
+	public List<clsDepartamento> ListadoDepartamentosFiltradasBL(String busquedaUsuario){}
+
+
+Entidades
+Las dos entidades que usaremos en este ejercicio serán clsDepartamento y clsPersona:
+
+	clsDepartamento
+	{
+		int ID,
+		String Nombre
+	}
+
+
+	clsPersona
+	{
+		int ID,  
+		String Nombre,
+		String Apellidos,
+		String Telefono,
+		String Direccion,
+		String Foto,
+		DateTime FechaNacimiento,
+		int IDDepartamento 
+	}

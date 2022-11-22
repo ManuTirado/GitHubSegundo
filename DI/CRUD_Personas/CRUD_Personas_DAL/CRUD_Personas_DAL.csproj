@@ -11,10 +11,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Manejadoras\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\CRUD_Personas_Entidades\CRUD_Personas_Entidades.csproj" />
   </ItemGroup>
 
