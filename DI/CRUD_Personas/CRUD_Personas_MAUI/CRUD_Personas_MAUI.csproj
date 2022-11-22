@@ -49,6 +49,14 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <None Remove="Resources\Images\about.png" />
+	  <None Remove="Resources\Images\department.png" />
+	  <None Remove="Resources\Images\edit.png" />
+	  <None Remove="Resources\Images\menu.png" />
+	  <None Remove="Resources\Images\persona.png" />
+	</ItemGroup>
+
+	<ItemGroup>
 	  <ProjectReference Include="..\CRUD_Personas_BL\CRUD_Personas_BL.csproj" />
 	  <ProjectReference Include="..\CRUD_Personas_Entidades\CRUD_Personas_Entidades.csproj" />
 	</ItemGroup>

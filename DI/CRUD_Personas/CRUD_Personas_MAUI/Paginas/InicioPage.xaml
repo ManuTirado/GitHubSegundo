@@ -5,7 +5,7 @@
              Title="InicioPage">
     <VerticalStackLayout>
         <Label 
-            Text="Welcome to .NET MAUI!"
+            Text="INICIO PAGE"
             VerticalOptions="Center" 
             HorizontalOptions="Center" />
     </VerticalStackLayout>
