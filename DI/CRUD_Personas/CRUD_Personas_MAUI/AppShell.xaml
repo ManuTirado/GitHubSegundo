@@ -6,10 +6,7 @@
     xmlns:local="clr-namespace:CRUD_Personas_MAUI"
     xmlns:paginas="clr-namespace:CRUD_Personas_MAUI.Paginas">
 
-
-
     <FlyoutItem  FlyoutDisplayOptions="AsMultipleItems">
-
         <Tab Title="Personas"
              Icon="persona.png">
             <ShellContent ContentTemplate="{DataTemplate paginas:ListadoPersonasPage}" />
@@ -19,13 +16,8 @@
              Icon="department.png" >
             <ShellContent ContentTemplate="{DataTemplate paginas:ListadoDepartamentosPage}"/>
         </Tab>
-
-        <Tab Title="About"
-             Icon="about.png"
-             IsVisible="True">
-            <ShellContent 
-                IsVisible="False"
-                      ContentTemplate="{DataTemplate paginas:InicioPage}"/>
-        </Tab>
     </FlyoutItem>
+    <ShellContent Title="About"
+                  Icon="about.png"
+                  ContentTemplate="{DataTemplate paginas:InicioPage}"/>
 </Shell>

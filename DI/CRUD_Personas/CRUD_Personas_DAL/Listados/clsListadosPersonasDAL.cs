@@ -4,9 +4,9 @@ using CRUD_Personas_Entidades;
 
 namespace CRUD_Personas_DAL.Listados
 {
-    public static class clsListadosPersonas
+    public static class clsListadosPersonasDAL
     {
-        public static List<clsPersona> obtenerListadoCompleto()
+        public static List<clsPersona> ListadoCompletoPersonasDAL()
         {
             SqlConnection miConexion = clsMyConnection.getConnection();
             List<clsPersona> personas = new List<clsPersona>();
