@@ -12,7 +12,7 @@ namespace CRUD_Personas_DAL.Manejadoras
             SqlConnection miConexion = clsMyConnection.getConnection();
             SqlCommand miComando = new SqlCommand();
 
-            miComando.CommandText = "UPDATE Personas " +
+            miComando.CommandText = "UPDATE Departamentos " +
                                     "SET Nombre = @nombre" +
                                     "WHERE ID = @id";
             miComando.Parameters.AddWithValue("@nombre", departamentoEditado.Nombre);
@@ -30,7 +30,7 @@ namespace CRUD_Personas_DAL.Manejadoras
             SqlConnection miConexion = clsMyConnection.getConnection();
             SqlCommand miComando = new SqlCommand();
 
-            miComando.CommandText = "INSERT INTO Personas (Nombre) " +
+            miComando.CommandText = "INSERT INTO Departamentos (Nombre) " +
                                     "VALUES (@nombre)";
             miComando.Parameters.AddWithValue("@nombre", departamentoInsertar.Nombre);
 
@@ -46,7 +46,7 @@ namespace CRUD_Personas_DAL.Manejadoras
             SqlConnection miConexion = clsMyConnection.getConnection();
             SqlCommand miComando = new SqlCommand();
 
-            miComando.CommandText = "DELETE FROM Personas (Nombre) " +
+            miComando.CommandText = "DELETE FROM Departamentos " +
                                     "WHERE ID = @id";
             miComando.Parameters.AddWithValue("@id", id);
 

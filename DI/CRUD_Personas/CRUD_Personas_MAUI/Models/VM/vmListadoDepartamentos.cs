@@ -3,14 +3,14 @@ using CRUD_Personas_MAUI.Models.Utilidades;
 
 namespace CRUD_Personas_MAUI.Models.VM
 {
-    public class vmDepartamentos
+    public class vmListadoDepartamentos
     {
-        List<clsDepartamento> listaDepartamentos;
-        List<clsDepartamento> listaDepartamentosBackup;
+        private List<clsDepartamento> listaDepartamentosBackup;
+        public List<clsDepartamento> listaDepartamentos;
         clsDepartamento departamentoSeleccionado;
 
         DelegateCommand eliminarDepartamento;
-        DelegateCommand buscarDepartamento;
+        DelegateCommand anadirDepartamento;
         DelegateCommand editarDepartamento;
     }
 }

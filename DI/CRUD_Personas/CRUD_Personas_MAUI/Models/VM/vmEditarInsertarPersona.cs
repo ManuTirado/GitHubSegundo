@@ -3,12 +3,10 @@ using CRUD_Personas_MAUI.Models.Utilidades;
 
 namespace CRUD_Personas_MAUI.Models.VM
 {
-    public class vmEditarPersona
+    public class vmEditarInsertarPersona
     {
         clsPersona personaSeleccionada;
-        clsPersona personaEditada;
         List<clsDepartamento> listaDepartmentos;
-        DelegateCommand editarPersona;
-		// ¿?comando para insertar imagen
+        DelegateCommand guardarPersona; // Diferenciar entre inserción o actualización
     }
 }

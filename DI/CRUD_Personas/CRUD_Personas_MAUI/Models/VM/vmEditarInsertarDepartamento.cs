@@ -8,10 +8,9 @@ using System.Threading.Tasks;
 
 namespace CRUD_Personas_MAUI.Models.VM
 {
-    public class vmEditarDepartamento
+    public class vmEditarInsertarDepartamento
     {
         clsDepartamento departamentoSeleccionado;
-		clsDepartamento departamentoEditado;
-		DelegateCommand editarDepartamento;
+		DelegateCommand guardarDepartamento; // Diferenciar entre inserción o actualización
     }
 }

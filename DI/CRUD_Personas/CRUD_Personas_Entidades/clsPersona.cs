@@ -3,7 +3,7 @@
     public class clsPersona
     {
         #region Atributos
-        public int ID { get; set; }
+        public int ID { get; }
 
         public string Nombre { get; set; }
 
