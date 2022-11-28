@@ -11,5 +11,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Ver video" />
+    <Button
+        android:id="@+id/btnReproducirAudio"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Reproducir Audio" />
 
 </LinearLayout>

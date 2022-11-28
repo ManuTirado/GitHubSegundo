@@ -50,6 +50,7 @@
 
 	<ItemGroup>
 	  <None Remove="Resources\Images\about.png" />
+	  <None Remove="Resources\Images\delete.png" />
 	  <None Remove="Resources\Images\department.png" />
 	  <None Remove="Resources\Images\edit.png" />
 	  <None Remove="Resources\Images\menu.png" />

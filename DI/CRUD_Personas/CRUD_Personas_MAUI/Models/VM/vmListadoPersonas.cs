@@ -2,6 +2,7 @@
 using CRUD_Personas_MAUI.Models.Utilidades;
 using CRUD_Personas_BL.Listados;
 using System.Collections.ObjectModel;
+using CRUD_Personas_MAUI.Paginas;
 
 namespace CRUD_Personas_MAUI.Models.VM
 {
@@ -33,12 +34,14 @@ namespace CRUD_Personas_MAUI.Models.VM
                 if (personaSeleccionada != value)
                 {
                     personaSeleccionada = value;
+                    // navegarApagina("DetallesPersona");
                     // eliminarPersona.RaiseCanExecuteChanged();
                     // editarPersona.RaiseCanExecuteChanged();
                     NotifyPropertyChanged(nameof(PersonaSeleccionada));
                 }
             }
         }
+
         public string BusquedaUsuario
         {
             get { return busquedaUsuario; }
@@ -83,25 +86,36 @@ namespace CRUD_Personas_MAUI.Models.VM
         #endregion
 
         #region Constructores
-        public vmListadoPersonas ()
+        public vmListadoPersonas()
         {
-            listaPersonasBackup = clsListadosPersonasBL.ListadoCompletoPersonasBL();
-            listaDepartamentos = clsListadosDepartamentosBL.ListadoCompletoDepartamentosBL();
-            foreach (var persona in listaPersonasBackup)
-            {
-                clsPersonaNombreDepartamento personaNombreDepartamento = (clsPersonaNombreDepartamento) persona;
-                personaNombreDepartamento.NombreDepartamento = listaDepartamentos.Find(x => x.ID == persona.IDDepartamento).Nombre;
-                listaPersonas.Add(personaNombreDepartamento);
-            }
-            
-            eliminarPersona = new DelegateCommand(EliminarPersonaCommand_execute, EliminarPersonaCommand_canExecute);
-            buscarPersona = new DelegateCommand(BuscarPersonaCommand_execute, BuscarPersonaCommand_canExecute); 
-            editarPersona = new DelegateCommand(EditarPersonaCommand_execute, EditarPersonaCommand_canExecute); 
-            anadirPersona = new DelegateCommand(AnadirPersonaCommand_execute, AnadirPersonaCommand_canExecute); 
+           
+                listaPersonasBackup = clsListadosPersonasBL.ListadoCompletoPersonasBL();
+                listaDepartamentos = clsListadosDepartamentosBL.ListadoCompletoDepartamentosBL();
+                listaPersonas = new ObservableCollection<clsPersonaNombreDepartamento>();
+                foreach (var persona in listaPersonasBackup)
+                {
+                    clsPersonaNombreDepartamento personaNombreDepartamento = new clsPersonaNombreDepartamento(persona);
+                    personaNombreDepartamento.NombreDepartamento = listaDepartamentos.Find(x => x.ID == persona.IDDepartamento).Nombre;
+                    listaPersonas.Add(personaNombreDepartamento);
+                }
+
+        
+           
+            //eliminarPersona = new DelegateCommand(EliminarPersonaCommand_execute, EliminarPersonaCommand_canExecute);
+            //buscarPersona = new DelegateCommand(BuscarPersonaCommand_execute, BuscarPersonaCommand_canExecute); 
+            //editarPersona = new DelegateCommand(EditarPersonaCommand_execute, EditarPersonaCommand_canExecute); 
+            //anadirPersona = new DelegateCommand(AnadirPersonaCommand_execute, AnadirPersonaCommand_canExecute); 
         }
         #endregion
 
         #region Comandos
+        #endregion
+
+        #region Métodos
+        private async void navegarApagina(string ruta)
+        {
+            await Shell.Current.GoToAsync(ruta);
+        }
         #endregion
     }
 }

@@ -7,16 +7,58 @@
     <ContentPage.BindingContext>
         <model:vmListadoPersonas/>
     </ContentPage.BindingContext>
-    
-    <VerticalStackLayout>
-        <ListView x:Name="lstListadoPersonas" 
+
+    <StackLayout Orientation="Vertical">
+        <SearchBar Text="Barra de búsqueda" HorizontalOptions="Center"/>
+        <ListView x:Name="lstListadoPersonas"  HorizontalOptions="Center" HasUnevenRows="True"
                   ItemsSource="{Binding ListaPersonas}"
                   SelectedItem="{Binding PersonaSeleccionada}">
             <ListView.ItemTemplate>
                 <DataTemplate>
-                    <TextCell Text="{Binding Nombre}"/>
+                    <SwitchCell>
+                        <
+                        <SwipeView>
+                            <SwipeView.LeftItems>
+                                <SwipeItems>
+                                    <SwipeItem Text="Favorite"
+                       IconImageSource="edit.png"
+                       BackgroundColor="LightGreen"/>
+                       <!--Invoked="OnFavoriteSwipeItemInvoked"--> 
+                                    <SwipeItem Text="Delete"
+                       IconImageSource="delete.png"
+                       BackgroundColor="LightPink"/>
+                       <!--Invoked="OnDeleteSwipeItemInvoked"--> 
+                                </SwipeItems>
+                            </SwipeView.LeftItems>
+                            <!-- Content -->
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="*"/>
+                                    <RowDefinition Height="*"/>
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="auto"/>
+                                    <ColumnDefinition Width="auto"/>
+                                    <ColumnDefinition Width="auto"/>
+                                    <ColumnDefinition Width="auto"/>
+                                </Grid.ColumnDefinitions>
+
+                                <Image Grid.RowSpan="2"
+                               Source="{Binding Foto}"
+                                   WidthRequest="70"
+                                       HeightRequest="100"
+                                    Aspect="AspectFit"/>
+                                <Label Grid.Row="0" Grid.Column="1"
+                               Text="{Binding Nombre}"/>
+                                <Label Grid.Row="1" Grid.Column="1"
+                               Text="{Binding Apellidos}"/>
+                                <Label Grid.RowSpan="2" Grid.Column="2" VerticalOptions="Center"
+                               Text="{Binding NombreDepartamento}"/>
+                            </Grid>
+                        </SwipeView>
+                    </SwitchCell>
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
-    </VerticalStackLayout>
+    </StackLayout>
 </ContentPage>

@@ -9,7 +9,7 @@ namespace CRUD_Personas_Entidades
     public class clsDepartamento
     {
         #region Atributos
-        public int ID { get; }
+        public int ID { get; set; }
 
         public string Nombre { get; set; }
         #endregion

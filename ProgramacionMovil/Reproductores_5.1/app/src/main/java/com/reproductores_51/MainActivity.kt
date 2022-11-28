@@ -1,6 +1,5 @@
 package com.reproductores_51
 
-import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -19,7 +18,13 @@ class MainActivity : AppCompatActivity() {
 
         val btnVerVideo:Button = findViewById(R.id.btnVerVideo)
         btnVerVideo.setOnClickListener {
-            val reproductor = Intent(this, Reproductor::class.java)
+            val reproductor = Intent(this, ReproductorVideo::class.java)
+            startActivity(reproductor)
+        }
+
+        val btnReproductorAudio:Button = findViewById(R.id.btnReproducirAudio)
+        btnReproductorAudio.setOnClickListener {
+            val reproductor = Intent(this, ReproductorAudio::class.java)
             startActivity(reproductor)
         }
 

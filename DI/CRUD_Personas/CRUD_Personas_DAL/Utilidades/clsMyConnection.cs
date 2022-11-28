@@ -21,7 +21,7 @@ namespace _07_CRUD_Personas_DAL.Conexion
     public static class clsMyConnection
     {
         #region Atributos
-        private static string server = "server=dhurtado.database.windows.net";
+        private static string server = "dhurtado.database.windows.net";
         private static string dataBase = "diegoDB";
         private static string user = "fernando";
         private static string pass = "Mandaloriano69";
@@ -36,20 +36,26 @@ namespace _07_CRUD_Personas_DAL.Conexion
         public static SqlConnection getConnection()
         {
             SqlConnection connection = new SqlConnection();
-
-            try
+            bool conectado = false;
+            for (int i = 0; i < 10 && !conectado; i++)
             {
-
-                connection.ConnectionString = $"server={server};database={dataBase};uid={user};pwd={pass};";
-                connection.Open();
+                try
+                {
+                    connection.ConnectionString = $"server={server};database={dataBase};uid={user};pwd={pass};";
+                    //connection.ConnectionString = "server=dhurtado.database.windows.net;database=diegoDB;uid=fernando;pwd=Mandaloriano69;";
+                    connection.Open();
+                    conectado = true;
+                }
+                catch (SqlException)
+                {
+                    conectado=false;
+                    if (i >= 9)
+                    {
+                        throw;
+                    }
+                }
             }
-            catch (SqlException)
-            {
-                throw;
-            }
-
             return connection;
-
         }
 
         /// <summary>
