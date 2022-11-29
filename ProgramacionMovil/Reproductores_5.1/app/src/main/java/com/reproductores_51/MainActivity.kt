@@ -4,19 +4,21 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.*
+import com.reproductores_51.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
 
+    private lateinit var binding : ActivityMainBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        binding = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
-        val arrayAdapter: ArrayAdapter<*>
-        val multimedia = mutableListOf<multimedia>(
+        val multimedia = arrayListOf<multimedia>(
             multimedia(
                 "Video1",
-                "https://file-examples.com/storage/feeb31b1716385276a318de/2017/04/file_example_MP4_480_1_5MG.mp4",
+                "https://static.videezy.com/system/resources/previews/000/018/948/original/ICON-VERSION8_1.mp4",
                 R.drawable.ic_baseline_ondemand_video_24,
                 true
             ),
@@ -27,21 +29,22 @@ class MainActivity : AppCompatActivity() {
                 false
             )
         )
-        val lvMultimedia = findViewById<ListView>(R.id.lvMultimedia)
 
-        arrayAdapter = ArrayAdapter(this, android.R.layout.simple_list_item_1, multimedia)
-        lvMultimedia.adapter = arrayAdapter
+        binding.lvMultimedia.isClickable = true
+        binding.lvMultimedia.adapter = MyAdapter(this,multimedia)
 
-        lvMultimedia.setOnItemClickListener() { parent, view, position, id ->
+        binding.lvMultimedia.setOnItemClickListener() { parent, view, position, id ->
             var elemento: multimedia = parent.getItemAtPosition(position) as multimedia
             if (elemento.isVideo) {
                 val reproductor = Intent(this, ReproductorVideo::class.java)
                 reproductor.putExtra("rutaContenido", elemento.rutaContenido)
                 startActivity(reproductor)
-            } else {
+            } else if (!elemento.isVideo) {
                 val reproductor = Intent(this, ReproductorAudio::class.java)
-                reproductor.putExtra("rutaContenido", elemento.rutaContenido)
-                reproductor.putExtra("rutaImagen", elemento.rutaImagen)
+                var rutaContenido:String = elemento.rutaContenido
+                var rutaImagen:Int = elemento.rutaImagen
+                reproductor.putExtra("rutaContenido", rutaContenido)
+                reproductor.putExtra("rutaImagen", rutaImagen)
                 startActivity(reproductor)
             }
         }

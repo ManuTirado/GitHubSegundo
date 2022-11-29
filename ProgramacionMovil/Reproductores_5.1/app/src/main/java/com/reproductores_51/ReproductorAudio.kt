@@ -31,12 +31,12 @@ class ReproductorAudio : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_reproductor_audio)
 
-        val rutaContenido:String = intent.getStringExtra("rutaContenido")!!
-        val rutaImagen:String = intent.getStringExtra("rutaImagen")!!
+        val rutaContenido: String = intent.getStringExtra("rutaContenido")!!
+        val rutaImagen:Int = intent.getIntExtra("rutaImagen",1)
 
         var uriAudio = rutaContenido
         val imagenCaratula = findViewById<ImageView>(R.id.ivCaratula)
-        imagenCaratula.setImageDrawable(getDrawable(rutaImagen.toInt()))
+        imagenCaratula.setImageDrawable(getDrawable(rutaImagen))
 
         mediaplayer = MediaPlayer.create(this, Uri.parse(uriAudio))
         //mediaplayer  = MediaPlayer.create(this, R.raw.aprieta_carrasquito)
@@ -44,7 +44,7 @@ class ReproductorAudio : AppCompatActivity() {
         val seekbar: SeekBar = findViewById(R.id.seekBar)
         seekbar.max = mediaplayer!!.duration
 
-        //Obtenemos los tres botones de la interfaz
+        //Obtenemos los dos botones de la interfaz
         val btnPlay: ImageButton = findViewById(R.id.btnPlayAudio);
         val btnPause: ImageButton = findViewById(R.id.btnPauseAudio);
         //Y les asignamos el controlador de eventos
@@ -82,5 +82,12 @@ class ReproductorAudio : AppCompatActivity() {
             mediaplayer!!.seekTo(0)
             seekbar.progress = 0
         }
+    }
+
+    override fun onDestroy() {
+        if (mediaplayer != null) {
+            mediaplayer?.stop()
+        }
+        super.onDestroy()
     }
 }
