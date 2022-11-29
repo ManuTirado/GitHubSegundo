@@ -35,7 +35,8 @@ dependencies {
     // Reproducir video youtube
     implementation 'com.pierfrancescosoffritti.androidyoutubeplayer:core:11.1.0'
 
-    //
+    // Notificación
+    //implementation "com.android.support:support-compat:28.0.0"
 
     implementation 'androidx.core:core-ktx:1.7.0'
     implementation 'androidx.appcompat:appcompat:1.5.1'

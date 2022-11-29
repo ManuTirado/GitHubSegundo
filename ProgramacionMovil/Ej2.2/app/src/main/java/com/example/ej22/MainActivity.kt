@@ -36,6 +36,7 @@ class MainActivity : AppCompatActivity() {
     override fun onStart() {
         super.onStart()
         setContentView(R.layout.activity_main)
+
         var builder = NotificationCompat.Builder(this, "idCanal")
             .setSmallIcon(android.R.drawable.btn_star)
             .setContentTitle("Estado de la aplicación")

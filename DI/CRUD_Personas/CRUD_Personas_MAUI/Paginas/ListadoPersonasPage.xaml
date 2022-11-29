@@ -15,8 +15,7 @@
                   SelectedItem="{Binding PersonaSeleccionada}">
             <ListView.ItemTemplate>
                 <DataTemplate>
-                    <SwitchCell>
-                        <
+                    <ViewCell>
                         <SwipeView>
                             <SwipeView.LeftItems>
                                 <SwipeItems>
@@ -56,7 +55,7 @@
                                Text="{Binding NombreDepartamento}"/>
                             </Grid>
                         </SwipeView>
-                    </SwitchCell>
+                    </ViewCell>
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>

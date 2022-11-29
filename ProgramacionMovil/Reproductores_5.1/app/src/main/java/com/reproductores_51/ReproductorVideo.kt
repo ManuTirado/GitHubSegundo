@@ -4,7 +4,6 @@ import android.os.Bundle
 import android.widget.MediaController
 import android.widget.Toast
 import android.widget.VideoView
-import androidx.appcompat.app.ActionBar
 import androidx.appcompat.app.AppCompatActivity
 
 class ReproductorVideo : AppCompatActivity() {
@@ -15,10 +14,14 @@ class ReproductorVideo : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_reproductor)
+        setContentView(R.layout.activity_reproductor_video)
+
+        val rutaContenido:String = intent.getStringExtra("rutaContenido")!!
+
+        var rutaVideo:String = rutaContenido
 
         videoView = findViewById<VideoView>(R.id.vvVideoInternet)
-        videoView.setVideoPath("https://file-examples.com/storage/fe7b2149a76383f20ac005f/2017/04/file_example_MP4_480_1_5MG.mp4")
+        videoView.setVideoPath(rutaVideo)
 
         mediaController = MediaController(this)
         mediaController.setAnchorView(videoView)

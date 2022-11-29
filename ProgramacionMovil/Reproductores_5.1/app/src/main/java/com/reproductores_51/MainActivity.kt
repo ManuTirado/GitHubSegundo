@@ -7,41 +7,46 @@ import android.widget.*
 
 class MainActivity : AppCompatActivity() {
 
-//    var listView: ListView = ListView(this)
-//    var listaMultimedia: ArrayList<String> = ArrayList()
-//    lateinit var listaAdapter: ArrayAdapter<String>
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        val btnVerVideo:Button = findViewById(R.id.btnVerVideo)
-        btnVerVideo.setOnClickListener {
-            val reproductor = Intent(this, ReproductorVideo::class.java)
-            startActivity(reproductor)
-        }
+        val arrayAdapter: ArrayAdapter<*>
+        val multimedia = mutableListOf<multimedia>(
+            multimedia(
+                "Video1",
+                "https://file-examples.com/storage/feeb31b1716385276a318de/2017/04/file_example_MP4_480_1_5MG.mp4",
+                R.drawable.ic_baseline_ondemand_video_24,
+                true
+            ),
+            multimedia(
+                "Audio1",
+                "https://www.learningcontainer.com/wp-content/uploads/2020/02/Kalimba.mp3",
+                R.drawable.carrasquito,
+                false
+            )
+        )
+        val lvMultimedia = findViewById<ListView>(R.id.lvMultimedia)
 
-        val btnReproductorAudio:Button = findViewById(R.id.btnReproducirAudio)
-        btnReproductorAudio.setOnClickListener {
-            val reproductor = Intent(this, ReproductorAudio::class.java)
-            startActivity(reproductor)
-        }
+        arrayAdapter = ArrayAdapter(this, android.R.layout.simple_list_item_1, multimedia)
+        lvMultimedia.adapter = arrayAdapter
 
-//
-//        listView = findViewById(R.id.lvElementosReproducibles)
-//        listView.setOnItemClickListener()
-//
-//        listaAdapter = ArrayAdapter(this, R.layout.activity_main, listaMultimedia)
-//
-//
-//        listaMultimedia.add("https://www.youtube.com/watch?v=pd8XB1PIpfk&ab_channel=DannyValdiviezoCeli")
-//        listaMultimedia.add("https://www.youtube.com/watch?v=5aAmhF6fRuI&ab_channel=Zazzaelitaliano")
-//        listaMultimedia.add("https://www.youtube.com/watch?v=VTA7cgyQwMQ&ab_channel=IlloJuan")
-//
-//        listView.adapter = listaAdapter
+        lvMultimedia.setOnItemClickListener() { parent, view, position, id ->
+            var elemento: multimedia = parent.getItemAtPosition(position) as multimedia
+            if (elemento.isVideo) {
+                val reproductor = Intent(this, ReproductorVideo::class.java)
+                reproductor.putExtra("rutaContenido", elemento.rutaContenido)
+                startActivity(reproductor)
+            } else {
+                val reproductor = Intent(this, ReproductorAudio::class.java)
+                reproductor.putExtra("rutaContenido", elemento.rutaContenido)
+                reproductor.putExtra("rutaImagen", elemento.rutaImagen)
+                startActivity(reproductor)
+            }
+        }
     }
-    
+
 
 }
 

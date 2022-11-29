@@ -8,10 +8,11 @@
     android:layout_margin="10dp">
 
     <ImageView
+        android:id="@+id/ivCaratula"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_weight="3"
-        android:src="@drawable/carrasquito" />
+        android:src="@drawable/casa4" />
     <SeekBar
         android:id="@+id/seekBar"
         android:layout_weight="7"
