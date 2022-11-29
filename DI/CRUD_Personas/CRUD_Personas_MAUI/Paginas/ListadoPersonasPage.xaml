@@ -8,53 +8,79 @@
         <model:vmListadoPersonas/>
     </ContentPage.BindingContext>
 
-    <StackLayout Orientation="Vertical">
-        <SearchBar Text="Barra de búsqueda" HorizontalOptions="Center"/>
-        <ListView x:Name="lstListadoPersonas"  HorizontalOptions="Center" HasUnevenRows="True"
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        
+        <ScrollView Grid.Row="0" Grid.Column="0">
+            <VerticalStackLayout>
+                <SearchBar x:Name="sbBusquedaUsuario" Placeholder="Busque aquí a una persona" HorizontalOptions="Center"
+                           Text="{Binding BusquedaUsuario}"
+                           SearchCommand="{Binding BuscarPersonaCommand}"/>
+
+                <ListView x:Name="lstListadoPersonas" HasUnevenRows="True" Margin="15,0,15,0"
                   ItemsSource="{Binding ListaPersonas}"
                   SelectedItem="{Binding PersonaSeleccionada}">
-            <ListView.ItemTemplate>
-                <DataTemplate>
-                    <ViewCell>
-                        <SwipeView>
-                            <SwipeView.LeftItems>
-                                <SwipeItems>
-                                    <SwipeItem Text="Delete"
-                       IconImageSource="delete.png"
-                       BackgroundColor="LightPink"/>
-                                </SwipeItems>
-                            </SwipeView.LeftItems>
-                            <!-- Content -->
-                            <Grid BackgroundColor="AliceBlue">
-                                <Grid.RowDefinitions>
-                                    <RowDefinition Height="*"/>
-                                    <RowDefinition Height="*"/>
-                                </Grid.RowDefinitions>
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="auto"/>
-                                    <ColumnDefinition Width="auto"/>
-                                    <ColumnDefinition Width="auto"/>
-                                </Grid.ColumnDefinitions>
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <!-- Content -->
+                                <Grid BackgroundColor="AliceBlue">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="*"/>
+                                        <RowDefinition Height="*"/>
+                                    </Grid.RowDefinitions>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="auto"/>
+                                        <ColumnDefinition Width="auto"/>
+                                        <ColumnDefinition Width="auto"/>
+                                    </Grid.ColumnDefinitions>
 
-                                <Image Grid.RowSpan="2"
+                                    <Image Grid.RowSpan="2"
                                Source="{Binding Foto}"
                                    WidthRequest="70"
                                        HeightRequest="100"
                                     Aspect="AspectFit"/>
 
-                                <Label Grid.Row="0" Grid.Column="1" VerticalOptions="End" Margin="10,0,0,0"
+                                    <Label Grid.Row="0" Grid.Column="1" VerticalOptions="End" Margin="10,0,0,0"
                                Text="{Binding Nombre}" FontSize="Medium"  FontAttributes="Bold" />
-                                
-                                <Label Grid.Row="1" Grid.Column="1" VerticalOptions="Start" Margin="10,0,0,0"
+
+                                    <Label Grid.Row="1" Grid.Column="1" VerticalOptions="Start" Margin="10,0,0,0"
                                Text="{Binding Apellidos}" FontSize="Medium"  FontAttributes="Bold"/>
-                                
-                                <Label Grid.RowSpan="2" Grid.Column="2" VerticalOptions="Center" Margin="30,0,0,0" 
+
+                                    <Label Grid.RowSpan="2" Grid.Column="2" VerticalOptions="Center" Margin="30,0,0,0" 
                                Text="{Binding NombreDepartamento}" FontSize="Medium"  FontAttributes="Bold"/>
-                            </Grid>
-                        </SwipeView>
-                    </ViewCell>
-                </DataTemplate>
-            </ListView.ItemTemplate>
-        </ListView>
-    </StackLayout>
+                                </Grid>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                    <ListView.Footer>
+                        <StackLayout>
+                            <Label HeightRequest="60"/>
+                        </StackLayout>
+                    </ListView.Footer>
+                </ListView>
+            </VerticalStackLayout>
+        </ScrollView>
+        <HorizontalStackLayout Grid.Row="0" Grid.Column="0" Spacing="10" HorizontalOptions="Center">
+            <ImageButton x:Name="imgBtnEliminarPersona"
+                        Source="delete.png" HeightRequest="60" WidthRequest="60" VerticalOptions="End"
+                         Command="{Binding EliminarPersonaCommand}"
+                 />
+            <ImageButton x:Name="imgBtnEditarPersona"
+                        Source="edit.png" HeightRequest="60" WidthRequest="60" VerticalOptions="End"
+                         Command="{Binding EditarPersonaCommand}"
+                 />
+        </HorizontalStackLayout>
+        <HorizontalStackLayout Grid.Row="0" Grid.Column="0" HorizontalOptions="End">
+            <ImageButton x:Name="imgBtnAnadirPersona"
+                Source="add.png" HeightRequest="60" WidthRequest="60" VerticalOptions="End"
+                         Command="{Binding AnadirPersonaCommand}"/>
+        </HorizontalStackLayout>
+
+    </Grid>
 </ContentPage>
