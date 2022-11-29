@@ -18,9 +18,9 @@ class ReproductorVideo : AppCompatActivity() {
 
         val rutaContenido:String = intent.getStringExtra("rutaContenido")!!
 
-        var rutaVideo:String = rutaContenido
+        val rutaVideo:String = rutaContenido
 
-        videoView = findViewById<VideoView>(R.id.vvVideoInternet)
+        videoView = findViewById(R.id.vvVideoInternet)
         videoView.setVideoPath(rutaVideo)
 
         mediaController = MediaController(this)
@@ -40,14 +40,14 @@ class ReproductorVideo : AppCompatActivity() {
 
     override fun onPause() {
         super.onPause()
-        stopPosition = videoView?.currentPosition!! //stopPosition is an int
-        videoView!!.pause()
+        stopPosition = videoView.currentPosition
+        videoView.pause()
     }
 
     override fun onResume() {
         super.onResume()
-        videoView?.seekTo(stopPosition)
-        videoView?.start() //Or use resume() if it doesn't work. I'm not sure
+        videoView.seekTo(stopPosition)
+        videoView.start()
     }
 }
 

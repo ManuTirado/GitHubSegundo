@@ -3,8 +3,8 @@ package com.reproductores_51
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.*
 import com.reproductores_51.databinding.ActivityMainBinding
+
 
 class MainActivity : AppCompatActivity() {
 
@@ -15,17 +15,47 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        val multimedia = arrayListOf<multimedia>(
+        val multimedia = arrayListOf(
             multimedia(
                 "Video1",
-                "https://static.videezy.com/system/resources/previews/000/018/948/original/ICON-VERSION8_1.mp4",
+                "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4",
                 R.drawable.ic_baseline_ondemand_video_24,
                 true
             ),
             multimedia(
                 "Audio1",
-                "https://www.learningcontainer.com/wp-content/uploads/2020/02/Kalimba.mp3",
+                "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-10.mp3",
                 R.drawable.carrasquito,
+                false
+            ),
+            multimedia(
+                "Video2",
+                "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4",
+                R.drawable.ic_baseline_ondemand_video_24,
+                true
+            ),
+            multimedia(
+                "Audio2",
+                "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3",
+                R.drawable.casa4,
+                false
+            ),
+            multimedia(
+                "Audio3",
+                "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-3.mp3",
+                R.drawable.julia,
+                false
+            ),
+            multimedia(
+                "Video3",
+                "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4",
+                R.drawable.ic_baseline_ondemand_video_24,
+                true
+            ),
+            multimedia(
+                "Audio4",
+                "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-6.mp3",
+                R.drawable._3000,
                 false
             )
         )
@@ -34,15 +64,15 @@ class MainActivity : AppCompatActivity() {
         binding.lvMultimedia.adapter = MyAdapter(this,multimedia)
 
         binding.lvMultimedia.setOnItemClickListener() { parent, view, position, id ->
-            var elemento: multimedia = parent.getItemAtPosition(position) as multimedia
+            val elemento: multimedia = parent.getItemAtPosition(position) as multimedia
             if (elemento.isVideo) {
                 val reproductor = Intent(this, ReproductorVideo::class.java)
                 reproductor.putExtra("rutaContenido", elemento.rutaContenido)
                 startActivity(reproductor)
             } else if (!elemento.isVideo) {
                 val reproductor = Intent(this, ReproductorAudio::class.java)
-                var rutaContenido:String = elemento.rutaContenido
-                var rutaImagen:Int = elemento.rutaImagen
+                val rutaContenido:String = elemento.rutaContenido
+                val rutaImagen:Int = elemento.rutaImagen
                 reproductor.putExtra("rutaContenido", rutaContenido)
                 reproductor.putExtra("rutaImagen", rutaImagen)
                 startActivity(reproductor)
