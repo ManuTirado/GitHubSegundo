@@ -1,6 +1,7 @@
 ﻿using CRUD_Personas_BL.Listados;
 using CRUD_Personas_Entidades;
 using CRUD_Personas_MAUI.Models.Utilidades;
+using Microsoft.Data.SqlClient;
 
 namespace CRUD_Personas_MAUI.Models.VM
 {
@@ -15,7 +16,18 @@ namespace CRUD_Personas_MAUI.Models.VM
         #endregion
 
         #region Propiedades
-        public clsPersona PersonaSeleccionada { get { return personaSeleccionada; } set { personaSeleccionada = value; NotifyPropertyChanged(nameof(PersonaSeleccionada)); } }
+        public clsPersona PersonaSeleccionada
+        {
+            get { return personaSeleccionada; }
+            set
+            {
+                personaSeleccionada = value;
+                departamentoSeleccionado = listaDepartmentos.Find(x => x.ID == personaSeleccionada.IDDepartamento);
+                NotifyPropertyChanged(nameof(DepartamentoSeleccionado));
+                NotifyPropertyChanged(nameof(PersonaSeleccionada));
+                //guardarPersona.RaiseCanExecuteChanged();
+            }
+        }
         public List<clsDepartamento> ListaDepartmentos { get { return listaDepartmentos; } set { listaDepartmentos = value; NotifyPropertyChanged(nameof(ListaDepartmentos)); } }
         public clsDepartamento DepartamentoSeleccionado
         {
@@ -25,6 +37,7 @@ namespace CRUD_Personas_MAUI.Models.VM
                 departamentoSeleccionado = value;
                 personaSeleccionada.IDDepartamento = departamentoSeleccionado.ID;
                 NotifyPropertyChanged(nameof(DepartamentoSeleccionado));
+                NotifyPropertyChanged(nameof(PersonaSeleccionada));
             }
         }
         public DelegateCommand GuardarPersona { get { guardarPersona = new DelegateCommand(GuardarPersonaCommand_execute, GuardarPersonaCommand_canExecute); ; return guardarPersona; } }
@@ -34,6 +47,7 @@ namespace CRUD_Personas_MAUI.Models.VM
         public vmEditarInsertarPersona()
         {
             listaDepartmentos = clsListadosDepartamentosBL.ListadoCompletoDepartamentosBL();
+            personaSeleccionada = new clsPersona();
         }
         #endregion
 
@@ -41,11 +55,44 @@ namespace CRUD_Personas_MAUI.Models.VM
         private bool GuardarPersonaCommand_canExecute()
         {
             return true;
+            /*
+            if (personaSeleccionada.Nombre != null)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+            */
         }
         private async void GuardarPersonaCommand_execute()
         {
-            bool answer = await Application.Current.MainPage.DisplayAlert("¿Guardar persona?", "Hay que hacerlo :/", "Si", "No");
+            if (personaSeleccionada.ID != 0)
+            {
+                try
+                {
+                    CRUD_Personas_BL.Manejadoras.clsManejadoraPersonasBL.EditarPersonaBL(personaSeleccionada.ID, personaSeleccionada);
+                    await Shell.Current.GoToAsync("..");
+                }
+                catch (SqlException e)
+                {
+                    await Application.Current.MainPage.DisplayAlert("Error al intentar editar la persona", "'" + e.Message + "' XD'nt", "OK");
+                }
+            }
+            else
+            {
+                try
+                {
+                    CRUD_Personas_BL.Manejadoras.clsManejadoraPersonasBL.InsertarPersonaBL(personaSeleccionada);
+                    await Shell.Current.GoToAsync("..");
+                }
+                catch (SqlException e)
+                {
+                    await Application.Current.MainPage.DisplayAlert("Error al intentar añadir la persona", "'" + e.Message + "' XD'nt", "OK");
+                }
+            }
         }
-        #endregion
+            #endregion
+        }
     }
-}

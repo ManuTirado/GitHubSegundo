@@ -7,28 +7,41 @@
     <ContentPage.BindingContext>
         <model:vmEditarInsertarPersona/>
     </ContentPage.BindingContext>
-    
-    <VerticalStackLayout>
-        <Label Text="Nombre:"/>
-        <Entry Text="{Binding PersonaSeleccionada.Nombre}"/>
-        
-        <Label Text="Apellidos:"/>
-        <Entry Text="{Binding PersonaSeleccionada.Apellidos}"/>
-        
-        <Label Text="Teléfono:"/>
-        <Entry Text="{Binding PersonaSeleccionada.Telefono}"/>
-        
-        <Label Text="Dirección:"/>
-        <Entry Text="{Binding PersonaSeleccionada.Direccion}"/>
-        
-        <Label Text="Fecha Nacimiento:"/>
-        <Entry Text="{Binding PersonaSeleccionada.FechaNacimiento.Date}"/>
 
-        <Picker Title="Departamento: "
+    <HorizontalStackLayout>
+        <VerticalStackLayout>
+            <Border Stroke="#000000"
+                    StrokeThickness="4"
+                    StrokeShape="RoundRectangle 30,30,30,30"
+                    Background="#B6B6C0"
+                    >
+            <Image Source="{Binding PersonaSeleccionada.Foto}"
+                   WidthRequest="150" HeightRequest="150"/>
+            </Border>
+            <Entry Text="{Binding PersonaSeleccionada.Foto}" MaximumWidthRequest="200"/>
+        </VerticalStackLayout>
+        <VerticalStackLayout>
+            <Label Text="Nombre:"/>
+            <Entry Text="{Binding PersonaSeleccionada.Nombre}"/>
+
+            <Label Text="Apellidos:"/>
+            <Entry Text="{Binding PersonaSeleccionada.Apellidos}"/>
+
+            <Label Text="Teléfono:"/>
+            <Entry Text="{Binding PersonaSeleccionada.Telefono}"/>
+
+            <Label Text="Dirección:"/>
+            <Entry Text="{Binding PersonaSeleccionada.Direccion}"/>
+
+            <Label Text="Fecha Nacimiento:"/>
+            <DatePicker Date="{Binding PersonaSeleccionada.FechaNacimiento}"/>
+
+            <Picker Title="Departamento: "
                 ItemsSource="{Binding ListaDepartmentos}"
-                ItemDisplayBinding="{Binding DepartamentoSeleccionado.Nombre}"
-                SelectedItem="{Binding PersonaSeleccionada.IDDepartamento}" />
+                ItemDisplayBinding="{Binding Nombre}"
+                SelectedItem="{Binding DepartamentoSeleccionado}" />
 
-        <Button Text="Guardar" Command="{Binding GuardarPersona}"/>
-    </VerticalStackLayout>
+            <Button Text="Guardar" Command="{Binding GuardarPersona}"/>
+        </VerticalStackLayout>
+    </HorizontalStackLayout>
 </ContentPage>

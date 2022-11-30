@@ -18,12 +18,15 @@
         
         <ScrollView Grid.Row="0" Grid.Column="0">
             <VerticalStackLayout>
-                <SearchBar x:Name="sbBusquedaUsuario" Placeholder="Busque aquí a una persona" HorizontalOptions="Center"
+                <HorizontalStackLayout HorizontalOptions="CenterAndExpand">
+                    <ImageButton Source="refresh.png" Command="{Binding ActualizarListaCommand}" WidthRequest="60" HeightRequest="60" Padding="10" IsVisible="{OnPlatform Android=false}"/>
+                    <SearchBar Placeholder="Busque aquí a una persona"
                            SearchCommand="{Binding BuscarPersonaCommand}"
                            Text="{Binding BusquedaUsuario}"
-                           
                            />
-                <ListView x:Name="lstListadoPersonas" HasUnevenRows="True" Margin="15,0,15,0" BackgroundColor="AliceBlue"
+                </HorizontalStackLayout>
+                <RefreshView Command="{Binding ActualizarListaCommand}" IsRefreshing="{Binding IsRefreshing}">
+                <ListView HasUnevenRows="True" Margin="15,0,15,0" BackgroundColor="AliceBlue"
                   ItemsSource="{Binding ListaPersonas}"
                   SelectedItem="{Binding PersonaSeleccionada}">
                     <ListView.ItemTemplate>
@@ -65,21 +68,19 @@
                         </StackLayout>
                     </ListView.Footer>
                 </ListView>
+                </RefreshView>
             </VerticalStackLayout>
         </ScrollView>
         <HorizontalStackLayout Grid.Row="0" Grid.Column="0" Spacing="10" HorizontalOptions="Center">
-            <ImageButton x:Name="imgBtnEliminarPersona"
-                        Source="delete.png" HeightRequest="60" WidthRequest="60" VerticalOptions="End"
+            <ImageButton Source="delete.png" HeightRequest="60" WidthRequest="60" VerticalOptions="End"
                          Command="{Binding EliminarPersonaCommand}"
                  />
-            <ImageButton x:Name="imgBtnEditarPersona"
-                        Source="edit.png" HeightRequest="60" WidthRequest="60" VerticalOptions="End"
+            <ImageButton Source="edit.png" HeightRequest="60" WidthRequest="60" VerticalOptions="End"
                          Command="{Binding EditarPersonaCommand}"
                  />
         </HorizontalStackLayout>
         <HorizontalStackLayout Grid.Row="0" Grid.Column="0" HorizontalOptions="End">
-            <ImageButton x:Name="imgBtnAnadirPersona"
-                Source="add.png" HeightRequest="60" WidthRequest="60" VerticalOptions="End"
+            <ImageButton Source="add.png" HeightRequest="60" WidthRequest="60" VerticalOptions="End"
                          Command="{Binding AnadirPersonaCommand}"/>
         </HorizontalStackLayout>
 

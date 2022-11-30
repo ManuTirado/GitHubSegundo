@@ -6,4 +6,11 @@ public partial class ListadoPersonasPage : ContentPage
 	{
 		InitializeComponent();
 	}
+
+	protected override void OnAppearing()
+	{
+		base.OnAppearing();
+
+        InitializeComponent();
+    }
 }

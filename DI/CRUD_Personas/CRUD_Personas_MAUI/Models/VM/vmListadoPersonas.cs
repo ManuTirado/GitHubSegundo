@@ -2,7 +2,7 @@
 using CRUD_Personas_MAUI.Models.Utilidades;
 using CRUD_Personas_BL.Listados;
 using System.Collections.ObjectModel;
-using CRUD_Personas_MAUI.Paginas;
+using Microsoft.Data.SqlClient;
 
 namespace CRUD_Personas_MAUI.Models.VM
 {
@@ -19,6 +19,8 @@ namespace CRUD_Personas_MAUI.Models.VM
         DelegateCommand buscarPersona;
         DelegateCommand editarPersona;
         DelegateCommand anadirPersona;
+        DelegateCommand actualizarListaCommand;
+        private bool isRefreshing;
         #endregion
 
         #region Propiedades
@@ -57,7 +59,7 @@ namespace CRUD_Personas_MAUI.Models.VM
         {
             get
             {
-                eliminarPersona = new DelegateCommand(EliminarPersonaCommand_executeAsync, EliminarPersonaCommand_canExecute);
+                eliminarPersona = new DelegateCommand(EliminarPersonaCommand_execute, EliminarPersonaCommand_canExecute);
                 return eliminarPersona;
             }
         }
@@ -86,14 +88,22 @@ namespace CRUD_Personas_MAUI.Models.VM
                 return anadirPersona;
             }
         }
+        public DelegateCommand ActualizarListaCommand
+        {
+            get
+            {
+                actualizarListaCommand = new DelegateCommand(ActualizarListaCommand_execute);
+                return actualizarListaCommand;
+            }
+        }
+
+        public bool IsRefreshing { get { return isRefreshing; } set { isRefreshing = value; NotifyPropertyChanged(nameof(IsRefreshing)); } }
         #endregion
 
         #region Constructores
         public vmListadoPersonas()
         {
-            listaPersonasBackup = clsListadosPersonasBL.ListadoCompletoPersonasBL();
-            listaDepartamentos = clsListadosDepartamentosBL.ListadoCompletoDepartamentosBL();
-            listaPersonas = obtenerListaConNombreDepartamento(listaPersonasBackup);
+            actualizarDatos();
         }
         #endregion
 
@@ -108,17 +118,25 @@ namespace CRUD_Personas_MAUI.Models.VM
             }
             return hayPersonaSeleccionada;
         }
-        private async void EliminarPersonaCommand_executeAsync()
+        private async void EliminarPersonaCommand_execute()
         {
             bool answer = await Application.Current.MainPage.DisplayAlert("¿Eliminar persona?", "Una vez eliminada no podrá ser recuperada", "Si", "No");
             if (answer)
             {
-                listaPersonasBackup.Remove(listaPersonasBackup.Find(x => x.ID == personaSeleccionada.ID));
-                listaPersonas.Remove(PersonaSeleccionada);
-                personaSeleccionada = null;
-                NotifyPropertyChanged(nameof(ListaPersonas));
-                NotifyPropertyChanged(nameof(PersonaSeleccionada));
-                EliminarPersonaCommand.RaiseCanExecuteChanged();
+                try
+                {
+                    CRUD_Personas_BL.Manejadoras.clsManejadoraPersonasBL.BorrarPersonaBL(personaSeleccionada.ID);
+                    listaPersonasBackup.Remove(listaPersonasBackup.Find(x => x.ID == personaSeleccionada.ID));
+                    listaPersonas.Remove(PersonaSeleccionada);
+                    personaSeleccionada = null;
+                    NotifyPropertyChanged(nameof(ListaPersonas));
+                    NotifyPropertyChanged(nameof(PersonaSeleccionada));
+                    EliminarPersonaCommand.RaiseCanExecuteChanged();
+                }
+                catch (SqlException e)
+                {
+                    await Application.Current.MainPage.DisplayAlert("Error al intentar borrar la persona", "'" + e.Message + "' XD'nt", "OK");
+                }
             }
         }
 
@@ -173,6 +191,12 @@ namespace CRUD_Personas_MAUI.Models.VM
         {
             await Shell.Current.GoToAsync("DetallesPersona");
         }
+
+        private void ActualizarListaCommand_execute()
+        {
+            Thread.Sleep(1000);
+            actualizarDatos();
+        }
         #endregion
 
         #region Métodos
@@ -186,6 +210,31 @@ namespace CRUD_Personas_MAUI.Models.VM
                 listaFinal.Add(personaNombreDepartamento);
             }
             return listaFinal;
+        }
+       
+        public async void actualizarDatos()
+        {
+            isRefreshing = true;
+            NotifyPropertyChanged(nameof(isRefreshing));
+            busquedaUsuario = "";
+            NotifyPropertyChanged(nameof(BusquedaUsuario));
+            try
+            {
+                listaPersonasBackup = clsListadosPersonasBL.ListadoCompletoPersonasBL();
+                listaDepartamentos = clsListadosDepartamentosBL.ListadoCompletoDepartamentosBL();
+            }
+            catch (SqlException e)
+            {
+                bool volverAintentar = await Application.Current.MainPage.DisplayAlert("Error al cargar las personas", "'" + e.Message + "' XD'nt", "Recargar", "Salir");
+                if (volverAintentar)
+                {
+                    actualizarDatos();
+                }
+            }
+            listaPersonas = obtenerListaConNombreDepartamento(listaPersonasBackup);
+            NotifyPropertyChanged(nameof(ListaPersonas));
+            isRefreshing = false;
+            NotifyPropertyChanged(nameof(isRefreshing));
         }
         #endregion
     }
