@@ -2,11 +2,33 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="CRUD_Personas_MAUI.Paginas.DetallesPersonasPage"
-             Title="DetallesPersonasPage">
+             Title="DetallesPersonasPage"
+             xmlns:model="clr-namespace:CRUD_Personas_MAUI.Models.VM">
+    <ContentPage.BindingContext>
+        <model:vmEditarInsertarPersona/>
+    </ContentPage.BindingContext>
+    
     <VerticalStackLayout>
-        <Label 
-            Text="DETALLES PERSONAS PAGE"
-            VerticalOptions="Center" 
-            HorizontalOptions="Center" />
+        <Label Text="Nombre:"/>
+        <Entry Text="{Binding PersonaSeleccionada.Nombre}"/>
+        
+        <Label Text="Apellidos:"/>
+        <Entry Text="{Binding PersonaSeleccionada.Apellidos}"/>
+        
+        <Label Text="Teléfono:"/>
+        <Entry Text="{Binding PersonaSeleccionada.Telefono}"/>
+        
+        <Label Text="Dirección:"/>
+        <Entry Text="{Binding PersonaSeleccionada.Direccion}"/>
+        
+        <Label Text="Fecha Nacimiento:"/>
+        <Entry Text="{Binding PersonaSeleccionada.FechaNacimiento.Date}"/>
+
+        <Picker Title="Departamento: "
+                ItemsSource="{Binding ListaDepartmentos}"
+                ItemDisplayBinding="{Binding DepartamentoSeleccionado.Nombre}"
+                SelectedItem="{Binding PersonaSeleccionada.IDDepartamento}" />
+
+        <Button Text="Guardar" Command="{Binding GuardarPersona}"/>
     </VerticalStackLayout>
 </ContentPage>

@@ -49,7 +49,6 @@ namespace CRUD_Personas_MAUI.Models.VM
                 if (busquedaUsuario != value)
                 {
                     busquedaUsuario = value;
-                    buscarPersona.RaiseCanExecuteChanged();
                     NotifyPropertyChanged(nameof(BusquedaUsuario));
                 }
             }
@@ -162,21 +161,21 @@ namespace CRUD_Personas_MAUI.Models.VM
         }
         private async void EditarPersonaCommand_execute()
         {
-            bool answer = await Application.Current.MainPage.DisplayAlert("¿Editar persona?", "Hay que hacer esto aún ;(", "Si", "No");
+            clsPersona personaPasada = new clsPersona(personaSeleccionada.ID, personaSeleccionada.Nombre, personaSeleccionada.Apellidos, personaSeleccionada.Telefono, personaSeleccionada.Direccion, personaSeleccionada.Foto, personaSeleccionada.FechaNacimiento, personaSeleccionada.IDDepartamento);
+            var miDiccionario = new Dictionary<string, object>
+            {
+                { "PersonaPasada", personaPasada }
+            };
+            await Shell.Current.GoToAsync("DetallesPersona", miDiccionario);
         }
 
         private async void AnadirPersonaCommand_execute()
         {
-            bool answer = await Application.Current.MainPage.DisplayAlert("¿Añadir persona?", "Hay que hacer esto aún ;(", "Si", "No");
+            await Shell.Current.GoToAsync("DetallesPersona");
         }
         #endregion
 
         #region Métodos
-        private async void navegarApagina(string ruta)
-        {
-            await Shell.Current.GoToAsync(ruta);
-        }
-
         private ObservableCollection<clsPersonaNombreDepartamento> obtenerListaConNombreDepartamento(List<clsPersona> listaBackup)
         {
             ObservableCollection<clsPersonaNombreDepartamento> listaFinal = new ObservableCollection<clsPersonaNombreDepartamento>();

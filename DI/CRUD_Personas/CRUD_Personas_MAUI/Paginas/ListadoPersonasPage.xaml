@@ -19,17 +19,18 @@
         <ScrollView Grid.Row="0" Grid.Column="0">
             <VerticalStackLayout>
                 <SearchBar x:Name="sbBusquedaUsuario" Placeholder="Busque aquí a una persona" HorizontalOptions="Center"
+                           SearchCommand="{Binding BuscarPersonaCommand}"
                            Text="{Binding BusquedaUsuario}"
-                           SearchCommand="{Binding BuscarPersonaCommand}"/>
-
-                <ListView x:Name="lstListadoPersonas" HasUnevenRows="True" Margin="15,0,15,0"
+                           
+                           />
+                <ListView x:Name="lstListadoPersonas" HasUnevenRows="True" Margin="15,0,15,0" BackgroundColor="AliceBlue"
                   ItemsSource="{Binding ListaPersonas}"
                   SelectedItem="{Binding PersonaSeleccionada}">
                     <ListView.ItemTemplate>
                         <DataTemplate>
                             <ViewCell>
                                 <!-- Content -->
-                                <Grid BackgroundColor="AliceBlue">
+                                <Grid>
                                     <Grid.RowDefinitions>
                                         <RowDefinition Height="*"/>
                                         <RowDefinition Height="*"/>
