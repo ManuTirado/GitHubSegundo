@@ -17,10 +17,9 @@
             <ColumnDefinition Width="{OnPlatform WinUI=auto, Android=*}"/>
         </Grid.ColumnDefinitions>
 
-        <ScrollView Grid.Row="0" Grid.Column="0"  Margin="0,60,0,-10">
+        <ScrollView Grid.Row="0" Grid.Column="0"  Margin="0,60,0,-10" >
             <VerticalStackLayout   Margin="0,0,0,10">
                 <RefreshView Command="{Binding ActualizarListaCommand}" IsRefreshing="{Binding IsRefreshing}" Margin="0,0,0,15" >
-
                     <ListView HasUnevenRows="True"  BackgroundColor="AliceBlue" Margin="15,0,15,10" 
                   ItemsSource="{Binding ListaPersonas}"
                   SelectedItem="{Binding PersonaSeleccionada}">
@@ -67,7 +66,7 @@
             </VerticalStackLayout>
         </ScrollView>
 
-        <HorizontalStackLayout VerticalOptions="Start" HorizontalOptions="Fill" BackgroundColor="CadetBlue">
+        <HorizontalStackLayout VerticalOptions="Start" HorizontalOptions="{x:OnPlatform WinUI=CenterAndExpand, Android=Fill}" BackgroundColor="CadetBlue">
             <ImageButton Source="refresh.png" 
                          Command="{Binding ActualizarListaCommand}" 
                          IsEnabled="{Binding IsNotRefreshing}"

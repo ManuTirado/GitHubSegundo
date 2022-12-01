@@ -1,0 +1,30 @@
+UI:
+
+	Views:
+		tableroPage
+
+	Models:
+		clsCartaNotify{
+			string rutaImagenMostrada (en setter NotifyPropertyChanged)
+		}
+	ViewModels:
+		vmJuegoCartas {
+			private int cartasBuenasReveladas
+			private int cartasMalasReveladas
+			private List<clsCartaNotify> Cartas (longitud = 7, las diferentes cartas que hay)
+			public ObservableCollection<clsCartaNotify> barajaCartas (longitud = 9, baraja generada aleatoriamente) 
+			public clsCartaNotify cartaSeleccionada
+		}
+
+DAL:
+	
+BL:
+
+Entidades:
+	clsCarta{
+		int id
+		string rutaImagenMostrada
+		string rutaImagenAnverso
+		string rutaImagenReverso
+		bool isAmigo
+	}
