@@ -59,7 +59,6 @@ namespace CRUD_Personas_MAUI.Models.VM
         {
             get
             {
-                eliminarPersona = new DelegateCommand(EliminarPersonaCommand_execute, EliminarPersonaCommand_canExecute);
                 return eliminarPersona;
             }
         }
@@ -68,7 +67,6 @@ namespace CRUD_Personas_MAUI.Models.VM
         {
             get
             {
-                buscarPersona = new DelegateCommand(BuscarPersonaCommand_execute, BuscarPersonaCommand_canExecute);
                 return buscarPersona;
             }
         }
@@ -76,7 +74,6 @@ namespace CRUD_Personas_MAUI.Models.VM
         {
             get
             {
-                editarPersona = new DelegateCommand(EditarPersonaCommand_execute, EditarPersonaCommand_canExecute);
                 return editarPersona;
             }
         }
@@ -84,7 +81,6 @@ namespace CRUD_Personas_MAUI.Models.VM
         {
             get
             {
-                anadirPersona = new DelegateCommand(AnadirPersonaCommand_execute);  // Siempre se puede pulsar
                 return anadirPersona;
             }
         }
@@ -92,18 +88,23 @@ namespace CRUD_Personas_MAUI.Models.VM
         {
             get
             {
-                actualizarListaCommand = new DelegateCommand(ActualizarListaCommand_execute);
                 return actualizarListaCommand;
             }
         }
 
-        public bool IsRefreshing { get { return isRefreshing; } set { isRefreshing = value; NotifyPropertyChanged(nameof(IsRefreshing)); } }
+        public bool IsRefreshing { get { return isRefreshing; } set { isRefreshing = value; NotifyPropertyChanged(nameof(IsRefreshing)); NotifyPropertyChanged(nameof(IsNotRefreshing)); } }
         #endregion
 
         #region Constructores
         public vmListadoPersonas()
         {
-            actualizarDatos();
+            Thread hiloActualizar = new Thread(new ThreadStart(actualizarDatos));
+            hiloActualizar.Start();
+            eliminarPersona = new DelegateCommand(EliminarPersonaCommand_execute, EliminarPersonaCommand_canExecute);
+            buscarPersona = new DelegateCommand(BuscarPersonaCommand_execute, BuscarPersonaCommand_canExecute);
+            editarPersona = new DelegateCommand(EditarPersonaCommand_execute, EditarPersonaCommand_canExecute);
+            anadirPersona = new DelegateCommand(AnadirPersonaCommand_execute);  // Siempre se puede pulsar
+            actualizarListaCommand = new DelegateCommand(ActualizarListaCommand_execute);
         }
         #endregion
 
@@ -194,8 +195,8 @@ namespace CRUD_Personas_MAUI.Models.VM
 
         private void ActualizarListaCommand_execute()
         {
-            Thread.Sleep(1000);
-            actualizarDatos();
+            Thread hiloActualizar = new Thread(new ThreadStart(actualizarDatos));
+            hiloActualizar.Start();
         }
         #endregion
 
@@ -211,31 +212,38 @@ namespace CRUD_Personas_MAUI.Models.VM
             }
             return listaFinal;
         }
-       
+
         public async void actualizarDatos()
         {
-            isRefreshing = true;
-            NotifyPropertyChanged(nameof(isRefreshing));
+
+            IsRefreshing = true;
+            NotifyPropertyChanged(nameof(IsRefreshing));
+            NotifyPropertyChanged(nameof(IsNotRefreshing));
             busquedaUsuario = "";
             NotifyPropertyChanged(nameof(BusquedaUsuario));
             try
             {
                 listaPersonasBackup = clsListadosPersonasBL.ListadoCompletoPersonasBL();
                 listaDepartamentos = clsListadosDepartamentosBL.ListadoCompletoDepartamentosBL();
+                Thread.Sleep(2000);
             }
             catch (SqlException e)
             {
                 bool volverAintentar = await Application.Current.MainPage.DisplayAlert("Error al cargar las personas", "'" + e.Message + "' XD'nt", "Recargar", "Salir");
                 if (volverAintentar)
                 {
-                    actualizarDatos();
+                    Thread hiloActualizar = new Thread(new ThreadStart(actualizarDatos));
+                    hiloActualizar.Start();
                 }
             }
             listaPersonas = obtenerListaConNombreDepartamento(listaPersonasBackup);
             NotifyPropertyChanged(nameof(ListaPersonas));
-            isRefreshing = false;
-            NotifyPropertyChanged(nameof(isRefreshing));
+            IsRefreshing = false;
+            NotifyPropertyChanged(nameof(IsRefreshing));
+            NotifyPropertyChanged(nameof(IsNotRefreshing));
         }
+
+        public bool IsNotRefreshing { get { return !isRefreshing; } }
         #endregion
     }
 }

@@ -73,6 +73,7 @@ namespace CRUD_Personas_MAUI.Models.VM
                 try
                 {
                     CRUD_Personas_BL.Manejadoras.clsManejadoraPersonasBL.EditarPersonaBL(personaSeleccionada.ID, personaSeleccionada);
+                    await Application.Current.MainPage.DisplayAlert("Correcto", "Persona editada correctamente", "OK");
                     await Shell.Current.GoToAsync("..");
                 }
                 catch (SqlException e)
@@ -85,6 +86,7 @@ namespace CRUD_Personas_MAUI.Models.VM
                 try
                 {
                     CRUD_Personas_BL.Manejadoras.clsManejadoraPersonasBL.InsertarPersonaBL(personaSeleccionada);
+                    await Application.Current.MainPage.DisplayAlert("Correcto", "Persona insertada correctamente", "OK");
                     await Shell.Current.GoToAsync("..");
                 }
                 catch (SqlException e)

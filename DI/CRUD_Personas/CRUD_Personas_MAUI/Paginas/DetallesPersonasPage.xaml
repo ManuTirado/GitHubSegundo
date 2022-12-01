@@ -8,40 +8,68 @@
         <model:vmEditarInsertarPersona/>
     </ContentPage.BindingContext>
 
-    <HorizontalStackLayout>
-        <VerticalStackLayout>
-            <Border Stroke="#000000"
-                    StrokeThickness="4"
-                    StrokeShape="RoundRectangle 30,30,30,30"
-                    Background="#B6B6C0"
-                    >
-            <Image Source="{Binding PersonaSeleccionada.Foto}"
-                   WidthRequest="150" HeightRequest="150"/>
+    <HorizontalStackLayout Spacing="10" HorizontalOptions="Center" VerticalOptions="Start" Margin="5">
+        <VerticalStackLayout VerticalOptions="Start" Margin="0,20,0,0">
+            <Border  HorizontalOptions="Center"
+                    StrokeShape="RoundRectangle 20,20,20,20"
+                    BackgroundColor="AliceBlue" >
+                <Image Source="{Binding PersonaSeleccionada.Foto}"
+                   WidthRequest="150" HeightRequest="150" Aspect="AspectFit"/>
             </Border>
-            <Entry Text="{Binding PersonaSeleccionada.Foto}" MaximumWidthRequest="200"/>
+            <Border
+                         StrokeShape="RoundRectangle 10,10,10,10" Padding="5" BackgroundColor="AliceBlue">
+                <Entry Text="{Binding PersonaSeleccionada.Foto}" MinimumWidthRequest="50" MaximumWidthRequest="150"/>
+            </Border>
         </VerticalStackLayout>
-        <VerticalStackLayout>
-            <Label Text="Nombre:"/>
-            <Entry Text="{Binding PersonaSeleccionada.Nombre}"/>
 
-            <Label Text="Apellidos:"/>
-            <Entry Text="{Binding PersonaSeleccionada.Apellidos}"/>
+        <BoxView Color="Black" CornerRadius="30" WidthRequest="3" Margin="0,10,0,10"/>
 
-            <Label Text="Teléfono:"/>
-            <Entry Text="{Binding PersonaSeleccionada.Telefono}"/>
+        <ScrollView>
+            <VerticalStackLayout VerticalOptions="Start">
+                <Label Text="Nombre:" FontSize="Medium"  FontAttributes="Bold"/>
+                <Border
+                         StrokeShape="RoundRectangle 10,10,10,10" Padding="5" BackgroundColor="AliceBlue">
+                    <Entry Text="{Binding PersonaSeleccionada.Nombre}" Placeholder="Nombre" FontSize="Medium"/>
+                </Border>
 
-            <Label Text="Dirección:"/>
-            <Entry Text="{Binding PersonaSeleccionada.Direccion}"/>
+                <Label Text="Apellidos:" FontSize="Medium"  FontAttributes="Bold"/>
+                <Border
+                         StrokeShape="RoundRectangle 10,10,10,10" Padding="5" BackgroundColor="AliceBlue">
+                    <Entry Text="{Binding PersonaSeleccionada.Apellidos}" Placeholder="Apellidos" FontSize="Medium"/>
+                </Border>
 
-            <Label Text="Fecha Nacimiento:"/>
-            <DatePicker Date="{Binding PersonaSeleccionada.FechaNacimiento}"/>
+                <Label Text="Teléfono:" FontSize="Medium"  FontAttributes="Bold"/>
+                <Border
+                         StrokeShape="RoundRectangle 10,10,10,10" Padding="5" BackgroundColor="AliceBlue">
+                    <Entry Text="{Binding PersonaSeleccionada.Telefono}" Placeholder="Teléfono" FontSize="Medium"/>
+                </Border>
 
-            <Picker Title="Departamento: "
+                <Label Text="Dirección:" FontSize="Medium"  FontAttributes="Bold"/>
+                <Border
+                         StrokeShape="RoundRectangle 10,10,10,10" Padding="5" BackgroundColor="AliceBlue">
+                    <Entry Text="{Binding PersonaSeleccionada.Direccion}" Placeholder="Dirección" FontSize="Medium"/>
+                </Border>
+
+                <Label Text="Fecha Nacimiento:" FontSize="Medium"  FontAttributes="Bold"/>
+                <Border
+                         StrokeShape="RoundRectangle 10,10,10,10" Padding="5" BackgroundColor="AliceBlue">
+                    <DatePicker Date="{Binding PersonaSeleccionada.FechaNacimiento}" FontSize="Medium"/>
+                </Border>
+
+                <Label Text="Departamento:" FontSize="Medium"  FontAttributes="Bold"/>
+                <Border
+                         StrokeShape="RoundRectangle 10,10,10,10" Padding="5" BackgroundColor="AliceBlue">
+                    <Picker FontSize="Medium"  
                 ItemsSource="{Binding ListaDepartmentos}"
                 ItemDisplayBinding="{Binding Nombre}"
                 SelectedItem="{Binding DepartamentoSeleccionado}" />
+                </Border>
 
-            <Button Text="Guardar" Command="{Binding GuardarPersona}"/>
-        </VerticalStackLayout>
+                <Border HorizontalOptions="Center" Margin="0,20,0,0"
+                         StrokeShape="RoundRectangle 100,100,100,100">
+                    <Button Text="Guardar" Command="{Binding GuardarPersona}" FontSize="Medium" FontAttributes="Bold" Padding="20" />
+                </Border>
+            </VerticalStackLayout>
+        </ScrollView>
     </HorizontalStackLayout>
 </ContentPage>
