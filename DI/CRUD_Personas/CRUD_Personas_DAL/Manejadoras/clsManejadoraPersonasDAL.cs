@@ -28,8 +28,8 @@ namespace CRUD_Personas_DAL.Manejadoras
                                     "FechaNacimiento  = @fechaNacimiento, " +
                                     "IDDepartamento  = @idDepartamento " +
                                     "WHERE ID = @id";
-            miComando.Parameters.AddWithValue("@nombre", personaEditada.Nombre);
-            miComando.Parameters.AddWithValue("@apellidos", personaEditada.Apellidos);
+            miComando.Parameters.AddWithValue("@nombre", (string.IsNullOrEmpty(personaEditada.Nombre)?null:personaEditada.Nombre));
+            miComando.Parameters.AddWithValue("@apellidos", (string.IsNullOrEmpty(personaEditada.Apellidos) ? null : personaEditada.Apellidos));
             miComando.Parameters.AddWithValue("@telefono", personaEditada.Telefono);
             miComando.Parameters.AddWithValue("@direccion", personaEditada.Direccion);
             miComando.Parameters.AddWithValue("@foto", personaEditada.Foto);
@@ -59,9 +59,9 @@ namespace CRUD_Personas_DAL.Manejadoras
                                     "VALUES (@nombre, @apellidos, @telefono, @direccion, @foto, @fechaNacimiento, @idDepartamento)";
             miComando.Parameters.AddWithValue("@nombre", personaInsertar.Nombre);
             miComando.Parameters.AddWithValue("@apellidos", personaInsertar.Apellidos);
-            miComando.Parameters.AddWithValue("@telefono", personaInsertar.Telefono);
-            miComando.Parameters.AddWithValue("@direccion", personaInsertar.Direccion);
-            miComando.Parameters.AddWithValue("@foto", personaInsertar.Foto);
+            miComando.Parameters.AddWithValue("@telefono", (string.IsNullOrEmpty(personaInsertar.Telefono)?"NULL":personaInsertar.Telefono));
+            miComando.Parameters.AddWithValue("@direccion", (string.IsNullOrEmpty(personaInsertar.Direccion) ? "NULL" : personaInsertar.Direccion));
+            miComando.Parameters.AddWithValue("@foto", (string.IsNullOrEmpty(personaInsertar.Foto) ? "NULL" : personaInsertar.Foto));
             miComando.Parameters.AddWithValue("@fechaNacimiento", personaInsertar.FechaNacimiento);
             miComando.Parameters.AddWithValue("@idDepartamento", personaInsertar.IDDepartamento);
 

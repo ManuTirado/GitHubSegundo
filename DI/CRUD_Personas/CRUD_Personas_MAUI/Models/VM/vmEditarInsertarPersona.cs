@@ -78,7 +78,7 @@ namespace CRUD_Personas_MAUI.Models.VM
                 }
                 catch (SqlException e)
                 {
-                    await Application.Current.MainPage.DisplayAlert("Error al intentar editar la persona", "'" + e.Message + "' XD'nt", "OK");
+                    await Application.Current.MainPage.DisplayAlert("Error al intentar editar la persona", "Los campos marcados con * son obligatorios", "OK");
                 }
             }
             else
@@ -91,7 +91,7 @@ namespace CRUD_Personas_MAUI.Models.VM
                 }
                 catch (SqlException e)
                 {
-                    await Application.Current.MainPage.DisplayAlert("Error al intentar añadir la persona", "'" + e.Message + "' XD'nt", "OK");
+                    await Application.Current.MainPage.DisplayAlert("Error al intentar añadir la persona", "Los campos marcados con * son obligatorios", "OK");
                 }
             }
         }
