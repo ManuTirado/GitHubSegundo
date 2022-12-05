@@ -5,8 +5,24 @@
              Title="InicioPage">
     <VerticalStackLayout>
         <Label 
-            Text="INICIO PAGE"
+            Text="CRUD PERSONAS"
+            FontAttributes="Bold"
+            FontSize="Large"
             VerticalOptions="Center" 
             HorizontalOptions="Center" />
+        <Label 
+            Text="Creado por Manuel Tirado García"
+            FontAttributes="None"
+            FontSize="Medium"
+            HorizontalOptions="Center"
+            VerticalOptions="Center"/>
+        <Label
+            Text="Fernando apruebame 🥺"
+            FontAttributes="None"
+            FontSize="Medium"
+            HorizontalOptions="Center"
+            VerticalOptions="Center"/>
+        <Image
+            Source="apruebame.jpg"/>
     </VerticalStackLayout>
 </ContentPage>

@@ -51,6 +51,7 @@
 	<ItemGroup>
 	  <None Remove="Resources\Images\about.png" />
 	  <None Remove="Resources\Images\add.png" />
+	  <None Remove="Resources\Images\apruebame.jpg" />
 	  <None Remove="Resources\Images\delete.png" />
 	  <None Remove="Resources\Images\department.png" />
 	  <None Remove="Resources\Images\edit.png" />

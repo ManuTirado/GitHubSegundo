@@ -37,6 +37,10 @@ namespace CRUD_Personas_DAL.Listados
             {
                 throw exSql;
             }
+            finally
+            {
+                miConexion.Close();
+            }
             return departamentos;
         }
     }

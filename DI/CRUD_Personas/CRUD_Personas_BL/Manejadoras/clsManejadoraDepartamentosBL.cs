@@ -5,17 +5,17 @@ namespace CRUD_Personas_BL.Manejadoras
 {
     public static class clsManejadoraDepartamentosBL
     {
-        public static int EditarDepartamentoDAL(int idDepartamento, clsDepartamento departamentoEditado)
+        public static int EditarDepartamentoBL(int idDepartamento, clsDepartamento departamentoEditado)
         {
             return (clsManejadoraDepartamentosDAL.EditarDepartamentoDAL(idDepartamento, departamentoEditado));
         }
 
-        public static int InsertarDepartamentoDAL(clsDepartamento departamentoInsertar)
+        public static int InsertarDepartamentoBL(clsDepartamento departamentoInsertar)
         {
             return (clsManejadoraDepartamentosDAL.InsertarDepartamentoDAL(departamentoInsertar));
         }
 
-        public static int BorrarDepartamentoDAL(int id)
+        public static int BorrarDepartamentoBL(int id)
         {
             return (clsManejadoraDepartamentosDAL.BorrarDepartamentoDAL(id));
         }

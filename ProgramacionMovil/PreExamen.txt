@@ -1,0 +1,3 @@
+Diseñar una aplicación que tenga 2 pantalla:
+1-Login (usu y contraseña, y registrate)	Usuario guardado en un room
+	Ver tu perfil	(Cargar alguna imagen, datos, etc)

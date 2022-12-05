@@ -13,7 +13,7 @@ namespace CRUD_Personas_DAL.Manejadoras
             SqlCommand miComando = new SqlCommand();
 
             miComando.CommandText = "UPDATE Departamentos " +
-                                    "SET Nombre = @nombre" +
+                                    "SET Nombre = @nombre " +
                                     "WHERE ID = @id";
             miComando.Parameters.AddWithValue("@nombre", departamentoEditado.Nombre);
             miComando.Parameters.AddWithValue("@id", idDepartamento);

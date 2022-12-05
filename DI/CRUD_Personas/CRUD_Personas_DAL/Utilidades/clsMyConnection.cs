@@ -36,23 +36,15 @@ namespace _07_CRUD_Personas_DAL.Conexion
         public static SqlConnection getConnection()
         {
             SqlConnection connection = new SqlConnection();
-            bool conectado = false;
-            for (int i = 0; i < 10 && !conectado; i++)
             {
                 try
                 {
                     connection.ConnectionString = $"server={server};database={dataBase};uid={user};pwd={pass};";
-                    //connection.ConnectionString = "server=dhurtado.database.windows.net;database=diegoDB;uid=fernando;pwd=Mandaloriano69;";
                     connection.Open();
-                    conectado = true;
                 }
                 catch (SqlException)
                 {
-                    conectado=false;
-                    if (i >= 9)
-                    {
-                        throw;
-                    }
+                    throw;
                 }
             }
             return connection;

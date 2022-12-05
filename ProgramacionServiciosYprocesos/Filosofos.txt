@@ -1,0 +1,148 @@
+public class Filosofos extends Thread {
+    int id;
+
+    public static void main(String[] args) {
+        for (int i = 0; i < 5; i++) {
+            Filosofos filosofo = new Filosofos();
+            filosofo.id = i;
+            filosofo.start();
+        }
+    }
+
+    public static Boolean[] tenedores = { false, false, false, false, false };
+
+    @Override
+    public void run() {
+
+        while (true) {
+            intentarComer(this);
+        }
+    }
+
+    private static void intentarComer(Filosofos filosofo) {
+        if (filosofo.id == 0) {
+            if (!tenedores[filosofo.id]) {
+                tenedores[filosofo.id] = true;
+                System.out
+                        .println("El filosofo " + filosofo.id
+                                + " tiene el tenedor izquierdo pero todavia no puede comer");
+                try {
+                    Thread.sleep(3000);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+            }
+            if (!tenedores[tenedores.length - 1]) {
+                tenedores[tenedores.length - 1] = true;
+                System.out.println(
+                        "El filosofo " + filosofo.id + " tiene el tenedor derecha pero todavia no puede comer");
+                try {
+                    Thread.sleep(3000);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+            }
+            if (tenedores[filosofo.id] && tenedores[tenedores.length - 1]) {
+                System.out.println("El filosofo " + filosofo.id + " esta comiendo");
+                tenedores[filosofo.id] = false;
+                tenedores[tenedores.length - 1] = false;
+                try {
+                    Thread.sleep(3000);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+                tenedores.notifyAll();
+            } else {
+                try {
+                    tenedores.wait();
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+            }
+
+        } else if (filosofo.id == 4) {
+            if (!tenedores[filosofo.id]) {
+                tenedores[filosofo.id] = true;
+                System.out
+                        .println("El filosofo " + filosofo.id
+                                + " tiene el tenedor izquierdo pero todavia no puede comer");
+                try {
+                    Thread.sleep(3000);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+
+            }
+            if (!tenedores[0]) {
+                tenedores[0] = true;
+                System.out.println(
+                        "El filosofo " + filosofo.id + " tiene el tenedor derecha pero todavia no puede comer");
+                try {
+                    Thread.sleep(3000);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+
+            }
+
+            if (tenedores[filosofo.id] && tenedores[0]) {
+                System.out.println("El filosofo " + filosofo.id + " esta comiendo");
+                tenedores[filosofo.id] = false;
+                tenedores[0] = false;
+                try {
+                    Thread.sleep(3000);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+                tenedores.notifyAll();
+            } else {
+                try {
+                    tenedores.wait();
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+            }
+        } else {
+            if (!tenedores[filosofo.id]) {
+                tenedores[filosofo.id] = true;
+                System.out
+                        .println("El filosofo " + filosofo.id
+                                + " tiene el tenedor izquierdo pero todavia no puede comer");
+                try {
+                    Thread.sleep(3000);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+
+            }
+            if (!tenedores[filosofo.id + 1]) {
+                tenedores[filosofo.id + 1] = true;
+                System.out.println(
+                        "El filosofo " + filosofo.id + " tiene el tenedor derecha pero todavia no puede comer");
+                try {
+                    Thread.sleep(3000);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+            }
+
+            if (tenedores[filosofo.id] && tenedores[filosofo.id + 1]) {
+                System.out.println("El filosofo " + filosofo.id + " esta comiendo");
+                tenedores[filosofo.id] = false;
+                tenedores[filosofo.id + 1] = false;
+                try {
+                    Thread.sleep(3000);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+                tenedores.notifyAll();
+            } else {
+                try {
+                    tenedores.wait();
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+    }
+}

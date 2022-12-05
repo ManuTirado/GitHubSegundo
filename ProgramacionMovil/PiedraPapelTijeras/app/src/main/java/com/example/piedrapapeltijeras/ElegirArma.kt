@@ -40,12 +40,12 @@ class ElegirArma : Fragment() {
         return inflater.inflate(R.layout.fragment_elegir_arma, container, false)
     }
 
-    override fun onAttach(context: Context) {
-        super.onAttach(context)
-        if (context is Comunicador) {
-            listener = context
+        override fun onAttach(context: Context) {
+            super.onAttach(context)
+            if (context is Comunicador) {
+                listener = context
+            }
         }
-    }
 
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

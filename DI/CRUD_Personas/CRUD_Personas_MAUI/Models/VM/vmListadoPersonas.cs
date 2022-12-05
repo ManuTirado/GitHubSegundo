@@ -134,7 +134,7 @@ namespace CRUD_Personas_MAUI.Models.VM
                     NotifyPropertyChanged(nameof(PersonaSeleccionada));
                     EliminarPersonaCommand.RaiseCanExecuteChanged();
                 }
-                catch (SqlException e)
+                catch (Exception e)
                 {
                     await Application.Current.MainPage.DisplayAlert("Error al intentar borrar la persona", "'" + e.Message + "' XD'nt", "OK");
                 }
@@ -225,9 +225,8 @@ namespace CRUD_Personas_MAUI.Models.VM
             {
                 listaPersonasBackup = clsListadosPersonasBL.ListadoCompletoPersonasBL();
                 listaDepartamentos = clsListadosDepartamentosBL.ListadoCompletoDepartamentosBL();
-                Thread.Sleep(2000);
             }
-            catch (SqlException e)
+            catch (Exception e)
             {
                 bool volverAintentar = await Application.Current.MainPage.DisplayAlert("Error al cargar las personas", "'" + e.Message + "' XD'nt", "Recargar", "Salir");
                 if (volverAintentar)

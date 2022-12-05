@@ -2,11 +2,37 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="CRUD_Personas_MAUI.Paginas.DetallesDepartamentoPage"
-             Title="DetallesDepartamentoPage">
-    <VerticalStackLayout>
-        <Label 
-            Text="DETALLES DEPARTAMENTO PAGE"
-            VerticalOptions="Center" 
-            HorizontalOptions="Center" />
-    </VerticalStackLayout>
+             Title="DetallesDepartamentoPage"
+             xmlns:model="clr-namespace:CRUD_Personas_MAUI.Models.VM">
+    <ContentPage.BindingContext>
+        <model:vmEditarInsertarDepartamento/>
+    </ContentPage.BindingContext>
+
+    <HorizontalStackLayout Spacing="10" HorizontalOptions="Center" VerticalOptions="Start" Margin="5">
+        <VerticalStackLayout VerticalOptions="Start" Margin="0,20,0,0">
+            <Border  HorizontalOptions="Center"
+                    StrokeShape="RoundRectangle 20,20,20,20"
+                    BackgroundColor="AliceBlue" >
+                <Image Source="department.png"
+                   WidthRequest="150" HeightRequest="150" Aspect="AspectFit"/>
+            </Border>
+        </VerticalStackLayout>
+
+        <BoxView Color="Black" CornerRadius="30" WidthRequest="3" Margin="0,10,0,10"/>
+
+        <ScrollView>
+            <VerticalStackLayout VerticalOptions="Start">
+                <Label Text="Nombre: *" FontSize="Medium"  FontAttributes="Bold"/>
+                <Border
+                         StrokeShape="RoundRectangle 10,10,10,10" Padding="5" BackgroundColor="AliceBlue">
+                    <Entry Text="{Binding DepartamentoSeleccionado.Nombre}" Placeholder="Nombre" FontSize="Medium"/>
+                </Border>
+
+                <Border HorizontalOptions="Center" Margin="0,20,0,0"
+                         StrokeShape="RoundRectangle 100,100,100,100">
+                    <Button Text="Guardar" Command="{Binding GuardarDepartamento}" FontSize="Medium" FontAttributes="Bold" Padding="20" BackgroundColor="BlueViolet"/>
+                </Border>
+            </VerticalStackLayout>
+        </ScrollView>
+    </HorizontalStackLayout>
 </ContentPage>

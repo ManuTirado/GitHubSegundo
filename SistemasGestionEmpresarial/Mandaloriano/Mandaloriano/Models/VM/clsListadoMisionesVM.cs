@@ -6,7 +6,8 @@ namespace Mandaloriano.Models.VM
     {
         #region Propiedades
         public List<clsMision> listadoMisiones { get; set; }
-        public clsMision? clsMision { get; set; }
+        public clsMision/*Era de chill, aquí no se pone '?', si no => *fernando enfadado*😡 */ clsMision { get; set; }
+        /* #FernandoTratameBienNoTeRiasDeMiNoMeArranquesLaPiel🎶🎶 */
         #endregion
 
         #region Constructores

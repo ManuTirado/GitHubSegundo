@@ -3,10 +3,10 @@
     public class clsMision
     {
         #region Propiedades
-        public int? Id { get; set; }
-        public string? Nombre { get; set; }
-        public string? Descripcion { get; set; }
-        public float? Recompensa { get; set; }
+        public int Id { get; set; }
+        public string Nombre { get; set; }
+        public string Descripcion { get; set; }
+        public float Recompensa { get; set; }
         #endregion
 
         #region Constructores
