@@ -209,6 +209,7 @@ namespace CRUD_Personas_MAUI.Models.VM
             NotifyPropertyChanged(nameof(BusquedaUsuario));
             try
             {
+                Thread.Sleep(1000);
                 listaDepartamentosBackup = clsListadosDepartamentosBL.ListadoCompletoDepartamentosBL();
             }
             catch (Exception e)

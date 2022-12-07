@@ -7,12 +7,12 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\CRUD_Personas_BL\CRUD_Personas_BL.csproj" />
-    <ProjectReference Include="..\CRUD_Personas_Entidades\CRUD_Personas_Entidades.csproj" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="6.0.10" />
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Models\VM\" />
+    <ProjectReference Include="..\CRUD_Personas_BL\CRUD_Personas_BL.csproj" />
+    <ProjectReference Include="..\CRUD_Personas_Entidades\CRUD_Personas_Entidades.csproj" />
   </ItemGroup>
 
 </Project>
