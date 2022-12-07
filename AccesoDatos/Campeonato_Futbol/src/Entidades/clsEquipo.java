@@ -1,5 +1,7 @@
 package Entidades;
 
+import java.util.Objects;
+
 public class clsEquipo {
     private String idEquipo;
     private int ganados;
@@ -73,5 +75,18 @@ public class clsEquipo {
 
     public void setGolesRecibidos(int golesRecibidos) {
         this.golesRecibidos = golesRecibidos;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        clsEquipo equipo = (clsEquipo) o;
+        return Objects.equals(idEquipo, equipo.idEquipo);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(idEquipo);
     }
 }

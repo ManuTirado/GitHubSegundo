@@ -22,7 +22,11 @@
             FontSize="Medium"
             HorizontalOptions="Center"
             VerticalOptions="Center"/>
-        <Image
+
+        <Image Margin="20"
+            MaximumHeightRequest="700"
+            MaximumWidthRequest="500"
             Source="apruebame.jpg"/>
+
     </VerticalStackLayout>
 </ContentPage>

@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="CRUD_Personas_MAUI.Paginas.ListadoPersonasPage"
              xmlns:model="clr-namespace:CRUD_Personas_MAUI.Models.VM"
-             Title="ListadoPersonasPage">
+             Title="Personas">
     <ContentPage.BindingContext>
         <model:vmListadoPersonas/>
     </ContentPage.BindingContext>

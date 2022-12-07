@@ -6,7 +6,8 @@ public class clsPartido {
     private int golesA;
     private int golesB;
 
-    public clsPartido() {}
+    public clsPartido() {
+    }
 
     public clsPartido(String equipoA, String equipoB, int golesA, int golesB) {
         this.equipoA = equipoA;
@@ -45,5 +46,10 @@ public class clsPartido {
 
     public void setGolesB(int golesB) {
         this.golesB = golesB;
+    }
+
+    @Override
+    public String toString() {
+        return (equipoA + " " + golesA + " : " + golesB + " " + equipoB);
     }
 }
