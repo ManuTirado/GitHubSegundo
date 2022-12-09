@@ -36,19 +36,23 @@
     <br />
 
     <label>Departamento: </label>
-    <select name="Persona.IdDepartamento">
-        @for (var i = 0; i < Model.ListaDepartamentos.Count; i++)
+    @Html.DropDownListFor(m => m.Persona.IDDepartamento, new SelectList(Model.ListaDepartamentos,"ID","Nombre"))
+
+    <!--    <select name="Persona.IdDepartamento">
+    @for (var i = 0; i < Model.ListaDepartamentos.Count; i++)
+    {
+        if (Model.Persona.IDDepartamento == Model.ListaDepartamentos[i].ID)
         {
-            if (Model.Persona.IDDepartamento == Model.ListaDepartamentos[i].ID)
-            {
-                <option selected value="@Model.ListaDepartamentos[i].ID">@Model.ListaDepartamentos[i].Nombre</option>
-            }
-            else
-            {
-                <option value="@Model.ListaDepartamentos[i].ID">@Model.ListaDepartamentos[i].Nombre</option>
-            }
+                        <option selected value="@Model.ListaDepartamentos[i].ID">@Model.ListaDepartamentos[i].Nombre</option>
         }
+        else
+        {
+                        <option value="@Model.ListaDepartamentos[i].ID">@Model.ListaDepartamentos[i].Nombre</option>
+        }
+    }
     </select>
+    -->
+
     <br />
     <input type="submit" value="Enviar" />
 </form>

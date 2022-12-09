@@ -1,18 +1,26 @@
-﻿namespace CRUD_Personas_Entidades
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace CRUD_Personas_Entidades
 {
     public class clsPersona
     {
         #region Atributos
         public int ID { get; set; }
 
+        [Required]
         public string Nombre { get; set; }
 
+        [Required]
         public string Apellidos { get; set; }
 
         public string Telefono { get; set; }
         public string Direccion { get; set; }
         public string Foto { get; set; }
+
+        [Required]
         public DateTime FechaNacimiento { get; set; }
+
+        [Required]
         public int IDDepartamento { get; set; }
         #endregion
 

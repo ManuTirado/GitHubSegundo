@@ -42,11 +42,12 @@ namespace CRUD_Personas_ASP.Controllers
             }
         }
         [HttpPost]
-        public IActionResult EditarPersona(vmEditarInsertarPersona vmEditarInsertarPersona)
+        [ActionName ("EditarPersona")]
+        public IActionResult EditarPersonaGuardar(clsPersona Persona)
         {
             try
             {
-                CRUD_Personas_BL.Manejadoras.clsManejadoraPersonasBL.EditarPersonaBL(vmEditarInsertarPersona.Persona.ID, vmEditarInsertarPersona.Persona);
+                CRUD_Personas_BL.Manejadoras.clsManejadoraPersonasBL.EditarPersonaBL(Persona.ID, Persona);
                 return RedirectToAction("ListadoPersona");
             }
             catch(Exception e)
@@ -61,11 +62,11 @@ namespace CRUD_Personas_ASP.Controllers
             return View(vmEditarInsertarPersona);
         }
         [HttpPost]
-        public IActionResult InsertarPersona(vmEditarInsertarPersona vmEditarInsertarPersona)
+        public IActionResult InsertarPersona(clsPersona Persona)
         {
             try
             {
-                CRUD_Personas_BL.Manejadoras.clsManejadoraPersonasBL.InsertarPersonaBL(vmEditarInsertarPersona.Persona);
+                CRUD_Personas_BL.Manejadoras.clsManejadoraPersonasBL.InsertarPersonaBL(Persona);
                 return RedirectToAction("ListadoPersona");
             } catch (Exception e)
             {
