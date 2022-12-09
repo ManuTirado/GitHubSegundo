@@ -55,17 +55,14 @@ namespace CRUD_Personas_MAUI.Models.VM
         private bool GuardarPersonaCommand_canExecute()
         {
             return true;
-            /*
-            if (personaSeleccionada.Nombre != null)
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
-            */
         }
+        /// <summary>
+        /// Compruebo que el ID de la persona seleccionado no sea 0, para diferenciar si se le ha pasado una persona o no.
+        /// En caso de que se le haya pasado una persona:
+        ///     Realizo la modificación en la BBDD
+        /// En caso contrario:
+        ///     Realizo la inserción en la BBDD
+        /// </summary>
         private async void GuardarPersonaCommand_execute()
         {
             if (personaSeleccionada.ID != 0)

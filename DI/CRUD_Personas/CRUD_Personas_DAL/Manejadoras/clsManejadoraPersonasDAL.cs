@@ -4,11 +4,15 @@ using Microsoft.Data.SqlClient;
 
 namespace CRUD_Personas_DAL.Manejadoras
 {
+    /// <summary>
+    /// Clase estática, con métodos, también estáticos, que permiten hacer modificaciones en la tabla personas de un registro.
+    /// Ej: editar una persona, borrar una persona, añadir una persona...
+    /// </summary>
     public static class clsManejadoraPersonasDAL
     {
         /// <summary>
-        /// Actualiza una persona de la tabla Personas en la base de datos
-        /// Precondiciones: El nombre y los apellidos no pueden ser nulos
+        /// Actualiza una persona de la tabla Personas en la base de datos.
+        /// Precondiciones: El nombre y los apellidos no pueden ser nulos.
         /// </summary>
         /// <param name="idPersona">ID de la persona que se quiere editar</param>
         /// <param name="personaEditada">Objeto persona editado</param>
@@ -44,8 +48,8 @@ namespace CRUD_Personas_DAL.Manejadoras
         }
 
         /// <summary>
-        /// Inserta una persona de la tabla Personas en la base de datos
-        /// Precondiciones: El nombre y los apellidos no pueden ser nulos
+        /// Inserta una persona en la tabla Personas en la base de datos.
+        /// Precondiciones: El nombre y los apellidos no pueden ser nulos.
         /// </summary>
         /// <param name="personaInsertar">Objeto persona que se quiere insertar</param>
         /// <returns>Número de filas afectadas (0 si no se ha insertado o 1 si se ha insertado)</returns>
@@ -72,7 +76,7 @@ namespace CRUD_Personas_DAL.Manejadoras
         }
 
         /// <summary>
-        /// Elimina una persona de la tabla Personas de la base de datos
+        /// Elimina una persona de la tabla Personas de la base de datos.
         /// </summary>
         /// <param name="id">ID de la persona a eliminar</param>
         /// <returns>Número de filas afectadas (0 si no se ha eliminado o 1 si se ha eliminado)</returns>

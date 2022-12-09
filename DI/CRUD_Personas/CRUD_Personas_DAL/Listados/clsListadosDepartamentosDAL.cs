@@ -4,8 +4,16 @@ using Microsoft.Data.SqlClient;
 
 namespace CRUD_Personas_DAL.Listados
 {
+    /// <summary>
+    /// Clase estática que ofrece métodos, también estáticos, para obtener listados de la tabla departamentos
+    /// </summary>
     public static class clsListadosDepartamentosDAL
     {
+        /// <summary>
+        /// Función que devuelve un listado con todos los departamentos existentes.
+        /// En caso de que no hay ningún departamento, devuelve el listado vacío.
+        /// </summary>
+        /// <returns>Listado de los departamentos</returns>
         public static List<clsDepartamento> ListadoCompletoDepartamentosDAL()
         {
             SqlConnection miConexion = clsMyConnection.getConnection();
@@ -31,7 +39,6 @@ namespace CRUD_Personas_DAL.Listados
                     }
                 }
                 miLector.Close();
-                miConexion.Close();
             }
             catch (SqlException exSql)
             {

@@ -10,7 +10,7 @@ namespace CRUD_Personas_MAUI.Models.VM
     {
         #region Atributos
         clsDepartamento departamentoSeleccionado;
-        DelegateCommand guardarDepartamento; // Diferenciar entre inserción o actualización
+        DelegateCommand guardarDepartamento;
         #endregion
 
         #region Propiedades
@@ -38,6 +38,13 @@ namespace CRUD_Personas_MAUI.Models.VM
         {
             return true;
         }
+        /// <summary>
+        /// Compruebo que el ID del departamento seleccionado no sea 0, para diferenciar si se le ha pasado un departamento o no.
+        /// En caso de que se le haya pasado un departamento:
+        ///     Realizo la modificación en la BBDD
+        /// En caso contrario:
+        ///     Realizo la inserción en la BBDD
+        /// </summary>
         private async void GuardarDepartamentoCommand_execute()
         {
             if (departamentoSeleccionado.ID != 0)

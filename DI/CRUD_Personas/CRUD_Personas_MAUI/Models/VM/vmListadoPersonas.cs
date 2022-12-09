@@ -109,6 +109,11 @@ namespace CRUD_Personas_MAUI.Models.VM
         #endregion
 
         #region Comandos
+        /// <summary>
+        /// Compruebo que haya una persona seleccionada, en caso afirmativo,
+        /// se puede ejecutar el comando.
+        /// </summary>
+        /// <returns>true si hay una persona seleccionada</returns>
         private bool EliminarPersonaCommand_canExecute()
         {
             bool hayPersonaSeleccionada = false;
@@ -119,6 +124,11 @@ namespace CRUD_Personas_MAUI.Models.VM
             }
             return hayPersonaSeleccionada;
         }
+        /// <summary>
+        /// Pido una confirmación al usuario, en caso de que confirme,
+        /// realizo la eliminación de la persona seleccionada en la BBDD y 
+        /// actualizo las listas que usa el VM y establezco la persona seleccionada a null.
+        /// </summary>
         private async void EliminarPersonaCommand_execute()
         {
             bool answer = await Application.Current.MainPage.DisplayAlert("¿Eliminar persona?", "Una vez eliminada no podrá ser recuperada", "Si", "No");
@@ -145,6 +155,10 @@ namespace CRUD_Personas_MAUI.Models.VM
         {
             return true;
         }
+        /// <summary>
+        /// Actualizo la lista de personas visible a los elementos de la lista backup que coincidan con
+        /// los parámetros de búsqueda.
+        /// </summary>
         private void BuscarPersonaCommand_execute()
         {
             if (string.IsNullOrEmpty(busquedaUsuario))
@@ -168,6 +182,11 @@ namespace CRUD_Personas_MAUI.Models.VM
             NotifyPropertyChanged(nameof(PersonaSeleccionada));
         }
 
+        /// <summary>
+        /// Compruebo que haya una persona seleccionada, en caso afirmativo
+        /// se puede ejecutar el comando.
+        /// </summary>
+        /// <returns>true si hay una persona seleccionada</returns>
         private bool EditarPersonaCommand_canExecute()
         {
             bool hayPersonaSeleccionada = false;
@@ -178,6 +197,9 @@ namespace CRUD_Personas_MAUI.Models.VM
             }
             return hayPersonaSeleccionada;
         }
+        /// <summary>
+        /// Navego a la página de DetallesPersona pasándole la persona seleccionada en la navegación.
+        /// </summary>
         private async void EditarPersonaCommand_execute()
         {
             clsPersona personaPasada = new clsPersona(personaSeleccionada.ID, personaSeleccionada.Nombre, personaSeleccionada.Apellidos, personaSeleccionada.Telefono, personaSeleccionada.Direccion, personaSeleccionada.Foto, personaSeleccionada.FechaNacimiento, personaSeleccionada.IDDepartamento);
@@ -188,11 +210,17 @@ namespace CRUD_Personas_MAUI.Models.VM
             await Shell.Current.GoToAsync("DetallesPersona", miDiccionario);
         }
 
+        /// <summary>
+        /// Navego a la página DetallesPersona sin pasarle nada.
+        /// </summary>
         private async void AnadirPersonaCommand_execute()
         {
             await Shell.Current.GoToAsync("DetallesPersona");
         }
 
+        /// <summary>
+        /// Lanza un nuevo hilo que se encarga de actualizar la lista de personas.
+        /// </summary>
         private void ActualizarListaCommand_execute()
         {
             Thread hiloActualizar = new Thread(new ThreadStart(actualizarDatos));
@@ -201,6 +229,12 @@ namespace CRUD_Personas_MAUI.Models.VM
         #endregion
 
         #region Métodos
+        /// <summary>
+        /// Función que devuelve una ObservableCollection de clsPersonaNombreDepartamento a partir de un List de clsPersona.
+        /// Para ello, según el id de departamento de clsPersona compruebo el departamento que le corresponde.
+        /// </summary>
+        /// <param name="listaBackup"></param>
+        /// <returns></returns>
         private ObservableCollection<clsPersonaNombreDepartamento> obtenerListaConNombreDepartamento(List<clsPersona> listaBackup)
         {
             ObservableCollection<clsPersonaNombreDepartamento> listaFinal = new ObservableCollection<clsPersonaNombreDepartamento>();
@@ -213,6 +247,10 @@ namespace CRUD_Personas_MAUI.Models.VM
             return listaFinal;
         }
 
+        /// <summary>
+        /// Método que actualiza la lista de personas backup obteniéndola de la BBDD.
+        /// También restablece la busqueda y la lista mostrada.
+        /// </summary>
         public async void actualizarDatos()
         {
 
@@ -236,11 +274,14 @@ namespace CRUD_Personas_MAUI.Models.VM
                     hiloActualizar.Start();
                 }
             }
-            listaPersonas = obtenerListaConNombreDepartamento(listaPersonasBackup);
-            NotifyPropertyChanged(nameof(ListaPersonas));
-            IsRefreshing = false;
-            NotifyPropertyChanged(nameof(IsRefreshing));
-            NotifyPropertyChanged(nameof(IsNotRefreshing));
+            finally
+            {
+                listaPersonas = obtenerListaConNombreDepartamento(listaPersonasBackup);
+                NotifyPropertyChanged(nameof(ListaPersonas));
+                IsRefreshing = false;
+                NotifyPropertyChanged(nameof(IsRefreshing));
+                NotifyPropertyChanged(nameof(IsNotRefreshing));
+            }
         }
 
         public bool IsNotRefreshing { get { return !isRefreshing; } }

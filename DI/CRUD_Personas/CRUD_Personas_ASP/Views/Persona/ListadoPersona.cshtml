@@ -1,0 +1,65 @@
+﻿@model IEnumerable<CRUD_Personas_ASP.Models.clsPersonaNombreDepartmento>
+
+@{
+    ViewData["Title"] = "ListadoPersona";
+}
+
+<title>Listado Personas</title>
+<br />
+@Html.ActionLink("Volver", "Index", "Home",new{}, new {style="border: 1px solid #000; padding: 10"})
+
+<h1>Listado Personas</h1>
+<p>
+    @Html.ActionLink("Create new", "InsertarPersona", "Persona",new{}, new {style="border: 1px solid #000; padding: 10"})
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+            </th>
+            <th>
+                Nombre
+            </th>
+            <th>
+                Apellidos
+            </th>
+            <th>
+                Departamento
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (Model.Count() > 0)
+        {
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        <img src="@item.persona.Foto" height="120" width="100" />
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.persona.Nombre)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.persona.Apellidos)
+                    </td>
+
+                    <td>
+                        @Html.DisplayFor(modelItem => item.nombreDepartamento)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Edit", "EditarPersona", "Persona", item.persona, new {style="border: 1px solid #000; padding: 5"})  |
+                        @Html.ActionLink("Delete", "BorrarPersona", "Persona", item.persona, new {style="border: 1px solid #000; padding: 5"})
+                    </td>
+                </tr>
+            }
+        }
+        else
+        {
+            <tr>
+                <td>No hay ninguna persona</td>
+            </tr>
+        }
+
+    </tbody>
+</table>

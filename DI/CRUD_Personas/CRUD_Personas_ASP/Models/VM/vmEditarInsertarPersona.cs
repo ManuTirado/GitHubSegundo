@@ -17,11 +17,12 @@ namespace CRUD_Personas_ASP.Models.VM
         #region Constructores
         public vmEditarInsertarPersona()
         {
-
+            this.listaDepartmentos = CRUD_Personas_BL.Listados.clsListadosDepartamentosBL.ListadoCompletoDepartamentosBL();
         }
         public vmEditarInsertarPersona(clsPersona persona)
         {
             this.persona = persona;
+            this.listaDepartmentos = CRUD_Personas_BL.Listados.clsListadosDepartamentosBL.ListadoCompletoDepartamentosBL();
         }
 
         #endregion

@@ -102,12 +102,17 @@ namespace CRUD_Personas_MAUI.Models.VM
             eliminarDepartamento = new DelegateCommand(EliminarDepartamentoCommand_execute, EliminarDepartamentoCommand_canExecute);
             buscarDepartamento = new DelegateCommand(BuscarDepartamentoCommand_execute, BuscarDepartamentoCommand_canExecute);
             editarDepartamento = new DelegateCommand(EditarDepartamentoCommand_execute, EditarDepartamentoCommand_canExecute);
-            anadirDepartamento = new DelegateCommand(AnadirDepartamentoCommand_execute);  // Siempre se puede pulsar
+            anadirDepartamento = new DelegateCommand(AnadirDepartamentoCommand_execute);
             actualizarListaCommand = new DelegateCommand(ActualizarListaCommand_execute);
         }
         #endregion
 
         #region Comandos
+        /// <summary>
+        /// Compruebo que haya un departamento seleccionado, en caso afirmativo,
+        /// se puede ejecutar el comando.
+        /// </summary>
+        /// <returns>true si hay un departamento seleccionado</returns>
         private bool EliminarDepartamentoCommand_canExecute()
         {
             bool hayDepartamentoSeleccionado = false;
@@ -118,6 +123,11 @@ namespace CRUD_Personas_MAUI.Models.VM
             }
             return hayDepartamentoSeleccionado;
         }
+        /// <summary>
+        /// Pido una confirmación al usuario, en caso de que confirme,
+        /// realizo la eliminación del departamento seleccionado en la BBDD y 
+        /// actualizo las listas que usa el VM y establezco el departamento seleccionado a null.
+        /// </summary>
         private async void EliminarDepartamentoCommand_execute()
         {
             bool answer = await Application.Current.MainPage.DisplayAlert("¿Eliminar departamento?", "Una vez eliminada no podrá ser recuperada", "Si", "No");
@@ -144,6 +154,10 @@ namespace CRUD_Personas_MAUI.Models.VM
         {
             return true;
         }
+        /// <summary>
+        /// Actualizo la lista de departamentos visible a los elementos de la lista backup que coincidan con
+        /// los parámetros de búsqueda.
+        /// </summary>
         private void BuscarDepartamentoCommand_execute()
         {
             if (string.IsNullOrEmpty(busquedaUsuario))
@@ -167,6 +181,11 @@ namespace CRUD_Personas_MAUI.Models.VM
             NotifyPropertyChanged(nameof(DepartamentoSeleccionado));
         }
 
+        /// <summary>
+        /// Compruebo que haya un departamento seleccionado, en caso afirmativo
+        /// se puede ejecutar el comando.
+        /// </summary>
+        /// <returns>true si hay un departamento seleccionado</returns>
         private bool EditarDepartamentoCommand_canExecute()
         {
             bool hayPersonaSeleccionada = false;
@@ -177,6 +196,9 @@ namespace CRUD_Personas_MAUI.Models.VM
             }
             return hayPersonaSeleccionada;
         }
+        /// <summary>
+        /// Navego a la página de DetallesDepartamento pasándole el departamento seleccionado en la navegación.
+        /// </summary>
         private async void EditarDepartamentoCommand_execute()
         {
             clsDepartamento departamentoPasado = new clsDepartamento(departamentoSeleccionado.ID, departamentoSeleccionado.Nombre);
@@ -187,11 +209,17 @@ namespace CRUD_Personas_MAUI.Models.VM
             await Shell.Current.GoToAsync("DetallesDepartamento", miDiccionario);
         }
 
+        /// <summary>
+        /// Navego a la página DetallesDepartamento sin pasarle nada.
+        /// </summary>
         private async void AnadirDepartamentoCommand_execute()
         {
             await Shell.Current.GoToAsync("DetallesDepartamento");
         }
 
+        /// <summary>
+        /// Lanza un nuevo hilo que se encarga de actualizar la lista de departamentos.
+        /// </summary>
         private void ActualizarListaCommand_execute()
         {
             Thread hiloActualizar = new Thread(new ThreadStart(actualizarDatos));
@@ -200,6 +228,10 @@ namespace CRUD_Personas_MAUI.Models.VM
         #endregion
 
         #region Métodos
+        /// <summary>
+        /// Método que actualiza la lista de departamentos backup obteniéndola de la BBDD.
+        /// También restablece la busqueda y la lista mostrada.
+        /// </summary>
         public async void actualizarDatos()
         {
             IsRefreshing = true;

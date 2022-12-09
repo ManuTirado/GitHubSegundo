@@ -7,6 +7,9 @@ using System.Windows.Input;
 
 namespace CRUD_Personas_MAUI.Models.Utilidades
 {
+    /// <summary>
+    /// Clase que implementa la interfaz ICommand
+    /// </summary>
     public class DelegateCommand : ICommand
     {
         private readonly Action _execute;

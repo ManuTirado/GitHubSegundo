@@ -1,6 +1,9 @@
-﻿using CRUD_Personas_ASP.Models.VM;
+﻿using CRUD_Personas_ASP.Models;
+using CRUD_Personas_ASP.Models.VM;
 using CRUD_Personas_Entidades;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Data.SqlClient;
+using System.Collections.ObjectModel;
 
 namespace CRUD_Personas_ASP.Controllers
 {
@@ -8,40 +11,80 @@ namespace CRUD_Personas_ASP.Controllers
     {
         public IActionResult ListadoPersona()
         {
-            return View();
+            try
+            {
+                List<clsPersonaNombreDepartmento> personasConNombreDept = new List<clsPersonaNombreDepartmento>();
+                List<clsPersona> personas = CRUD_Personas_BL.Listados.clsListadosPersonasBL.ListadoCompletoPersonasBL();
+                List<clsDepartamento> departamentos = CRUD_Personas_BL.Listados.clsListadosDepartamentosBL.ListadoCompletoDepartamentosBL();
+                foreach (var persona in personas)
+                {
+                    clsPersonaNombreDepartmento personaNombreDepartamento = new clsPersonaNombreDepartmento(persona);
+                    personaNombreDepartamento.nombreDepartamento = departamentos.Find(x => x.ID == persona.IDDepartamento).Nombre;
+                    personasConNombreDept.Add(personaNombreDepartamento);
+                }
+                return View(personasConNombreDept);
+            } catch (SqlException e)
+            {
+                return View("Error", "Error al intentar obtener el listado de personas, inténtelo de nuevo más tarde");
+            }
         }
-        /*
-        [HttpPost]
-        public IActionResult ListadoPersona(string busquedaUsuario)
-        {
-            return View(vmListadoPersonas);
-        }
-       
+        
 
         public IActionResult EditarPersona(clsPersona persona)
         {
-            return View(new vmEditarInsertarPersona(new clsPersona()));
+            try
+            {
+                vmEditarInsertarPersona vmEditarInsertarPersona = new vmEditarInsertarPersona(persona);
+                return View(vmEditarInsertarPersona);
+            } catch (SqlException e)
+            {
+                return View("Error", "Error al intentar obtener los departamentos, inténtelo de nuevo más tarde");
+            }
         }
         [HttpPost]
         public IActionResult EditarPersona(vmEditarInsertarPersona vmEditarInsertarPersona)
         {
-            return View(vmEditarInsertarPersona);
+            try
+            {
+                CRUD_Personas_BL.Manejadoras.clsManejadoraPersonasBL.EditarPersonaBL(vmEditarInsertarPersona.Persona.ID, vmEditarInsertarPersona.Persona);
+                return RedirectToAction("ListadoPersona");
+            }
+            catch(Exception e)
+            {
+                return View("Error", "Error al intentar editar la persona, inténtelo de nuevo más tarde");
+            }    
         }
-
+        
         public IActionResult InsertarPersona()
         {
+            vmEditarInsertarPersona vmEditarInsertarPersona = new vmEditarInsertarPersona();
             return View(vmEditarInsertarPersona);
         }
         [HttpPost]
-        public IActionResult InsertarPersona(vmEditarInsertarPersona)
+        public IActionResult InsertarPersona(vmEditarInsertarPersona vmEditarInsertarPersona)
         {
-            return View();
+            try
+            {
+                CRUD_Personas_BL.Manejadoras.clsManejadoraPersonasBL.InsertarPersonaBL(vmEditarInsertarPersona.Persona);
+                return RedirectToAction("ListadoPersona");
+            } catch (Exception e)
+            {
+                return View("Error", "Error al intentar insertar la persona, inténtelo de nuevo más tarde");
+            }
         }
 
-        public IActionResult BorrarPersona(clsPersona)
+        public IActionResult BorrarPersona(clsPersona persona)
         {
-            return View();
+            try
+            {
+                CRUD_Personas_BL.Manejadoras.clsManejadoraPersonasBL.BorrarPersonaBL(persona.ID);
+                return RedirectToAction("ListadoPersona");
+            }
+            catch (Exception e)
+            {
+                return View("Error", "Error al intentar borrar la persona, inténtelo de nuevo más tarde");
+            }
         }
-         */
+
     }
 }

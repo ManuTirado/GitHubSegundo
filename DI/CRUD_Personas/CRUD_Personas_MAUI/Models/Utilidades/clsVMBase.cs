@@ -8,6 +8,9 @@ using System.Windows.Input;
 
 namespace CRUD_Personas_MAUI.Models.Utilidades
 {
+    /// <summary>
+    /// Clase que implementa la interfaz INotifyPropertyChanged
+    /// </summary>
     public class clsVMBase : INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler PropertyChanged;

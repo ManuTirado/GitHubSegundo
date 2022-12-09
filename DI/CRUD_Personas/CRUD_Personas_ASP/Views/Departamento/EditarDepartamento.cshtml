@@ -1,6 +1,26 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
+﻿@model CRUD_Personas_Entidades.clsDepartamento
+
 @{
+    ViewData["Title"] = "EditarDepartamento";
 }
-<h1>Vista Editar Departamento</h1>
+
+<title>Editar Departamento</title>
+
+<h1>Editar Departamento</h1>
+<br />
+<hr />
+<br />
+<img src="https://github.com/ManuelTirado/Fotos/blob/main/department.png?raw=true" height="200" width="200" />
+<br />
+<hr />
+<br />
+<form method="post">
+    @Html.HiddenFor(m => Model.ID)
+    <label>Nombre: </label>
+    @Html.TextBoxFor(m => Model.Nombre)
+    <br />
+    <input type="submit" value="Enviar" />
+</form>
+
+@Html.ActionLink("Volver", "ListadoDepartamento", "Departamento",new{}, new {style="border: 1px solid #000; padding: 5"})
+

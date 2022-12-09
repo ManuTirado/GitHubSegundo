@@ -1,23 +1,10 @@
 ﻿using Microsoft.Data.SqlClient;
 
-// Esta clase contiene los métodos necesarios para trabajar con el acceso a una base de datos SQL Server
-//PROPIEDADES
-//   _server: cadena 
-//   _database: cadena, básica. Consultable/modificable.
-//   _user: cadena, básica. Consultable/modificable.
-//   _pass: cadena, básica. Consultable/modificable.
-
-// MÉTODOS
-//   Function getConnection() As SqlConnection
-//       Este método abre una conexión con la base de datos. Lanza excepciones de tipo: SqlExcepion, InvalidOperationException y Exception.
-//   
-//   Sub closeConnection(ByRef connection As SqlConnection)
-//       Este método cierra una conexión con la base de datos. Lanza excepciones de tipo: SqlExcepion, InvalidOperationException y Exception.
-//
-
-
 namespace _07_CRUD_Personas_DAL.Conexion
 {
+    /// <summary>
+    /// Esta clase contiene los métodos necesarios para trabajar con el acceso a una base de datos SQL Server.
+    /// </summary>
     public static class clsMyConnection
     {
         #region Atributos
