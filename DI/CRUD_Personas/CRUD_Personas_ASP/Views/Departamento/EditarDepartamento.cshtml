@@ -18,6 +18,7 @@
     @Html.HiddenFor(m => Model.ID)
     <label>Nombre: </label>
     @Html.TextBoxFor(m => Model.Nombre)
+    @Html.ValidationMessageFor(m => Model.Nombre)
     <br />
     <input type="submit" value="Enviar" />
 </form>

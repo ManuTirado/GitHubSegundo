@@ -11,6 +11,7 @@ namespace CRUD_Personas_ASP.Models.VM
 
         #region Propiedades
         public clsPersona Persona { get { return persona; } set { persona = value; } }
+
         public List<clsDepartamento> ListaDepartamentos { get { return listaDepartmentos; } }
         #endregion
 

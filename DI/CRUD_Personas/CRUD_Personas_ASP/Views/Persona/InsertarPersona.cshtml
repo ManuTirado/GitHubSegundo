@@ -13,30 +13,40 @@
 <form method="post">
     <label>Nombre: </label>
     @Html.TextBoxFor(m => Model.Persona.Nombre)
+    @Html.ValidationMessageFor(m => Model.Persona.Nombre)
     <br />
     <label>Apellidos: </label>
     @Html.TextBoxFor(m => Model.Persona.Apellidos)
+    @Html.ValidationMessageFor(m => Model.Persona.Apellidos)
     <br />
     <label>Telefono: </label>
     @Html.TextBoxFor(m => Model.Persona.Telefono)
+    @Html.ValidationMessageFor(m => Model.Persona.Telefono)
+
     <br />
     <label>Dirección: </label>
     @Html.TextBoxFor(m => Model.Persona.Direccion)
+    @Html.ValidationMessageFor(m => Model.Persona.Direccion)
+
     <br />
     <label>Fecha Nacimiento: </label>
     @Html.TextBoxFor(x => x.Persona.FechaNacimiento, "{0:yyyy-MM-dd}", new { @class = "form-control",@type = "date", @min = "1900-01-01"})
+    @Html.ValidationMessageFor(m => Model.Persona.FechaNacimiento)
     <br />
     <label>Foto: </label>
     @Html.TextBoxFor(m => Model.Persona.Foto)
+    @Html.ValidationMessageFor(m => Model.Persona.Foto)
+
     <br />
 
     <label>Departamento: </label>
-    <select name="Persona.IdDepartamento">
+    <select name="Persona.IDDepartamento">
         @for (var i = 0; i < Model.ListaDepartamentos.Count; i++)
         {
             <option value="@Model.ListaDepartamentos[i].ID">@Model.ListaDepartamentos[i].Nombre</option>
         }
     </select>
+    @Html.ValidationMessageFor(m => Model.Persona.IDDepartamento)
     <br />
     <input type="submit" value="Enviar" />
 </form>

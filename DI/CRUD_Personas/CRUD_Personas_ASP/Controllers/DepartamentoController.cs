@@ -30,14 +30,20 @@ namespace CRUD_Personas_ASP.Controllers
         [ActionName("EditarDepartamento")]
         public IActionResult EditarDepartamentoGuardar(clsDepartamento departamento)
         {
-            try
+            if(ModelState.IsValid)
             {
-                CRUD_Personas_BL.Manejadoras.clsManejadoraDepartamentosBL.EditarDepartamentoBL(departamento.ID, departamento);
-                return RedirectToAction("ListadoDepartamento");
-            }
-            catch (Exception e)
+                try
+                {
+                    CRUD_Personas_BL.Manejadoras.clsManejadoraDepartamentosBL.EditarDepartamentoBL(departamento.ID, departamento);
+                    return RedirectToAction("ListadoDepartamento");
+                }
+                catch (Exception e)
+                {
+                    return View("Error", "Error al intentar editar el departamento, inténtelo de nuevo más tarde");
+                }
+            } else
             {
-                return View("Error", "Error al intentar editar el departamento, inténtelo de nuevo más tarde");
+                return View(departamento);
             }
         }
 
@@ -50,14 +56,20 @@ namespace CRUD_Personas_ASP.Controllers
         [HttpPost]
         public IActionResult InsertarDepartamento(clsDepartamento departamento)
         {
-            try
+            if (ModelState.IsValid)
             {
-                CRUD_Personas_BL.Manejadoras.clsManejadoraDepartamentosBL.InsertarDepartamentoBL(departamento);
-                return RedirectToAction("ListadoDepartamento");
-            }
-            catch (Exception e)
+                try
+                {
+                    CRUD_Personas_BL.Manejadoras.clsManejadoraDepartamentosBL.InsertarDepartamentoBL(departamento);
+                    return RedirectToAction("ListadoDepartamento");
+                }
+                catch (Exception e)
+                {
+                    return View("Error", "Error al intentar insertar el departamento, inténtelo de nuevo más tarde");
+                }
+            } else
             {
-                return View("Error", "Error al intentar insertar el departamento, inténtelo de nuevo más tarde");
+                return View(departamento);
             }
         }
 

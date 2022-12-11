@@ -9,7 +9,7 @@ namespace CRUD_Personas_ASP.Controllers
 {
     public class PersonaController : Controller
     {
-        public IActionResult ListadoPersona()
+        public IActionResult ListadoPersona(string busquedaUsuario)
         {
             try
             {
@@ -18,17 +18,30 @@ namespace CRUD_Personas_ASP.Controllers
                 List<clsDepartamento> departamentos = CRUD_Personas_BL.Listados.clsListadosDepartamentosBL.ListadoCompletoDepartamentosBL();
                 foreach (var persona in personas)
                 {
-                    clsPersonaNombreDepartmento personaNombreDepartamento = new clsPersonaNombreDepartmento(persona);
-                    personaNombreDepartamento.nombreDepartamento = departamentos.Find(x => x.ID == persona.IDDepartamento).Nombre;
-                    personasConNombreDept.Add(personaNombreDepartamento);
+                    if (!String.IsNullOrEmpty(busquedaUsuario))
+                    {
+                        if (persona.Nombre.ToLower().Contains(busquedaUsuario.ToLower()))
+                        {
+                            clsPersonaNombreDepartmento personaNombreDepartamento = new clsPersonaNombreDepartmento(persona);
+                            personaNombreDepartamento.nombreDepartamento = departamentos.Find(x => x.ID == persona.IDDepartamento).Nombre;
+                            personasConNombreDept.Add(personaNombreDepartamento);
+                        }
+                    } else
+                    {
+                        clsPersonaNombreDepartmento personaNombreDepartamento = new clsPersonaNombreDepartmento(persona);
+                        personaNombreDepartamento.nombreDepartamento = departamentos.Find(x => x.ID == persona.IDDepartamento).Nombre;
+                        personasConNombreDept.Add(personaNombreDepartamento);
+                    }
+                      
                 }
                 return View(personasConNombreDept);
-            } catch (SqlException e)
+            }
+            catch (SqlException e)
             {
                 return View("Error", "Error al intentar obtener el listado de personas, inténtelo de nuevo más tarde");
             }
         }
-        
+
 
         public IActionResult EditarPersona(clsPersona persona)
         {
@@ -36,26 +49,34 @@ namespace CRUD_Personas_ASP.Controllers
             {
                 vmEditarInsertarPersona vmEditarInsertarPersona = new vmEditarInsertarPersona(persona);
                 return View(vmEditarInsertarPersona);
-            } catch (SqlException e)
+            }
+            catch (SqlException e)
             {
                 return View("Error", "Error al intentar obtener los departamentos, inténtelo de nuevo más tarde");
             }
         }
         [HttpPost]
-        [ActionName ("EditarPersona")]
+        [ActionName("EditarPersona")]
         public IActionResult EditarPersonaGuardar(clsPersona Persona)
         {
-            try
+            if (ModelState.IsValid)
             {
-                CRUD_Personas_BL.Manejadoras.clsManejadoraPersonasBL.EditarPersonaBL(Persona.ID, Persona);
-                return RedirectToAction("ListadoPersona");
+                try
+                {
+                    CRUD_Personas_BL.Manejadoras.clsManejadoraPersonasBL.EditarPersonaBL(Persona.ID, Persona);
+                    return RedirectToAction("ListadoPersona");
+                }
+                catch (Exception e)
+                {
+                    return View("Error", "Error al intentar editar la persona, inténtelo de nuevo más tarde");
+                }
             }
-            catch(Exception e)
+            else
             {
-                return View("Error", "Error al intentar editar la persona, inténtelo de nuevo más tarde");
-            }    
+                return View(new vmEditarInsertarPersona(Persona));
+            }
         }
-        
+
         public IActionResult InsertarPersona()
         {
             vmEditarInsertarPersona vmEditarInsertarPersona = new vmEditarInsertarPersona();
@@ -64,13 +85,21 @@ namespace CRUD_Personas_ASP.Controllers
         [HttpPost]
         public IActionResult InsertarPersona(clsPersona Persona)
         {
-            try
+            if (ModelState.IsValid)
             {
-                CRUD_Personas_BL.Manejadoras.clsManejadoraPersonasBL.InsertarPersonaBL(Persona);
-                return RedirectToAction("ListadoPersona");
-            } catch (Exception e)
+                try
+                {
+                    CRUD_Personas_BL.Manejadoras.clsManejadoraPersonasBL.InsertarPersonaBL(Persona);
+                    return RedirectToAction("ListadoPersona");
+                }
+                catch (Exception e)
+                {
+                    return View("Error", "Error al intentar insertar la persona, inténtelo de nuevo más tarde");
+                }
+            }
+            else
             {
-                return View("Error", "Error al intentar insertar la persona, inténtelo de nuevo más tarde");
+                return View(new vmEditarInsertarPersona(Persona));
             }
         }
 

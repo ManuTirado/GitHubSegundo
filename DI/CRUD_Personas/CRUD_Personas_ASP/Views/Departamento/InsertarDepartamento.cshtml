@@ -13,8 +13,10 @@
 <form method="post">
     <label>Nombre: </label>
     @Html.TextBoxFor(m => Model.Nombre)
+    @Html.ValidationMessageFor(model => model.Nombre)
     <br />
     <input type="submit" value="Enviar" />
+    
 </form>
 
 @Html.ActionLink("Volver", "ListadoDepartamento", "Departamento",new{}, new {style="border: 1px solid #000; padding: 5"})

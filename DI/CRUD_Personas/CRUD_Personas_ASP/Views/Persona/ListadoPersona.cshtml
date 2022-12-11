@@ -12,6 +12,12 @@
 <p>
     @Html.ActionLink("Create new", "InsertarPersona", "Persona",new{}, new {style="border: 1px solid #000; padding: 10"})
 </p>
+<form asp-controller="Persona" asp-action="ListadoPersona">
+    <p>
+        Nombre: <input type="text" name="busquedaUsuario" />
+        <input type="submit" value="Buscar" />
+    </p>
+</form>
 <table class="table">
     <thead>
         <tr>
