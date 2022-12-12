@@ -9,10 +9,10 @@ namespace Examen_DAL.Utilidades
     public static class clsMyConnection
     {
         #region Atributos
-        private static string server = "dhurtado.database.windows.net";
-        private static string dataBase = "diegoDB";
-        private static string user = "fernando";
-        private static string pass = "Mandaloriano69";
+        private static string server = $"107-06\\SQLEXPRESS";
+        private static string dataBase = "PruebaExamen";
+        private static string user = "prueba";
+        private static string pass = "123";
         #endregion
 
         #region METODOS
@@ -27,7 +27,7 @@ namespace Examen_DAL.Utilidades
             {
                 try
                 {
-                    connection.ConnectionString = $"server={server};database={dataBase};uid={user};pwd={pass};";
+                    connection.ConnectionString = $"server={server};database={dataBase};uid={user};pwd={pass};TrustServerCertificate = True";
                     connection.Open();
                 }
                 catch (SqlException)

@@ -1,0 +1,38 @@
+﻿@model Examen_ASP.Models.VM.vmConfirmarBorrado
+
+@{
+    ViewData["Title"] = "ConfirmarBorrado";
+}
+
+<title>Confirmar Borrado</title>
+<h1>Confirmar Borrado</h1>
+
+
+@if (ViewBag.Error == null)
+{
+    <hr />
+    <h3>¿Está seguro de que desea borrar el departamento @Model.Departamento.Nombre?</h3>
+    <hr />
+
+    @if (Model.Borrado == false)
+    {
+        <p>Se eliminaran @Model.NumPersonasEnDept personas :O</p>
+        <br />
+        <form method="post">
+            <input type="submit" value="Delete" class="btn btn-danger" />
+        </form>
+    }
+    else
+    {
+        <p>Se ha eliminado el departamento y sus @Model.NumPersonasEnDept personas correctamente :)</p>
+    }
+}
+else
+{
+    <hr />
+    <p>@ViewBag.Error</p>
+    <hr />
+}
+
+<br />
+@Html.ActionLink("Volver", "ListadoDepartamentos", "Departamentos",new{}, new {style="border: 1px solid #000; padding: 5"})

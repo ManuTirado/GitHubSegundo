@@ -1,0 +1,42 @@
+﻿@model Examen_ASP.Models.VM.vmListadoDepartamentos
+
+@{
+    ViewData["Title"] = "ListadoDepartamentos";
+}
+
+<title>Listado Departamentos</title>
+<br />
+<h1>Listado Departamentos</h1>
+
+<br />
+<hr />
+
+@if (@ViewBag.Error != null)
+{
+    <p>@ViewBag.Error</p>
+}
+else
+{
+    @if (Model.ListadoDepartamentos.Count > 0)
+    {
+        @foreach (var departamento in Model.ListadoDepartamentos)
+        {
+            <h1>@departamento.Nombre @Html.ActionLink("Borrar", "ConfirmarBorrado", "Departamentos", departamento, new {})</h1>
+
+            @foreach (var persona in Model.ListadoPersonas)
+            {
+                @if (departamento.ID == persona.IDDepartamento)
+                {
+                    <ul>
+                        <li>@persona.Nombre @persona.Apellidos, tlfn: @persona.Telefono</li>
+                    </ul>
+                }
+            }
+            <hr />
+        }
+    }
+    else
+    {
+        <h2>No hay ningún departamento en la BBDD</h2>
+    }
+}
