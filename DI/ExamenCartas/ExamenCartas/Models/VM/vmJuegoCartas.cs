@@ -25,7 +25,7 @@ namespace ExamenCartas.Models.VM
                 {
                     cartaSeleccionada = value;
                     NotifyPropertyChanged(nameof(CartaSeleccionada));
-                    if (cartaSeleccionada.rutaImagenMostrada == cartaSeleccionada.rutaImagenReverso)
+                    if (cartaSeleccionada.rutaImagenMostrada == cartaSeleccionada.rutaImagenReverso) // xd
                     {
                         if (cartaSeleccionada.isAmigo)
                         {
@@ -60,10 +60,6 @@ namespace ExamenCartas.Models.VM
         }
         #endregion
 
-        #region Comandos
-
-        #endregion
-
         #region Métodos
         private void iniciarJuego()
         {
@@ -92,7 +88,7 @@ namespace ExamenCartas.Models.VM
                 new clsCartaNotify(7,"tradoshan.jpg", "reverso.jpg", false)
             };
         }
-        private void generarBaraja()
+        private void generarBaraja() // jijijaja
         {
             barajaCartas = new ObservableCollection<clsCartaNotify>();
             int cartasBabyJoda = 0;
