@@ -49,7 +49,6 @@ namespace ExamenCartas.Models.VM
                 }
             }
         }
-
         #endregion
 
         #region Constructores
