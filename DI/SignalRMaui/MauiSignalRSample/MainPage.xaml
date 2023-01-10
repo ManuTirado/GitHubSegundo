@@ -3,23 +3,32 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="MauiSignalRSample.MainPage">
 
-    <ScrollView>
-        <VerticalStackLayout
-            Spacing="25"
-            Padding="30,0"
-            VerticalOptions="Center">
-            <Border Margin="40">
-                <VerticalStackLayout x:Name="chatMessages">
-                    
-                </VerticalStackLayout>
-            </Border>
-            
-            <Entry
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="auto"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <Entry Grid.Row="0"
                 x:Name="myChatUser"
                 Placeholder="Type your user"
                 FontSize="18"
-                HorizontalOptions="Center" />
+               HorizontalTextAlignment="Center"
+               BackgroundColor="AliceBlue"/>
 
+        <ScrollView Grid.Row="1"
+                    Padding="40,20">
+            <VerticalStackLayout x:Name="chatMessages">
+
+            </VerticalStackLayout>
+        </ScrollView>
+
+        <HorizontalStackLayout Grid.Row="2"
+                               HorizontalOptions="Center">
             <Entry
                 x:Name="myChatMessage"
                 Placeholder="Type your message"
@@ -31,8 +40,7 @@
                 Text="Send"
                 Clicked="OnSendMessage"
                 HorizontalOptions="Center" />
-
-        </VerticalStackLayout>
-    </ScrollView>
+        </HorizontalStackLayout>
+    </Grid>
 
 </ContentPage>
