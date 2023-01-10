@@ -15,31 +15,31 @@ namespace CRUD_Personas_ASP.Controllers.API
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class PersonaController : ControllerBase
+    public class DepartamentoController : ControllerBase
     {
-        // GET: api/<PersonaController>
+        // GET: api/<DepartamentoController>
         [HttpGet]
-        public List<clsPersona> Get()
+        public List<clsDepartamento> Get()
         {
-            return CRUD_Personas_BL.Listados.clsListadosPersonasBL.ListadoCompletoPersonasBL();
+            return CRUD_Personas_BL.Listados.clsListadosDepartamentosBL.ListadoCompletoDepartamentosBL();
         }
 
-        // GET api/<PersonaController>/5
+        // GET api/<DepartamentoController>/5
         [HttpGet("{id}")]
-        public clsPersona Get(int id)
+        public clsDepartamento Get(int id)
         {
-            return CRUD_Personas_BL.Manejadoras.clsManejadoraPersonasBL.LeerPersonaBL(id);
+            return CRUD_Personas_BL.Manejadoras.clsManejadoraDepartamentosBL.LeerDepartamentoBL(id);
         }
 
-        // POST api/<PersonaController>
+        // POST api/<DepartamentoController>
         [HttpPost]
-        public IActionResult Post([FromBody] clsPersona value)
+        public IActionResult Post([FromBody] clsDepartamento value)
         {
             IActionResult result = null;
             int numeroFilasAfectadas = 0;
             try
             {
-                numeroFilasAfectadas = clsManejadoraPersonasBL.InsertarPersonaBL(value);
+                numeroFilasAfectadas = clsManejadoraDepartamentosBL.InsertarDepartamentoBL(value);
             }
             catch (HttpResponseException e)
             {
@@ -56,15 +56,15 @@ namespace CRUD_Personas_ASP.Controllers.API
             return result;
         }
 
-        // PUT api/<PersonaController>/5
+        // PUT api/<DepartamentoController>/5
         [HttpPut("{id}")]
-        public IActionResult Put(int id, [FromBody] clsPersona value)
+        public IActionResult Put(int id, [FromBody] clsDepartamento value)
         {
             IActionResult result = null;
             int numeroFilasAfectadas = 0;
             try
             {
-                numeroFilasAfectadas = clsManejadoraPersonasBL.EditarPersonaBL(id, value);
+                numeroFilasAfectadas = clsManejadoraDepartamentosBL.EditarDepartamentoBL(id, value);
             }
             catch (HttpResponseException e)
             {
@@ -81,7 +81,7 @@ namespace CRUD_Personas_ASP.Controllers.API
             return result;
         }
 
-        // DELETE api/<PersonaController>/5
+        // DELETE api/<DepartamentoController>/5
         [HttpDelete("{id}")]
         public IActionResult Delete(int id)
         {
@@ -89,7 +89,7 @@ namespace CRUD_Personas_ASP.Controllers.API
             int numeroFilasAfectadas = 0;
             try
             {
-                numeroFilasAfectadas = clsManejadoraPersonasBL.BorrarPersonaBL(id);
+                numeroFilasAfectadas = clsManejadoraDepartamentosBL.BorrarDepartamentoBL(id);
             }
             catch (HttpResponseException e)
             {

@@ -14,6 +14,11 @@ namespace CRUD_Personas_BL.Manejadoras
     /// </summary>
     public static class clsManejadoraPersonasBL
     {
+        public static clsPersona LeerPersonaBL(int id)
+        {
+            return clsManejadoraPersonasDAL.LeerPersonaDAL(id);
+        }
+
         /// <summary>
         /// Actualiza una persona de la tabla Personas en la base de datos.
         /// Precondiciones: El nombre y los apellidos no pueden ser nulos.

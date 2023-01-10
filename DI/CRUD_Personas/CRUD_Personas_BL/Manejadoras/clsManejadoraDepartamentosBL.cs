@@ -9,6 +9,11 @@ namespace CRUD_Personas_BL.Manejadoras
     /// </summary>
     public static class clsManejadoraDepartamentosBL
     {
+        public static clsDepartamento LeerDepartamentoBL(int id)
+        {
+            return clsManejadoraDepartamentosDAL.LeerDepartamentoDAL(id);
+        }
+
         /// <summary>
         /// Actualiza un departamento de la tabla Departamentos en la base de datos.
         /// Precondiciones: El nombre no puede ser nulo.

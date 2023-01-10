@@ -10,6 +10,33 @@ namespace CRUD_Personas_DAL.Manejadoras
     /// </summary>
     public static class clsManejadoraDepartamentosDAL
     {
+        public static clsDepartamento LeerDepartamentoDAL(int id)
+        {
+            int columnasAfectadas;
+            SqlConnection miConexion = clsMyConnection.getConnection();
+            SqlCommand miComando = new SqlCommand();
+            SqlDataReader miLector;
+            clsDepartamento oDepartamento = null;
+
+            miComando.CommandText = "SELECT * FROM Departamentos WHERE ID = @id";
+            miComando.Parameters.AddWithValue("@id", id);
+
+            miComando.Connection = miConexion;
+
+            miLector = miComando.ExecuteReader();
+
+            if (miLector.HasRows)
+            {
+                miLector.Read();
+                oDepartamento = new clsDepartamento();
+                oDepartamento.ID = (int)miLector["ID"];
+                oDepartamento.Nombre = (string)miLector["Nombre"];
+            }
+            miLector.Close();
+            miConexion.Close();
+            return oDepartamento;
+        }
+
         /// <summary>
         /// Actualiza un departamento de la tabla Departamentos en la base de datos.
         /// Precondiciones: El nombre no puede ser nulo.

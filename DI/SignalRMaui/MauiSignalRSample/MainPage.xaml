@@ -13,9 +13,8 @@
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
 
-        <Entry Grid.Row="0"
+        <Label Grid.Row="0"
                 x:Name="myChatUser"
-                Placeholder="Type your user"
                 FontSize="18"
                HorizontalTextAlignment="Center"
                BackgroundColor="AliceBlue"/>
