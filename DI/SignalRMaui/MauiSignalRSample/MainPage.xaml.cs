@@ -32,12 +32,5 @@ public partial class MainPage : ContentPage
         await _connection.InvokeCoreAsync("SendMessage", args: new[] { myChatUser.Text, myChatMessage.Text });
         myChatMessage.Text = String.Empty;
     }
-
-    private async void Login ()
-    {
-        await DisplayAlert("Alert", "You have been alerted", "OK");
-        //string usuario = await DisplayPromptAsync("Login", "Ingrese su usuario");
-        //myChatUser.Text = usuario;
-    }
 }
 

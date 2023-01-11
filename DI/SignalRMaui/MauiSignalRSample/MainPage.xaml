@@ -13,11 +13,12 @@
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
 
-        <Label Grid.Row="0"
+        <Entry
                 x:Name="myChatUser"
+                Placeholder="Usuario"
                 FontSize="18"
-               HorizontalTextAlignment="Center"
-               BackgroundColor="AliceBlue"/>
+                HorizontalOptions="Center" 
+            BackgroundColor="AliceBlue"/>
 
         <ScrollView Grid.Row="1"
                     Padding="40,20">
