@@ -1,0 +1,37 @@
+Entidades
+
+	clsCirculo
+		Color colorCirculo
+		float posX
+		float posY
+		float radio
+
+--- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- ---
+
+Servidor HUB - CirculitosJuguetones_ASP
+	
+	cls CirculitosJuguetones_HUB : Hub
+		Task EnviarCirculo (clsCirculo circulo)
+		{
+			await Clients.All.SendAsync("DibujarCirculo", circulo);
+		}
+
+--- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- ---
+
+Cliente MAUI - CirculitosJuguetones_MAUI
+
+	Vistas
+		JuegoPage
+
+	Models
+
+	ViewModels
+		JuegoVM
+			private clsCirculo miCirculo
+			Constructor()
+			{ 
+				miCirculo = new clsCirculo()
+				invoke EnviarCirculo(miCirculo) 
+			}
+			private readonly HubConnection _connection;
+			DibujarCirculo(clsCirculo circulo){ }
