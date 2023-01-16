@@ -1,24 +1,40 @@
-﻿namespace CirculitosJuguetones_MAUI
-{
-    public partial class MainPage : ContentPage
-    {
-        int count = 0;
+﻿using Entidades;
+using System.Collections.ObjectModel;
+using Microsoft.AspNetCore.SignalR.Client;
 
-        public MainPage()
+
+namespace CirculitosJuguetones_MAUI
+{
+
+    public partial class Juego : ContentPage
+    {
+        private readonly HubConnection _connection;
+        public ObservableCollection<clsCirculo> Circulos;
+
+        public Juego()
         {
             InitializeComponent();
+            Circulos = new ObservableCollection<clsCirculo>();
+            Circulos.Add(new clsCirculo());
+            ColeccionCirculos.ItemsSource = Circulos;
+
+            _connection = new HubConnectionBuilder().WithUrl("http://localhost:5103/").Build();
+
+            _connection.On<clsCirculo>("DibujarCirculo", (circulo) =>
+            {
+                Circulos.Add(circulo);
+            });
+
+            Task.Run(() =>
+            {
+                Dispatcher.Dispatch(async () =>
+                await _connection.StartAsync());
+            });
         }
 
-        private void OnCounterClicked(object sender, EventArgs e)
+        public void OnBtnNuevoCirculo (object sender, EventArgs args)
         {
-            count++;
-
-            if (count == 1)
-                CounterBtn.Text = $"Clicked {count} time";
-            else
-                CounterBtn.Text = $"Clicked {count} times";
-
-            SemanticScreenReader.Announce(CounterBtn.Text);
+            Circulos.Add(new clsCirculo());
         }
     }
 }

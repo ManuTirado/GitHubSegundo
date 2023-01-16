@@ -49,6 +49,10 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <PackageReference Include="Microsoft.AspNetCore.SignalR.Client.Core" Version="7.0.2" />
+	</ItemGroup>
+
+	<ItemGroup>
 	  <ProjectReference Include="..\Entidades\Entidades.csproj" />
 	</ItemGroup>
 

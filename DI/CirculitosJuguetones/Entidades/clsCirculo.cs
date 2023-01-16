@@ -4,12 +4,6 @@ namespace Entidades
 {
     public class clsCirculo
     {
-        /*
-    Color color
-    float posX
-    float posY
-    float radio
-         */
 
         #region Propiedades
         private Color colorCirculo;
@@ -19,7 +13,7 @@ namespace Entidades
         #endregion
 
         #region Atributos
-        public Color ColorCirculo { get { return colorCirculo; } set { colorCirculo = value; } }
+        public Color ColorCirculo { get { return  colorCirculo; } set { colorCirculo = value; } }
         public float PosX { get { return posX; } set { posX = value; } }
         public float PosY { get { return posY; } set { posY = value; } }
         public float Radio { get { return radio; } set { radio = value; } }
@@ -34,6 +28,10 @@ namespace Entidades
             this.posY = r.Next(500);
             this.radio = r.Next(20) + 20;
         }
+        #endregion
+
+        #region Métodos
+
         #endregion
     }
 }

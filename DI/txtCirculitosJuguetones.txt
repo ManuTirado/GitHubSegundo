@@ -21,7 +21,7 @@ Servidor HUB - CirculitosJuguetones_ASP
 Cliente MAUI - CirculitosJuguetones_MAUI
 
 	Vistas
-		JuegoPage
+		Juego
 
 	Models
 
