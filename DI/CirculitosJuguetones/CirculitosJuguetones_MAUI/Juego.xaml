@@ -5,24 +5,16 @@
             xmlns:local="clr-namespace:CirculitosJuguetones_MAUI">
     <ContentPage.Resources>
         <local:ColorToMauiColorConverter x:Key="ColorToMauiColor" />
+        <local:drawableCirculo x:Key="Drawable" />
     </ContentPage.Resources>
 
-    <VerticalStackLayout x:Name="vsl">
-        <CollectionView 
-                x:Name="ColeccionCirculos" HorizontalOptions="Center" VerticalOptions="Start"
-        ItemsLayout="VerticalGrid, 3" SelectionMode="None">
-            <CollectionView.ItemTemplate>
-                <DataTemplate>
-                    <BoxView 
-                        Color="{Binding ColorCirculo, Converter={StaticResource ColorToMauiColor}}"
-                            CornerRadius="{Binding Radio}"
-                        HeightRequest="{Binding Radio}"
-                        WidthRequest="{Binding Radio}"/>
-                </DataTemplate>
-            </CollectionView.ItemTemplate>
-        </CollectionView>
-        <Button 
-        Text="Añadir Círculo"
-            Clicked="OnBtnNuevoCirculo"/>
+
+    <VerticalStackLayout>
+        
+        <Button Text="Crear Círculo" Clicked="OnBtnNuevoCirculo" />
+        <Button Text="Mover Círculo" Clicked="OnBtnMoverCirculo" />
+        <AbsoluteLayout x:Name="contenedor">
+            
+        </AbsoluteLayout>
     </VerticalStackLayout>
 </ContentPage>

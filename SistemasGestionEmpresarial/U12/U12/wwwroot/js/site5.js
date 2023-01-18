@@ -1,14 +1,16 @@
 ﻿window.onload = inicializarEventos;
 
 function inicializarEventos() {
-    setInterval('dibujarReloj()', 1000);  //Llama al método cada segundo
+    setInterval('dibujarReloj()', 1000);  //Llama al método cada segundo 
 }
 
 function dibujarReloj() {
-    var hora = new Date().toLocaleTimeString("es-ES");
-
+    var hora = new Date().toLocaleTimeString("es-ES", { hour: "2-digit", minute: "2-digit", second: "2-digit" });
+    
     for (var i = 0, valor; valor = hora.split("")[i]; i++) {
-        dibujarElemento(valor, i);
+        if (valor != ":") {
+            dibujarElemento(valor, i);
+        }
     }
 }
 

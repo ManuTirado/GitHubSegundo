@@ -24,8 +24,8 @@ namespace Entidades
         {
             Random r = new Random();
             this.colorCirculo = Color.FromArgb(r.Next(255), r.Next(255), r.Next(255));
-            this.posX = r.Next(700);
-            this.posY = r.Next(500);
+            this.posX = r.Next(1100);
+            this.posY = r.Next(600);
             this.radio = r.Next(20) + 20;
         }
         #endregion
