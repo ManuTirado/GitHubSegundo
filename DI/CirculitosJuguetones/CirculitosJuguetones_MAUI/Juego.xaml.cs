@@ -1,5 +1,4 @@
 ﻿using Entidades;
-using System.Collections.ObjectModel;
 using Microsoft.AspNetCore.SignalR.Client;
 
 
@@ -15,25 +14,30 @@ namespace CirculitosJuguetones_MAUI
         {
             InitializeComponent();
 
-            _connection = new HubConnectionBuilder().WithUrl("http://localhost:5103/").Build();
+            _connection = new HubConnectionBuilder().WithUrl("http://localhost:5103/CirculitosJuguetones_HUB").Build();
 
             _connection.On<clsCirculo>("DibujarCirculo", (circulo) =>
             {
-                Circulos.Add(DibujarCirculo(circulo));
+                Circulos.Add(DibujarCirculo(circulo, false));
             });
 
-            Task.Run(() =>
-            {
-                Dispatcher.Dispatch(async () =>
-                await _connection.StartAsync());
-            });
+            _connection.StartAsync();
+            clsCirculo circulo = new clsCirculo();
+            Circulos.Add(DibujarCirculo(circulo, true));
 
-            Circulos.Add(DibujarCirculo(new clsCirculo()));  
+            _connection.InvokeCoreAsync("EnviarCirculo", args: new[] { circulo });
+
+            
         }
 
-        public void OnBtnNuevoCirculo (object sender, EventArgs args)
+        public void OnBtnNuevoCirculo(object sender, EventArgs args)
         {
-            Circulos.Add(DibujarCirculo(new clsCirculo()));
+            clsCirculo circulo = new clsCirculo();
+            Circulos.Add(DibujarCirculo(circulo, false));
+            Task.Run(async () =>
+            {
+                await _connection.InvokeCoreAsync("EnviarCirculo", args: new[] { circulo });
+            });
         }
 
         public void OnBtnMoverCirculo(object sender, EventArgs args)
@@ -42,16 +46,17 @@ namespace CirculitosJuguetones_MAUI
             Circulos[0].Invalidate();
         }
 
-        public GraphicsView DibujarCirculo (clsCirculo circulo)
+        public GraphicsView DibujarCirculo(clsCirculo circulo, bool miCirculo)
         {
-            GraphicsView graphicCirculo = new GraphicsView {
-                Drawable = new drawableCirculo(circulo),
-                WidthRequest = circulo.Radio*4,
-                HeightRequest = circulo.Radio*4
+            GraphicsView graphicCirculo = new GraphicsView
+            {
+                Drawable = new drawableCirculo(circulo, miCirculo),
+                WidthRequest = circulo.Radio * 4,
+                HeightRequest = circulo.Radio * 4
             };
             contenedor.Add(graphicCirculo);
 
-            AbsoluteLayout.SetLayoutBounds(graphicCirculo,new Rect(circulo.PosX, circulo.PosY,circulo.Radio, circulo.Radio));
+            AbsoluteLayout.SetLayoutBounds(graphicCirculo, new Rect(circulo.PosX, circulo.PosY, circulo.Radio, circulo.Radio));
             graphicCirculo.Invalidate();
 
             return graphicCirculo;

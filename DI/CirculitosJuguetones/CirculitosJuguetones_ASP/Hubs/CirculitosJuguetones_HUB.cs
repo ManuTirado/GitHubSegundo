@@ -7,7 +7,7 @@ namespace CirculitosJuguetones_ASP.Hubs
     {
         public async Task EnviarCirculo(clsCirculo circulo)
         {
-            await Clients.All.SendAsync("DibujarCirculo", circulo);
+            await Clients.Others.SendAsync("DibujarCirculo", circulo);
         }
     }
 }

@@ -4,7 +4,6 @@
              x:Class="CirculitosJuguetones_MAUI.Juego"
             xmlns:local="clr-namespace:CirculitosJuguetones_MAUI">
     <ContentPage.Resources>
-        <local:ColorToMauiColorConverter x:Key="ColorToMauiColor" />
         <local:drawableCirculo x:Key="Drawable" />
     </ContentPage.Resources>
 
