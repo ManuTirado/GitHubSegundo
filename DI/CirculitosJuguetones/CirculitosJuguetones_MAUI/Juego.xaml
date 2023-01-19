@@ -9,10 +9,11 @@
 
 
     <VerticalStackLayout>
-        
-        <Button Text="Crear Círculo" Clicked="OnBtnNuevoCirculo" />
-        <Button Text="Mover Círculo" Clicked="OnBtnMoverCirculo" />
+        <Entry x:Name="txtX" Placeholder="Posición X" Keyboard="Numeric"/>
+        <Entry x:Name="txtY" Placeholder="Posición Y" Keyboard="Numeric"/>
+        <Button Text="Mover" Clicked="OnBtnMoverCirculo"/>
         <AbsoluteLayout x:Name="contenedor">
+            
             
         </AbsoluteLayout>
     </VerticalStackLayout>
