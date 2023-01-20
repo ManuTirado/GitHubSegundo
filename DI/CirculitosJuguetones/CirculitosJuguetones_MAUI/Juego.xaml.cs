@@ -7,7 +7,7 @@ namespace CirculitosJuguetones_MAUI
     public partial class Juego : ContentPage
     {
         private readonly HubConnection _connection;
-        private List<GraphicsView> Circulos = new List<GraphicsView>();
+        private GraphicsView miCirculo;
 
         public Juego()
         {
@@ -17,12 +17,12 @@ namespace CirculitosJuguetones_MAUI
 
             _connection.On<clsCirculo>("DibujarCirculo", (circulo) =>
             {
-                Circulos.Add(DibujarCirculo(circulo, false));
+                DibujarCirculo(circulo, false);
             });
 
             _connection.StartAsync();
             clsCirculo circulo = new clsCirculo();
-            Circulos.Add(DibujarCirculo(circulo, true));
+            miCirculo = DibujarCirculo(circulo, true);
 
             _connection.InvokeCoreAsync("EnviarCirculo", args: new[] { circulo });
         }
@@ -32,8 +32,8 @@ namespace CirculitosJuguetones_MAUI
             int x = 0, y = 0;
             if (int.TryParse(txtX.Text, out x) && int.TryParse(txtY.Text, out y))
             {
-                AbsoluteLayout.SetLayoutBounds(Circulos[0], new Rect(x, y, Circulos[0].Width, Circulos[0].Height));
-                Circulos[0].Invalidate();
+                AbsoluteLayout.SetLayoutBounds(miCirculo, new Rect(x, y, miCirculo.Width, miCirculo.Height));
+                miCirculo.Invalidate();
             } else
             {
                 DisplayAlert("Alerta", "Introduzca valores válidos en los entrys 😡", "Ok");

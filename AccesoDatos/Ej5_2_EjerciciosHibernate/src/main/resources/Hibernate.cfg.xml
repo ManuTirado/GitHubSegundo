@@ -18,6 +18,9 @@
         <property name="current_session_context_class">thread</property>
         <!-- Creación/Actualización automática de las tablas  -->
         <property name="hbm2ddl.auto">update</property>
-        <!--<mapping class="AgendaEntity"/>-->
+        <mapping class="EntidadesHibernate.Factura"/>
+        <mapping class="EntidadesHibernate.Mesa"/>
+        <mapping class="EntidadesHibernate.Pedido"/>
+        <mapping class="EntidadesHibernate.Productos"/>
     </session-factory>
 </hibernate-configuration>

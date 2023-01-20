@@ -3,6 +3,7 @@ package EntidadesHibernate;
 import jakarta.persistence.*;
 
 import java.math.BigDecimal;
+import java.util.List;
 
 @Entity
 @Table(name = "Productos")
@@ -17,4 +18,35 @@ public class Productos {
 
     @Column(name = "Precio")
     private BigDecimal Precio;
+
+    @OneToMany(cascade= CascadeType.ALL)
+    @JoinColumn(name="idProducto")
+    private List<Pedido> listaPedidos;
+
+    public Productos(){}
+
+    public Productos(String denominacion, BigDecimal precio) {
+        Denominacion = denominacion;
+        Precio = precio;
+    }
+
+    public int getIdProducto() {
+        return idProducto;
+    }
+
+    public String getDenominacion() {
+        return Denominacion;
+    }
+
+    public void setDenominacion(String denominacion) {
+        Denominacion = denominacion;
+    }
+
+    public BigDecimal getPrecio() {
+        return Precio;
+    }
+
+    public void setPrecio(BigDecimal precio) {
+        Precio = precio;
+    }
 }
