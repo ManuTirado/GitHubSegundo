@@ -12,21 +12,26 @@ namespace CirculitosJuguetones_MAUI
         public Juego()
         {
             InitializeComponent();
-
-            _connection = new HubConnectionBuilder().WithUrl("http://localhost:5103/CirculitosJuguetones_HUB").Build();
-
+            // Establezco la conexión
+            _connection = new HubConnectionBuilder().WithUrl("http://localhost:5103/CirculitosJuguetones_HUB").Build(); 
+            // Método anónimo que se ejecuta cuando recibe del servidor la llamada del método 'DibujarCirculo'
             _connection.On<clsCirculo>("DibujarCirculo", (circulo) =>
             {
                 DibujarCirculo(circulo, false);
             });
-
+            // Abro la conexión con el servidor
             _connection.StartAsync();
             clsCirculo circulo = new clsCirculo();
             miCirculo = DibujarCirculo(circulo, true);
-
+            // Llamo al método 'EnviarCirculo' del servidor, pasándole un objeto circulo como parámetro
             _connection.InvokeCoreAsync("EnviarCirculo", args: new[] { circulo });
         }
 
+        /// <summary>
+        /// Mueve tu circulo a la posición x e y establecida en los entrys txtX y txtY
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="args"></param>
         public void OnBtnMoverCirculo(object sender, EventArgs args)
         {
             int x = 0, y = 0;
@@ -42,6 +47,13 @@ namespace CirculitosJuguetones_MAUI
             }
         }
 
+        /// <summary>
+        /// Dibujo el círculo pasado por parámetro en la pantalla, si miCirculo==true lo pinto
+        /// con un color de borde diferente
+        /// </summary>
+        /// <param name="circulo"></param>
+        /// <param name="miCirculo"></param>
+        /// <returns></returns>
         public GraphicsView DibujarCirculo(clsCirculo circulo, bool miCirculo)
         {
             GraphicsView graphicCirculo = new GraphicsView
