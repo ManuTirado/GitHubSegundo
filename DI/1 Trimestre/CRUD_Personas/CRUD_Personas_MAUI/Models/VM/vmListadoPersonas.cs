@@ -228,25 +228,6 @@ namespace CRUD_Personas_MAUI.Models.VM
         }
         #endregion
 
-        #region Métodos
-        /// <summary>
-        /// Función que devuelve una ObservableCollection de clsPersonaNombreDepartamento a partir de un List de clsPersona.
-        /// Para ello, según el id de departamento de clsPersona compruebo el departamento que le corresponde.
-        /// </summary>
-        /// <param name="listaBackup"></param>
-        /// <returns></returns>
-        private ObservableCollection<clsPersonaNombreDepartamento> obtenerListaConNombreDepartamento(List<clsPersona> listaBackup)
-        {
-            ObservableCollection<clsPersonaNombreDepartamento> listaFinal = new ObservableCollection<clsPersonaNombreDepartamento>();
-            foreach (var persona in listaBackup)
-            {
-                clsPersonaNombreDepartamento personaNombreDepartamento = new clsPersonaNombreDepartamento(persona);
-                personaNombreDepartamento.NombreDepartamento = listaDepartamentos.Find(x => x.ID == persona.IDDepartamento).Nombre;
-                listaFinal.Add(personaNombreDepartamento);
-            }
-            return listaFinal;
-        }
-
         /// <summary>
         /// Método que actualiza la lista de personas backup obteniéndola de la BBDD.
         /// También restablece la busqueda y la lista mostrada.
@@ -282,6 +263,25 @@ namespace CRUD_Personas_MAUI.Models.VM
                 NotifyPropertyChanged(nameof(IsRefreshing));
                 NotifyPropertyChanged(nameof(IsNotRefreshing));
             }
+        }
+
+        #region Métodos
+        /// <summary>
+        /// Función que devuelve una ObservableCollection de clsPersonaNombreDepartamento a partir de un List de clsPersona.
+        /// Para ello, según el id de departamento de clsPersona compruebo el departamento que le corresponde.
+        /// </summary>
+        /// <param name="listaBackup"></param>
+        /// <returns></returns>
+        private ObservableCollection<clsPersonaNombreDepartamento> obtenerListaConNombreDepartamento(List<clsPersona> listaBackup)
+        {
+            ObservableCollection<clsPersonaNombreDepartamento> listaFinal = new ObservableCollection<clsPersonaNombreDepartamento>();
+            foreach (var persona in listaBackup)
+            {
+                clsPersonaNombreDepartamento personaNombreDepartamento = new clsPersonaNombreDepartamento(persona);
+                personaNombreDepartamento.NombreDepartamento = listaDepartamentos.Find(x => x.ID == persona.IDDepartamento).Nombre;
+                listaFinal.Add(personaNombreDepartamento);
+            }
+            return listaFinal;
         }
 
         public bool IsNotRefreshing { get { return !isRefreshing; } }
