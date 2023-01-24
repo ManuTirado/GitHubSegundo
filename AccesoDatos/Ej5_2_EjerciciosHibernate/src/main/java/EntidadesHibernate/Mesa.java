@@ -57,4 +57,10 @@ public class Mesa {
     public void setListaFacturas(List<Factura> listaFacturas) {
         this.listaFacturas = listaFacturas;
     }
+
+    @Override
+    public String toString() {
+        return idMesa +" -> NumComensales: " + numComensales +
+                ", Reserva: " + reserva;
+    }
 }

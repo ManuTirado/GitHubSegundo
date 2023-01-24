@@ -49,4 +49,10 @@ public class Productos {
     public void setPrecio(BigDecimal precio) {
         Precio = precio;
     }
+
+    @Override
+    public String toString() {
+        return idProducto + " -> Denominación: '" + Denominacion + '\'' +
+                ", Precio: " + Precio + "€";
+    }
 }

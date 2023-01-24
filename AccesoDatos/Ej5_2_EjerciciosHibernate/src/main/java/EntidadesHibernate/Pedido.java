@@ -21,7 +21,8 @@ public class Pedido {
     @Column(name = "cantidad")
     private int cantidad;
 
-    public Pedido(){}
+    public Pedido() {
+    }
 
     public Pedido(Factura factura, Productos producto, int cantidad) {
         this.factura = factura;
@@ -55,5 +56,12 @@ public class Pedido {
 
     public void setCantidad(int cantidad) {
         this.cantidad = cantidad;
+    }
+
+    @Override
+    public String toString() {
+        return idPedido + " -> idFactura: " + factura.getIdFactura() +
+                ", idProducto: " + producto.getIdProducto() +
+                ", Cantidad: " + cantidad;
     }
 }

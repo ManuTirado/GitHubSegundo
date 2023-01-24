@@ -23,8 +23,8 @@ public class Factura {
     @Column(name = "Importe")
     private BigDecimal Importe;
 
-    @OneToMany(cascade= CascadeType.ALL)
-    @JoinColumn(name="idFactura")
+    @OneToMany(cascade = CascadeType.ALL)
+    @JoinColumn(name = "idFactura")
     private List<Pedido> listaPedidos;
 
     public Factura() {
@@ -62,5 +62,12 @@ public class Factura {
 
     public void setImporte(BigDecimal importe) {
         Importe = importe;
+    }
+
+    @Override
+    public String toString() {
+        return idFactura + " -> idMesa: " + mesa.getIdMesa() +
+                ", TipoPago: '" + tipoPago + '\'' +
+                ", Importe: " + Importe + "€";
     }
 }

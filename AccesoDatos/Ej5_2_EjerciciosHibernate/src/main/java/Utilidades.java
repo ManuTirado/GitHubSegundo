@@ -71,6 +71,16 @@ public class Utilidades {
     }
 
     /***
+     * Función que lee un String
+     * @return String leído
+     */
+    public static String leerString() {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("==> ");
+        return sc.nextLine();
+    }
+
+    /***
      * Imprime el menú principal por consola
      */
     public static void imprimirMenuPrincipal() {
@@ -81,6 +91,7 @@ public class Utilidades {
         System.out.println("4 - Productos");
         System.out.println("0 - Salir");
     }
+
     /***
      * Imprime el menú sencundario por consola
      */
