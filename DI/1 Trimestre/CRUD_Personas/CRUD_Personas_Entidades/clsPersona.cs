@@ -5,36 +5,36 @@ namespace CRUD_Personas_Entidades
     public class clsPersona
     {
         #region Atributos
-        public int ID { get; set; }
+        public int id { get; set; }
 
         [Required]
-        public string Nombre { get; set; }
+        public string nombre { get; set; }
 
         [Required]
-        public string Apellidos { get; set; }
+        public string apellidos { get; set; }
 
-        public string Telefono { get; set; }
-        public string Direccion { get; set; }
-        public string Foto { get; set; }
-
-        [Required]
-        public DateTime FechaNacimiento { get; set; }
+        public string telefono { get; set; }
+        public string direccion { get; set; }
+        public string foto { get; set; }
 
         [Required]
-        public int IDDepartamento { get; set; }
+        public DateTime fechaNacimiento { get; set; }
+
+        [Required]
+        public int idDepartamento { get; set; }
         #endregion
 
         #region Constructores
         public clsPersona(int id, string nombre, string apellido, string telefono, string direccion, string foto, DateTime fechaNacimiento, int iDDepartamento)
         {
-            ID = id;
-            Nombre = nombre;
-            Apellidos = apellido;
-            Telefono = telefono;
-            Direccion = direccion;
-            Foto = foto;
-            FechaNacimiento = fechaNacimiento;
-            IDDepartamento = iDDepartamento;
+            this.id = id;
+            this.nombre = nombre;
+            this.apellidos = apellido;
+            this.telefono = telefono;
+            this.direccion = direccion;
+            this.foto = foto;
+            this.fechaNacimiento = fechaNacimiento;
+            this.idDepartamento = iDDepartamento;
         }
         public clsPersona()
         {

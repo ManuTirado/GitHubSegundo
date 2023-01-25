@@ -10,9 +10,38 @@
     <ListView ItemsSource="{Binding ListadoPersonas}" BackgroundColor="Aqua">
         <ListView.ItemTemplate>
             <DataTemplate>
-                <TextCell Text="{Binding Nombre}" Detail="{Binding Apellidos}"></TextCell>
+                <ViewCell>
+                    <!-- Content -->
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="auto"/>
+                            <ColumnDefinition Width="auto"/>
+                            <ColumnDefinition Width="auto"/>
+                        </Grid.ColumnDefinitions>
+
+                        <Image Grid.RowSpan="2"
+                               Source="{Binding foto}"
+                                   WidthRequest="70"
+                                       HeightRequest="100"
+                                    Aspect="AspectFit"/>
+
+                        <Label Grid.Row="0" Grid.Column="1" VerticalOptions="End" Margin="10,0,0,0"
+                               Text="{Binding nombre}" FontSize="Medium"  FontAttributes="Bold" />
+
+                        <Label Grid.Row="1" Grid.Column="1" VerticalOptions="Start" Margin="10,0,0,0"
+                               Text="{Binding apellidos}" FontSize="Medium"  FontAttributes="Bold"/>
+
+                        <Label Grid.RowSpan="2" Grid.Column="2" VerticalOptions="Center" Margin="30,0,0,0" 
+                               Text="{Binding direccion}" FontSize="Medium"  FontAttributes="Bold"/>
+                    </Grid>
+                </ViewCell>
             </DataTemplate>
         </ListView.ItemTemplate>
     </ListView>
+    
 
 </ContentPage>

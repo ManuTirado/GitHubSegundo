@@ -8,4 +8,5 @@ namespace ApiAsincrona_BL
         {
             return await ApiAsincrona_DAL.clsListadosPersonasDAL.ListadoCompletoPersonasDAL();
         }
+    }
 }

@@ -11,22 +11,20 @@ namespace ApiAsincrona.VM
 {
     public class Mainpage_VM : clsVMBase
     {
-        private List<clsPersona> listadoPersonas;
+        private ObservableCollection<clsPersona> listadoPersonas;
 
-        public List<clsPersona> ListadoPersonas { get { return listadoPersonas; } }
+        public ObservableCollection<clsPersona> ListadoPersonas { get { return listadoPersonas; } }
 
         public Mainpage_VM()
         {
-            listadoPersonas = new List<clsPersona>();
-            rellenarListado();
+            cargarDatos();
         }
 
-        private async void rellenarListado()
+        private async void cargarDatos()
         {
-            Task<List<clsPersona>> task = ApiAsincrona_BL.clsListadosPersonasBL.ListadoCompletoPersonasBL();
-            task.Start();
-
-            listadoPersonas =  await task;
+            listadoPersonas = new ObservableCollection<clsPersona>();
+            listadoPersonas = new ObservableCollection<clsPersona>(await ApiAsincrona_BL.clsListadosPersonasBL.ListadoCompletoPersonasBL());
+            NotifyPropertyChanged(nameof(ListadoPersonas));
         }
     }
 }
