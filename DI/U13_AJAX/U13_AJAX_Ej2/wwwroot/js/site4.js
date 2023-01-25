@@ -1,28 +1,26 @@
 ﻿window.onload = inicializarEventos;
 
 function inicializarEventos() {
-    pedirDatos();
+    var btnBorrar = document.getElementById("btnBorrar");
+    btnBorrar.addEventListener("click", borrarPersona);
 }
 
-function pedirDatos() {
+function borrarPersona() {
+    var idPersona = document.getElementById("txtIdPersona").value;
+
     var miLlamada = new XMLHttpRequest();
-    miLlamada.open("GET", "https://swapi.dev/api/people");
+    miLlamada.open("DELETE", `https://apipersonaspaco.azurewebsites.net/api/personas/${idPersona}`);
+    miLlamada.setRequestHeader('Content-type', 'application/json; charset=utf-8');
     //Definicion estados
     miLlamada.onreadystatechange = function () {
+        var div = document.getElementById("divMensaje");
         if (miLlamada.readyState < 4) {
             //aquí se puede poner una imagen de un reloj o un texto “Cargando"
+            div.innerHTML = "Buscando ID...";
         }
         else if (miLlamada.readyState == 4 && miLlamada.status == 200) {
-            var arrayPersonas = JSON.parse(miLlamada.responseText);
-            anadirPersonasAtabla(arrayPersonas);
+            div.innerHTML = "Borrado Correctamente";
         }
     };
     miLlamada.send();
-}
-
-function anadirPersonasAtabla(arrayPersonas) {
-    var cuerpoTabla = document.getElementById("cuerpoTabla");
-    arrayPersonas.results.forEach(function (p, index) {
-        cuerpoTabla.innerHTML += `<tr> <td>${p.name}</td><td>${p.gender}</td><td>${p.mass}</td> </tr>`;
-    });
 }
