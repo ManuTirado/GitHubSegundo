@@ -1,0 +1,332 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="541cdd84-d632-4294-86d7-5c1a692f73a2" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/../../Ejemplos/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Ejemplos/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Ejemplos/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Ejemplos/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Ejemplos/Ejemplos.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Ejemplos/src/Avanzado.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Ejemplos/src/LanzaProceso.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Ejemplos/src/LanzaProcesoRuntime.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Ejemplos/src/crearProceso.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Ejercicios U1/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Ejercicios U1/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Ejercicios U1/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Ejercicios U1/.idea/uiDesigner.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Ejercicios U1/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Ejercicios U1/Ejercicios U1.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Ejercicios U1/src/Ej1/HolaMundo.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Ejercicios U1/src/Ej1/Main.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Ejercicios U1/src/Ej10/Main.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Ejercicios U1/src/Ej11/LeerFichero.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Ejercicios U1/src/Ej11/Main.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Ejercicios U1/src/Ej2/Main.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Ejercicios U1/src/Ej2/ProcesoLento.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Ejercicios U1/src/Ej3/Main.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Ejercicios U1/src/Ej4/Main.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Ejercicios U1/src/Ej4/log.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Ejercicios U1/src/Ej5/PreguntaNombre.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Ejercicios U1/src/Ej5/input.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Ejercicios U1/src/Ej5/lanzaPreguntaNombre.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Ejercicios U1/src/Ej6/LanzarTicketCompra.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Ejercicios U1/src/Ej6/TicketCompra.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Ejercicios U1/src/Ej6/salida.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Ejercicios U1/src/Ej7/FiltrarIPs.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Ejercicios U1/src/Ej7/GenerarDireccionesIP.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Ejercicios U1/src/Ej7/LeerDireccionesYmostrarlas.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Ejercicios U1/src/Ej7/Main.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Ejercicios U1/src/Ej7/salida.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Ejercicios U1/src/Ej8/Main.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Ejercicios U1/src/Ej8/salidaProcesoLento2.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Ejercicios U1/src/Ej9/Main.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Ejercicios U1/src/Ej9/input.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Ejercicios U2/Ejercicios U2/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Ejercicios U2/Ejercicios U2/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Ejercicios U2/Ejercicios U2/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Ejercicios U2/Ejercicios U2/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Ejercicios U2/Ejercicios U2/Ejercicios U2.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Ejercicios U2/Ejercicios U2/src/Main.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../EstudiantesYlibros/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../EstudiantesYlibros/.idea/jpa-buddy.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../EstudiantesYlibros/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../EstudiantesYlibros/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../EstudiantesYlibros/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../EstudiantesYlibros/EstudiantesYlibros.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../EstudiantesYlibros/src/Libro.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../EstudiantesYlibros/src/Main.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Examen-Tema1-ManuelTirado/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Examen-Tema1-ManuelTirado/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Examen-Tema1-ManuelTirado/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Examen-Tema1-ManuelTirado/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Examen-Tema1-ManuelTirado/.idea/workspace.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Examen-Tema1-ManuelTirado/Examen-Tema1-ManuelTirado.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Examen-Tema1-ManuelTirado/Examen-Tema1-ManuelTirado/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Examen-Tema1-ManuelTirado/Examen-Tema1-ManuelTirado/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Examen-Tema1-ManuelTirado/Examen-Tema1-ManuelTirado/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Examen-Tema1-ManuelTirado/Examen-Tema1-ManuelTirado/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Examen-Tema1-ManuelTirado/Examen-Tema1-ManuelTirado/Examen-Tema1-ManuelTirado.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Examen-Tema1-ManuelTirado/Examen-Tema1-ManuelTirado/src/Ejercicio1/Calculadora.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Examen-Tema1-ManuelTirado/Examen-Tema1-ManuelTirado/src/Ejercicio1/Ej1Main.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Examen-Tema1-ManuelTirado/Examen-Tema1-ManuelTirado/src/Ejercicio2/Ej2Main.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Examen-Tema1-ManuelTirado/Examen-Tema1-ManuelTirado/src/Ejercicio2/MayoresEdad.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Examen-Tema1-ManuelTirado/Examen-Tema1-ManuelTirado/src/Ejercicio2/OrdenaNombres.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Examen-Tema1-ManuelTirado/Examen-Tema1-ManuelTirado/src/Ejercicio2/alumnos.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Examen-Tema1-ManuelTirado/Examen-Tema1-ManuelTirado/src/Ejercicio2/alumnos_mayores.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Examen-Tema1-ManuelTirado/Examen-Tema1-ManuelTirado/src/Ejercicio3/Ej3Main.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Examen-Tema1-ManuelTirado/Examen-Tema1-ManuelTirado/src/Ejercicio3/MediaNumeros.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Examen-Tema1-ManuelTirado/Examen-Tema1-ManuelTirado/src/Ejercicio3/NumerosAleatorios.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Examen-Tema1-ManuelTirado/Examen-Tema1-ManuelTirado/src/Ejercicio3/SalidaNumerosAleatorios/0.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Examen-Tema1-ManuelTirado/Examen-Tema1-ManuelTirado/src/Ejercicio3/SalidaNumerosAleatorios/1.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Examen-Tema1-ManuelTirado/Examen-Tema1-ManuelTirado/src/Ejercicio3/SalidaNumerosAleatorios/2.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Examen-Tema1-ManuelTirado/Examen-Tema1-ManuelTirado/src/Ejercicio3/SalidaNumerosAleatorios/3.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Examen-Tema1-ManuelTirado/Examen-Tema1-ManuelTirado/src/Ejercicio3/SalidaNumerosAleatorios/4.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Examen-Tema1-ManuelTirado/Examen-Tema1-ManuelTirado/src/Ejercicio3/SalidaNumerosAleatorios/5.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Examen-Tema1-ManuelTirado/Examen-Tema1-ManuelTirado/src/Ejercicio3/SalidaNumerosAleatorios/6.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Examen-Tema1-ManuelTirado/Examen-Tema1-ManuelTirado/src/Ejercicio3/SalidaNumerosAleatorios/7.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Examen-Tema1-ManuelTirado/Examen-Tema1-ManuelTirado/src/Ejercicio3/SalidaNumerosAleatorios/8.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Examen-Tema1-ManuelTirado/Examen-Tema1-ManuelTirado/src/Ejercicio3/SalidaNumerosAleatorios/9.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Examen-Tema1-ManuelTirado/Examen-Tema1-ManuelTirado/src/Ejercicio3/SumaNumeros.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Examen-Tema1-ManuelTirado/Examen-Tema1-ManuelTirado/src/Ejercicio3/medias.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Examen-Tema1-ManuelTirado/Examen-Tema1-ManuelTirado/src/Ejercicio3/sumas.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Examen/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Examen/.idea/jpa-buddy.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Examen/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Examen/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Examen/.idea/uiDesigner.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Examen/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Examen/Examen.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Examen/src/Ej1/Barberia.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Examen/src/Ej2/Contenedor.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Examen/src/Ej2/HiloConsumidor.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Examen/src/Ej2/HiloProductor.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Examen/src/Ej2/Main.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../ExamenU1/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../ExamenU1/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../ExamenU1/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../ExamenU1/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../ExamenU1/.idea/workspace.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../ExamenU1/Apuntes/Concurrent Programming in Java.pdf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../ExamenU1/Apuntes/UNIT 1_ PROCESS PROGRAMMING.pdf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../ExamenU1/Apuntes/test.pdf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../ExamenU1/Ejemplos/EjecutaComandoTimeout.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../ExamenU1/Ejemplos/LanzaProceso.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../ExamenU1/Ejemplos/LanzaProcesoCapturaSalida.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../ExamenU1/Ejemplos/LanzaProcesoEscribeAEntrada.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../ExamenU1/Ejercicios Clase/EJERCICIOS - UNIDAD 1.pdf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../ExamenU1/Ejercicios Clase/Ej1/HolaMundo.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../ExamenU1/Ejercicios Clase/Ej1/Main.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../ExamenU1/Ejercicios Clase/Ej10/Main.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../ExamenU1/Ejercicios Clase/Ej11/LeerFichero.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../ExamenU1/Ejercicios Clase/Ej11/Main.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../ExamenU1/Ejercicios Clase/Ej2/Main.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../ExamenU1/Ejercicios Clase/Ej2/ProcesoLento.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../ExamenU1/Ejercicios Clase/Ej3/Main.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../ExamenU1/Ejercicios Clase/Ej4/Main.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../ExamenU1/Ejercicios Clase/Ej4/log.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../ExamenU1/Ejercicios Clase/Ej5/PreguntaNombre.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../ExamenU1/Ejercicios Clase/Ej5/input.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../ExamenU1/Ejercicios Clase/Ej5/lanzaPreguntaNombre.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../ExamenU1/Ejercicios Clase/Ej6/LanzarTicketCompra.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../ExamenU1/Ejercicios Clase/Ej6/TicketCompra.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../ExamenU1/Ejercicios Clase/Ej6/salida.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../ExamenU1/Ejercicios Clase/Ej7/FiltrarIPs.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../ExamenU1/Ejercicios Clase/Ej7/GenerarDireccionesIP.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../ExamenU1/Ejercicios Clase/Ej7/LeerDireccionesYmostrarlas.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../ExamenU1/Ejercicios Clase/Ej7/Main.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../ExamenU1/Ejercicios Clase/Ej7/salida.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../ExamenU1/Ejercicios Clase/Ej8/Main.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../ExamenU1/Ejercicios Clase/Ej8/salidaProcesoLento2.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../ExamenU1/Ejercicios Clase/Ej9/Main.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../ExamenU1/Ejercicios Clase/Ej9/input.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../ExamenU1/Ejercicios Entregables Profesora/Ej1/Ejercicio1.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../ExamenU1/Ejercicios Entregables Profesora/Ej2/CuentaLineas.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../ExamenU1/Ejercicios Entregables Profesora/Ej2/Ejercicio2.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../ExamenU1/Ejercicios Entregables Profesora/Ej3/CuentaCaracteres.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../ExamenU1/Ejercicios Entregables Profesora/Ej3/Ejercicio3.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../ExamenU1/Ejercicios Entregables Profesora/Ejercicios Entregables Profesora.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../ExamenU1/Ejercicios Entregables Profesora/UNIDAD 1 - EJERCICIOS PRÁCTICOS.pdf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../ExamenU1/Ejercicios Entregables/Ej1/Main.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../ExamenU1/Ejercicios Entregables/Ej2/CuentaLineas.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../ExamenU1/Ejercicios Entregables/Ej2/Main.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../ExamenU1/Ejercicios Entregables/Ej3/CuentaCaracteres.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../ExamenU1/Ejercicios Entregables/Ej3/MainConcurrente.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../ExamenU1/Ejercicios Entregables/Ej3/MainEspera.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../ExamenU1/Ejercicios Entregables/Ej3/texto_largo.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../ExamenU1/Ejercicios Entregables/UNIDAD 1 - EJERCICIOS PRÁCTICOS.pdf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../ExamenU1/ExamenU1.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Filosofos.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Filosofos/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Filosofos/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Filosofos/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Filosofos/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Filosofos/Filosofos.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Filosofos/src/Filosofo.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Filosofos/src/Main.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Filosofos/src/Mesa.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../HilosDurmientes/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../HilosDurmientes/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../HilosDurmientes/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../HilosDurmientes/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../HilosDurmientes/HilosDurmientes.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../HilosDurmientes/src/HilosDurmientes.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../HilosDurmientes/src/Main.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../NumeroOculto/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../NumeroOculto/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../NumeroOculto/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../NumeroOculto/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../NumeroOculto/NumeroOculto.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../NumeroOculto/src/Hilo.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Pruebas/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Pruebas/.idea/jpa-buddy.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Pruebas/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Pruebas/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Pruebas/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Pruebas/NumeroOculto/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Pruebas/NumeroOculto/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Pruebas/NumeroOculto/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Pruebas/NumeroOculto/.idea/uiDesigner.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Pruebas/NumeroOculto/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Pruebas/NumeroOculto/NumeroOculto.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Pruebas/NumeroOculto/src/EstudiantesYlibros/Estudiante.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Pruebas/NumeroOculto/src/EstudiantesYlibros/Libreria.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Pruebas/NumeroOculto/src/EstudiantesYlibros/Main.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Pruebas/NumeroOculto/src/Filosofos/Filosofo.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Pruebas/NumeroOculto/src/Filosofos/Main.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Pruebas/NumeroOculto/src/Filosofos/Mesa.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Pruebas/NumeroOculto/src/Semaforo/Carniceria.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Pruebas/NumeroOculto/src/Semaforo/Main.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Pruebas/NumeroOculto/src/SemaforoAvanzado/Carniceria_Charcuteria.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Pruebas/NumeroOculto/src/SemaforoAvanzado/Main.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Pruebas/Pruebas.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Semaforos/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Semaforos/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Semaforos/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Semaforos/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Semaforos/Semaforos.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Semaforos/src/Main.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../SemaforosAvanzado.rar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../SemaforosAvanzado/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../SemaforosAvanzado/.idea/.name" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../SemaforosAvanzado/.idea/jpa-buddy.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../SemaforosAvanzado/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../SemaforosAvanzado/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../SemaforosAvanzado/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../SemaforosAvanzado/SemaforosAvanzado.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../SemaforosAvanzado/src/Main.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Sincronizacion_Estructuras_Datos/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Sincronizacion_Estructuras_Datos/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Sincronizacion_Estructuras_Datos/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Sincronizacion_Estructuras_Datos/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Sincronizacion_Estructuras_Datos/Sincronizacion_Estructuras_Datos.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Sincronizacion_Estructuras_Datos/src/GestorHojas.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Sincronizacion_Estructuras_Datos/src/Main.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Tema1-ManuelTirado/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Tema1-ManuelTirado/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Tema1-ManuelTirado/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Tema1-ManuelTirado/.idea/uiDesigner.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Tema1-ManuelTirado/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Tema1-ManuelTirado/Tema1-ManuelTirado.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Tema1-ManuelTirado/src/Ej1/Main.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Tema1-ManuelTirado/src/Ej2/CuentaLineas.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Tema1-ManuelTirado/src/Ej2/Main.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Tema1-ManuelTirado/src/Ej3/CuentaCaracteres.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Tema1-ManuelTirado/src/Ej3/MainConcurrente.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Tema1-ManuelTirado/src/Ej3/MainEspera.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Tema1-ManuelTirado/src/Ej3/texto_largo.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../U1-EjerEntregables/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../U1-EjerEntregables/.idea/workspace.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../_ExamenU2/Enunciados actvs/Estudiantes_y_Libros.TXT" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../_ExamenU2/Enunciados actvs/Filosofos.TXT" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../_ExamenU2/Enunciados actvs/Hilos_Durmientes.TXT" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../_ExamenU2/Enunciados actvs/Numero_Oculto.TXT" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../_ExamenU2/Enunciados actvs/Semaforos.TXT" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../_ExamenU2/Enunciados actvs/Semaforos_Avanzado.TXT" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../_ExamenU2/Tema 2_ Programación de hilos.pdf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../_ExamenU2/Unit2-Examples/.classpath" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../_ExamenU2/Unit2-Examples/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../_ExamenU2/Unit2-Examples/.project" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../_ExamenU2/Unit2-Examples/.settings/org.eclipse.core.resources.prefs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../_ExamenU2/Unit2-Examples/.settings/org.eclipse.jdt.core.prefs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../_ExamenU2/Unit2-Examples/src/apuntes/HiloViaHerencia.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../_ExamenU2/Unit2-Examples/src/apuntes/HiloViaInterface.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../_ExamenU2/Unit2-Examples/src/compartirinformacion/ComparticionInstanciaUnica.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../_ExamenU2/Unit2-Examples/src/compartirinformacion/ComparticionRunnable.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../_ExamenU2/Unit2-Examples/src/compartirinformacion/ObjetoComun.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../_ExamenU2/Unit2-Examples/src/daemons/DaemonTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../_ExamenU2/Unit2-Examples/src/daemons/WorkerThread.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../_ExamenU2/Unit2-Examples/src/example1/Raton.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../_ExamenU2/Unit2-Examples/src/example1/RatonConcurrente.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../_ExamenU2/Unit2-Examples/src/example1/RatonRunnable.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../_ExamenU2/Unit2-Examples/src/example2/States.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../_ExamenU2/Unit2-Examples/src/interrupciones/InterrupcionBasico.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../_ExamenU2/Unit2-Examples/src/interrupciones/InterrupcionDeHilos.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../_ExamenU2/Unit2-Examples/src/pasoporpuente/PasoPorPuente.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../_ExamenU2/Unit2-Examples/src/prioridadhilos/PrioridadDeHilos.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../_ExamenU2/Unit2-Examples/src/productorconsumidor/ProductorConsumidor.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../_ExamenU2/Unit2-Examples/src/productorconsumidorthreadsafe/ProductorConsumidorContenedorThreadSafe.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../_ExamenU2/Unit2-Examples/src/seccioncritica/Impresor.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../_ExamenU2/Unit2-Examples/src/sincronizacion/Encuesta.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../_ExamenU2/Unit2-Examples/src/sincronizacion/HilosCooperantesSincr.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../_ExamenU2/Unit2-Examples/src/sincronizacion/JoinBasico.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../_ExamenU2/Unit2-Examples/src/sincronizacion/JoinMain.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../_ExamenU2/Unit2-Examples/src/sincronizacion/SemaforoBasico.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../_ExamenU2/Unit2-Examples/src/sincronizacion/SincronizacionMetodos.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../_ExamenU2/Unit2-Examples/src/sincronizacion/SincronizacionSegmento.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../_ExamenU2/Unit2-Examples/src/sincronizacion/VariableCompartida.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../_ExamenU2/Unit2-Examples/src/sincronizacion/WaitNotifySimple.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../_ExamenU2/Unit2-Examples/src/waitnotify/EjemploWaitNotify.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../_ExamenU2/Unit2-Examples/src/waitnotify/EstrucuturaWaitNotify.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../_ExamenU2/Unit2-Examples/src/waitnotify/Tenedor.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../_ExamenU2/barberos.txt" beforeDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../../.." />
+  </component>
+  <component name="ProjectId" id="2KrK0vXGgRDLWvy2TJjbvoy6Xbk" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "last_opened_file_path": "C:/Users/mtirado/Desktop/GitHubSegundo/ProgramacionServiciosYprocesos/1 Trimestre/Filosofos"
+  }
+}]]></component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="541cdd84-d632-4294-86d7-5c1a692f73a2" name="Changes" comment="" />
+      <created>1674727041933</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1674727041933</updated>
+      <workItem from="1674727043296" duration="17000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+</project>

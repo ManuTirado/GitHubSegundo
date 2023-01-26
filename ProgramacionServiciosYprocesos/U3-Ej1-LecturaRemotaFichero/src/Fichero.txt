@@ -1,0 +1,3 @@
+Esto es un fichero de prueba,
+con el único objetivo de probar si fufa o no.
+Así que pues eso
