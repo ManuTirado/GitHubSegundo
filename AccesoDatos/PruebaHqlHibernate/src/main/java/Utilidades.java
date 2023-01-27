@@ -85,15 +85,15 @@ public class Utilidades {
      */
     public static void imprimirMenuPrincipal() {
         System.out.println("-- -- -- -- Seleccione una tabla -- -- -- --");
-        System.out.println("1 - Mesa");
-        System.out.println("2 - Factura");
-        System.out.println("3 - Pedido");
-        System.out.println("4 - Productos");
+        System.out.println("1 - Alumnado");
+        System.out.println("2 - Asignaturas");
+        System.out.println("3 - Matrícula");
+        System.out.println("4 - Profesores");
         System.out.println("0 - Salir");
     }
 
     /***
-     * Imprime el menú sencundario por consola
+     * Imprime el menú secundario por consola
      */
     public static void imprimirMenuSecundario() {
         System.out.println("-- -- -- -- ¿Qué desea hacer? -- -- -- --");

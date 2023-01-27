@@ -5,9 +5,9 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.example</groupId>
-    <artifactId>Ej5_2_EjerciciosHibernate</artifactId>
+    <artifactId>EjerciciosHibernate</artifactId>
     <version>1.0-SNAPSHOT</version>
-    <name>Ej5_2_EjerciciosHibernate</name>
+    <name>EjerciciosHibernate</name>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -18,14 +18,9 @@
 
     <dependencies>
         <dependency>
-            <groupId>org.hibernate.orm</groupId>
+            <groupId>org.hibernate</groupId>
             <artifactId>hibernate-core</artifactId>
-            <version>6.0.0.Final</version>
-        </dependency>
-        <dependency>
-            <groupId>org.glassfish.jaxb</groupId>
-            <artifactId>jaxb-runtime</artifactId>
-            <version>3.0.2</version>
+            <version>5.6.1.Final</version>
         </dependency>
         <dependency>
             <groupId>org.junit.jupiter</groupId>
