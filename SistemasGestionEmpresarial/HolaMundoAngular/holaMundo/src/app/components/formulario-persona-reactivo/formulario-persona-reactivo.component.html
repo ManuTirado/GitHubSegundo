@@ -1,0 +1,11 @@
+<form [formGroup]="formularioPersReact">
+    <p>
+        <span>Nombre:</span>
+        <input type="text" id="nombre" formControlName="nombre"/>
+    </p>
+    <p>
+        <span>Apellidos:</span> 
+        <input type="text" formControlName="apellidos"/>
+    </p>            
+    <button type="button" (click)="saluda()">Saludar</button>
+</form>

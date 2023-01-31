@@ -22,5 +22,6 @@
         <mapping class="EntidadesHibernate.tAsignaturas"/>
         <mapping class="EntidadesHibernate.tMatricula"/>
         <mapping class="EntidadesHibernate.tProfesores"/>
+        <mapping class="EntidadesHibernate.tDepartamento"/>
     </session-factory>
 </hibernate-configuration>

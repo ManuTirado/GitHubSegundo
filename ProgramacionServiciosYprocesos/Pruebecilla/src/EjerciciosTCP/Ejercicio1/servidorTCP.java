@@ -1,4 +1,4 @@
-package ProtocoloTCPejercicio;
+package EjerciciosTCP.Ejercicio1;
 
 import java.io.*;
 import java.net.ServerSocket;
@@ -10,7 +10,7 @@ public class servidorTCP {
         try {
             //Creación del socket servidor
             System.out.println("(Servidor): Abrinedo conexión");
-            ServerSocket socketServidor = new ServerSocket(49900);
+            ServerSocket socketServidor = new ServerSocket(2500);
             while (true) {
                 //Espera de la aceptación
                 System.out.println("(Servidor): Esperando peticiones");
@@ -22,15 +22,18 @@ public class servidorTCP {
                 OutputStream outputStream = socketCliente.getOutputStream();
 
                 //Intercambiar datos con el cliente
-                System.out.println("(Servidor): Leo mensaje del cliente");
+                System.out.println("(Servidor): Leo número del cliente");
                 InputStreamReader inputStreamReader = new InputStreamReader(inputStream, StandardCharsets.UTF_8);
                 BufferedReader bufferedReader = new BufferedReader(inputStreamReader);
-                System.out.println("Mensaje del cliente: " + bufferedReader.readLine());
+                String line = bufferedReader.readLine();
+                System.out.println("Número del cliente: " + line);
 
-                System.out.println("(Servidor): Envío mensaje de texto al cliente");
+                System.out.println("(Servidor): Envío resultado al cliente");
                 OutputStreamWriter outputStreamWriter = new OutputStreamWriter(outputStream, StandardCharsets.UTF_8);
                 BufferedWriter bufferedWriter = new BufferedWriter(outputStreamWriter);
-                bufferedWriter.write("Hola soy el lolo servidor");
+                String mensaje = esPrimo(Integer.parseInt(line));
+                System.out.println("Resultado = " + mensaje);
+                bufferedWriter.write(mensaje);
                 bufferedWriter.newLine();
                 bufferedWriter.flush();
 
@@ -53,5 +56,22 @@ public class servidorTCP {
             System.err.println(e.getMessage());
         }
         ;
+    }
+
+    private static String esPrimo(int num) {
+        boolean enc = false;
+        String result = "Es primo";
+
+        if (num <= 1){
+            result = "No es primo";
+        }
+        for (int i = 2; i <= num / 2 && !enc ; i++) {
+            if (num % i == 0){
+                result = "No es primo";
+                enc = true;
+            }
+        }
+
+        return result;
     }
 }

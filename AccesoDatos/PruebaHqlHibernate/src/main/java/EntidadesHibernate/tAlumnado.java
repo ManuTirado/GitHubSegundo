@@ -5,6 +5,7 @@ import java.util.List;
 
 @Entity
 @Table(name = "tAlumnado")
+@NamedQuery(name = "listaAlumnosMatriculados", query = "select alumnado from tAlumnado as alumnado inner join alumnado.listaMatriculas as ot")
 public class tAlumnado {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -73,5 +74,15 @@ public class tAlumnado {
 
     public void setListaMatriculas(List<tMatricula> listaMatriculas) {
         this.listaMatriculas = listaMatriculas;
+    }
+
+    @Override
+    public String toString() {
+        return "tAlumnado{" +
+                "idAlum=" + idAlum +
+                ", ape1='" + ape1 + '\'' +
+                ", ape2='" + ape2 + '\'' +
+                ", nombre='" + nombre + '\'' +
+                '}';
     }
 }

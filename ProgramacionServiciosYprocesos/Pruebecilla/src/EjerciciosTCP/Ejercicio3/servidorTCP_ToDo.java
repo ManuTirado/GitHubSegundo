@@ -1,16 +1,19 @@
-package Ejercicios.Ejercicio2;
+package EjerciciosTCP.Ejercicio3;
 
 import java.io.*;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.nio.charset.StandardCharsets;
 
-public class servidorTCP {
+public class servidorTCP_ToDo {
+
+    private static int numSecreto;
+
     public static void main(String[] args) {
         try {
             //Creación del socket servidor
             System.out.println("(Servidor): Abrinedo conexión");
-            ServerSocket socketServidor = new ServerSocket(1500);
+            ServerSocket socketServidor = new ServerSocket(2000);
             while (true) {
                 //Espera de la aceptación
                 System.out.println("(Servidor): Esperando peticiones");

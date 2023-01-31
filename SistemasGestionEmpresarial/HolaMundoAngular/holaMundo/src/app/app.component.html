@@ -1,10 +1,11 @@
 <!DOCTYPE html>
-<h1>Hola Mundo</h1>
-<app-tabla-personas ></app-tabla-personas> <br/>
-<app-listado-personas></app-listado-personas> <br/>
-<app-formulario-persona></app-formulario-persona>
+<title>Ejercicio 1 U15</title>
+<app-tabla-personas></app-tabla-personas> <br /> <br />
+<a routerLink="/formulario">Abrir Formulario</a> <br /> <br />
 
-<img width="200" src="https://github.com/ManuelTirado/Fotos/blob/main/png-clipart-cristiano-ronaldo-football-player-uefa-champions-league-sport-real-madrid-c-f-cristiano-ronaldo-sports-shoe.png?raw=true" alt="El bicho, siuuuuuu">
+<button [routerLink]="'listado'">Abrir Listado</button>   <br /> <br />
+
+<button (click)="btnAbrirListado()">Abrir Listado (con evento click)</button>   <br /> <br />
 
 <!-- Esto no se quita ;/ -->
 <router-outlet></router-outlet>

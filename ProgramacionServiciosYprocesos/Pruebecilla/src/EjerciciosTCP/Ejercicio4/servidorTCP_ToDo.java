@@ -1,4 +1,4 @@
-package Ejercicios.Ejercicio3;
+package EjerciciosTCP.Ejercicio4;
 
 import java.io.*;
 import java.net.ServerSocket;
@@ -13,7 +13,7 @@ public class servidorTCP_ToDo {
         try {
             //Creación del socket servidor
             System.out.println("(Servidor): Abrinedo conexión");
-            ServerSocket socketServidor = new ServerSocket(2000);
+            ServerSocket socketServidor = new ServerSocket(3000);
             while (true) {
                 //Espera de la aceptación
                 System.out.println("(Servidor): Esperando peticiones");

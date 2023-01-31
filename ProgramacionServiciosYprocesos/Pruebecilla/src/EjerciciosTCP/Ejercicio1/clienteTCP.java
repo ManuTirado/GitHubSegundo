@@ -1,4 +1,4 @@
-package Ejercicios.Ejercicio3;
+package EjerciciosTCP.Ejercicio1;
 
 import java.io.*;
 import java.net.InetAddress;
@@ -6,14 +6,14 @@ import java.net.Socket;
 import java.nio.charset.StandardCharsets;
 import java.util.Scanner;
 
-public class clienteTCP_ToDo {
+public class clienteTCP {
     public static void main(String[] args) {
         try {
             //Dirección de socket tipo cliente
             //Dirección ip del servidor y puerto por el que escucha
             System.out.println("(Cliente): Creación de socket");
             InetAddress direccion = InetAddress.getLocalHost();
-            Socket socketCliente = new Socket(direccion, 2000);
+            Socket socketCliente = new Socket(direccion, 2500);
 
             //Abrir flujo de lectura y escritura
             System.out.println("(Cliente): Apertura de flujos de entrada y salida");

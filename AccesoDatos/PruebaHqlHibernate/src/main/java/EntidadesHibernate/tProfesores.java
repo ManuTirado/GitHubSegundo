@@ -28,6 +28,10 @@ public class tProfesores {
     @JoinColumn(name = "idAsig")
     private List<tAsignaturas> listaAsignaturas;
 
+    @ManyToOne
+    @JoinColumn(name = "idDepartamento")
+    private tDepartamento departamento;
+
     public tProfesores() {
     }
 
@@ -78,6 +82,14 @@ public class tProfesores {
 
     public void setListaAsignaturas(List<tAsignaturas> listaAsignaturas) {
         this.listaAsignaturas = listaAsignaturas;
+    }
+
+    public tDepartamento getDepartamento() {
+        return departamento;
+    }
+
+    public void setDepartamento(tDepartamento departamento) {
+        this.departamento = departamento;
     }
 
     @Override

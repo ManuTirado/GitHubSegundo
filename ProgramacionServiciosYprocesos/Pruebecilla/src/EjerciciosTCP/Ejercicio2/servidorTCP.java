@@ -1,4 +1,4 @@
-package Ejercicios.Ejercicio1;
+package EjerciciosTCP.Ejercicio2;
 
 import java.io.*;
 import java.net.ServerSocket;
@@ -10,7 +10,7 @@ public class servidorTCP {
         try {
             //Creación del socket servidor
             System.out.println("(Servidor): Abrinedo conexión");
-            ServerSocket socketServidor = new ServerSocket(2500);
+            ServerSocket socketServidor = new ServerSocket(1500);
             while (true) {
                 //Espera de la aceptación
                 System.out.println("(Servidor): Esperando peticiones");
@@ -31,7 +31,7 @@ public class servidorTCP {
                 System.out.println("(Servidor): Envío resultado al cliente");
                 OutputStreamWriter outputStreamWriter = new OutputStreamWriter(outputStream, StandardCharsets.UTF_8);
                 BufferedWriter bufferedWriter = new BufferedWriter(outputStreamWriter);
-                String mensaje = esPrimo(Integer.parseInt(line));
+                String mensaje = obtenerFactorial(Integer.parseInt(line));
                 System.out.println("Resultado = " + mensaje);
                 bufferedWriter.write(mensaje);
                 bufferedWriter.newLine();
@@ -58,20 +58,13 @@ public class servidorTCP {
         ;
     }
 
-    private static String esPrimo(int num) {
-        boolean enc = false;
-        String result = "Es primo";
-
-        if (num <= 1){
-            result = "No es primo";
+    private static String obtenerFactorial(int num) {
+        double factorial = 1;
+        int numero = num;
+        while (numero != 0) {
+            factorial = factorial * numero;
+            numero--;
         }
-        for (int i = 2; i <= num / 2 && !enc ; i++) {
-            if (num % i == 0){
-                result = "No es primo";
-                enc = true;
-            }
-        }
-
-        return result;
+        return "Factorial de " + num + " = " + factorial;
     }
 }

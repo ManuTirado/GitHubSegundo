@@ -1,19 +1,18 @@
-package Ejercicios.Ejercicio4;
+package PruebasTCP.ProtocoloTCPejercicio;
 
 import java.io.*;
 import java.net.InetAddress;
 import java.net.Socket;
 import java.nio.charset.StandardCharsets;
-import java.util.Scanner;
 
-public class clienteTCP_ToDo {
+public class clienteTCP {
     public static void main(String[] args) {
         try {
             //Dirección de socket tipo cliente
             //Dirección ip del servidor y puerto por el que escucha
             System.out.println("(Cliente): Creación de socket");
-            InetAddress direccion = InetAddress.getLocalHost();
-            Socket socketCliente = new Socket(direccion, 3000);
+            InetAddress direccion = InetAddress.getByName("192.168.0.167");
+            Socket socketCliente = new Socket(direccion, 49900);
 
             //Abrir flujo de lectura y escritura
             System.out.println("(Cliente): Apertura de flujos de entrada y salida");
@@ -22,12 +21,10 @@ public class clienteTCP_ToDo {
 
             //Intercambio de datos con el servidor
             //Envío de texto al servidor
-            System.out.println("(Cliente) Envía el número al servidor");
+            System.out.println("(Cliente) Envía el mensaje de texto al servidor");
             OutputStreamWriter outputStreamWriter = new OutputStreamWriter(outputStream, StandardCharsets.UTF_8);
             BufferedWriter bufferedWriter = new BufferedWriter(outputStreamWriter);
-
-            String num = leerNumero();
-            bufferedWriter.write(num);
+            bufferedWriter.write("Fresco 🥶");
             bufferedWriter.newLine();
             bufferedWriter.flush();
 
@@ -56,18 +53,5 @@ public class clienteTCP_ToDo {
             System.out.println(e.getMessage());
             ;
         }
-    }
-
-    private static String leerNumero() {
-        Scanner sc = new Scanner(System.in);
-        String num;
-        do {
-            System.out.print("==> ");
-            num = sc.nextLine();
-            if (Integer.parseInt(num) < 0) {
-                System.out.println("El número no puede ser negativo, inténtelo de nuevo...");
-            }
-        } while (Integer.parseInt(num) < 0);
-        return num;
     }
 }

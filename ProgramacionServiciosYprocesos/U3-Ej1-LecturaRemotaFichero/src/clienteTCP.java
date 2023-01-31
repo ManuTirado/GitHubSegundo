@@ -20,7 +20,7 @@ public class clienteTCP {
 
             //Intercambio de datos con el servidor
             //Envío la ruta al servidor
-            System.out.println("(Cliente) Envía la ruta al servidor");
+            System.out.println("(Cliente) Envía la ruta al servidor ('src/Fichero.txt' por ejemplo)");
             OutputStreamWriter outputStreamWriter = new OutputStreamWriter(outputStream, StandardCharsets.UTF_8);
             BufferedWriter bufferedWriter = new BufferedWriter(outputStreamWriter);
 
@@ -33,7 +33,12 @@ public class clienteTCP {
             System.out.println("(Cliente): Lee la respuesta del servidor");
             InputStreamReader inputStreamReader = new InputStreamReader(inputStream, StandardCharsets.UTF_8);
             BufferedReader bufferedReader = new BufferedReader(inputStreamReader);
-            System.out.println("Mensaje enviado por el servidor: " + bufferedReader.readLine());
+            System.out.println("Mensaje enviado por el servidor: ");
+            String line = bufferedReader.readLine();
+            while (line!=null) {
+                System.out.println(line);
+                line = bufferedReader.readLine();
+            }
 
             //Cerrar los flujos de escritura y de lectura
             System.out.println("(Cliente): Cerramos flujo de lectura y escritura");

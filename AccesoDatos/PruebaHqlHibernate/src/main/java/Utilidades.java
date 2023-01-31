@@ -85,22 +85,17 @@ public class Utilidades {
      */
     public static void imprimirMenuPrincipal() {
         System.out.println("-- -- -- -- Seleccione una tabla -- -- -- --");
-        System.out.println("1 - Alumnado");
-        System.out.println("2 - Asignaturas");
-        System.out.println("3 - Matrícula");
-        System.out.println("4 - Profesores");
+        System.out.println("1 - Insertar profesorado y asignaturas");
+        System.out.println("2 - Matricular alumnado");
+        System.out.println("3 - Listar asignaturas");
+        System.out.println("4 - Listar profesorado");
+        System.out.println("5 - Listar alumnado");
+        System.out.println("6 - Listar alumnado matriculado");
+        System.out.println("7 - Buscar por nombre");
+        System.out.println("8 - Mostrar total");
+        System.out.println("9 - Insertar Departamento");
+        System.out.println("10 - Asociar Prof a Dept");
         System.out.println("0 - Salir");
     }
 
-    /***
-     * Imprime el menú secundario por consola
-     */
-    public static void imprimirMenuSecundario() {
-        System.out.println("-- -- -- -- ¿Qué desea hacer? -- -- -- --");
-        System.out.println("1 - Insertar Registro");
-        System.out.println("2 - Listar Registros");
-        System.out.println("3 - Modificar Registro");
-        System.out.println("4 - Borrar Registro");
-        System.out.println("0 - Volver");
-    }
 }

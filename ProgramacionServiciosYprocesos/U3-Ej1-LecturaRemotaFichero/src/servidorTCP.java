@@ -62,7 +62,7 @@ public class servidorTCP {
             BufferedReader br = new BufferedReader(new FileReader(fichero));
             String line = br.readLine();
             while (line != null) {
-                salida += ansiBlue + line + ansiReset;
+                salida += ansiBlue + line + ansiReset + "\n";
                 line = br.readLine();
             }
         } catch (FileNotFoundException e) {
