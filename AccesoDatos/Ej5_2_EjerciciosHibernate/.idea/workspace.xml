@@ -4,7 +4,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9bf93873-9845-43d0-9b76-63a96b8265f6" name="Changes" comment="" />
+    <list default="true" id="9bf93873-9845-43d0-9b76-63a96b8265f6" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../EjerciciosHibernate/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/../EjerciciosHibernate/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../EjerciciosHibernate/mvnw" beforeDir="false" afterPath="$PROJECT_DIR$/../EjerciciosHibernate/mvnw" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../EjerciciosHibernate/mvnw.cmd" beforeDir="false" afterPath="$PROJECT_DIR$/../EjerciciosHibernate/mvnw.cmd" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../EjerciciosHibernate/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../EjerciciosHibernate/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../EjerciciosHibernate/src/main/resources/META-INF/persistence.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../EjerciciosHibernate/src/main/resources/META-INF/persistence.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../EjerciciosHibernate/src/main/webapp/WEB-INF/web.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../EjerciciosHibernate/src/main/webapp/WEB-INF/web.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -31,23 +39,23 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/mtira/Desktop/GitHubSegundo/AccesoDatos/Ej5_2_EjerciciosHibernate/src&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Libraries&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;editor.preferences.gutterIcons&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "last_opened_file_path": "C:/Users/mtira/Desktop/GitHubSegundo/AccesoDatos/EjerciciosHibernate",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.2",
+    "settings.editor.selected.configurable": "editor.preferences.gutterIcons"
   },
-  &quot;keyToStringList&quot;: {
-    &quot;DatabaseDriversLRU&quot;: [
-      &quot;mysql&quot;
+  "keyToStringList": {
+    "DatabaseDriversLRU": [
+      "mysql"
     ]
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\mtira\Desktop\GitHubSegundo\AccesoDatos\Ej5_2_EjerciciosHibernate\src" />
@@ -65,6 +73,10 @@
       <workItem from="1674164808330" duration="1760000" />
       <workItem from="1674499114371" duration="8680000" />
       <workItem from="1675283843810" duration="7000" />
+      <workItem from="1675283911881" duration="39000" />
+      <workItem from="1675283960931" duration="44000" />
+      <workItem from="1675284010549" duration="102000" />
+      <workItem from="1675284376266" duration="24000" />
     </task>
     <servers />
   </component>
