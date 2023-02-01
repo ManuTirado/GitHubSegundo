@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:converters="clr-namespace:Ejers_U13_2.Converters"
+             x:Class="Ejers_U13_2.MainPage">
+    <ContentPage.Resources>
+        <converters:DateToFormatedStringConverter x:Key="DateToString" />
+    </ContentPage.Resources>
+
+    <VerticalStackLayout HorizontalOptions="Center" Margin="30" Spacing="10">
+
+        <DatePicker x:Name="datePicker"  Format="dd/MM/yyyy"/>
+        <Label  
+            BindingContext="{x:Reference Name=datePicker}"
+            Text="{Binding
+            Path= Date,
+            Mode=OneWay, 
+            Converter={StaticResource DateToString}}"
+            />
+
+    </VerticalStackLayout>
+
+</ContentPage>

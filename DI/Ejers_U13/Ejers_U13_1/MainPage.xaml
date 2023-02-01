@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Ejers_U13_1.MainPage">
+    <ContentPage.Resources>
+        <LinearGradientBrush x:Key="linearGradient1">
+            <GradientStop Offset="0" Color="Silver"/>
+            <GradientStop Offset="1" Color="Orange"/>
+        </LinearGradientBrush>
+    </ContentPage.Resources>
+
+    <VerticalStackLayout Margin="30">
+
+        <Rectangle Fill="{StaticResource linearGradient1}"
+           WidthRequest="300"
+           HeightRequest="150"
+           HorizontalOptions="Start" />
+
+        <Ellipse Fill="{StaticResource linearGradient2}"
+         WidthRequest="300"
+         HeightRequest="150"
+         HorizontalOptions="Center" />
+
+    </VerticalStackLayout>
+</ContentPage>
