@@ -1,11 +1,21 @@
 <form [formGroup]="formularioPersReact">
     <p>
         <span>Nombre:</span>
-        <input type="text" id="nombre" formControlName="nombre"/>
+        <input type="text" id="nombre" formControlName="nombre" />
+        <span
+            *ngIf="(formularioPersReact.controls.nombre.dirty || formularioPersReact.controls.nombre.touched) && this.formularioPersReact.controls.nombre.errors?.required">
+            El nombre es obligatorio
+        </span>
     </p>
     <p>
-        <span>Apellidos:</span> 
-        <input type="text" formControlName="apellidos"/>
-    </p>            
-    <button type="button" (click)="saluda()">Saludar</button>
+        <span>Apellidos:</span>
+        <input type="text" formControlName="apellidos" />
+        <span
+            *ngIf="(formularioPersReact.controls.apellidos.dirty || formularioPersReact.controls.apellidos.touched) && this.formularioPersReact.controls.apellidos.errors?.required">
+            El nombre es obligatorio
+        </span>
+    </p>
+    <button type="button" (click)="saluda()" [ngIf]="">Saludar</button>
+    <br /><br />
+    <button [routerLink]="''">Volver</button>
 </form>

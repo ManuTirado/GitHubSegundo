@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormGroup, FormControl } from '@angular/forms';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-formulario-persona-reactivo',
@@ -14,14 +14,15 @@ export class FormularioPersonaReactivoComponent {
   ngOnInit(): void {
     this.formularioPersReact = new FormGroup(
       {
-        nombre: new FormControl('', []),
-        apellidos: new FormControl('', [])
+        nombre: new FormControl('', [Validators.required]),
+        apellidos: new FormControl('', [Validators.required])
       });
   }
 
-  saluda(){
-
-    alert('Hola ' + this.formularioPersReact.controls.nombre.value + ' ' + this.formularioPersReact.controls.apellidos.value);
+  saluda() {
     
+    if (Validators.compose == null) {
+      alert('Hola ' + this.formularioPersReact.controls.nombre.value + ' ' + this.formularioPersReact.controls.apellidos.value);
     }
+  }
 }
