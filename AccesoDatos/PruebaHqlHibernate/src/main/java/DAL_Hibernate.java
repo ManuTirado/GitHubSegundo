@@ -7,7 +7,7 @@ import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 
 import java.util.ArrayList;
 
-public class DAL_Hibernate {
+public class    DAL_Hibernate {
     private static SessionFactory sessionFactory = null;
     private static Session session;
 
