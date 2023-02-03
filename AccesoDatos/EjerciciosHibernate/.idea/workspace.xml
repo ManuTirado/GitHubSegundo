@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="2d362b68-deec-4e82-8400-3411e62cd02e" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/../Ej5_2_EjerciciosHibernate/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Ej5_2_EjerciciosHibernate/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Ej5_2_EjerciciosHibernate/.idea/encodings.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Ej5_2_EjerciciosHibernate/.idea/jpa-buddy.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Ej5_2_EjerciciosHibernate/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Ej5_2_EjerciciosHibernate/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Ej5_2_EjerciciosHibernate/.mvn/wrapper/maven-wrapper.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Ej5_2_EjerciciosHibernate/.mvn/wrapper/maven-wrapper.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Ej5_2_EjerciciosHibernate/mvnw" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Ej5_2_EjerciciosHibernate/mvnw.cmd" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Ej5_2_EjerciciosHibernate/pom.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Ej5_2_EjerciciosHibernate/src/main/java/DAL_Hibernate.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Ej5_2_EjerciciosHibernate/src/main/java/EntidadesHibernate/Factura.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Ej5_2_EjerciciosHibernate/src/main/java/EntidadesHibernate/Mesa.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Ej5_2_EjerciciosHibernate/src/main/java/EntidadesHibernate/Pedido.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Ej5_2_EjerciciosHibernate/src/main/java/EntidadesHibernate/Productos.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Ej5_2_EjerciciosHibernate/src/main/java/Main.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Ej5_2_EjerciciosHibernate/src/main/java/Utilidades.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Ej5_2_EjerciciosHibernate/src/main/resources/Hibernate.cfg.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Ej5_2_EjerciciosHibernate/src/main/resources/META-INF/persistence.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Ej5_2_EjerciciosHibernate/src/mysql-connector-j-8.0.31.jar" beforeDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
+  </component>
+  <component name="JpbToolWindowState">
+    <option name="isToolWindowVisible" value="false" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectId" id="2KoKwnOHaMdEy6YS72qXeq76Hnu" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="1" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "last_opened_file_path": "C:/Users/mtirado/Desktop/GitHubSegundo/AccesoDatos/EjerciciosHibernate"
+  },
+  "keyToStringList": {
+    "DatabaseDriversLRU": [
+      "mysql"
+    ]
+  }
+}]]></component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\mtirado\Desktop\GitHubSegundo\AccesoDatos\EjerciciosHibernate\src" />
+      <recent name="C:\Users\mtirado\Desktop\GitHubSegundo\AccesoDatos\EjerciciosHibernate\src\main\java" />
+      <recent name="C:\Users\mtirado\Desktop\GitHubSegundo\AccesoDatos\EjerciciosHibernate\src\main\resources" />
+    </key>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="2d362b68-deec-4e82-8400-3411e62cd02e" name="Changes" comment="" />
+      <created>1674635738776</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1674635738776</updated>
+      <workItem from="1674635740505" duration="1884000" />
+      <workItem from="1674650779461" duration="2376000" />
+      <workItem from="1674724803997" duration="43000" />
+      <workItem from="1674806013163" duration="2884000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+</project>

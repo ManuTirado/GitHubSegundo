@@ -1,5 +1,7 @@
 
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.Date;
 import java.util.Scanner;
 
@@ -82,25 +84,38 @@ public class Utilidades {
         return sc.nextLine();
     }
 
-    public static Date leerFecha() {
+    public static LocalDate leerFecha() {
         Scanner sc = new Scanner(System.in);
-        SimpleDateFormat df = new SimpleDateFormat("dd/MM/yyyy");
-        Date testDate;
+        DateTimeFormatter df = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+        //SimpleDateFormat df = new SimpleDateFormat("dd/MM/yyyy");
+        LocalDate testDate;
         String date;
         do {
-            System.out.println("==> ");
+            System.out.print("==> ");
             String fecha = sc.nextLine();
             testDate = null;
             date = fecha;
             try {
-                testDate = df.parse(date);
+                testDate = LocalDate.parse(date,df);
             } catch (Exception e) {
                 System.out.println("invalid format");
             }
-            if (!df.format(testDate).equals(date)) {
-                System.out.println("invalid date!!");
-            }
         } while (!df.format(testDate).equals(date));
         return testDate;
+    }
+
+    public static void mostrarMenu() {
+        System.out.println();
+        System.out.println("/  /  /  / IES RAIMON  /  /  /  /");
+        System.out.println("1 - Nuevo Ingreso");
+        System.out.println("2 - Nueva Pareja");
+        System.out.println("3 - Nueva Actividad");
+        System.out.println("4 - Nuevo Entrenamiento");
+        System.out.println("5 - Actualiza Mejor");
+        System.out.println("6 - Mostrar Experiencia Acumulada");
+        System.out.println("7 - Mostrar Ranking");
+        System.out.println("0 - Salir");
+        System.out.println("/  /  /  /  /  /  /  / /  /  /  /");
+        System.out.println();
     }
 }

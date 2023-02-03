@@ -11,17 +11,16 @@
         <!-- Configuración del pool de conexiones JDBC... utilizamos el pool de test integrado -->
         <property name="connection.pool_size">1</property>
         <!--Seleccionamos el dialecto SQL-->
-        <property name="dialect">org.hibernate.dialect.MariaDBDialect</property>
+        <property name="dialect">org.hibernate.dialect.MySQLDialect</property>
         <!-- Configurar SQL para salida estándar -->
         <property name="show_sql">true</property>
         <!-- Establece el contexto de la sesion-->
         <property name="current_session_context_class">thread</property>
         <!-- Creación/Actualización automática de las tablas  -->
         <property name="hbm2ddl.auto">update</property>
-        <mapping class="EntidadesHibernate.IE_entrenamientos"/>
-        <mapping class="EntidadesHibernate.IE_Parejas"/>
-        <mapping class="EntidadesHibernate.IE_Actividades"/>
-        <mapping class="EntidadesHibernate.IE_Estudiantes"/>
-
+        <mapping class="EntidadesHibernate.Factura"/>
+        <mapping class="EntidadesHibernate.Mesa"/>
+        <mapping class="EntidadesHibernate.Pedido"/>
+        <mapping class="EntidadesHibernate.Productos"/>
     </session-factory>
 </hibernate-configuration>

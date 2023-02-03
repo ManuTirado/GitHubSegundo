@@ -8,20 +8,34 @@ import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import java.util.ArrayList;
 
 public class DAL_Hibernate {
-    private static SessionFactory sessionFactory = null;
-    private static Session session;
-
-    //region Constructor
-    public DAL_Hibernate() {
+    private SessionFactory sf;
+    private Session sesion;
+    private Transaction transaction;
+    protected void setUp() {
+        final StandardServiceRegistry registry = new StandardServiceRegistryBuilder()
+                .configure() // por defecto: hibernate.cfg.xml
+                .build();
         try {
-            setUp();
-            session = sessionFactory.openSession();
-        } catch (Exception e) {
-            System.err.println("Error al hacer el setup al hibernate");
-            throw new RuntimeException(e);
+            sf = new MetadataSources( registry ).buildMetadata().buildSessionFactory();
+        }
+        catch (Exception e) {
+            StandardServiceRegistryBuilder.destroy( registry );
         }
     }
-    //endregion
+    public void abrir() {
+        setUp();
+        sesion=sf.openSession();
+        transaction = sesion.beginTransaction();
+    }
+    public void cerrar(){
+        try {
+            transaction.commit();
+        }catch(Exception e){
+            transaction.rollback();
+        }
+        sf.close();
+    }
+
     /**
      * Lee el registro de la BBDD con el id pasado por parámetro, de no existir devuelve
      * el objeto a null y muestra un mensaje de error
@@ -32,7 +46,7 @@ public class DAL_Hibernate {
         T entidad = (T) clase;
         entidad = null;
         try {
-            entidad = session.get(clase, id);
+            entidad = sesion.get(clase, id);
         } catch (Exception e) {
             System.err.println("Algo no salió bien al leer la mesa");
         }
@@ -45,9 +59,9 @@ public class DAL_Hibernate {
     public <T>ArrayList<T> leerTodosRegistros(Class<T> clase) {
         ArrayList<T> registros = new ArrayList<>();
         try {
-            registros = (ArrayList<T>) session.createQuery("SELECT p FROM "+clase.getName()+" p",clase).list();
+            registros = (ArrayList<T>) sesion.createQuery("SELECT p FROM "+clase.getName()+" p",clase).list();
         } catch (Exception e) {
-            System.err.println("Algo no salió bien al leer las mesas");
+            System.err.println("Algo no salió bien al leer los registros");
         }
         return registros;
 
@@ -58,14 +72,27 @@ public class DAL_Hibernate {
      * @param objeto Objeto a insertar
      */
     public void insertar(Object objeto) {
-        Transaction transaction = session.beginTransaction();
         try {
-            session.persist(objeto);
-            transaction.commit();
+            sesion.persist(objeto);
         } catch (Exception e) {
-            System.err.println("Algo no salió bien, se ha hecho un rollback");
-            transaction.rollback();
+            System.err.println("Algo no salió bien al insertar");
         }
+    }
+
+    /**
+     * Actualiza el objeto en la BBDD
+     * @param objeto Objeto a actualziar
+     */
+    public void actualziar(Object objeto) {
+        try {
+            sesion.update(objeto);
+        } catch (Exception e) {
+            System.err.println("Algo no salió bien al actualizar");
+        }
+    }
+
+    public <T> ArrayList<T> leerNamedQuery(String namedQuery) {
+        return (ArrayList<T>) sesion.getNamedQuery(namedQuery).getResultList();
     }
 
     /**
@@ -73,28 +100,10 @@ public class DAL_Hibernate {
      * @param objeto objeto a borrar
      */
     public void borrar(Object objeto) {
-        Transaction transaction = session.beginTransaction();
         try {
-            session.remove(objeto);
-            transaction.commit();
+            sesion.remove(objeto);
         } catch (Exception e) {
-            System.err.println("Algo no salió bien, se ha hecho un rollback");
-            transaction.rollback();
-        }
-    }
-
-    /**
-     * Realiza el setup del hibernate
-     * @throws Exception Error en el setup
-     */
-    private void setUp() throws Exception {
-        final StandardServiceRegistry registry = new StandardServiceRegistryBuilder()
-                .configure() // por defecto: hibernate.cfg.xml
-                .build();
-        try {
-            sessionFactory = new MetadataSources(registry).buildMetadata().buildSessionFactory();
-        } catch (Exception e) {
-            StandardServiceRegistryBuilder.destroy(registry);
+            System.err.println("Algo no salió bien");
         }
     }
 }
