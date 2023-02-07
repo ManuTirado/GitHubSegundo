@@ -7,7 +7,63 @@
 </head>
 <body>
     <h2>HTML Examen</h2>
-    <div id="Prueba">
+    <div style="border: 5px solid black">
+        <h3>Tabla Personas</h3>
+        <table border="1" style="border-collapse:collapse">
+            <thead>
+                <tr>
+                    <td>Id</td>
+                    <td>Nombre</td>
+                    <td>Apellidos</td>
+                    <td>Teléfono</td>
+                    <td>Dirección</td>
+                    <td>Foto</td>
+                    <td>Fecha Nacimiento</td>
+                    <td>Id Departamento</td>
+                </tr>
+            </thead>
+            <tbody id="tbodyPersonas">
+                
+            </tbody>
+        </table>
+    </div>
+
+    <div id="LeerPersona" style="border: 5px solid black">
+        <h3>Leer Persona</h3>
+        <form>
+            <input id="inpIdLeerPersona" type="number" value="1"/>
+            <input id="btnLeerPersona" type="button" value="Leer" />
+            <table border="1" style="border-collapse:collapse">
+                <thead>
+                    <tr>
+                        <td>Id</td>
+                        <td>Nombre</td>
+                        <td>Apellidos</td>
+                        <td>Teléfono</td>
+                        <td>Dirección</td>
+                        <td>Foto</td>
+                        <td>Fecha Nacimiento</td>
+                        <td>Id Departamento</td>
+                    </tr>
+                </thead>
+                <tbody id="tbodyPersona">
+                </tbody>
+            </table>
+        </form>
+    </div>
+
+    <div id="Insertar" style="border: 5px solid black" >
+        <h3>Insertar Pesona</h3>
+        <form>
+            <input id="inpInsNombre" placeholder="Nombre..." type="text" /> <br />
+            <input id="inpInsApellidos" placeholder="Apellidos..." type="text" /><br />
+            <input id="inpInsTelefono" placeholder="Teléfono..." type="text" /><br />
+            <input id="inpInsDireccion" placeholder="Dirección..." type="text" /><br />
+            <input id="inpInsFoto" placeholder="Foto..." type="text" /><br />
+            <input id="inpInsNacimiento" type="date" /><br /> 
+            <input id="inpInsIdDepartamento" placeholder="Id Departamento..." type="number" /><br />
+            <input id="btnInsPersona" type="submit" value="Insertar"  />
+        </form>
     </div>
 </body>
 </html>

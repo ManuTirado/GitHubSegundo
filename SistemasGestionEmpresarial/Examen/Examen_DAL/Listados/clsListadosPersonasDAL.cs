@@ -33,29 +33,29 @@ namespace Examen_DAL.Listados
                     while (miLector.Read())
                     {
                         oPersona = new clsPersona();
-                        oPersona.ID = (int)miLector["ID"];
-                        oPersona.Nombre = (string)miLector["Nombre"];
-                        oPersona.Apellidos = (string)miLector["Apellidos"];
+                        oPersona.id = (int)miLector["ID"];
+                        oPersona.nombre = (string)miLector["Nombre"];
+                        oPersona.apellidos = (string)miLector["Apellidos"];
                         //Si sospechamos que el campo puede ser Null en la BBDD
                         if (miLector["Telefono"] != System.DBNull.Value)
                         {
-                            oPersona.Telefono = (string)miLector["Telefono"];
+                            oPersona.telefono = (string)miLector["Telefono"];
                         }
                         if (miLector["Direccion"] != System.DBNull.Value)
                         {
-                            oPersona.Direccion = (string)miLector["Direccion"];
+                            oPersona.direccion = (string)miLector["Direccion"];
                         }
                         if (miLector["Foto"] != System.DBNull.Value)
                         {
-                            oPersona.Foto = (string)miLector["Foto"];
+                            oPersona.foto = (string)miLector["Foto"];
                         }
                         if (miLector["FechaNacimiento"] != System.DBNull.Value)
                         {
-                            oPersona.FechaNacimiento = (DateTime)miLector["FechaNacimiento"];
+                            oPersona.fechaNacimiento = (DateTime)miLector["FechaNacimiento"];
                         }
                         if (miLector["IDDepartamento"] != System.DBNull.Value)
                         {
-                            oPersona.IDDepartamento = (int)miLector["IDDepartamento"];
+                            oPersona.idDepartamento = (int)miLector["IDDepartamento"];
                         }
                         personas.Add(oPersona);
                     }
@@ -98,29 +98,29 @@ namespace Examen_DAL.Listados
                     while (miLector.Read())
                     {
                         oPersona = new clsPersona();
-                        oPersona.ID = (int)miLector["ID"];
-                        oPersona.Nombre = (string)miLector["Nombre"];
-                        oPersona.Apellidos = (string)miLector["Apellidos"];
+                        oPersona.id = (int)miLector["ID"];
+                        oPersona.nombre = (string)miLector["Nombre"];
+                        oPersona.apellidos = (string)miLector["Apellidos"];
                         //Si sospechamos que el campo puede ser Null en la BBDD
                         if (miLector["Telefono"] != System.DBNull.Value)
                         {
-                            oPersona.Telefono = (string)miLector["Telefono"];
+                            oPersona.telefono = (string)miLector["Telefono"];
                         }
                         if (miLector["Direccion"] != System.DBNull.Value)
                         {
-                            oPersona.Direccion = (string)miLector["Direccion"];
+                            oPersona.direccion = (string)miLector["Direccion"];
                         }
                         if (miLector["Foto"] != System.DBNull.Value)
                         {
-                            oPersona.Foto = (string)miLector["Foto"];
+                            oPersona.foto = (string)miLector["Foto"];
                         }
                         if (miLector["FechaNacimiento"] != System.DBNull.Value)
                         {
-                            oPersona.FechaNacimiento = (DateTime)miLector["FechaNacimiento"];
+                            oPersona.fechaNacimiento = (DateTime)miLector["FechaNacimiento"];
                         }
                         if (miLector["IDDepartamento"] != System.DBNull.Value)
                         {
-                            oPersona.IDDepartamento = (int)miLector["IDDepartamento"];
+                            oPersona.idDepartamento = (int)miLector["IDDepartamento"];
                         }
                         personas.Add(oPersona);
                     }

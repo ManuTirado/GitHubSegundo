@@ -9,7 +9,7 @@ namespace Examen_DAL.Utilidades
     public static class clsMyConnection
     {
         #region Atributos
-        private static string server = $"107-06\\SQLEXPRESS";
+        private static string server = $"DESKTOP-BJVTTF1";
         private static string dataBase = "PruebaExamen";
         private static string user = "prueba";
         private static string pass = "123";

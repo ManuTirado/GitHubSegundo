@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Examen_Entidades;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,5 +21,27 @@ namespace Examen_BL.Manejadoras
         public static int eliminarPersonaBL(int ID) {
             return (Examen_DAL.Manejadoras.clsManejadoraPersonaDAL.eliminarPersonaDAL(ID));
         }
+
+        /// <summary>
+        /// Inserta una persona en la tabla Personas de la base de datos.
+        /// </summary>
+        /// <param name="persona">Persona a insertar</param>
+        /// <returns>Número de filas afectadas (0 si no se ha insertado o 1 si se ha insertado)</returns>
+        public static int insertarPersonaBL(clsPersona persona)
+        {
+            return (Examen_DAL.Manejadoras.clsManejadoraPersonaDAL.insertarPersonaDAL(persona));
+        }
+
+        /// <summary>
+        /// Lee una persona en la tabla Personas de la base de datos.
+        /// </summary>
+        /// <param name="id">id de la Persona a leer</param>
+        /// <returns>Persona con el id pasado o persona vacía si no la encuentra</returns>
+        public static clsPersona leerPersonaBL(int id)
+        {
+            return (Examen_DAL.Manejadoras.clsManejadoraPersonaDAL.leerPersonaDAL(id));
+        }
     }
+
+
 }
