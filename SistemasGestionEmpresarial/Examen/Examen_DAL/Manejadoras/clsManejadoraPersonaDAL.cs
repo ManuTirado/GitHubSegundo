@@ -11,6 +11,35 @@ namespace Examen_DAL.Manejadoras
     public static class clsManejadoraPersonaDAL
     {
         /// <summary>
+        /// Actualiza una persona en la tabla Personas de la base de datos.
+        /// </summary>
+        /// <param name="id">Id persona a actualizar</param>
+        /// <param name="persona">Persona actualizada</param>
+        /// <returns>Número de filas afectadas (0 si no se ha actualizado o 1 si se ha actualizado)</returns>
+        public static int actualizarPersonaDAL(int id, clsPersona persona)
+        {
+            int columnasAfectadas;
+            SqlConnection miConexion = clsMyConnection.getConnection();
+            SqlCommand miComando = new SqlCommand();
+
+            miComando.CommandText = "UPDATE Personas SET Nombre=@nombre, Apellidos=@apellidos, Telefono=@telefono, Direccion=@direccion, Foto=@foto, FechaNacimiento=@fechaNacimiento, IDDepartamento=@idDepartamento " +
+                "WHERE ID=@id;";
+            miComando.Parameters.AddWithValue("@id", id);
+            miComando.Parameters.AddWithValue("@nombre", persona.nombre);
+            miComando.Parameters.AddWithValue("@apellidos", persona.apellidos);
+            miComando.Parameters.AddWithValue("@telefono", persona.telefono);
+            miComando.Parameters.AddWithValue("@direccion", persona.direccion);
+            miComando.Parameters.AddWithValue("@foto", persona.foto);
+            miComando.Parameters.AddWithValue("@fechaNacimiento", persona.fechaNacimiento);
+            miComando.Parameters.AddWithValue("@idDepartamento", persona.idDepartamento);
+
+            miComando.Connection = miConexion;
+
+            columnasAfectadas = miComando.ExecuteNonQuery();
+            return columnasAfectadas;
+        }
+
+        /// <summary>
         /// Elimina una persona de la tabla Personas de la base de datos.
         /// </summary>
         /// <param name="id">ID de la persona a eliminar</param>

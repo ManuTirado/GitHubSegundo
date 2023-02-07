@@ -23,7 +23,6 @@
                 </tr>
             </thead>
             <tbody id="tbodyPersonas">
-                
             </tbody>
         </table>
     </div>
@@ -31,7 +30,7 @@
     <div id="LeerPersona" style="border: 5px solid black">
         <h3>Leer Persona</h3>
         <form>
-            <input id="inpIdLeerPersona" type="number" value="1"/>
+            <input id="inpIdLeerPersona" type="number" value="1" />
             <input id="btnLeerPersona" type="button" value="Leer" />
             <table border="1" style="border-collapse:collapse">
                 <thead>
@@ -52,17 +51,43 @@
         </form>
     </div>
 
-    <div id="Insertar" style="border: 5px solid black" >
+    <div id="Insertar" style="border: 5px solid black">
         <h3>Insertar Pesona</h3>
         <form>
-            <input id="inpInsNombre" placeholder="Nombre..." type="text" /> <br />
+            <input id="inpInsNombre" placeholder="Nombre..." type="text" />* <br />
             <input id="inpInsApellidos" placeholder="Apellidos..." type="text" /><br />
             <input id="inpInsTelefono" placeholder="Teléfono..." type="text" /><br />
             <input id="inpInsDireccion" placeholder="Dirección..." type="text" /><br />
             <input id="inpInsFoto" placeholder="Foto..." type="text" /><br />
-            <input id="inpInsNacimiento" type="date" /><br /> 
-            <input id="inpInsIdDepartamento" placeholder="Id Departamento..." type="number" /><br />
-            <input id="btnInsPersona" type="submit" value="Insertar"  />
+            <input id="inpInsNacimiento" type="date" />* <br />
+            <input id="inpInsIdDepartamento" placeholder="Id Departamento..." type="number" />*<br />
+            <input id="btnInsPersona" type="button" value="Insertar" />
+        </form>
+        <p id="msgErrorInsert" style="color:red"></p>
+    </div>
+
+    <div id="Actualizar" style="border: 5px solid black">
+        <h3>Actualizar Persona</h3>
+        <form>
+            <input id="inpActId" placeholder="ID Persona..." type="number"/>* <br/><br />
+            <input id="inpActNombre" placeholder="Nombre..." type="text" />* <br />
+            <input id="inpActApellidos" placeholder="Apellidos..." type="text" /><br />
+            <input id="inpActTelefono" placeholder="Teléfono..." type="text" /><br />
+            <input id="inpActDireccion" placeholder="Dirección..." type="text" /><br />
+            <input id="inpActFoto" placeholder="Foto..." type="text" /><br />
+            <input id="inpActNacimiento" type="date" />* <br />
+            <input id="inpActIdDepartamento" placeholder="Id Departamento..." type="number" />*<br />
+            <input id="btnActPersona" type="button" value="Actualizar" />
+        </form>
+        <p id="msgErrorAct" style="color:red"></p>
+    </div>
+
+    <div id="Borrar" style="border: 5px solid black">
+        <h3>Borrar Persona</h3>
+        <form>
+            <input id="inpDelId" placeholder="ID Persona..." type="number" />* <br />
+            <input id="btnDelPersona" type="button" value="Borrar" />
+            <p id="msgErrorDel" style="color:red"></p>
         </form>
     </div>
 </body>

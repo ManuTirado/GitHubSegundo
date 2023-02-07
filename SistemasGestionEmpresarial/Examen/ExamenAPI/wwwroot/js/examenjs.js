@@ -1,5 +1,4 @@
 ﻿
-
 window.onload = inicializarEventos;
 
 function inicializarEventos() {
@@ -9,10 +8,119 @@ function inicializarEventos() {
     var btnLeerPersona = document.getElementById("btnLeerPersona");
     btnLeerPersona.addEventListener("click", leerPersona)
     // Insertar Persona
-
+    var btnInsertarPersona = document.getElementById("btnInsPersona");
+    btnInsertarPersona.addEventListener("click", insertarPersona)
     // Actualizar Persona
-
+    var btnActualizarPersona = document.getElementById("btnActPersona");
+    btnActualizarPersona.addEventListener("click", actualizarPersona);
     // Borrar Persona
+    var btnBorrarPersona = document.getElementById("btnDelPersona");
+    btnBorrarPersona.addEventListener("click", borrarPersona);
+}
+
+function borrarPersona() {
+    var id = document.getElementById("inpDelId").value;
+    var errMsg = document.getElementById("msgErrorDel");
+    errMsg.innerHTML = "";
+
+    if (id === "") {
+        errMsg.innerHTML = "El ID es obligatorio";
+    } else {
+        ajax({
+            method: "DELETE",
+            url: `http://localhost:5153/api/examen/${id}`,
+            succes: (res) => {
+                alert("Se ha borrado correctamente: " + res)
+            },
+            error: (err) => {
+                { alert("Ocurrió un error: " + err) }
+            },
+            data: null
+        })
+    }
+}
+
+function actualizarPersona() {
+    var id = document.getElementById("inpActId").value;
+    var nombre = document.getElementById("inpActNombre").value;
+    var apellidos = document.getElementById("inpActApellidos").value;
+    var telefono = document.getElementById("inpActTelefono").value;
+    var direccion = document.getElementById("inpActDireccion").value;
+    var foto = document.getElementById("inpActFoto").value;
+    var fechaNacimiento = document.getElementById("inpActNacimiento").value;
+    var idDepartamento = document.getElementById("inpActIdDepartamento").value;
+
+    var errMsg = document.getElementById("msgErrorAct");
+    errMsg.innerHTML = "";
+
+    if (id === "" || nombre === "" || fechaNacimiento === "" || idDepartamento === "") {
+        errMsg.innerHTML = "Los campos marcados con * son obligatorios";
+    } else {
+        ajax({
+            method: "PUT",
+            url: `http://localhost:5153/api/examen/${id}`,
+            succes: (res) => {
+                alert("Se ha actualizado correctamente: " + res)
+            },
+            error: (err) => {
+                { alert("Ocurrió un error: " + err) }
+            },
+            data: {
+                id,
+                nombre,
+                apellidos,
+                telefono,
+                direccion,
+                foto,
+                fechaNacimiento,
+                idDepartamento,
+            }
+        })
+    }
+}
+
+function insertarPersona() {
+    var id = 0;
+    var nombre = document.getElementById("inpInsNombre").value;
+    var apellidos = document.getElementById("inpInsApellidos").value;
+    var telefono = document.getElementById("inpInsTelefono").value;
+    var direccion = document.getElementById("inpInsDireccion").value;
+    var foto = document.getElementById("inpInsFoto").value;
+    var fechaNacimiento = document.getElementById("inpInsNacimiento").value;
+    var idDepartamento = document.getElementById("inpInsIdDepartamento").value;
+
+    var errMsg = document.getElementById("msgErrorInsert");
+    errMsg.innerHTML = "";
+
+    if (nombre === "" || fechaNacimiento === "" || idDepartamento === "") {
+        errMsg.innerHTML = "Los campos marcados con * son obligatorios";
+    } else {
+        var persona = new Persona(id, nombre, apellidos, telefono, direccion, foto, fechaNacimiento, idDepartamento);
+        ajax({
+            method: "POST",
+            url: "http://localhost:5153/api/examen/",
+            succes: (res) => {
+                alert("Se ha insertado correctamente: " + res)
+            },
+            error: (err) => {
+                { alert("Ocurrió un error: " + err) }
+            },
+            data: persona
+        })
+    }
+}
+
+class Persona {
+    constructor(id, nombre, apellidos, telefono, direccion, foto, fechaNacimiento, idDepartamento) {
+        this.id = id;
+        this.nombre = nombre;
+        this.apellidos = apellidos;
+        this.telefono = telefono;
+        this.direccion = direccion;
+        this.foto = foto;
+        this.fechaNacimiento = fechaNacimiento;
+        this.idDepartamento = idDepartamento;
+    }
 }
 
 function leerPersona() {
@@ -61,7 +169,8 @@ function cargarPersonas() {
         method: "GET",
         url: "http://localhost:5153/api/examen",
         succes: (res) => {
-            alert("Todo salió bien"); console.log(res)
+            console.log("Todo salió bien");
+            console.log(res);
             var tbody = document.getElementById("tbodyPersonas");
 
             res.forEach(function (p, index) {
@@ -99,6 +208,36 @@ function cargarPersonas() {
     })
 }
 
+function ajax(options) {
+    let { url, method, succes, error, data } = options;
+    const xhr = new XMLHttpRequest();
+
+    xhr.addEventListener("readystatechange", e => {
+        if (xhr.readyState !== 4) return;
+
+        if (xhr.status >= 200 & xhr.status <= 300) {
+            let json = JSON.parse(xhr.responseText);
+            succes(json);
+        } else {
+            let message = xhr.statusText || "Ocurrió un error";
+            error(`Error ${xhr.status} ${message}`);
+        }
+    });
+
+    xhr.open(method || "GET", url);
+    xhr.setRequestHeader("Content-Type", "application/json; charset=utf-8");
+    xhr.send(JSON.stringify(data));
+}
+
+/*
+    var prueba = document.getElementById("Prueba");
+    var element = document.createElement(HTMLParagraphElement.name);
+    var node = document.createTextNode("Prueba js");
+    element.appendChild(node);
+    prueba.appendChild(element);
+ */
+
+/*
 async function insertarPersona() {
     var id = 0;
     var nombre = document.getElementById("inpInsNombre").value;
@@ -145,33 +284,4 @@ async function insertarPersona() {
         alert(e);
     }
 }
-
-
-function ajax(options) {
-    let { url, method, succes, error, data } = options;
-    const xhr = new XMLHttpRequest();
-
-    xhr.addEventListener("readystatechange", e => {
-        if (xhr.readyState !== 4) return;
-
-        if (xhr.status >= 200 & xhr.status <= 300) {
-            let json = JSON.parse(xhr.responseText);
-            succes(json);
-        } else {
-            let message = xhr.statusText || "Ocurrió un error";
-            error(`Error ${xhr.status} ${message}`);
-        }
-    });
-
-    xhr.open(method || "GET", url);
-    xhr.setRequestHeader("Content-Type", "application/json; charset=utf-8");
-    xhr.send(JSON.stringify(data));
-}
-
-/*
- * var prueba = document.getElementById("Prueba");
-    var element = document.createElement(HTMLParagraphElement.name);
-    var node = document.createTextNode("Prueba js");
-    element.appendChild(node);
-    prueba.appendChild(element);
- */
+*/

@@ -56,8 +56,9 @@ namespace ExamenAPI.Controllers.API
         // Actualizar (id)
         // PUT api/<examenController>/5
         [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
+        public void Put(int id, [FromBody] clsPersona persona)
         {
+            Examen_BL.Manejadoras.clsManejadoraPersonaBL.actualizarPersonaBL(id, persona);
         }
 
         // Borrar (id)
@@ -65,6 +66,7 @@ namespace ExamenAPI.Controllers.API
         [HttpDelete("{id}")]
         public void Delete(int id)
         {
+            Examen_BL.Manejadoras.clsManejadoraPersonaBL.eliminarPersonaBL(id);
         }
     }
 }

@@ -14,6 +14,17 @@ namespace Examen_BL.Manejadoras
     public static class clsManejadoraPersonaBL
     {
         /// <summary>
+        /// Actualiza una persona de la tabla Personas de la base de datos.
+        /// </summary>
+        /// <param name="id">ID de la persona a actualizar</param>
+        /// <param name="persona">Persona actualizada</param>
+        /// <returns>Número de filas afectadas (0 si no se ha actualizado o 1 si se ha actualizado)</returns>
+        public static int actualizarPersonaBL(int ID, clsPersona persona)
+        {
+            return (Examen_DAL.Manejadoras.clsManejadoraPersonaDAL.actualizarPersonaDAL(ID,persona));
+        }
+
+        /// <summary>
         /// Elimina una persona de la tabla Personas de la base de datos.
         /// </summary>
         /// <param name="id">ID de la persona a eliminar</param>
