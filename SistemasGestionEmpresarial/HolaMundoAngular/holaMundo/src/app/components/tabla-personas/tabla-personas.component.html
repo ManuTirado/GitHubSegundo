@@ -1,22 +1,32 @@
 <!DOCTYPE html>
-<table border="1" style="border-collapse: collapse;">
+<mat-spinner *ngIf="cargando"></mat-spinner>
+<table width="100%" border="1" style="border-collapse: collapse;" *ngIf="!cargando">
     <thead>
         <tr>
+            <th>Id</th>
             <th>Nombre</th>
             <th>Apellidos</th>
+            <th>Teléfono</th>
+            <th>Dirección</th>
+            <th>Fecha de Nacimiento</th>
+            <th>IdDept</th>
         </tr>
     </thead>
     <tbody>
-        <tr>
-            <td>a</td>
-            <td>a</td>
-        </tr>
-        <tr>
-            <td>a</td>
-            <td>a</td>
+        <tr *ngFor="let persona of listadoPersonas">
+            <td>{{persona.id}}</td>
+            <td>{{persona.nombre}}</td>
+            <td>{{persona.apellidos}}</td>
+            <td>{{persona.telefono}}</td>
+            <td>{{persona.direccion}}</td>
+            <td>{{persona.fechaNacimiento | date: "dd/MM/YYYY"}}</td>
+            <td>{{persona.idDepartamento}}</td>
+            <td><button (click)="btnBorrarPersona(persona.id)">Borrar</button></td>
         </tr>
     </tbody>
 </table>
-<br/>
+<br />
 <button [routerLink]="'formularioReactivo'">Abrir formulario reactivo</button>
-<br/>
+<br />
+
+<br />

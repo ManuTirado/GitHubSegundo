@@ -8,6 +8,9 @@ import { FormularioPersonaComponent } from './components/formulario-persona/form
 import { ListadoPersonasComponent } from './components/listado-personas/listado-personas.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { FormularioPersonaReactivoComponent } from './components/formulario-persona-reactivo/formulario-persona-reactivo.component';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+import { HttpClientModule } from '@angular/common/http';
+
 
 @NgModule({
   declarations: [
@@ -20,7 +23,9 @@ import { FormularioPersonaReactivoComponent } from './components/formulario-pers
   imports: [
     BrowserModule,
     AppRoutingModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatProgressSpinnerModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

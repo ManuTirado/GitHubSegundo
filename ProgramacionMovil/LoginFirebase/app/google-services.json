@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "932888090144",
+    "project_id": "pruebaloginmanu",
+    "storage_bucket": "pruebaloginmanu.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:932888090144:android:d4b63d187bfd4242940e45",
+        "android_client_info": {
+          "package_name": "com.manutirado.loginfirebase"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "932888090144-36hmkgg6eehi5jsagbeat65thdlb84ii.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCSMheM655vDPW8vDl8rqSYSU9Z1vGAfRo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "932888090144-36hmkgg6eehi5jsagbeat65thdlb84ii.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

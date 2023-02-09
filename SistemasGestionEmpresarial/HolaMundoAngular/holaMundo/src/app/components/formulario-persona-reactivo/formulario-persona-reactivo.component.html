@@ -15,7 +15,11 @@
             El nombre es obligatorio
         </span>
     </p>
-    <button type="button" (click)="saluda()" [ngIf]="">Saludar</button>
+
+    <div *ngIf="this.formularioPersReact.controls.apellidos.errors?.required || this.formularioPersReact.controls.nombre.errors?.required; then thenBlock else elseBlock"></div>
+    <ng-template #thenBlock><button type="button" (click)="saluda()" toggleable="true" disabled="true">Saludar</button></ng-template>
+    <ng-template #elseBlock><button type="button" (click)="saluda()" toggleable="true">Saludar</button></ng-template>
+
     <br /><br />
     <button [routerLink]="''">Volver</button>
 </form>

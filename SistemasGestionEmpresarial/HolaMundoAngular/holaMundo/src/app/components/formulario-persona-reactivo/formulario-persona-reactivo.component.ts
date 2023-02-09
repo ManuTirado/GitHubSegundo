@@ -20,9 +20,6 @@ export class FormularioPersonaReactivoComponent {
   }
 
   saluda() {
-    
-    if (Validators.compose == null) {
-      alert('Hola ' + this.formularioPersReact.controls.nombre.value + ' ' + this.formularioPersReact.controls.apellidos.value);
-    }
+    alert('Hola ' + this.formularioPersReact.controls.nombre.value + ' ' + this.formularioPersReact.controls.apellidos.value);
   }
 }
