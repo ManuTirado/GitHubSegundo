@@ -1,15 +1,17 @@
+package Ej1;
+
 import java.io.IOException;
 import java.net.DatagramPacket;
 import java.net.DatagramSocket;
 import java.net.InetAddress;
 
-public class GestorProcesos extends Thread {
+public class GestorProcesosUDP extends Thread {
     private static final String MENSAJE_ACERTADO = "Correcto";
     DatagramSocket socket;
     DatagramPacket datagramaEntrada;
     int numSecreto;
 
-    public GestorProcesos(DatagramSocket socket, DatagramPacket datagramaEntrada, int numSecreto) {
+    public GestorProcesosUDP(DatagramSocket socket, DatagramPacket datagramaEntrada, int numSecreto) {
         this.socket = socket;
         this.datagramaEntrada = datagramaEntrada;
         this.numSecreto = numSecreto;

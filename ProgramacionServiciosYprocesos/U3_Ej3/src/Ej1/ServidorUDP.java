@@ -1,10 +1,8 @@
-import java.io.BufferedWriter;
-import java.io.File;
-import java.io.FileWriter;
+package Ej1;
+
 import java.io.IOException;
 import java.net.DatagramPacket;
 import java.net.DatagramSocket;
-import java.net.InetAddress;
 import java.net.SocketException;
 
 public class ServidorUDP {
@@ -21,7 +19,7 @@ public class ServidorUDP {
             while (true) {
                 System.out.println("Esperando mensaje...");
                 DatagramPacket datagramaEntrada = leerMensaje(socket);
-                new GestorProcesos(socket, datagramaEntrada, numSecreto).start();
+                new GestorProcesosUDP(socket, datagramaEntrada, numSecreto).start();
             }
 
         } catch (SocketException e) {
