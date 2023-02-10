@@ -4,52 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="92d590f6-9503-4d53-9522-00e5ab818ec3" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/../EjerciciosHibernate/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../EjerciciosHibernate/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../EjerciciosHibernate/.idea/dataSources.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../EjerciciosHibernate/.idea/encodings.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../EjerciciosHibernate/.idea/jpa-buddy.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../EjerciciosHibernate/.idea/misc.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../EjerciciosHibernate/.idea/vcs.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../EjerciciosHibernate/.mvn/wrapper/maven-wrapper.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../EjerciciosHibernate/.mvn/wrapper/maven-wrapper.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../EjerciciosHibernate/mvnw" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../EjerciciosHibernate/mvnw.cmd" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../EjerciciosHibernate/pom.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../EjerciciosHibernate/src/main/java/DAL_Hibernate.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../EjerciciosHibernate/src/main/java/EntidadesHibernate/Factura.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../EjerciciosHibernate/src/main/java/EntidadesHibernate/Mesa.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../EjerciciosHibernate/src/main/java/EntidadesHibernate/Pedido.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../EjerciciosHibernate/src/main/java/EntidadesHibernate/Productos.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../EjerciciosHibernate/src/main/java/Main.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../EjerciciosHibernate/src/main/java/Utilidades.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../EjerciciosHibernate/src/main/resources/Hibernate.cfg.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../EjerciciosHibernate/src/main/resources/META-INF/persistence.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../EjerciciosHibernate/src/main/webapp/WEB-INF/web.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../EjerciciosHibernate/src/mysql-connector-j-8.0.31.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/jpa-buddy.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/uiDesigner.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.mvn/wrapper/maven-wrapper.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.mvn/wrapper/maven-wrapper.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mvnw" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mvnw.cmd" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/AgendaEntity.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/DAL.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Main.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/Hibernate.cfg.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/META-INF/persistence.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../PruebaHqlHibernate/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../PruebaHqlHibernate/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../PruebaHqlHibernate/src/main/java/DAL_Hibernate.java" beforeDir="false" afterPath="$PROJECT_DIR$/../PruebaHqlHibernate/src/main/java/DAL_Hibernate.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../a/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../a/.idea/misc.xml" afterDir="false" />
-    </list>
+    <list default="true" id="92d590f6-9503-4d53-9522-00e5ab818ec3" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -66,14 +21,15 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/mtira/Desktop/GitHubSegundo/AccesoDatos/Hibernate&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "last_opened_file_path": "C:/Users/mtira/Desktop/GitHubSegundo/ProgramacionServiciosYprocesos/U3_Ej3",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -85,6 +41,7 @@
       <workItem from="1674164955270" duration="460000" />
       <workItem from="1674500068638" duration="2995000" />
       <workItem from="1675372878476" duration="195000" />
+      <workItem from="1675960613419" duration="20000" />
     </task>
     <servers />
   </component>
