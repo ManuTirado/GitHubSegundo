@@ -4,14 +4,19 @@ import android.content.DialogInterface
 import android.media.MediaPlayer
 import android.os.Bundle
 import android.text.InputType
+import android.util.Log
 import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
+import com.google.firebase.firestore.ktx.firestore
+import com.google.firebase.ktx.Firebase
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
+import java.time.LocalDateTime
+import java.time.format.DateTimeFormatter
 import kotlin.random.Random
 
 class Juego : AppCompatActivity() {
@@ -26,14 +31,20 @@ class Juego : AppCompatActivity() {
     private var record: Int = 0
     private var numPulsacionesTotales: Int = 0
 
+    private val db = Firebase.firestore
+    private lateinit var usuario:String
+    private lateinit var email:String
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_juego)
         supportActionBar?.hide()
 
-        // Recojo el bundle con el long pasado desde el MainActivity
+        // Recojo el bundle con el long pasado desde el HomeActivity
         val bundle = intent.extras
         dificultad = bundle?.getInt("dificultad") ?: 0
+        usuario = bundle?.getString("usuario").toString()
+        email = bundle?.getString("email").toString()
         when (dificultad) {
             0 -> {
                 pausa = 600
@@ -181,33 +192,22 @@ class Juego : AppCompatActivity() {
     }
 
     private fun registrarPuntuacion() {
-        var nombre: String
-
-        // Set up the input
-        var input = EditText(this);
-        // Specify the type of input expected; this, for example, sets the input as a password, and will mask the text
-        input.setInputType(InputType.TYPE_CLASS_TEXT)
-
         val builder = AlertDialog.Builder(this)
         builder.setCancelable(false)
-        builder.setTitle("Ingrese su nombre")
+        builder.setTitle("Guardando...")
         builder.setMessage("¿Quedará tu nombre inmortalizado?")
-            .setView(input)
             .setPositiveButton("OK",
                 DialogInterface.OnClickListener { _, _ ->
-                    nombre = input.text.toString()
-                    /*
-                    Puntuaciones.addTask(
-                        TaskEntity(
-                            nombre = nombre,
-                            dificultad = dificultad,
-                            puntuacion = puntuacion,
-                            numeroPulsaciones = numPulsacionesTotales,
-                            //fechaHora = LocalDateTime.now().format(DateTimeFormatter.ofPattern("dd/MM/uu kk:mm"))
-                            fechaHora = LocalDateTime.now().format(DateTimeFormatter.ofPattern("dd/MM"))
+                    db.collection("puntuaciones").document(email).set(
+                        hashMapOf(
+                            "nombre" to usuario,
+                            "dificultad" to dificultad,
+                            "puntuacion" to puntuacion,
+                            "numeroPulsaciones" to numPulsacionesTotales,
+                            //"fechaHora" to LocalDateTime.now().format(DateTimeFormatter.ofPattern("dd/MM/uu kk:mm"))
+                            "fechaHora" to LocalDateTime.now().format(DateTimeFormatter.ofPattern("dd/MM"))
                         )
                     )
-                     */
                     mostrarMensjaPerdedor()
                     numPulsacionesTotales = 0
                     puntuacion = 0

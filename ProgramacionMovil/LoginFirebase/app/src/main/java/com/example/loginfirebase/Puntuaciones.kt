@@ -5,6 +5,9 @@ import android.os.Bundle
 import android.util.Log
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.google.firebase.firestore.QuerySnapshot
+import com.google.firebase.firestore.ktx.firestore
+import com.google.firebase.ktx.Firebase
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
 
@@ -12,12 +15,14 @@ class Puntuaciones : AppCompatActivity() {
 
     lateinit var recyclerView: RecyclerView
 
+    private val db = Firebase.firestore
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_puntuaciones)
 
         val actionBar = supportActionBar
-        actionBar!!.title ="Puntuaciones"
+        actionBar!!.title = "Puntuaciones"
         actionBar.setDisplayHomeAsUpEnabled(true)
 
         tasks = ArrayList()
@@ -26,11 +31,37 @@ class Puntuaciones : AppCompatActivity() {
 
     }
 
-    fun getTasks() = runBlocking {
-        launch {
-            //tasks = PuntuacionesApp.database.taskDao().getAllTasks()
-            setUpRecyclerView(tasks)
+    fun getTasks() {
+        db.collection("puntuaciones").get()
+            .addOnSuccessListener { document ->
+                if (document != null) {
+                    Log.d("Puntuaciones", "Puntuaciones (tamaño): ${document.size()}")
+                    rellenarListado(document)
+                    //usuario = document.get("nombreUsuario").toString()
+                } else {
+                    Log.d("Puntuaciones", "No such document")
+                }
+            }
+            .addOnFailureListener { exception ->
+                Log.d("Puntuaciones", "get failed with ", exception)
+            }
+    }
+
+    fun rellenarListado(puntuaciones: QuerySnapshot) {
+        puntuaciones.documents.forEach { p ->
+            tasks.add(
+                TaskEntity(
+                    email = p.get("email").toString(),
+                    nombre = p.get("nombre").toString(),
+                    dificultad = p.get("dificultad").toString().toInt(),
+                    puntuacion = p.get("puntuacion").toString().toInt(),
+                    numeroPulsaciones = p.get("numeroPulsaciones").toString().toInt(),
+                    fechaHora = p.get("fechaHora").toString()
+                )
+            )
         }
+
+        setUpRecyclerView(tasks)
     }
 
     fun setUpRecyclerView(tasks: List<TaskEntity>) {

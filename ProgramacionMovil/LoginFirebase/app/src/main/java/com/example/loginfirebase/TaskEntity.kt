@@ -1,7 +1,7 @@
 package com.example.loginfirebase
 
 data class TaskEntity (
-    var id:Int = 0,
+    var email:String = "",
     var nombre:String = "",
     var dificultad:Int,
     var puntuacion:Int,
