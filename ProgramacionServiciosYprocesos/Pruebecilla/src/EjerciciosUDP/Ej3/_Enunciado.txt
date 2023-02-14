@@ -1,0 +1,8 @@
+Crea una aplicación cliente/servidor en la que se realicen las siguientes acciones:
+
+El cliente le pide una cadena al usuario por la entrada estándar y se la envía al servidor. Por ejemplo: ABC.
+
+El servidor recibe la cadena y devuelve al cliente la suma de los valores ASCII de los caracteres.
+En nuestro ejemplo sería: 65+66+67=198.
+
+El cliente debe imprimir por consola el resultado de la suma.

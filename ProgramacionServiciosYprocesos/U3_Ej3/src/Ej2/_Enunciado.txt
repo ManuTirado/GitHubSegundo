@@ -1,0 +1,10 @@
+Crea una aplicación cliente/servidor que se comuniquen vía TCP que realice lo siguiente:
+
+El cliente debe pedirle al usuario que introduzca una dirección web,
+del tipo www.google.es, o ciclos.iesnervion.es, o cualquier nombre que se le ocurra.
+
+El servidor debe funcionar como un DNS sencillo, de forma que recibirá el nombre de una web del cliente
+y el servidor debe devolverle la dirección IP correspondiente.
+Para ello, tendrá un fichero de texto plano donde almacenará los nombres y las IP que les corresponden, como un fichero de hosts casero.
+Si existe el nombre en el fichero, devolverá su dirección IP.
+Si el nombre no existe, debe enviarle un mensaje al cliente indicándole que esa dirección web no la tiene registrada.

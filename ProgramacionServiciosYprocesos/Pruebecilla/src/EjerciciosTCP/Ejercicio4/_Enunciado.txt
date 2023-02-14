@@ -1,0 +1,7 @@
+Crea una aplicación cliente/servidor que se comunique por el puerto 3000 y realice lo siguiente:
+
+El cliente debe leer un fichero que se encuentra en su máquina previamente creado.
+Este fichero debe contener una serie de números enteros, cada uno en una línea.
+El cliente debe ir leyendo el fichero línea a línea e ir escribiendo los números de uno en uno en el socket.
+
+El servidor debe ir leyendo número a número del socket para enviar posteriormente al cliente la suma de todos los números.

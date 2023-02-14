@@ -7,7 +7,6 @@ import org.bson.Document;
 import org.bson.conversions.Bson;
 
 import static com.mongodb.client.model.Filters.eq;
-import static com.mongodb.client.model.Updates.*;
 
 public class Main {
     private final static ConnectionString CONN_STRING = new ConnectionString("mongodb+srv://mtirado:1234@cluster0.5th56bm.mongodb.net/?retryWrites=true&w=majority");

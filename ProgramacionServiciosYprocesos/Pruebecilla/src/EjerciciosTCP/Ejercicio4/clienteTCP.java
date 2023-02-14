@@ -6,9 +6,15 @@ import java.net.Socket;
 import java.nio.charset.StandardCharsets;
 import java.util.Scanner;
 
-public class clienteTCP_ToDo {
+public class clienteTCP {
+
+    private static final String RUTA_FICHERO = "src\\EjerciciosTCP\\Ejercicio4\\numeros.txt";
+
     public static void main(String[] args) {
         try {
+            File file = new File(RUTA_FICHERO);
+            BufferedReader lectorFichero = new BufferedReader(new FileReader(file));
+
             //Dirección de socket tipo cliente
             //Dirección ip del servidor y puerto por el que escucha
             System.out.println("(Cliente): Creación de socket");
@@ -26,10 +32,19 @@ public class clienteTCP_ToDo {
             OutputStreamWriter outputStreamWriter = new OutputStreamWriter(outputStream, StandardCharsets.UTF_8);
             BufferedWriter bufferedWriter = new BufferedWriter(outputStreamWriter);
 
-            String num = leerNumero();
-            bufferedWriter.write(num);
-            bufferedWriter.newLine();
-            bufferedWriter.flush();
+            String line = lectorFichero.readLine();
+            while (line != null) {
+                int num = Integer.parseInt(line);
+                System.out.println("Número leido: " + num);
+
+                bufferedWriter.write(String.valueOf(num));
+                bufferedWriter.newLine();
+                bufferedWriter.flush();
+
+                line = lectorFichero.readLine();
+            }
+            bufferedWriter.close();
+            outputStreamWriter.close();
 
             //Leemos la respuesta del servidor
             System.out.println("(Cliente): Lee la respuesta del servidor");
@@ -41,17 +56,12 @@ public class clienteTCP_ToDo {
             System.out.println("(Cliente): Cerramos flujo de lectura y escritura");
             outputStream.close();
             inputStream.close();
-            outputStreamWriter.close();
-            bufferedWriter.close();
             inputStreamReader.close();
             bufferedReader.close();
-
 
             //Cerramos la conexión
             System.out.println("Se cierra la conexión con el servidor");
             socketCliente.close();
-
-
         } catch (IOException e) {
             System.out.println(e.getMessage());
             ;

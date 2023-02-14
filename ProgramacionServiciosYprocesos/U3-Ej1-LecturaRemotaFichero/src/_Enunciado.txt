@@ -1,0 +1,10 @@
+Desarrollar una aplicación en Java que permita leer un fichero de texto ubicado en otro ordenador a través de sockets.
+Los pasos del proceso serán los siguientes:
+
+Programa cliente:
+    - Solicita al usuario el nombre de un fichero incluyendo su ruta completa dentro del sistema de archivos del servidor.
+    - Envía el nombre y la ruta del fichero al servidor.
+    - Muestra el contenido del fichero leído por el servidor.
+
+Programa servidor:
+    - Lee el contenido del fichero y se lo envía al cliente.

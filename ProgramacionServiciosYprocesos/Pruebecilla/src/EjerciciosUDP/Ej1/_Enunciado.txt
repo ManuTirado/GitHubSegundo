@@ -1,0 +1,7 @@
+Crea una aplicación cliente/servidor que realice lo siguiente:
+
+El cliente debe solicitar al usuario su nombre y envía este nombre al servidor.
+El servidor debe responder con un mensaje que diga “Hola nombre”.
+Sustituyendo nombre por el nombre enviado por el cliente.
+
+El cliente imprime por consola el mensaje del servidor.

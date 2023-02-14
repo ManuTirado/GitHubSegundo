@@ -1,0 +1,7 @@
+Crea una aplicación cliente/servidor en la que se realicen las siguientes acciones:
+
+El cliente lee de consola dos cadenas y se las envía al servidor.
+Enviar las cadenas por separado, primero una y luego la otra.
+
+Una vez el servidor recibe las cadenas, las ordena por orden alfabético y se las envía ordenadas al cliente.
+El cliente debe imprimir por consola ambas cadenas.

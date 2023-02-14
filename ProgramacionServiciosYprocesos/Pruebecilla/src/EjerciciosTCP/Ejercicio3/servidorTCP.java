@@ -1,19 +1,21 @@
-package EjerciciosTCP.Ejercicio4;
+package EjerciciosTCP.Ejercicio3;
 
 import java.io.*;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.nio.charset.StandardCharsets;
 
-public class servidorTCP_ToDo {
+public class servidorTCP {
 
     private static int numSecreto;
 
     public static void main(String[] args) {
         try {
+            numSecreto = (int) (Math.random()*101);
+            System.out.println("(Servidor): El número secreto es: " + numSecreto);
             //Creación del socket servidor
             System.out.println("(Servidor): Abrinedo conexión");
-            ServerSocket socketServidor = new ServerSocket(3000);
+            ServerSocket socketServidor = new ServerSocket(2000);
             while (true) {
                 //Espera de la aceptación
                 System.out.println("(Servidor): Esperando peticiones");
@@ -34,8 +36,8 @@ public class servidorTCP_ToDo {
                 System.out.println("(Servidor): Envío resultado al cliente");
                 OutputStreamWriter outputStreamWriter = new OutputStreamWriter(outputStream, StandardCharsets.UTF_8);
                 BufferedWriter bufferedWriter = new BufferedWriter(outputStreamWriter);
-                String mensaje = obtenerFactorial(Integer.parseInt(line));
-                System.out.println("Resultado = " + mensaje);
+                String mensaje = comprobarNumero(Integer.parseInt(line));
+                System.out.println("Respuesta = " + mensaje);
                 bufferedWriter.write(mensaje);
                 bufferedWriter.newLine();
                 bufferedWriter.flush();
@@ -58,16 +60,17 @@ public class servidorTCP_ToDo {
         } catch (IOException e) {
             System.err.println(e.getMessage());
         }
-        ;
     }
 
-    private static String obtenerFactorial(int num) {
-        double factorial = 1;
-        int numero = num;
-        while (numero != 0) {
-            factorial = factorial * numero;
-            numero--;
+    private static String comprobarNumero(int num) {
+        String respuesta;
+        if (num == numSecreto) {
+            respuesta = "Correcto";
+        } else if (num < numSecreto) {
+            respuesta = "El número mandado es menor que el número secreto";
+        } else {
+            respuesta = "El número mandado es mayor que el número secreto";
         }
-        return "Factorial de " + num + " = " + factorial;
+        return respuesta;
     }
 }
