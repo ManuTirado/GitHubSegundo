@@ -8,8 +8,12 @@ import android.util.Log
 import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
+import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
+import com.example.loginfirebase.HomeActivity.Companion.email
+import com.example.loginfirebase.HomeActivity.Companion.usuario
+import com.example.loginfirebase.LoginActivity.Companion.db
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import kotlinx.coroutines.GlobalScope
@@ -31,9 +35,9 @@ class Juego : AppCompatActivity() {
     private var record: Int = 0
     private var numPulsacionesTotales: Int = 0
 
-    private val db = Firebase.firestore
-    private lateinit var usuario:String
-    private lateinit var email:String
+    //private val db = Firebase.firestore
+    //private lateinit var usuario:String
+    //private lateinit var email:String
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -43,8 +47,8 @@ class Juego : AppCompatActivity() {
         // Recojo el bundle con el long pasado desde el HomeActivity
         val bundle = intent.extras
         dificultad = bundle?.getInt("dificultad") ?: 0
-        usuario = bundle?.getString("usuario").toString()
-        email = bundle?.getString("email").toString()
+        //usuario = bundle?.getString("usuario").toString()
+        //email = bundle?.getString("email").toString()
         when (dificultad) {
             0 -> {
                 pausa = 600
@@ -207,7 +211,9 @@ class Juego : AppCompatActivity() {
                             //"fechaHora" to LocalDateTime.now().format(DateTimeFormatter.ofPattern("dd/MM/uu kk:mm"))
                             "fechaHora" to LocalDateTime.now().format(DateTimeFormatter.ofPattern("dd/MM"))
                         )
-                    )
+                    ).addOnCompleteListener {
+                        Toast.makeText(this,"Insertado con éxito", Toast.LENGTH_SHORT).show()
+                    }
                     mostrarMensjaPerdedor()
                     numPulsacionesTotales = 0
                     puntuacion = 0

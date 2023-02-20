@@ -3,8 +3,10 @@ package com.example.loginfirebase
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.loginfirebase.LoginActivity.Companion.db
 import com.google.firebase.firestore.QuerySnapshot
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
@@ -15,7 +17,7 @@ class Puntuaciones : AppCompatActivity() {
 
     lateinit var recyclerView: RecyclerView
 
-    private val db = Firebase.firestore
+    // private val db = Firebase.firestore
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -51,7 +53,7 @@ class Puntuaciones : AppCompatActivity() {
         puntuaciones.documents.forEach { p ->
             tasks.add(
                 TaskEntity(
-                    email = p.get("email").toString(),
+                    email = p.id,
                     nombre = p.get("nombre").toString(),
                     dificultad = p.get("dificultad").toString().toInt(),
                     puntuacion = p.get("puntuacion").toString().toInt(),
@@ -60,7 +62,6 @@ class Puntuaciones : AppCompatActivity() {
                 )
             )
         }
-
         setUpRecyclerView(tasks)
     }
 
@@ -81,6 +82,17 @@ class Puntuaciones : AppCompatActivity() {
     fun deleteTask(task: TaskEntity) = runBlocking {
         launch {
             val position = tasks.indexOf(task)
+            if (task.email == HomeActivity.email) {
+                db.collection("puntuaciones").document(task.email)
+                    .delete()
+                    .addOnSuccessListener {
+                        tasks.remove(task)
+                        Toast.makeText(recyclerView.context, "DocumentSnapshot successfully deleted!", Toast.LENGTH_SHORT).show() }
+                    .addOnFailureListener { Toast.makeText(recyclerView.context, "Error deleting document", Toast.LENGTH_SHORT).show() }
+            } else {
+                Toast.makeText(recyclerView.context, "No puede eliminar una puntuación ajena", Toast.LENGTH_SHORT).show()
+            }
+
             //PuntuacionesApp.database.taskDao().deleteTask(task)
             //tasks.remove(task)
             //adapter.notifyItemRemoved(position)

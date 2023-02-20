@@ -7,18 +7,19 @@ import android.os.Bundle
 import android.util.Log
 import android.view.View
 import androidx.appcompat.app.AlertDialog
+import com.example.loginfirebase.LoginActivity.Companion.db
+import com.example.loginfirebase.LoginActivity.Companion.mGoogleSignInClient
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.firestore.ktx.firestore
-import com.google.firebase.ktx.Firebase
-import java.time.LocalDateTime
 
 class HomeActivity : AppCompatActivity() {
+    companion object {
+        lateinit var email: String
+        lateinit var usuario:String
+    }
 
-    private val db = Firebase.firestore
+    //private val db = Firebase.firestore
 
-    private lateinit var email: String
     private lateinit var provider: String
-    private var usuario = ""
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -41,23 +42,29 @@ class HomeActivity : AppCompatActivity() {
     }
 
     private fun obtenerNombreUsuario(email: String) {
-        db.collection("users").document(email).get()
-            .addOnSuccessListener { document ->
-                if (document != null) {
-                    Log.d("HomeActivity", "Usuario: ${document.get("nombreUsuario")}")
-                    usuario = document.get("nombreUsuario").toString()
-                } else {
-                    Log.d("HomeActivity", "No such document")
+        val user = FirebaseAuth.getInstance().currentUser
+        if (user?.providerId != "google.com") {
+            db.collection("users").document(email).get()
+                .addOnSuccessListener { document ->
+                    if (document != null) {
+                        Log.d("HomeActivity", "Usuario: ${document.get("nombreUsuario")}")
+                        usuario = document.get("nombreUsuario").toString()
+                    } else {
+                        Log.d("HomeActivity", "No such document")
+                    }
                 }
-            }
-            .addOnFailureListener { exception ->
-                Log.d("HomeActivity", "get failed with ", exception)
-            }
+                .addOnFailureListener { exception ->
+                    Log.d("HomeActivity", "get failed with ", exception)
+                }
+        } else {
+            usuario = user.displayName.toString()
+        }
 
     }
 
     fun onClickBtnLogOut(view: View) {
         FirebaseAuth.getInstance().signOut()
+        mGoogleSignInClient?.signOut()
         onBackPressed()
     }
 
