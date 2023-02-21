@@ -24,14 +24,23 @@ public class Main2 {
 
         String resumenContrasena = HashLogic.getDigest(contrasena);
         comprobarRegistroEnFichero(usuario, resumenContrasena);
+        sc.close();
     }
 
+    /**
+     * Comprueba si el usuario y el resumen de la contraseña pasadas coincide con los guardados en el archivo.
+     * @param usuario nombre del usuario
+     * @param resumenContrasena resumen de la contraseña
+     */
     private static void comprobarRegistroEnFichero(String usuario, String resumenContrasena) {
         File ficheroCredenciales = new File(RUTA_FICHERO);
+        BufferedReader br;
+        boolean encontrado;
+        String line;
         try {
-            BufferedReader br = new BufferedReader(new FileReader(ficheroCredenciales));
-            boolean encontrado = false;
-            String line = br.readLine();
+            br = new BufferedReader(new FileReader(ficheroCredenciales));
+            encontrado = false;
+            line = br.readLine();
             while (line != null && !encontrado) {
                 if (line.equals(usuario)) {
                     String resContra = br.readLine();

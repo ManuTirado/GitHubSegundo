@@ -22,6 +22,13 @@ public class Factura {
         this.Importe = importe;
     }
 
+    public Factura(int idFactura, int idMesa, String tipoPago, BigDecimal importe) {
+        this.idFactura = idFactura;
+        this.idMesa = idMesa;
+        this.tipoPago = tipoPago;
+        this.Importe = importe;
+    }
+
     public int getIdFactura() {
         return idFactura;
     }

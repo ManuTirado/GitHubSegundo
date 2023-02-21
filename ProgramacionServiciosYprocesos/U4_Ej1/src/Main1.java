@@ -24,8 +24,14 @@ public class Main1 {
 
         String resumenContrasena = HashLogic.getDigest(contrasena);
         guardarRegistroEnFichero(usuario, resumenContrasena);
+        sc.close();
     }
 
+    /**
+     * Escribe al usuario y al resumen de su contraseña en el documento especificado
+     * @param usuario nombre del usuario
+     * @param resumenContrasena resumen de la contraseña
+     */
     private static void guardarRegistroEnFichero(String usuario, String resumenContrasena) {
         File ficheroCredenciales = new File(RUTA_FICHERO);
         try {

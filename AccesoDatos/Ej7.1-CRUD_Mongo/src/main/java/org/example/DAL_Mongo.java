@@ -4,13 +4,15 @@ import com.mongodb.ConnectionString;
 import com.mongodb.MongoClientSettings;
 import com.mongodb.ServerApi;
 import com.mongodb.ServerApiVersion;
-import com.mongodb.client.MongoClient;
-import com.mongodb.client.MongoClients;
-import com.mongodb.client.MongoDatabase;
+import com.mongodb.client.*;
 import org.bson.Document;
 
+import javax.print.Doc;
 import java.lang.reflect.Field;
 import java.util.ArrayList;
+import java.util.Collection;
+
+import static com.mongodb.client.model.Filters.eq;
 
 public class DAL_Mongo {
     private final static ConnectionString CONN_STRING = new ConnectionString("mongodb+srv://mtirado:1234@cluster0.5th56bm.mongodb.net/?retryWrites=true&w=majority");
@@ -36,18 +38,9 @@ public class DAL_Mongo {
      * @param id id objeto deseada
      * @return Objeto deseado o objeto a null si no existe
      */
-    public <T> T leer(int id, Class<T> clase) {
-        /*
-        T entidad = (T) clase;
-        entidad = null;
-        try {
-            entidad = session.get(clase, id);
-        } catch (Exception e) {
-            System.err.println("Algo no salió bien al leer la mesa");
-        }
-        return entidad;
-         */
-        return (T) clase;
+    public <T> Document leer(int id, Class<T> clase) {
+        Document doc = database.getCollection(clase.getSimpleName()).find(eq(clase.getDeclaredFields()[0].getName(), id)).first();
+        return doc;
     }
 
     /**
@@ -55,17 +48,14 @@ public class DAL_Mongo {
      *
      * @return arraylist con los registros existentes
      */
-    public <T> ArrayList<T> leerTodosRegistros(Class<T> clase) {
-        /*
-        ArrayList<T> registros = new ArrayList<>();
+    public <T>MongoCollection<Document> leerTodosRegistros(Class<T> clase) {
+        MongoCollection<Document> registro = null;
         try {
-            registros = (ArrayList<T>) session.createQuery("SELECT p FROM "+clase.getName()+" p",clase).list();
+            registro = database.getCollection(clase.getSimpleName());
         } catch (Exception e) {
             System.err.println("Algo no salió bien al leer las mesas");
         }
-        return registros;
-         */
-        return new ArrayList<>();
+        return registro;
     }
 
     /**
@@ -88,19 +78,11 @@ public class DAL_Mongo {
 
     /**
      * Borra el modelo pasado de la BBDD
-     * @param objeto objeto a borrar
+     * @param doc documento a borrar
+     * @param clase clase
      */
-    public void borrar(Object objeto) {
-        /*
-        Transaction transaction = session.beginTransaction();
-        try {
-            session.remove(objeto);
-            transaction.commit();
-        } catch (Exception e) {
-            System.err.println("Algo no salió bien, se ha hecho un rollback");
-            transaction.rollback();
-        }
-         */
+    public void borrar(Document doc, Class clase) {
+        database.getCollection(clase.getSimpleName()).deleteOne(doc);
     }
 
     private static void conexion() {
