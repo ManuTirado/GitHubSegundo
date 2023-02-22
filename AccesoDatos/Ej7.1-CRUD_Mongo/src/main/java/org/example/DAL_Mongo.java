@@ -1,16 +1,11 @@
 package org.example;
 
-import com.mongodb.ConnectionString;
-import com.mongodb.MongoClientSettings;
-import com.mongodb.ServerApi;
-import com.mongodb.ServerApiVersion;
+import com.mongodb.*;
 import com.mongodb.client.*;
 import org.bson.Document;
+import org.example.EntidadesHibernate.Mesa;
 
-import javax.print.Doc;
 import java.lang.reflect.Field;
-import java.util.ArrayList;
-import java.util.Collection;
 
 import static com.mongodb.client.model.Filters.eq;
 
@@ -48,7 +43,7 @@ public class DAL_Mongo {
      *
      * @return arraylist con los registros existentes
      */
-    public <T>MongoCollection<Document> leerTodosRegistros(Class<T> clase) {
+    public <T> MongoCollection<Document> leerTodosRegistros(Class<T> clase) {
         MongoCollection<Document> registro = null;
         try {
             registro = database.getCollection(clase.getSimpleName());
@@ -76,9 +71,37 @@ public class DAL_Mongo {
         }
     }
 
+    public void actualizar(Document antes, Object despues) {
+        BasicDBObject searchQuery = new BasicDBObject();
+        searchQuery.append("_id", antes.get("_id"));
+
+        BasicDBObject updateQuery = new BasicDBObject();
+        updateQuery.append("$set",
+                new BasicDBObject().append("numComensales", 2));
+
+        database.getCollection("Mesa").updateMany(searchQuery, updateQuery);
+
+/*
+        Document docDespues = new Document();
+        try {
+            System.out.println(antes.get("_id"));
+            docDespues.append("_id", "$oid");
+            docDespues.append("$oid", antes.get("_id"));
+            for (Field f : despues.getClass().getDeclaredFields()) {
+                f.setAccessible(true);
+                docDespues.append(f.getName(), f.get(despues));
+            }
+            database.getCollection(despues.getClass().getSimpleName()).updateOne(antes, docDespues);
+        } catch (IllegalAccessException e) {
+            System.err.println("Error obteniendo un campo del objeto");
+        }
+ */
+    }
+
     /**
      * Borra el modelo pasado de la BBDD
-     * @param doc documento a borrar
+     *
+     * @param doc   documento a borrar
      * @param clase clase
      */
     public void borrar(Document doc, Class clase) {

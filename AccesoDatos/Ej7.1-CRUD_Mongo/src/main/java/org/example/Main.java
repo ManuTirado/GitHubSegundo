@@ -1,13 +1,6 @@
 package org.example;
 
-import com.mongodb.ConnectionString;
-import com.mongodb.MongoClientSettings;
-import com.mongodb.ServerApi;
-import com.mongodb.ServerApiVersion;
-import com.mongodb.client.MongoClient;
-import com.mongodb.client.MongoClients;
 import com.mongodb.client.MongoCollection;
-import com.mongodb.client.MongoDatabase;
 import org.bson.Document;
 import org.example.EntidadesHibernate.Factura;
 import org.example.EntidadesHibernate.Mesa;
@@ -15,7 +8,6 @@ import org.example.EntidadesHibernate.Pedido;
 import org.example.EntidadesHibernate.Productos;
 
 import java.math.BigDecimal;
-import java.util.ArrayList;
 
 public class Main {
     private static final DAL_Mongo dal = new DAL_Mongo();
@@ -107,7 +99,7 @@ public class Main {
     }
     //endregion
 
-//region Métodos Insertar
+    //region Métodos Insertar
 
     /**
      * Lee por consola los campos de una mesa y la inserta en la BBDD
@@ -203,7 +195,7 @@ public class Main {
         int id;
         String Denominacion;
         BigDecimal Precio;
-        System.out.println("Intoduzca el id del producto");
+        System.out.println("Introduzca el id del producto");
         id = Utilidades.validarEntero();
         if (dal.leer(id, Productos.class) == null) {
             System.out.println("Introduzca la denominación");
@@ -275,10 +267,22 @@ public class Main {
     //region Métodos Modificar
 
     /**
-     * Lee por consola el id de la mesa pedida, si existe lee los campos nuevos por consola y lo inserta en la BBDD
+     * Lee por consola el ID de la mesa pedida, si existe lee los campos nuevos por consola y lo inserta en la BBDD
      */
     private static void modificarMesa() {
+        int id, numComensales, reserva;
         System.out.println("Introduzca el id de la mesa a modificar");
+        id = Utilidades.validarEntero();
+        Document antes = dal.leer(id, Mesa.class);
+        if (antes != null) {
+            System.out.println("Introduzca el número de comensales");
+            numComensales = Utilidades.validarEntero();
+            System.out.println("Introduzca el número de la reserva");
+            reserva = Utilidades.validarEntero();
+            dal.actualizar(antes , new Mesa(id, numComensales, reserva));
+        } else {
+            System.out.println("Id de la mesa inexistente");
+        }
         /*
         Mesa mesa = dal.leer(Utilidades.validarEntero(), Mesa.class);
         if (mesa != null) {
@@ -295,15 +299,15 @@ public class Main {
     }
 
     /**
-     * Lee por consola el id de la factura pedida, si existe lee los campos nuevos por consola y lo inserta en la BBDD
+     * Lee por consola el ID de la factura pedida, si existe lee los campos nuevos por consola y lo inserta en la BBDD
      */
     private static void modificarFactura() {
         /*
-        System.out.println("Introduzca el id de la factura a modificar");
+        System.out.println("Introduzca el ID de la factura a modificar");
         Factura factura = dal.leer(Utilidades.validarEntero(), Factura.class);
         if (factura != null) {
             System.out.println("==> " + factura);
-            System.out.println("Introduzca el id de la mesa");
+            System.out.println("Introduzca el ID de la mesa");
             Mesa mesa = dal.leer(Utilidades.validarEntero(), Mesa.class);
             factura.setMesa(mesa);
             System.out.println("Introduzca el importe");
@@ -323,18 +327,18 @@ public class Main {
     }
 
     /**
-     * Lee por consola el id del pedido, si existe lee los campos nuevos por consola y lo inserta en la BBDD
+     * Lee por consola el ID del pedido, si existe lee los campos nuevos por consola y lo inserta en la BBDD
      */
     private static void modificarPedido() {
         /*
-        System.out.println("Introduzca el id del pedido a modificar");
+        System.out.println("Introduzca el ID del pedido a modificar");
         Pedido pedido = dal.leer(Utilidades.validarEntero(), Pedido.class);
         if (pedido != null) {
             System.out.println("==> " + pedido);
-            System.out.println("Introduzca el id de la factura");
+            System.out.println("Introduzca el ID de la factura");
             Factura factura = dal.leer(Utilidades.validarEntero(), Factura.class);
             pedido.setFactura(factura);
-            System.out.println("Introduzca el id del producto");
+            System.out.println("Introduzca el ID del producto");
             Productos producto = dal.leer(Utilidades.validarEntero(), Productos.class);
             pedido.setProducto(producto);
             System.out.println("Introduzca la cantidad");
@@ -347,7 +351,7 @@ public class Main {
     }
 
     /**
-     * Lee por consola el id del producto pedido, si existe lee los campos nuevos por consola y lo inserta en la BBDD
+     * Lee por consola el ID del producto pedido, si existe lee los campos nuevos por consola y lo inserta en la BBDD
      */
     private static void modificarProducto() {
         System.out.println("Introduzca el id del producto a modificar");
@@ -370,7 +374,7 @@ public class Main {
     //region Métodos Borrar
 
     /**
-     * Lee por consola el id de la mesa a borrar e intenta borrarla
+     * Lee por consola el ID de la mesa a borrar e intenta borrarla
      */
     private static void borrarMesa() {
         System.out.println("Introduzca el id de la mesa a borrar");
@@ -384,7 +388,7 @@ public class Main {
     }
 
     /**
-     * Lee por consola el id de la factura a borrar e intenta borrarla
+     * Lee por consola el ID de la factura a borrar e intenta borrarla
      */
     private static void borrarFactura() {
         System.out.println("Introduzca el id de la factura a borrar");
@@ -398,7 +402,7 @@ public class Main {
     }
 
     /**
-     * Lee por consola el id del pedido a borrar e intenta borrarlo
+     * Lee por consola el ID del pedido a borrar e intenta borrarlo
      */
     private static void borrarPedido() {
         System.out.println("Introduzca el id del pedido a borrar");
@@ -412,7 +416,7 @@ public class Main {
     }
 
     /**
-     * Lee por consola el id del producto a borrar e intenta borrarlo
+     * Lee por consola el ID del producto a borrar e intenta borrarlo
      */
     private static void borrarProducto() {
         System.out.println("Introduzca el id del producto a borrar");

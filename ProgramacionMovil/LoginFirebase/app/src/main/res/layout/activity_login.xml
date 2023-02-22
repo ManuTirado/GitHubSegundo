@@ -6,143 +6,140 @@
     android:layout_height="match_parent"
     tools:context=".LoginActivity">
 
-    <LinearLayout
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardViewLogin"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="16dp"
-        android:orientation="vertical"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        android:layout_height="0dp"
+        android:layout_margin="20dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-        <EditText
-            android:id="@+id/emailEditText"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:autofillHints=""
-            android:ems="10"
-            android:hint="email..."
-            android:inputType="textEmailAddress"
-            android:minHeight="48dp" />
-
-        <Space
-            android:layout_width="match_parent"
-            android:layout_height="8dp"
-            android:layout_weight="1" />
-
-        <EditText
-            android:id="@+id/passwordEditText"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:autofillHints=""
-            android:ems="10"
-            android:hint="contraseña..."
-            android:inputType="textPassword"
-            android:minHeight="48dp" />
-
-        <Space
-            android:layout_width="match_parent"
-            android:layout_height="8dp"
-            android:layout_weight="1" />
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            android:orientation="vertical">
 
-            <Button
-                android:id="@+id/signUpButton"
-                android:layout_width="wrap_content"
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="150dp"
+                android:layout_marginBottom="20dp"
+                app:srcCompat="@drawable/simon_dice" />
+
+            <TextView
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="Rigistrar" />
+                android:ems="10"
+                android:gravity="center"
+                android:minHeight="48dp"
+                android:text="Email"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <EditText
+                android:id="@+id/emailEditText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginEnd="20dp"
+                android:autofillHints=""
+                android:ems="10"
+                android:hint="email..."
+                android:inputType="textEmailAddress"
+                android:minHeight="48dp" />
 
             <Space
-                android:layout_width="8dp"
-                android:layout_height="match_parent"
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
                 android:layout_weight="1" />
 
-            <Button
-                android:id="@+id/logInButton"
-                android:layout_width="wrap_content"
+            <TextView
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="Entrar" />
+                android:ems="10"
+                android:gravity="center"
+                android:minHeight="48dp"
+                android:text="Contraseña"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <EditText
+                android:id="@+id/passwordEditText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginEnd="20dp"
+                android:autofillHints=""
+                android:ems="10"
+                android:hint="contraseña..."
+                android:inputType="textPassword"
+                android:minHeight="48dp" />
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:layout_weight="1" />
+
+            <LinearLayout
+                android:layout_marginStart="20dp"
+                android:layout_marginEnd="20dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/signUpButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Rigistrar" />
+
+                <Space
+                    android:layout_width="8dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1" />
+
+                <Button
+                    android:id="@+id/logInButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Entrar" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_marginStart="20dp"
+                android:layout_marginEnd="20dp"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:orientation="horizontal"
+                android:padding="1dp">
+
+                <ImageView
+                    android:id="@+id/imageView"
+                    android:layout_width="50dp"
+                    android:layout_height="match_parent"
+                    app:srcCompat="@drawable/logo" />
+
+                <Button
+                    android:id="@+id/btngmail"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:backgroundTint="#F4B400"
+                    android:text="Iniciar sesión con Google"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Small"
+                    android:textColor="@color/black" />
+
+            </LinearLayout>
+
         </LinearLayout>
 
-        <Space
-            android:layout_width="8dp"
-            android:layout_height="60dp"
-            android:layout_weight="1" />
-        <TextView
-            android:id="@+id/textView"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="20dp"
-            android:layout_marginEnd="20dp"
-            android:text="Te damos la Bienvenida"
-            android:textAlignment="center"
-            android:textColor="@color/black"
-            android:textSize="30dp"
-            android:textStyle="bold"
-            app:layout_constraintBottom_toTopOf="@+id/btngmail"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.598" />
-
-
-        <TextView
-            android:id="@+id/textView2"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Puedes Iniciar Sesion con\n Gmail"
-            android:textAlignment="center"
-            android:layout_marginStart="10dp"
-            android:layout_marginEnd="10dp"
-            android:textColor="@color/black"
-            android:textSize="29dp"
-            app:layout_constraintBottom_toTopOf="@+id/btngmail"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="1.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView"
-            app:layout_constraintVertical_bias="0.357" />
-        <Space
-            android:layout_width="8dp"
-            android:layout_height="60dp"
-            android:layout_weight="1" />
-
-        <ImageView
-            android:id="@+id/imageView"
-            android:layout_width="match_parent"
-            android:layout_height="100dp"
-            app:layout_constraintBottom_toTopOf="@+id/textView"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.207"
-            app:srcCompat="@drawable/logo" />
-
-        <Space
-            android:layout_width="8dp"
-            android:layout_height="60dp"
-            android:layout_weight="1" />
-        <Button
-            android:id="@+id/btngmail"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="36dp"
-            android:backgroundTint="#F4B400"
-            android:text="Iniciar sesión con Google"
-            android:textAppearance="@style/TextAppearance.AppCompat.Large"
-            android:textColor="@color/black"
-            app:layout_constraintBottom_toBottomOf="parent"
-            tools:ignore="MissingConstraints"
-            tools:layout_editor_absoluteX="16dp" />
-    </LinearLayout>
+    </androidx.cardview.widget.CardView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
