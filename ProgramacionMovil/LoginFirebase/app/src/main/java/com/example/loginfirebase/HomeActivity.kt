@@ -6,7 +6,6 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.View
-import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import com.example.loginfirebase.LoginActivity.Companion.db
 import com.example.loginfirebase.LoginActivity.Companion.mGoogleSignInClient
@@ -17,6 +16,8 @@ class HomeActivity : AppCompatActivity() {
         lateinit var email: String
         lateinit var usuario: String
     }
+
+    private val TAG = "HomeActivity"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -41,14 +42,14 @@ class HomeActivity : AppCompatActivity() {
             db.collection("users").document(email).get()
                 .addOnSuccessListener { document ->
                     if (document != null) {
-                        Log.d("HomeActivity", "Usuario: ${document.get("nombreUsuario")}")
+                        Log.d(TAG, "Usuario: ${document.get("nombreUsuario")}")
                         usuario = document.get("nombreUsuario").toString()
                     } else {
                         Log.d("HomeActivity", "No such document")
                     }
                 }
                 .addOnFailureListener { exception ->
-                    Log.d("HomeActivity", "get failed with ", exception)
+                    Log.d(TAG, "get failed with ", exception)
                 }
         } else {
             usuario = user.displayName.toString()

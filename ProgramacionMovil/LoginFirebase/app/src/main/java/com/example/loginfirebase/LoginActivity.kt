@@ -102,7 +102,7 @@ class LoginActivity : AppCompatActivity() {
                     passwordEditText.text.toString()
                 ).addOnCompleteListener {
                     if (it.isSuccessful) {
-                        showHome(it.result.user?.email ?: "", ProviderType.CORREO)
+                        showHome(it.result.user?.email ?: "")
                     } else {
                         showAlert()
                     }
@@ -130,7 +130,7 @@ class LoginActivity : AppCompatActivity() {
             )
             Log.d("LoginActivity", "Usuario: " + usu)
             Log.d("LoginActivity", "email: " + email)
-            showHome(email, provider)
+            showHome(email)
         })
         builder.setCancelable(false)
         val dialog: AlertDialog = builder.create()
@@ -147,7 +147,7 @@ class LoginActivity : AppCompatActivity() {
         dialog.show()
     }
 
-    private fun showHome(email: String, provider: ProviderType) {
+    private fun showHome(email: String) {
         HomeActivity.email = email
         val homeIntent = Intent(this, HomeActivity::class.java)
         startActivity(homeIntent)
@@ -210,7 +210,7 @@ class LoginActivity : AppCompatActivity() {
         val users = FirebaseAuth.getInstance().currentUser
         if (users != null) {
             // User is signed in
-            showHome(user!!.email!!, ProviderType.GOOGLE)
+            showHome(user!!.email!!)
             Toast.makeText(this@LoginActivity, "Ingreso", Toast.LENGTH_SHORT).show()
         } else {
             // No user is signed in

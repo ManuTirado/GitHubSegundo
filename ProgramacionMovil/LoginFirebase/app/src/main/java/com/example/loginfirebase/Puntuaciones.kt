@@ -8,16 +8,12 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.loginfirebase.LoginActivity.Companion.db
 import com.google.firebase.firestore.QuerySnapshot
-import com.google.firebase.firestore.ktx.firestore
-import com.google.firebase.ktx.Firebase
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
 
 class Puntuaciones : AppCompatActivity() {
 
-    lateinit var recyclerView: RecyclerView
-
-    // private val db = Firebase.firestore
+    private lateinit var recyclerView: RecyclerView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -31,7 +27,7 @@ class Puntuaciones : AppCompatActivity() {
         getTasks()
     }
 
-    fun getTasks() {
+    private fun getTasks() {
         db.collection("puntuaciones").get()
             .addOnSuccessListener { document ->
                 if (document != null) {
@@ -47,7 +43,7 @@ class Puntuaciones : AppCompatActivity() {
             }
     }
 
-    fun rellenarListado(puntuaciones: QuerySnapshot) {
+    private fun rellenarListado(puntuaciones: QuerySnapshot) {
         puntuaciones.documents.forEach { p ->
             tasks.add(
                 TaskEntity(
@@ -60,13 +56,13 @@ class Puntuaciones : AppCompatActivity() {
                 )
             )
         }
-        tasks.sortWith(compareByDescending<TaskEntity>({ it.dificultad })
+        tasks.sortWith(compareByDescending<TaskEntity> { it.dificultad }
             .thenByDescending { it.puntuacion }
             .thenByDescending { it.numeroPulsaciones })
         setUpRecyclerView(tasks)
     }
 
-    fun setUpRecyclerView(tasks: List<TaskEntity>) {
+    private fun setUpRecyclerView(tasks: List<TaskEntity>) {
         adapter = TaskAdapter(tasks, { updateTask(it) }, { deleteTask(it) })
         recyclerView = findViewById(R.id.rvTask)
         recyclerView.setHasFixedSize(true)
@@ -74,13 +70,13 @@ class Puntuaciones : AppCompatActivity() {
         recyclerView.adapter = adapter
     }
 
-    fun updateTask(task: TaskEntity) = runBlocking {
+    private fun updateTask(task: TaskEntity) = runBlocking {
         launch {
             //PuntuacionesApp.database.taskDao().updateTask(task)
         }
     }
 
-    fun deleteTask(task: TaskEntity) = runBlocking {
+    private fun deleteTask(task: TaskEntity) = runBlocking {
         launch {
             val position = tasks.indexOf(task)
             if (task.email == HomeActivity.email) {
@@ -109,12 +105,14 @@ class Puntuaciones : AppCompatActivity() {
     }
 
     fun deleteAllTask(tasks: List<TaskEntity>) = runBlocking {
+        /*
         launch {
             for (task in tasks) {
-                //PuntuacionesApp.database.taskDao()
-                //    .deleteTask(PuntuacionesApp.database.taskDao().getTaskById(task.id))
+                PuntuacionesApp.database.taskDao()
+                    .deleteTask(PuntuacionesApp.database.taskDao().getTaskById(task.id))
             }
         }
+         */
     }
 
     companion object {
@@ -122,13 +120,13 @@ class Puntuaciones : AppCompatActivity() {
         lateinit var adapter: TaskAdapter
 
         fun addTask(task: TaskEntity) = runBlocking {
-            launch {
+            //launch {
                 //val id = PuntuacionesApp.database.taskDao().addTask(task)
                 //val recoveryTask = PuntuacionesApp.database.taskDao().getTaskById(id.toInt())
                 //tasks.add(recoveryTask)
                 //adapter.notifyItemInserted(tasks.size)
                 //Log.d("PRUEBAS", id.toString())
-            }
+            //}
         }
     }
 
