@@ -3,7 +3,6 @@ package org.example;
 import com.mongodb.*;
 import com.mongodb.client.*;
 import org.bson.Document;
-import org.example.EntidadesHibernate.Mesa;
 
 import java.lang.reflect.Field;
 
@@ -12,7 +11,6 @@ import static com.mongodb.client.model.Filters.eq;
 public class DAL_Mongo {
     private final static ConnectionString CONN_STRING = new ConnectionString("mongodb+srv://mtirado:1234@cluster0.5th56bm.mongodb.net/?retryWrites=true&w=majority");
     private final static String DATABASE_NAME = "CRUD_Restaurante";
-    private final static String MESA = "Mesa", FACTURA = "Factura", PEDIDO = "Pedido", PRODUCTOS = "Productos";
     private static MongoDatabase database;
 
     //region Constructor
@@ -23,14 +21,15 @@ public class DAL_Mongo {
             System.err.println("Error al hacer el setup al hibernate");
             throw new RuntimeException(e);
         }
+
     }
     //endregion
 
     /**
-     * Lee el registro de la BBDD con el id pasado por parámetro, de no existir devuelve
-     * el objeto a null y muestra un mensaje de error
-     *
-     * @param id id objeto deseada
+     * Lee el registro de la BBDD con el ID pasado por parámetro, de no existir devuelve
+     * el objeto a null y muestra un mensaje de error.
+     * @param id ID del registro a leer
+     * @param clase clase del objeto a leer
      * @return Objeto deseado o objeto a null si no existe
      */
     public <T> Document leer(int id, Class<T> clase) {
@@ -39,9 +38,9 @@ public class DAL_Mongo {
     }
 
     /**
-     * Lee todos los registros de la BBDD y los devuelve en un arraylist con estos
-     *
-     * @return arraylist con los registros existentes
+     * Lee todos los registros de la BBDD y los devuelve en un documento de mongoDB.
+     * @param clase clase del objeto a leer
+     * @return Documento con todos los registros de la clase pasada o null si no hay registros
      */
     public <T> MongoCollection<Document> leerTodosRegistros(Class<T> clase) {
         MongoCollection<Document> registro = null;
@@ -54,8 +53,26 @@ public class DAL_Mongo {
     }
 
     /**
-     * Inserta el objeto en la BBDD
-     *
+     * Lee todos los registros de la BBDD y los devuelve en un findIterable de mongoDB.
+     * @param clase clase del objeto a leer
+     * @param campo campo por el que filtrar
+     * @param valor valor del campo por el que filtrar
+     * @return FindIterable con todos los registros de la clase pasada o null si no hay registros
+     */
+    public <T> FindIterable<Document> leerTodosRegistros(Class<T> clase, String campo, int valor) {
+        FindIterable<Document> registro = null;
+        try {
+            // obtener todos los registros de la colección que cumplan la condición de campo = valor
+            registro = database.getCollection(clase.getSimpleName()).find(eq(campo, valor));
+        } catch (Exception e) {
+            System.err.println("Algo no salió bien al leer las mesas");
+        }
+        return registro;
+    }
+
+    /**
+     * Inserta el objeto en la BBDD.
+     * El objeto debe tener los mismos campos que la colección de la BBDD.
      * @param objeto Objeto a insertar
      */
     public void insertar(Object objeto) {
@@ -71,43 +88,42 @@ public class DAL_Mongo {
         }
     }
 
+    /**
+     * Actualiza el registro de la BBDD con el documento antiguo pasado por parámetro y el nuevo objeto.
+     * El objeto debe tener los mismos campos que la colección de la BBDD.
+     * El documento antiguo debe tener el campo _id con el valor del registro a actualizar.
+     * @param antes documento antiguo
+     * @param despues objeto nuevo
+     */
     public void actualizar(Document antes, Object despues) {
         BasicDBObject searchQuery = new BasicDBObject();
         searchQuery.append("_id", antes.get("_id"));
-
-        BasicDBObject updateQuery = new BasicDBObject();
-        updateQuery.append("$set",
-                new BasicDBObject().append("numComensales", 2));
-
-        database.getCollection("Mesa").updateMany(searchQuery, updateQuery);
-
-/*
-        Document docDespues = new Document();
         try {
-            System.out.println(antes.get("_id"));
-            docDespues.append("_id", "$oid");
-            docDespues.append("$oid", antes.get("_id"));
+            BasicDBObject updateQuery = new BasicDBObject();
+            BasicDBObject updated = new BasicDBObject();
             for (Field f : despues.getClass().getDeclaredFields()) {
                 f.setAccessible(true);
-                docDespues.append(f.getName(), f.get(despues));
+                updated.append(f.getName(), f.get(despues));
             }
-            database.getCollection(despues.getClass().getSimpleName()).updateOne(antes, docDespues);
+            updateQuery.append("$set", updated);
+            database.getCollection(despues.getClass().getSimpleName()).updateMany(searchQuery, updateQuery);
         } catch (IllegalAccessException e) {
-            System.err.println("Error obteniendo un campo del objeto");
+            throw new RuntimeException(e);
         }
- */
     }
 
     /**
      * Borra el modelo pasado de la BBDD
-     *
-     * @param doc   documento a borrar
-     * @param clase clase
+     * @param doc documento a borrar
+     * @param clase clase del objeto a borrar
      */
     public void borrar(Document doc, Class clase) {
         database.getCollection(clase.getSimpleName()).deleteOne(doc);
     }
 
+    /**
+     * Establece la conexión con la BBDD y obtiene la base de datos.
+     */
     private static void conexion() {
         MongoClientSettings settings = MongoClientSettings.builder()
                 .applyConnectionString(CONN_STRING)

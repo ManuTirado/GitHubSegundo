@@ -1,5 +1,6 @@
 package org.example;
 
+import com.mongodb.client.FindIterable;
 import com.mongodb.client.MongoCollection;
 import org.bson.Document;
 import org.example.EntidadesHibernate.Factura;
@@ -106,6 +107,7 @@ public class Main {
      */
     private static void insertarMesa() {
         int id, numComensales, reserva;
+
         System.out.println("Introduzca el id de la mesa");
         id = Utilidades.validarEntero();
         if (dal.leer(id, Mesa.class) == null) {
@@ -267,163 +269,223 @@ public class Main {
     //region Métodos Modificar
 
     /**
-     * Lee por consola el ID de la mesa pedida, si existe lee los campos nuevos por consola y lo inserta en la BBDD
+     * Lee por consola el ID de la mesa pedida, si existe lee los campos nuevos por consola y lo actualiza en la BBDD
      */
     private static void modificarMesa() {
-        int id, numComensales, reserva;
+        int idMesa, numComensales, reserva;
+
         System.out.println("Introduzca el id de la mesa a modificar");
-        id = Utilidades.validarEntero();
-        Document antes = dal.leer(id, Mesa.class);
+        idMesa = Utilidades.validarEntero();
+        Document antes = dal.leer(idMesa, Mesa.class);
         if (antes != null) {
             System.out.println("Introduzca el número de comensales");
             numComensales = Utilidades.validarEntero();
             System.out.println("Introduzca el número de la reserva");
             reserva = Utilidades.validarEntero();
-            dal.actualizar(antes , new Mesa(id, numComensales, reserva));
+            dal.actualizar(antes, new Mesa(idMesa, numComensales, reserva));
         } else {
             System.out.println("Id de la mesa inexistente");
         }
-        /*
-        Mesa mesa = dal.leer(Utilidades.validarEntero(), Mesa.class);
-        if (mesa != null) {
-            System.out.println("==> " + mesa);
-            System.out.println("Introduzca el número de comensales");
-            mesa.setNumComensales(Utilidades.validarEntero());
-            System.out.println("Introduzca el número de la reserva");
-            mesa.setReserva(Utilidades.validarEntero());
-            dal.insertar(mesa);
-        } else {
-            System.out.println("EL id introducido no existe");
-        }
-         */
     }
 
     /**
-     * Lee por consola el ID de la factura pedida, si existe lee los campos nuevos por consola y lo inserta en la BBDD
+     * Lee por consola el ID de la factura pedida, si existe lee los campos nuevos por consola y lo actualiza en la BBDD
      */
     private static void modificarFactura() {
-        /*
+        Document facturaAntes;
+        int idFactura, idMesa;
+        BigDecimal importe;
+        String tipoPago;
+
         System.out.println("Introduzca el ID de la factura a modificar");
-        Factura factura = dal.leer(Utilidades.validarEntero(), Factura.class);
-        if (factura != null) {
-            System.out.println("==> " + factura);
+        idFactura = Utilidades.validarEntero();
+        facturaAntes = dal.leer(idFactura, Factura.class);
+        if (facturaAntes != null) {
+            System.out.println("==> " + facturaAntes.toJson());
             System.out.println("Introduzca el ID de la mesa");
-            Mesa mesa = dal.leer(Utilidades.validarEntero(), Mesa.class);
-            factura.setMesa(mesa);
-            System.out.println("Introduzca el importe");
-            factura.setImporte(BigDecimal.valueOf(Utilidades.validarFloat()));
-            System.out.println("Escoja el tipo de pago (1-'Efectivo' / 2-'Tarjeta')");
-            int opc = Utilidades.validarEntero(1, 2);
-            if (opc == 1) {
-                factura.setTipoPago("efectivo");
+            idMesa = Utilidades.validarEntero();
+            Document mesa = dal.leer(idMesa, Mesa.class);
+            if (mesa != null) {
+                System.out.println("Introduzca el importe");
+                importe = BigDecimal.valueOf(Utilidades.validarFloat());
+                System.out.println("Escoja el tipo de pago (1-'Efectivo' / 2-'Tarjeta')");
+                int opc = Utilidades.validarEntero(1, 2);
+                if (opc == 1) {
+                    tipoPago = "efectivo";
+                } else {
+                    tipoPago = "tarjeta";
+                }
+                dal.actualizar(facturaAntes, new Factura(idFactura, idMesa, tipoPago, importe));
             } else {
-                factura.setTipoPago("tarjeta");
+                System.out.println("Id de la mesa inexistente");
             }
-            dal.insertar(factura);
         } else {
-            System.out.println("EL id introducido no existe");
+            System.out.println("Id de la factura inexistente");
         }
-         */
     }
 
     /**
-     * Lee por consola el ID del pedido, si existe lee los campos nuevos por consola y lo inserta en la BBDD
+     * Lee por consola el ID del pedido, si existe lee los campos nuevos por consola y lo actualiza en la BBDD
      */
     private static void modificarPedido() {
-        /*
+        Document pedidoAntes;
+        int idPedido, idFactura, idProducto, cantidad;
+
         System.out.println("Introduzca el ID del pedido a modificar");
-        Pedido pedido = dal.leer(Utilidades.validarEntero(), Pedido.class);
-        if (pedido != null) {
-            System.out.println("==> " + pedido);
+        idPedido = Utilidades.validarEntero();
+        pedidoAntes = dal.leer(idPedido, Pedido.class);
+        if (pedidoAntes != null) {
+            System.out.println("==> " + pedidoAntes.toJson());
             System.out.println("Introduzca el ID de la factura");
-            Factura factura = dal.leer(Utilidades.validarEntero(), Factura.class);
-            pedido.setFactura(factura);
-            System.out.println("Introduzca el ID del producto");
-            Productos producto = dal.leer(Utilidades.validarEntero(), Productos.class);
-            pedido.setProducto(producto);
-            System.out.println("Introduzca la cantidad");
-            pedido.setCantidad(Utilidades.validarEntero());
-            dal.insertar(pedido);
+            idFactura = Utilidades.validarEntero();
+            Document factura = dal.leer(idFactura, Factura.class);
+            if (factura != null) {
+                System.out.println("Introduzca el ID del producto");
+                idProducto = Utilidades.validarEntero();
+                Document producto = dal.leer(idProducto, Productos.class);
+                if (producto != null) {
+                    System.out.println("Introduzca la cantidad");
+                    cantidad = Utilidades.validarEntero();
+                    dal.actualizar(pedidoAntes, new Pedido(idPedido, idFactura, idProducto, cantidad));
+                } else {
+                    System.out.println("Id del producto inexistente");
+                }
+                System.out.println("Introduzca la cantidad");
+                cantidad = Utilidades.validarEntero();
+                dal.actualizar(pedidoAntes, new Pedido(idPedido, idFactura, idProducto, cantidad));
+            } else {
+                System.out.println("Id de la factura inexistente");
+            }
         } else {
-            System.out.println("EL id introducido no existe");
+            System.out.println("Id del pedido inexistente");
         }
-         */
     }
 
     /**
-     * Lee por consola el ID del producto pedido, si existe lee los campos nuevos por consola y lo inserta en la BBDD
+     * Lee por consola el ID del producto pedido, si existe lee los campos nuevos por consola y lo actualiza en la BBDD
      */
     private static void modificarProducto() {
+        int idProducto;
+        String denominacion;
+        BigDecimal precio;
+
         System.out.println("Introduzca el id del producto a modificar");
-        /*
-        Productos producto = dal.leer(Utilidades.validarEntero(), Productos.class);
-        if (producto != null) {
-            System.out.println("==> " + producto);
+        idProducto = Utilidades.validarEntero();
+        Document productoAntes = dal.leer(idProducto, Productos.class);
+        if (productoAntes != null) {
+            System.out.println("==> " + productoAntes.toJson());
             System.out.println("Introduzca la denominación");
-            producto.setDenominacion(Utilidades.leerString());
+            denominacion = Utilidades.leerString();
             System.out.println("Introduzca el precio");
-            producto.setPrecio(BigDecimal.valueOf(Utilidades.validarFloat()));
-            dal.insertar(producto);
+            precio = BigDecimal.valueOf(Utilidades.validarFloat());
+            dal.actualizar(productoAntes, new Productos(idProducto, denominacion, precio));
         } else {
-            System.out.println("EL id introducido no existe");
+            System.out.println("Id del producto inexistente");
         }
-        */
     }
     //endregion
 
     //region Métodos Borrar
 
     /**
-     * Lee por consola el ID de la mesa a borrar e intenta borrarla
+     * Lee por consola el ID de la mesa a borrar e intenta borrarla.
+     * Si existe, se borran las facturas y los pedidos asociados a ella además de la mesa
      */
     private static void borrarMesa() {
-        System.out.println("Introduzca el id de la mesa a borrar");
-        int id = Utilidades.validarEntero();
-        Document mesa = dal.leer(id, Mesa.class);
+        Document mesa;
+        FindIterable<Document> facturas, pedidos;
+        int idMesa;
+
+        System.out.println("Introduzca el id de la mesa a borrar (se borraran las facturas y los pedidos asociados a ella)");
+        idMesa = Utilidades.validarEntero();
+        mesa = dal.leer(idMesa, Mesa.class);
         if (mesa != null) {
-            dal.borrar(mesa, Mesa.class);
+            // obtener facturas de la mesa, obtener pedidos de cada factura y borrarlos
+            facturas = dal.leerTodosRegistros(Factura.class, "idMesa", idMesa);
+            for (Document factura : facturas) {  // obtener los pedidos de cada factura
+                System.out.println("Borrando factura " + factura.toJson());
+                pedidos = dal.leerTodosRegistros(Pedido.class, "idFactura", factura.getInteger("idFactura"));
+                for (Document pedido : pedidos) {  // borrar los pedidos
+                    System.out.println("    Borrando pedido " + pedido.toJson());
+                    dal.borrar(pedido, Pedido.class);
+                }
+                dal.borrar(factura, Factura.class); // borrar la factura
+            }
+            System.out.println("        Borrando mesa " + mesa.toJson());
+            System.out.println();
+            dal.borrar(mesa, Mesa.class); // borrar la mesa
         } else {
             System.out.println("Mesa inexistente");
         }
     }
 
     /**
-     * Lee por consola el ID de la factura a borrar e intenta borrarla
+     * Lee por consola el ID de la factura a borrar e intenta borrarla.
+     * Si existe, se borran los pedidos asociados a ella además de la factura
      */
     private static void borrarFactura() {
-        System.out.println("Introduzca el id de la factura a borrar");
-        int id = Utilidades.validarEntero();
-        Document factura = dal.leer(id, Factura.class);
+        Document factura;
+        FindIterable<Document> pedidos;
+        int idFactura;
+
+        System.out.println("Introduzca el id de la factura a borrar (se borraran los pedidos asociados a ella)");
+        idFactura = Utilidades.validarEntero();
+        factura = dal.leer(idFactura, Factura.class);
         if (factura != null) {
-            dal.borrar(factura, Factura.class);
+            // obtener pedidos de la factura y borrarlos
+            pedidos = dal.leerTodosRegistros(Pedido.class, "idFactura", idFactura);
+            for (Document pedido : pedidos) {  // borrar los pedidos
+                System.out.println("Borrando pedido " + pedido.toJson());
+                dal.borrar(pedido, Pedido.class);
+            }
+            System.out.println("    Borrando factura " + factura.toJson());
+            System.out.println();
+            dal.borrar(factura, Factura.class); // borrar la factura
         } else {
             System.out.println("Factura inexistente");
         }
     }
 
     /**
-     * Lee por consola el ID del pedido a borrar e intenta borrarlo
+     * Lee por consola el ID del pedido a borrar e intenta borrarlo.
+     * Si existe, se borra el pedido
      */
     private static void borrarPedido() {
+        Document pedido;
+        int idPedido;
+
         System.out.println("Introduzca el id del pedido a borrar");
-        int id = Utilidades.validarEntero();
-        Document pedido = dal.leer(id, Pedido.class);
+        idPedido = Utilidades.validarEntero();
+        pedido = dal.leer(idPedido, Pedido.class);
         if (pedido != null) {
-            dal.borrar(pedido, Pedido.class);
+            System.out.println("Borrando pedido " + pedido.toJson());
+            dal.borrar(pedido, Pedido.class); // borrar el pedido
         } else {
             System.out.println("Pedido inexistente");
         }
     }
 
     /**
-     * Lee por consola el ID del producto a borrar e intenta borrarlo
+     * Lee por consola el ID del producto a borrar e intenta borrarlo.
+     * Si existe, se borran los pedidos asociados a él además del producto
      */
     private static void borrarProducto() {
-        System.out.println("Introduzca el id del producto a borrar");
-        int id = Utilidades.validarEntero();
-        Document producto = dal.leer(id, Productos.class);
+        Document producto;
+        FindIterable<Document> pedidos;
+        int idProducto;
+
+        System.out.println("Introduzca el id del producto a borrar (se borraran los pedidos asociados a él)");
+        idProducto = Utilidades.validarEntero();
+        producto = dal.leer(idProducto, Productos.class);
         if (producto != null) {
-            dal.borrar(producto, Productos.class);
+            // obtener pedidos del producto y borrarlos
+            pedidos = dal.leerTodosRegistros(Pedido.class, "idProducto", idProducto);
+            for (Document pedido : pedidos) {  // borrar los pedidos
+                System.out.println("Borrando pedido " + pedido.toJson());
+                dal.borrar(pedido, Pedido.class);
+            }
+            System.out.println("    Borrando producto " + producto.toJson());
+            dal.borrar(producto, Productos.class); // borrar el producto
         } else {
             System.out.println("Producto inexistente");
         }
