@@ -1,7 +1,8 @@
 plugins {
     id 'com.android.application'
     id 'org.jetbrains.kotlin.android'
-    id 'com.google.gms.google-services' // Add the Google services Gradle plugin
+    id 'com.google.gms.google-services'     // Add the Google services Gradle plugin
+    id 'com.google.firebase.crashlytics'    // Add the Crashlytics Gradle plugin
 }
 
 android {
@@ -53,7 +54,7 @@ dependencies {
     implementation 'com.google.firebase:firebase-auth-ktx' // Autenticación
     // Also add the dependency for the Google Play services library and specify its version
     implementation 'com.google.android.gms:play-services-auth:20.4.1'
-
+    implementation 'com.google.firebase:firebase-crashlytics-ktx' // Crashlytics
     implementation 'com.google.firebase:firebase-firestore-ktx' // Base de datos (Cloud Firestore)
     // Add the dependencies for any other desired Firebase products
     // https://firebase.google.com/docs/android/setup#available-libraries
