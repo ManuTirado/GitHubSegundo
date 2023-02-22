@@ -29,8 +29,6 @@ class Puntuaciones : AppCompatActivity() {
 
         tasks = ArrayList()
         getTasks()
-        //tasks.sortWith(compareByDescending<TaskEntity>({it.dificultad}).thenByDescending { it.puntuacion }.thenByDescending { it.numeroPulsaciones })
-
     }
 
     fun getTasks() {
@@ -62,6 +60,9 @@ class Puntuaciones : AppCompatActivity() {
                 )
             )
         }
+        tasks.sortWith(compareByDescending<TaskEntity>({ it.dificultad })
+            .thenByDescending { it.puntuacion }
+            .thenByDescending { it.numeroPulsaciones })
         setUpRecyclerView(tasks)
     }
 
@@ -87,15 +88,23 @@ class Puntuaciones : AppCompatActivity() {
                     .delete()
                     .addOnSuccessListener {
                         tasks.remove(task)
-                        Toast.makeText(recyclerView.context, "DocumentSnapshot successfully deleted!", Toast.LENGTH_SHORT).show() }
-                    .addOnFailureListener { Toast.makeText(recyclerView.context, "Error deleting document", Toast.LENGTH_SHORT).show() }
+                        adapter.notifyItemRemoved(position)
+                        Toast.makeText(recyclerView.context, "Borrado!", Toast.LENGTH_SHORT).show()
+                    }
+                    .addOnFailureListener {
+                        Toast.makeText(
+                            recyclerView.context,
+                            "Error borrando ;(",
+                            Toast.LENGTH_SHORT
+                        ).show()
+                    }
             } else {
-                Toast.makeText(recyclerView.context, "No puede eliminar una puntuación ajena", Toast.LENGTH_SHORT).show()
+                Toast.makeText(
+                    recyclerView.context,
+                    "No puede eliminar una puntuación ajena",
+                    Toast.LENGTH_SHORT
+                ).show()
             }
-
-            //PuntuacionesApp.database.taskDao().deleteTask(task)
-            //tasks.remove(task)
-            //adapter.notifyItemRemoved(position)
         }
     }
 

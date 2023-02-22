@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.View
+import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import com.example.loginfirebase.LoginActivity.Companion.db
 import com.example.loginfirebase.LoginActivity.Companion.mGoogleSignInClient
@@ -14,21 +15,14 @@ import com.google.firebase.auth.FirebaseAuth
 class HomeActivity : AppCompatActivity() {
     companion object {
         lateinit var email: String
-        lateinit var usuario:String
+        lateinit var usuario: String
     }
-
-    //private val db = Firebase.firestore
-
-    private lateinit var provider: String
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home)
         supportActionBar?.hide()
         // Setup
-        val bundle = intent.extras
-        email = bundle?.getString("email").toString()
-        provider = bundle?.getString("provider").toString()
         obtenerNombreUsuario(email)
     }
 
@@ -43,7 +37,7 @@ class HomeActivity : AppCompatActivity() {
 
     private fun obtenerNombreUsuario(email: String) {
         val user = FirebaseAuth.getInstance().currentUser
-        if (user?.providerId != "google.com") {
+        if (user?.providerData?.get(user.providerData.size - 1)?.providerId != "google.com") {
             db.collection("users").document(email).get()
                 .addOnSuccessListener { document ->
                     if (document != null) {
@@ -59,13 +53,12 @@ class HomeActivity : AppCompatActivity() {
         } else {
             usuario = user.displayName.toString()
         }
-
     }
 
     fun onClickBtnLogOut(view: View) {
         FirebaseAuth.getInstance().signOut()
         mGoogleSignInClient?.signOut()
-        onBackPressed()
+        onBackPressedDispatcher.onBackPressed()
     }
 
     fun onClickBtnPuntuaciones(view: View) {
@@ -103,5 +96,9 @@ class HomeActivity : AppCompatActivity() {
                     startActivity(intent)
                 })
         builder.create().show()
+    }
+
+    override fun onBackPressed() {
+        return
     }
 }
