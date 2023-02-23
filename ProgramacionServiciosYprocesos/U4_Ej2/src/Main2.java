@@ -12,6 +12,12 @@ public class Main2 {
         leerFicheroYdesCifrar(clave);
     }
 
+    /**
+     * Lee el fichero de mensajes cifrados y los descifra para imprimirlos por consola.
+     * Si el fichero no existe, se muestra un mensaje de error.
+     * Si hay algún error de entrada/salida, se muestra un mensaje de error.
+     * @param clave clave para descifrar los mensajes
+     */
     private static void leerFicheroYdesCifrar(Key clave) {
         File file = new File(RUTA_ARCHIVO);
         try {
@@ -29,6 +35,12 @@ public class Main2 {
         }
     }
 
+    /**
+     * Genera una clave a partir de una contraseña introducida por el usuario.
+     *  La contraseña debe tener entre 1 y 16 caracteres.
+     *  Si la contraseña es demasiado larga o demasiado corta, se volverá a pedir.
+     * @return clave generada a partir de la contraseña
+     */
     private static Key generarClave() {
         Scanner sc = new Scanner(System.in);
         String pass;

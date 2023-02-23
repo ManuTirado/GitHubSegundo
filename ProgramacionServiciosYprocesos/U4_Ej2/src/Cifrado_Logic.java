@@ -13,6 +13,11 @@ public class Cifrado_Logic {
     private static final int LONGITUD_BLOQUE = 16;
     private static final String ALGORITMO = "AES/ECB/PKCS5Padding";
 
+    /**
+     * Genera una clave a partir de una contraseña introducida por el usuario.
+     * Si la contraseña es demasiado larga o demasiado corta, se ajustará a la longitud requerida.
+     * @return clave generada a partir de la contraseña
+     */
     public static Key obtenerClave(String pass) {
         StringBuffer sb = new StringBuffer(pass);
         sb.setLength(LONGITUD_BLOQUE);
@@ -20,6 +25,13 @@ public class Cifrado_Logic {
         return clave;
     }
 
+    /**
+     * Cifra un mensaje con una clave.
+     *  El mensaje se cifra con el algoritmo AES/ECB/PKCS5Padding.
+     * @param mensaje mensaje a cifrar
+     * @param clave clave con la que cifrar el mensaje
+     * @return mensaje cifrado
+     */
     public static byte[] cifrar(String mensaje, Key clave) {
         byte[] mensajeCifrado;
         try {
@@ -43,6 +55,13 @@ public class Cifrado_Logic {
         return mensajeCifrado;
     }
 
+    /**
+     * Descifra un mensaje con una clave.
+     * El mensaje se descifra con el algoritmo AES/ECB/PKCS5Padding.
+     * @param mensajeCifrado mensaje cifrado
+     * @param clave clave con la que descifrar el mensaje
+     * @return mensaje descifrado
+     */
     public static String descifrar(String mensajeCifrado, Key clave) {
         String mensajeDescifrado = "";
         try {

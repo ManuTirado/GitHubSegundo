@@ -20,6 +20,12 @@ public class Main1 {
         guardarMensajeFichero(mensajeCifrado);
     }
 
+    /**
+     * Genera una clave a partir de una contraseña introducida por el usuario.
+     *  La contraseña debe tener entre 1 y 16 caracteres.
+     *  Si la contraseña es demasiado larga o demasiado corta, se volverá a pedir.
+     * @return clave generada a partir de la contraseña
+     */
     private static Key generarClave() {
         Scanner sc = new Scanner(System.in);
         String pass;
@@ -37,6 +43,10 @@ public class Main1 {
         return Cifrado_Logic.obtenerClave(pass);
     }
 
+    /**
+     * Lee mensajes del usuario hasta que éste pulse enter sin escribir nada.
+     * @return todos los mensajes introducidos por el usuario
+     */
     private static String leerMensajes() {
         Scanner sc = new Scanner(System.in);
         StringBuffer sb = new StringBuffer();
@@ -59,10 +69,21 @@ public class Main1 {
         return sb.toString();
     }
 
+    /**
+     * Cifra un mensaje con una clave.
+     * @param mensaje mensaje a cifrar
+     * @param clave clave con la que cifrar el mensaje
+     * @return mensaje cifrado
+     */
     private static byte[] cifrarMensaje(String mensaje, Key clave) {
         return Cifrado_Logic.cifrar(mensaje, clave);
     }
 
+    /**
+     * Guarda un mensaje cifrado en un fichero.
+     * El mensaje se guarda en base64.
+     * @param mensajeCifrado mensaje cifrado a guardar
+     */
     private static void guardarMensajeFichero(byte[] mensajeCifrado) {
         File file = new File(RUTA_ARCHIVO);
         String mensajeCifradox64;
