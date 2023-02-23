@@ -44,22 +44,43 @@ class Puntuaciones : AppCompatActivity() {
     }
 
     private fun rellenarListado(puntuaciones: QuerySnapshot) {
-        puntuaciones.documents.forEach { p ->
-            tasks.add(
-                TaskEntity(
-                    email = p.id,
-                    nombre = p.get("nombre").toString(),
-                    dificultad = p.get("dificultad").toString().toInt(),
-                    puntuacion = p.get("puntuacion").toString().toInt(),
-                    numeroPulsaciones = p.get("numeroPulsaciones").toString().toInt(),
-                    fechaHora = p.get("fechaHora").toString()
-                )
-            )
+        puntuaciones.forEach { p ->
+            val emailBBDD: String = p.id
+
+            db.collection("puntuaciones").document(emailBBDD).collection("puntuaciones2").get()
+                .addOnSuccessListener { document ->
+                    if (document != null) {
+                        document.forEach { d ->
+                            val nombre:String = d.get("nombre").toString()
+                            val dificultad:Int = d.get("dificultad").toString().toInt()
+                            val puntuacion:Int = d.get("puntuacion").toString().toInt()
+                            val numeroPulsaciones:Int = d.get("numeroPulsaciones").toString().toInt()
+                            val fechaHora:String = d.get("fechaHora").toString()
+                            tasks.add(
+                                TaskEntity(
+                                    email = emailBBDD,
+                                    nombre = nombre,
+                                    dificultad = dificultad,
+                                    puntuacion = puntuacion,
+                                    numeroPulsaciones = numeroPulsaciones,
+                                    fechaHora = fechaHora
+                                )
+                            )
+                            tasks.sortWith(compareByDescending<TaskEntity> { it.dificultad }
+                                .thenByDescending { it.puntuacion }
+                                .thenByDescending { it.numeroPulsaciones }
+                                .thenByDescending { it.email })
+                            setUpRecyclerView(tasks)
+                        }
+                    } else {
+                        Log.d("Puntuaciones", "No such document")
+                    }
+                }
+                .addOnFailureListener { exception ->
+                    Log.d("Puntuaciones", "get failed with ", exception)
+                }
         }
-        tasks.sortWith(compareByDescending<TaskEntity> { it.dificultad }
-            .thenByDescending { it.puntuacion }
-            .thenByDescending { it.numeroPulsaciones })
-        setUpRecyclerView(tasks)
+
     }
 
     private fun setUpRecyclerView(tasks: List<TaskEntity>) {
@@ -80,8 +101,8 @@ class Puntuaciones : AppCompatActivity() {
         launch {
             val position = tasks.indexOf(task)
             if (task.email == HomeActivity.email) {
-                db.collection("puntuaciones").document(task.email)
-                    .delete()
+                db.collection("puntuaciones").document(task.email).collection("puntuaciones")
+                    .document(task.dificultad.toString()).delete()
                     .addOnSuccessListener {
                         tasks.remove(task)
                         adapter.notifyItemRemoved(position)
@@ -121,11 +142,11 @@ class Puntuaciones : AppCompatActivity() {
 
         fun addTask(task: TaskEntity) = runBlocking {
             //launch {
-                //val id = PuntuacionesApp.database.taskDao().addTask(task)
-                //val recoveryTask = PuntuacionesApp.database.taskDao().getTaskById(id.toInt())
-                //tasks.add(recoveryTask)
-                //adapter.notifyItemInserted(tasks.size)
-                //Log.d("PRUEBAS", id.toString())
+            //val id = PuntuacionesApp.database.taskDao().addTask(task)
+            //val recoveryTask = PuntuacionesApp.database.taskDao().getTaskById(id.toInt())
+            //tasks.add(recoveryTask)
+            //adapter.notifyItemInserted(tasks.size)
+            //Log.d("PRUEBAS", id.toString())
             //}
         }
     }

@@ -3,7 +3,6 @@ package com.example.loginfirebase
 import android.content.DialogInterface
 import android.media.MediaPlayer
 import android.os.Bundle
-import android.text.InputType
 import android.util.Log
 import android.widget.Button
 import android.widget.EditText
@@ -19,6 +18,7 @@ import com.google.firebase.ktx.Firebase
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
+import org.w3c.dom.Document
 import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
 import kotlin.random.Random
@@ -202,18 +202,26 @@ class Juego : AppCompatActivity() {
         builder.setMessage("¿Quedará tu nombre inmortalizado?")
             .setPositiveButton("OK",
                 DialogInterface.OnClickListener { _, _ ->
-                    db.collection("puntuaciones").document(email).set(
-                        hashMapOf(
-                            "nombre" to usuario,
-                            "dificultad" to dificultad,
-                            "puntuacion" to puntuacion,
-                            "numeroPulsaciones" to numPulsacionesTotales,
-                            //"fechaHora" to LocalDateTime.now().format(DateTimeFormatter.ofPattern("dd/MM/uu kk:mm"))
-                            "fechaHora" to LocalDateTime.now().format(DateTimeFormatter.ofPattern("dd/MM"))
-                        )
-                    ).addOnCompleteListener {
-                        Toast.makeText(this,"Insertado con éxito", Toast.LENGTH_SHORT).show()
-                    }
+
+                    db.collection("puntuaciones").document(email).collection("puntuaciones2")
+                        .document(dificultad.toString()).get()
+                        .addOnSuccessListener { document ->
+                            if (document != null) {
+                                if (document.get("puntuacion").toString().toInt() < puntuacion) {
+                                    insertarPuntuacion()
+                                }
+                            } else {
+                                db.collection("puntuaciones").document(email).set(
+                                    hashMapOf("A" to "a")
+                                ).addOnSuccessListener { insertarPuntuacion() }
+
+                            }
+
+                        }
+                        .addOnFailureListener { exception ->
+                            Log.d("Juego", "get failed with ", exception)
+                        }
+
                     mostrarMensjaPerdedor()
                     numPulsacionesTotales = 0
                     puntuacion = 0
@@ -222,6 +230,23 @@ class Juego : AppCompatActivity() {
                 })
         // Create the AlertDialog object and return it
         builder.create().show()
+    }
+
+    private fun insertarPuntuacion() {
+        db.collection("puntuaciones").document(email).collection("puntuaciones2")
+            .document(dificultad.toString()).set(
+                hashMapOf(
+                    "nombre" to usuario,
+                    "dificultad" to dificultad,
+                    "puntuacion" to puntuacion,
+                    "numeroPulsaciones" to numPulsacionesTotales,
+                    //"fechaHora" to LocalDateTime.now().format(DateTimeFormatter.ofPattern("dd/MM/uu kk:mm"))
+                    "fechaHora" to LocalDateTime.now()
+                        .format(DateTimeFormatter.ofPattern("dd/MM"))
+                )
+            ).addOnCompleteListener {
+                Toast.makeText(this, "Insertado con éxito", Toast.LENGTH_SHORT).show()
+            }
     }
 
     private fun mostrarMensjaPerdedor() {
