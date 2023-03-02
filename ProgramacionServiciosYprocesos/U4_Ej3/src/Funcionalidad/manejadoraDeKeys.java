@@ -13,8 +13,8 @@ import java.security.spec.X509EncodedKeySpec;
 
 public class manejadoraDeKeys {
 
-    private static final String PUBLIC_KEY_FILE_ROUTE = "src\\Keys\\public_key.key";
-    private static final String PRIVATE_KEY_FILE_ROUTE = "src\\Keys\\private_key.key";
+    private static final String PUBLIC_KEY = "public_key.key";
+    private static final String PRIVATE_KEY = "private_key.key";
     private static final String ALGORITHM = "RSA";
     private static final int KEY_SIZE = 2048;
 
@@ -32,16 +32,16 @@ public class manejadoraDeKeys {
         return claves;
     }
 
-    public static void guardarClaves(KeyPair claves) {
+    public static void guardarClaves(KeyPair claves, String ruta) {
         PrivateKey clavePrivada = claves.getPrivate();
         PublicKey clavePublica = claves.getPublic();
         FileOutputStream fos;
         try {
-            fos = new FileOutputStream(PUBLIC_KEY_FILE_ROUTE);
+            fos = new FileOutputStream(ruta + PUBLIC_KEY);
             fos.write(clavePublica.getEncoded());
             fos.close();
 
-            fos = new FileOutputStream(PRIVATE_KEY_FILE_ROUTE);
+            fos = new FileOutputStream(ruta + PRIVATE_KEY);
             fos.write(clavePrivada.getEncoded());
             fos.close();
         } catch (FileNotFoundException e) {
@@ -54,8 +54,8 @@ public class manejadoraDeKeys {
 
     }
 
-    public static PublicKey getClavePublica() {
-        File ficheroClavePublica = new File(PUBLIC_KEY_FILE_ROUTE);
+    public static PublicKey getClavePublica(String ruta) {
+        File ficheroClavePublica = new File(ruta + PUBLIC_KEY);
         PublicKey clavePublica = null;
         try {
             byte[] bytesClavePublica = Files.readAllBytes(ficheroClavePublica.toPath());
@@ -75,8 +75,8 @@ public class manejadoraDeKeys {
         return clavePublica;
     }
 
-    public static PrivateKey getClavePrivada() {
-        File ficheroClavePrivada = new File(PRIVATE_KEY_FILE_ROUTE);
+    public static PrivateKey getClavePrivada(String ruta) {
+        File ficheroClavePrivada = new File(ruta + PRIVATE_KEY);
         PrivateKey clavePrivada = null;
         try {
 
@@ -100,7 +100,8 @@ public class manejadoraDeKeys {
 
     public static void main(String[] args) {
         KeyPair claves = generarClaves();
-        guardarClaves(claves);
+        guardarClaves(claves, "src\\Keys\\emisor\\");
+        guardarClaves(claves, "src\\Keys\\receptor\\");
         System.out.println("Claves generadas y guardadas correctamente");
     }
 }
