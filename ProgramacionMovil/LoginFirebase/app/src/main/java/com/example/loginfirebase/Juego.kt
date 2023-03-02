@@ -3,10 +3,7 @@ package com.example.loginfirebase
 import android.content.DialogInterface
 import android.media.MediaPlayer
 import android.os.Bundle
-import android.text.InputType
-import android.util.Log
 import android.widget.Button
-import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
@@ -14,8 +11,6 @@ import androidx.appcompat.app.AppCompatActivity
 import com.example.loginfirebase.HomeActivity.Companion.email
 import com.example.loginfirebase.HomeActivity.Companion.usuario
 import com.example.loginfirebase.LoginActivity.Companion.db
-import com.google.firebase.firestore.ktx.firestore
-import com.google.firebase.ktx.Firebase
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
@@ -34,10 +29,6 @@ class Juego : AppCompatActivity() {
     private var puntuacion: Int = 0
     private var record: Int = 0
     private var numPulsacionesTotales: Int = 0
-
-    //private val db = Firebase.firestore
-    //private lateinit var usuario:String
-    //private lateinit var email:String
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

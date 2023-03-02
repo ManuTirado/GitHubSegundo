@@ -23,7 +23,6 @@ class HomeActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home)
         supportActionBar?.hide()
-        // Setup
         obtenerNombreUsuario(email)
     }
 
@@ -31,7 +30,7 @@ class HomeActivity : AppCompatActivity() {
         val builder = AlertDialog.Builder(this)
         builder.setTitle("Info")
             .setCancelable(true)
-            .setMessage("Correo: $email\nUsuario: $usuario\n\n\n\nCreado por Manuel Tirado García")
+            .setMessage("Correo: $email\nUsuario: $usuario\n\n\n\nCreado por Manuel Tirado García y Diego Alejandro Hurtado Rendón")
             .setPositiveButton("Ok", DialogInterface.OnClickListener { dialog, which -> })
         builder.create().show()
     }
